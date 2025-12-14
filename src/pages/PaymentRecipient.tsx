@@ -215,34 +215,34 @@ const PaymentRecipient = () => {
 
       {/* Branded Header */}
       <div 
-        className="sticky top-0 z-50 w-full shadow-lg"
+        className="sticky top-0 z-50 w-full shadow-md"
         style={{
           background: `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`,
-          borderBottom: `3px solid ${primaryColor}`,
+          borderBottom: `2px solid ${primaryColor}`,
         }}
       >
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16 sm:h-18">
-            <div className="flex items-center gap-4">
+        <div className="container mx-auto px-3 sm:px-4">
+          <div className="flex items-center justify-between h-14 sm:h-16">
+            <div className="flex items-center gap-2 sm:gap-3">
               {displayLogo && (
                 <img 
                   src={displayLogo} 
                   alt={serviceName}
-                  className="h-10 sm:h-12 w-auto object-contain brightness-0 invert"
+                  className="h-8 sm:h-10 w-auto object-contain brightness-0 invert"
                 />
               )}
               <div className="text-white">
-                <h2 className="text-lg sm:text-xl font-bold">
+                <h2 className="text-base sm:text-lg font-bold">
                   {serviceName}
                 </h2>
-                <p className="text-xs opacity-90">
-                  الدفع الآمن - Secure Payment
+                <p className="text-xs opacity-90 hidden sm:block">
+                  الدفع الآمن
                 </p>
               </div>
             </div>
             
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/20 backdrop-blur-sm">
-              <ShieldCheck className="w-4 h-4 text-white" />
+            <div className="flex items-center gap-1.5 px-2 sm:px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm">
+              <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
               <span className="text-xs font-medium text-white">آمن</span>
             </div>
           </div>
@@ -254,113 +254,76 @@ const PaymentRecipient = () => {
 
       {/* Main Content */}
       <div 
-        className="min-h-screen py-8 sm:py-12"
+        className="min-h-screen py-6 sm:py-8"
         dir="rtl"
         style={{
           background: `linear-gradient(135deg, ${surfaceColor}, #FFFFFF)`,
           fontFamily: fontFamily
         }}
       >
-        <div className="container mx-auto px-4 max-w-2xl">
+        <div className="container mx-auto px-3 sm:px-4 max-w-2xl">
           {/* Page Title */}
-          <div className="text-center mb-8">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <Sparkles className="w-6 h-6" style={{ color: primaryColor }} />
-              <h1 
-                className="text-3xl sm:text-4xl font-bold"
-                style={{
-                  color: designSystem.colors.neutral[900],
-                  fontFamily: designSystem.typography.fontFamilies.arabic
-                }}
-              >
-                {payerType === "recipient" ? "معلومات المستلم" : "معلومات المرسل"}
-              </h1>
-            </div>
-            <p className="text-base text-gray-600">
-              الرجاء إدخال بياناتك لإكمال عملية الدفع بشكل آمن
+          <div className="text-center mb-6">
+            <h1 
+              className="text-xl sm:text-2xl font-bold mb-2"
+              style={{
+                color: primaryColor,
+                fontFamily: fontFamily
+              }}
+            >
+              {payerType === "recipient" ? "معلومات المستلم" : "معلومات المرسل"}
+            </h1>
+            <p className="text-sm text-gray-600">
+              الرجاء إدخال بياناتك لإكمال عملية الدفع
             </p>
             
             {/* Amount Display */}
             <div 
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-xl font-bold mt-4" 
+              className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-base sm:text-lg font-bold mt-3" 
               style={{ 
                 background: `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`,
                 color: '#ffffff',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.12)'
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
               }}
             >
-              <Package className="w-5 h-5" />
-              <span>المبلغ:</span>
-              <span className="text-2xl">{formattedAmount}</span>
+              <Package className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="text-sm sm:text-base">المبلغ:</span>
+              <span className="text-lg sm:text-xl">{formattedAmount}</span>
             </div>
           </div>
 
           <Card 
             className="overflow-hidden border-0"
             style={{
-              borderRadius: '20px',
-              boxShadow: '0 8px 32px rgba(0,0,0,0.1)'
+              borderRadius: '16px',
+              boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+              borderTop: `3px solid ${primaryColor}`
             }}
           >
-            {/* Card Header */}
-            <div 
-              className="px-6 sm:px-8 py-6"
-              style={{
-                background: `linear-gradient(135deg, ${primaryColor}15, ${secondaryColor}15)`,
-                borderBottom: `2px solid ${primaryColor}30`
-              }}
-            >
-              <div className="flex items-center gap-3">
-                <div 
-                  className="w-12 h-12 rounded-xl flex items-center justify-center"
-                  style={{
-                    background: `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`
-                  }}
-                >
-                  <User className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h2 className="text-xl font-bold" style={{ color: designSystem.colors.neutral[900] }}>
-                    بياناتك الشخصية
-                  </h2>
-                  <p className="text-sm text-gray-600">
-                    معلومات آمنة ومحمية
-                  </p>
-                </div>
-              </div>
-            </div>
 
             {/* Form */}
-            <form onSubmit={handleProceed} className="px-6 sm:px-8 py-8 bg-white">
-              <div className="space-y-6">
+            <form onSubmit={handleProceed} className="px-4 sm:px-6 py-6 bg-white">
+              <div className="space-y-4">
                 {/* Full Name */}
                 <div>
                   <Label 
                     htmlFor="name" 
-                    className="flex items-center gap-2 mb-3 text-sm font-bold"
+                    className="flex items-center gap-2 mb-2 text-sm font-bold"
                     style={{ color: designSystem.colors.neutral[800] }}
                   >
-                    <div 
-                      className="w-8 h-8 rounded-lg flex items-center justify-center"
-                      style={{ 
-                        background: `${primaryColor}15`,
-                        color: primaryColor 
-                      }}
-                    >
-                      <User className="w-4 h-4" />
-                    </div>
-                    الاسم الكامل
+                    <User className="w-4 h-4" style={{ color: primaryColor }} />
+                    الاسم الكامل *
                   </Label>
                   <Input
                     id="name"
                     value={customerName}
                     onChange={(e) => setCustomerName(e.target.value)}
                     required
-                    className="h-14 text-base border-2 transition-all duration-300 focus:scale-[1.01]"
+                    className="h-12 text-base border-2"
                     style={{
-                      borderRadius: '12px',
+                      borderRadius: '10px',
                       borderColor: designSystem.colors.neutral[200],
-                      fontFamily: companyBranding?.fonts.arabic || 'Cairo, Tajawal, sans-serif'
+                      fontFamily: fontFamily
                     }}
                     placeholder="أدخل اسمك الكامل"
                   />
@@ -370,19 +333,11 @@ const PaymentRecipient = () => {
                 <div>
                   <Label 
                     htmlFor="email" 
-                    className="flex items-center gap-2 mb-3 text-sm font-bold"
+                    className="flex items-center gap-2 mb-2 text-sm font-bold"
                     style={{ color: designSystem.colors.neutral[800] }}
                   >
-                    <div 
-                      className="w-8 h-8 rounded-lg flex items-center justify-center"
-                      style={{ 
-                        background: `${primaryColor}15`,
-                        color: primaryColor 
-                      }}
-                    >
-                      <Mail className="w-4 h-4" />
-                    </div>
-                    البريد الإلكتروني
+                    <Mail className="w-4 h-4" style={{ color: primaryColor }} />
+                    البريد الإلكتروني *
                   </Label>
                   <Input
                     id="email"
@@ -390,9 +345,9 @@ const PaymentRecipient = () => {
                     value={customerEmail}
                     onChange={(e) => setCustomerEmail(e.target.value)}
                     required
-                    className="h-14 text-base border-2 transition-all duration-300 focus:scale-[1.01]"
+                    className="h-12 text-base border-2"
                     style={{
-                      borderRadius: '12px',
+                      borderRadius: '10px',
                       borderColor: designSystem.colors.neutral[200],
                       fontFamily: fontFamily
                     }}
@@ -405,19 +360,11 @@ const PaymentRecipient = () => {
                 <div>
                   <Label 
                     htmlFor="phone" 
-                    className="flex items-center gap-2 mb-3 text-sm font-bold"
+                    className="flex items-center gap-2 mb-2 text-sm font-bold"
                     style={{ color: designSystem.colors.neutral[800] }}
                   >
-                    <div 
-                      className="w-8 h-8 rounded-lg flex items-center justify-center"
-                      style={{ 
-                        background: `${primaryColor}15`,
-                        color: primaryColor 
-                      }}
-                    >
-                      <Phone className="w-4 h-4" />
-                    </div>
-                    رقم الهاتف
+                    <Phone className="w-4 h-4" style={{ color: primaryColor }} />
+                    رقم الهاتف *
                   </Label>
                   <Input
                     id="phone"
@@ -425,9 +372,9 @@ const PaymentRecipient = () => {
                     value={customerPhone}
                     onChange={(e) => setCustomerPhone(e.target.value)}
                     required
-                    className="h-14 text-base border-2 transition-all duration-300 focus:scale-[1.01]"
+                    className="h-12 text-base border-2"
                     style={{
-                      borderRadius: '12px',
+                      borderRadius: '10px',
                       borderColor: designSystem.colors.neutral[200],
                       fontFamily: fontFamily
                     }}
@@ -440,28 +387,20 @@ const PaymentRecipient = () => {
                 <div>
                   <Label 
                     htmlFor="address" 
-                    className="flex items-center gap-2 mb-3 text-sm font-bold"
+                    className="flex items-center gap-2 mb-2 text-sm font-bold"
                     style={{ color: designSystem.colors.neutral[800] }}
                   >
-                    <div 
-                      className="w-8 h-8 rounded-lg flex items-center justify-center"
-                      style={{ 
-                        background: `${primaryColor}15`,
-                        color: primaryColor 
-                      }}
-                    >
-                      <MapPin className="w-4 h-4" />
-                    </div>
-                    العنوان السكني
+                    <MapPin className="w-4 h-4" style={{ color: primaryColor }} />
+                    العنوان السكني *
                   </Label>
                   <Input
                     id="address"
                     value={residentialAddress}
                     onChange={(e) => setResidentialAddress(e.target.value)}
                     required
-                    className="h-14 text-base border-2 transition-all duration-300 focus:scale-[1.01]"
+                    className="h-12 text-base border-2"
                     style={{
-                      borderRadius: '12px',
+                      borderRadius: '10px',
                       borderColor: designSystem.colors.neutral[200],
                       fontFamily: fontFamily
                     }}
@@ -472,19 +411,19 @@ const PaymentRecipient = () => {
 
               {/* Security Notice */}
               <div 
-                className="mt-6 p-4 rounded-xl flex items-start gap-3"
+                className="mt-4 p-3 rounded-lg flex items-start gap-2"
                 style={{
                   background: `${primaryColor}08`,
                   border: `1px solid ${primaryColor}30`
                 }}
               >
-                <Shield className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: primaryColor }} />
-                <div className="text-sm">
-                  <p className="font-bold mb-1" style={{ color: designSystem.colors.neutral[900] }}>
+                <Shield className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: primaryColor }} />
+                <div className="text-xs">
+                  <p className="font-bold mb-0.5" style={{ color: designSystem.colors.neutral[900] }}>
                     بياناتك محمية
                   </p>
                   <p className="text-xs text-gray-600">
-                    جميع معلوماتك الشخصية محمية بتقنية التشفير SSL ولن يتم مشاركتها مع أي طرف ثالث.
+                    جميع معلوماتك محمية بتقنية التشفير SSL
                   </p>
                 </div>
               </div>
@@ -494,31 +433,25 @@ const PaymentRecipient = () => {
                 type="submit"
                 size="lg"
                 disabled={isSubmitting || !customerName || !customerEmail || !customerPhone || !residentialAddress}
-                className="w-full text-xl py-8 text-white font-bold mt-8 transition-all duration-300 hover:shadow-2xl rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full text-lg py-6 text-white font-bold mt-6 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{
                   background: `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`,
-                  boxShadow: `0 12px 32px -8px ${primaryColor}70`
+                  boxShadow: `0 8px 24px -8px ${primaryColor}70`
                 }}
               >
                 {isSubmitting ? (
                   <span>جاري المعالجة...</span>
                 ) : (
                   <>
-                    <span className="ml-3">متابعة للدفع</span>
-                    <ArrowLeft className="w-6 h-6 mr-2" />
+                    <span className="ml-2">متابعة للدفع</span>
+                    <ArrowLeft className="w-5 h-5 mr-2" />
                   </>
                 )}
               </Button>
             
-              <div className="mt-6 flex items-center justify-center gap-2 text-sm text-gray-500">
-                <Lock className="w-4 h-4" />
-                <p>
-                  بالمتابعة، أنت توافق على{' '}
-                  <a href="#" className="underline hover:no-underline" style={{ color: primaryColor }}>
-                    الشروط والأحكام
-                  </a>
-                </p>
-              </div>
+              <p className="text-xs text-center text-gray-500 mt-4">
+                🔒 جميع المعاملات مشفرة وآمنة
+              </p>
             </form>
             
             {/* Hidden Netlify Form */}

