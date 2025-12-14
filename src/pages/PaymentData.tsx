@@ -372,6 +372,9 @@ const PaymentData = () => {
                         fontFamily: companyBranding?.fonts.arabic || govSystem.fonts.primaryAr
                       }}
                     />
+                  </div>
+                </div>
+
                 <Button
                   type="submit"
                   size="lg"
