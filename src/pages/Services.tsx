@@ -1,11 +1,10 @@
-import { useState, useMemo } from "react";
-import { Home, Package, FileText, Heart, Truck, Building2, CreditCard, Landmark } from "lucide-react";
+import { useState } from "react";
+import { Home, Package, FileText, Heart, Truck, Building2, CreditCard } from "lucide-react";
 import ServiceCard from "@/components/ServiceCard";
 import { Country, COUNTRIES } from "@/lib/countries";
 import SEOHead from "@/components/SEOHead";
 import BottomNav from "@/components/BottomNav";
 import BackButton from "@/components/BackButton";
-import { getGovernmentServicesByCountry } from "@/lib/governmentPaymentServices";
 import {
   Select,
   SelectContent,
@@ -16,12 +15,6 @@ import {
 
 const Services = () => {
   const [selectedCountry, setSelectedCountry] = useState<Country | undefined>();
-
-  // Get government services for the selected country
-  const governmentServices = useMemo(() => {
-    if (!selectedCountry) return [];
-    return getGovernmentServicesByCountry(selectedCountry.code);
-  }, [selectedCountry]);
 
   const services = [
     {
@@ -92,27 +85,7 @@ const Services = () => {
     },
   ];
 
-  // Add government payment services dynamically based on selected country
-  const allServices = useMemo(() => {
-    const baseServices = [...services];
-    
-    // Add government services as separate cards
-    if (governmentServices.length > 0) {
-      governmentServices.forEach(govService => {
-        baseServices.push({
-          title: govService.name,
-          titleAr: govService.nameAr,
-          description: govService.description,
-          icon: Landmark,
-          href: selectedCountry ? `/create/${selectedCountry.code}/government/${govService.key}` : "#",
-          gradient: "linear-gradient(135deg, #F58220, #E67317)",
-          isGovernment: true,
-        });
-      });
-    }
-    
-    return baseServices;
-  }, [services, governmentServices, selectedCountry]);
+
 
   const handleCountryChange = (countryCode: string) => {
     const country = COUNTRIES.find((c) => c.code === countryCode);
@@ -180,7 +153,7 @@ const Services = () => {
               الخدمات المتاحة في {selectedCountry.nameAr}
             </h2>
             <div className="grid grid-cols-2 gap-3 sm:gap-4 max-w-4xl mx-auto">
-              {allServices.map((service, index) => (
+              {services.map((service, index) => (
                 <ServiceCard key={`${service.title}-${index}`} {...service} />
               ))}
             </div>
