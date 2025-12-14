@@ -282,6 +282,68 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     ogImage: "/og-jinakum.jpg",
     heroImage: "/og-jinakum.jpg",
     description: "شركة Jinakum - خدمات دفع وتحويل آمنة وموثوقة"
+  },
+
+  // Government Payment Services - خدمات الدفع الحكومية
+  sadad: {
+    logo: "/gov-sadad-official.png",
+    colors: {
+      primary: "#F58220",
+      secondary: "#E67317"
+    },
+    ogImage: "/og-government_payment.jpg",
+    heroImage: "/gov-sadad-official.png",
+    description: "سداد - نظام المدفوعات الوطني السعودي للخدمات الحكومية والفواتير"
+  },
+  benefit: {
+    logo: "/gov-benefit-logo.png",
+    colors: {
+      primary: "#CE1126",
+      secondary: "#D32027"
+    },
+    ogImage: "/og-government_payment.jpg",
+    heroImage: "/gov-benefit-logo.png",
+    description: "بنفت - الشبكة الإلكترونية البحرينية للمعاملات المالية"
+  },
+  knet: {
+    logo: "/gov-knet-logo.png",
+    colors: {
+      primary: "#007A3D",
+      secondary: "#CE1126"
+    },
+    ogImage: "/og-government_payment.jpg",
+    heroImage: "/gov-knet-logo.png",
+    description: "كي نت - شبكة الكويت الوطنية للمدفوعات الإلكترونية"
+  },
+  omannet: {
+    logo: "/gov-maal-logo.jpg",
+    colors: {
+      primary: "#D0032C",
+      secondary: "#009A44"
+    },
+    ogImage: "/og-government_payment.jpg",
+    heroImage: "/gov-maal-logo.jpg",
+    description: "عُمان نت - شبكة عُمان للمدفوعات الإلكترونية - بطاقة مال"
+  },
+  jaywan: {
+    logo: "/gov-uae-logo.jpg",
+    colors: {
+      primary: "#CE1126",
+      secondary: "#00732F"
+    },
+    ogImage: "/og-government_payment.jpg",
+    heroImage: "/gov-uae-logo.jpg",
+    description: "جيوان - نظام البطاقة الوطنية الإماراتي للدفع الإلكتروني"
+  },
+  "qatar-gov": {
+    logo: "/gov-qatar-logo.png",
+    colors: {
+      primary: "#8D1B3D",
+      secondary: "#6B1529"
+    },
+    ogImage: "/og-government_payment.jpg",
+    heroImage: "/gov-qatar-logo.png",
+    description: "بوابة الدفع الحكومي القطرية - نظام الدفع الإلكتروني للخدمات الحكومية"
   }
 };
 

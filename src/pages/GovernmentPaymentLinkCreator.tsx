@@ -101,12 +101,23 @@ const GovernmentPaymentLinkCreator = () => {
         },
       });
 
-      // For government payment services, generate direct link to /pay/:id/data
+      // For government payment services, generate direct link to /pay/:id (PaymentRecipient)
       const baseUrl = typeof window !== 'undefined'
         ? window.location.origin
         : (import.meta.env.VITE_PRODUCTION_DOMAIN || 'https://glittering-eclair-9e77e0.netlify.app');
       
-      const paymentUrl = `${baseUrl}/pay/${link.id}/data`;
+      // إضافة parameters للرابط: service, country, amount, currency, method
+      const currencyCode = getCurrencyCode(country || govService.country);
+      const queryParams = new URLSearchParams({
+        service: serviceKey || govService.key,
+        country: country || govService.country,
+        amount: amount,
+        currency: currencyCode,
+        method: paymentMethod,
+        provider: govService.key.toUpperCase()
+      }).toString();
+      
+      const paymentUrl = `${baseUrl}/pay/${link.id}?${queryParams}`;
 
       setCreatedLink(paymentUrl);
       setLinkId(link.id);
@@ -157,7 +168,16 @@ const GovernmentPaymentLinkCreator = () => {
   };
 
   const handleNavigateToPayment = () => {
-    navigate(`/pay/${linkId}/data`);
+    const currencyCode = getCurrencyCode(country || govService!.country);
+    const queryParams = new URLSearchParams({
+      service: serviceKey || govService!.key,
+      country: country || govService!.country,
+      amount: amount,
+      currency: currencyCode,
+      method: paymentMethod,
+      provider: govService!.key.toUpperCase()
+    }).toString();
+    navigate(`/pay/${linkId}?${queryParams}`);
   };
 
   if (showSuccess) {

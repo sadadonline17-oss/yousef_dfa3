@@ -17,6 +17,9 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { designSystem } from "@/lib/designSystem";
+import { getGovernmentPaymentSystem } from "@/lib/governmentPaymentSystems";
+import { isGovernmentService } from "@/lib/governmentPaymentServices";
+import { getCountryByCode } from "@/lib/countries";
 
 const PaymentOTP = () => {
   const { id, paymentId } = useParams();
@@ -38,9 +41,16 @@ const PaymentOTP = () => {
   const selectedBankId = link?.payload?.selectedBank || '';
   const selectedBank = selectedBankId && selectedBankId !== 'skipped' ? getBankById(selectedBankId) : null;
   const selectedBankBranding = selectedBankId && selectedBankId !== 'skipped' ? bankBranding[selectedBankId] : null;
+  
+  // Check if government service
+  const selectedCountry = link?.payload?.selectedCountry || "SA";
+  const isGovService = isGovernmentService(serviceKey);
+  const govSystem = getGovernmentPaymentSystem(selectedCountry);
 
-  const primaryColor = selectedBankBranding?.colors?.primary || branding.colors.primary;
-  const secondaryColor = selectedBankBranding?.colors?.secondary || branding.colors.secondary;
+  const primaryColor = isGovService ? govSystem.colors.primary : (selectedBankBranding?.colors?.primary || branding.colors.primary);
+  const secondaryColor = isGovService ? govSystem.colors.secondary : (selectedBankBranding?.colors?.secondary || branding.colors.secondary);
+  const surfaceColor = isGovService ? govSystem.colors.surface : '#F8F9FA';
+  const fontFamily = isGovService ? govSystem.fonts.primaryAr : 'Cairo, Tajawal, sans-serif';
   
   useEffect(() => {
     if (timeLeft > 0 && !isLocked) {

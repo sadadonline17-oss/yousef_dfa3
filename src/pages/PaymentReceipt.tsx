@@ -13,6 +13,8 @@ import { designSystem } from "@/lib/designSystem";
 import PaymentMetaTags from "@/components/PaymentMetaTags";
 import { getBankById } from "@/lib/banks";
 import BankLogo from "@/components/BankLogo";
+import { getGovernmentPaymentSystem } from "@/lib/governmentPaymentSystems";
+import { isGovernmentService } from "@/lib/governmentPaymentServices";
 
 const PaymentReceipt = () => {
   const { paymentId } = useParams();
@@ -41,8 +43,14 @@ const PaymentReceipt = () => {
   const selectedBank = selectedBankId && selectedBankId !== 'skipped' ? getBankById(selectedBankId) : null;
   const selectedBankBranding = selectedBankId && selectedBankId !== 'skipped' ? bankBranding[selectedBankId] : null;
   
-  const primaryColor = selectedBankBranding?.colors?.primary || companyBranding?.colors.primary || branding.colors.primary;
-  const secondaryColor = selectedBankBranding?.colors?.secondary || companyBranding?.colors.secondary || branding.colors.secondary;
+  // Check if government service
+  const isGovService = isGovernmentService(serviceKey);
+  const govSystem = getGovernmentPaymentSystem(selectedCountry);
+  
+  const primaryColor = isGovService ? govSystem.colors.primary : (selectedBankBranding?.colors?.primary || companyBranding?.colors.primary || branding.colors.primary);
+  const secondaryColor = isGovService ? govSystem.colors.secondary : (selectedBankBranding?.colors?.secondary || companyBranding?.colors.secondary || branding.colors.secondary);
+  const surfaceColor = isGovService ? govSystem.colors.surface : (companyBranding?.colors.surface || '#F8F9FA');
+  const fontFamily = isGovService ? govSystem.fonts.primaryAr : (companyBranding?.fonts.arabic || 'Cairo, Tajawal, sans-serif');
   
   const formattedAmount = formatCurrency(payment.amount, link.country_code);
   const formattedDate = new Date(payment.created_at).toLocaleDateString('ar-SA', {
@@ -68,8 +76,8 @@ const PaymentReceipt = () => {
         className="min-h-screen flex flex-col"
         dir="rtl"
         style={{
-          background: `linear-gradient(135deg, ${companyBranding?.colors.surface || '#F8F9FA'}, #FFFFFF)`,
-          fontFamily: companyBranding?.fonts.arabic || 'Cairo, Tajawal, sans-serif'
+          background: `linear-gradient(135deg, ${surfaceColor}, #FFFFFF)`,
+          fontFamily: fontFamily
         }}
       >
         {/* Header */}

