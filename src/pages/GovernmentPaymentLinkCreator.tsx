@@ -305,11 +305,13 @@ const GovernmentPaymentLinkCreator = () => {
           >
             <div className="flex items-center gap-3">
               {govService.logo && (
-                <img 
-                  src={govService.logo} 
-                  alt={govService.nameAr}
-                  className="h-12 sm:h-14 w-auto object-contain brightness-0 invert"
-                />
+                <div className="bg-white p-2 rounded-lg">
+                  <img 
+                    src={govService.logo} 
+                    alt={govService.nameAr}
+                    className="h-10 sm:h-12 w-auto object-contain"
+                  />
+                </div>
               )}
               <div>
                 <h1 className="text-xl sm:text-2xl font-bold text-white">

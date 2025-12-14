@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { getCountryByCode } from "@/lib/countries";
-import { getGovernmentServicesByCountry } from "@/lib/gccGovernmentServices";
+import { getGovernmentServicesByCountry } from "@/lib/governmentPaymentServices";
 import { getCurrencySymbol, getCurrencyCode, formatCurrency } from "@/lib/countryCurrencies";
 import PaymentMetaTags from "@/components/PaymentMetaTags";
 import { useLink, useUpdateLink } from "@/hooks/useSupabase";
