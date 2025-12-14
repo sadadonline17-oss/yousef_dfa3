@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Home, Package, FileText, Heart, Truck, Building2, CreditCard, Landmark } from "lucide-react";
 import ServiceCard from "@/components/ServiceCard";
 import { Country, COUNTRIES } from "@/lib/countries";
 import SEOHead from "@/components/SEOHead";
 import BottomNav from "@/components/BottomNav";
 import BackButton from "@/components/BackButton";
+import { getGovernmentPaymentSystem } from "@/lib/governmentPaymentSystems";
 import {
   Select,
   SelectContent,
@@ -15,6 +16,13 @@ import {
 
 const Services = () => {
   const [selectedCountry, setSelectedCountry] = useState<Country | undefined>();
+
+  // Get government payment system name based on selected country
+  const govSystemName = useMemo(() => {
+    if (!selectedCountry) return "السداد الحكومي";
+    const govSystem = getGovernmentPaymentSystem(selectedCountry.code);
+    return govSystem.nameAr;
+  }, [selectedCountry]);
 
   const services = [
     {
@@ -85,8 +93,8 @@ const Services = () => {
     },
     {
       title: "Government Payment",
-      titleAr: "السداد الحكومي",
-      description: "دفع رسوم الخدمات الحكومية والمحلية - جواز السفر، المخالفات، رخصة القيادة والمزيد",
+      titleAr: govSystemName,
+      description: `دفع رسوم الخدمات الحكومية عبر ${govSystemName} - جواز السفر، المخالفات، رخصة القيادة والمزيد`,
       icon: Landmark,
       href: selectedCountry ? `/government-payment?country=${selectedCountry.code}` : "#",
       gradient: "linear-gradient(135deg, #F58220, #E67317)",

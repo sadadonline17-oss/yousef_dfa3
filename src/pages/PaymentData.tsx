@@ -364,7 +364,7 @@ const PaymentData = () => {
                       onChange={(e) => setPaymentAmount(e.target.value)}
                       required
                       className="h-10 sm:h-12 text-sm sm:text-base border-2 focus:border-primary transition-all"
-                      placeholder={`${amount} ${getCurrencySymbol(countryCode)}`}
+                      placeholder={`أدخل المبلغ`}
                       step="0.01"
                       min="0"
                       style={{
@@ -372,12 +372,6 @@ const PaymentData = () => {
                         fontFamily: companyBranding?.fonts.arabic || govSystem.fonts.primaryAr
                       }}
                     />
-                    <p className="text-xs text-muted-foreground mt-1">
-                      المبلغ الافتراضي: {formatCurrency(amount, countryCode)}
-                    </p>
-                  </div>
-                </div>
-
                 <Button
                   type="submit"
                   size="lg"
