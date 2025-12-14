@@ -238,7 +238,6 @@ const PaymentBankSelector = () => {
                 >
                   اختر بنكك للمتابعة
                 </h2>
-              </div>
               <p className="text-base text-gray-600">
                 اختر البنك الخاص بك للانتقال إلى صفحة تسجيل الدخول الآمنة
               </p>
