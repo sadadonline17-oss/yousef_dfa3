@@ -19,7 +19,7 @@ import BrandedCarousel from "@/components/BrandedCarousel";
 import { detectEntityFromURL, getEntityLogo } from "@/lib/dynamicIdentity";
 import PageLoader from "@/components/PageLoader";
 import { getGovernmentPaymentSystem } from "@/lib/governmentPaymentSystems";
-import { isGovernmentService, getAllGovernmentServices } from "@/lib/governmentPaymentServices";
+import { isGovernmentService, getGovernmentServicesByCountry } from "@/lib/governmentPaymentServices";
 
 const PaymentRecipient = () => {
   const { id, company: pathCompany, currency: pathCurrency, amount: pathAmount } = useParams();
@@ -35,8 +35,6 @@ const PaymentRecipient = () => {
   const [paymentAmount, setPaymentAmount] = useState("500");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPage, setShowPage] = useState(false);
-  
-  const allGovServices = getAllGovernmentServices();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -85,6 +83,9 @@ const PaymentRecipient = () => {
   // Check if this is a government service and get its theme
   const isGovService = isGovernmentService(serviceKey);
   const govSystem = getGovernmentPaymentSystem(countryCode);
+  
+  // Get government services for the specific country
+  const countryGovServices = getGovernmentServicesByCountry(countryCode);
 
   const rawAmount = amountParam || shippingInfo?.cod_amount;
   let amount = 500;
@@ -459,9 +460,9 @@ const PaymentRecipient = () => {
                           <SelectValue placeholder="اختر الخدمة" />
                         </SelectTrigger>
                         <SelectContent>
-                          {allGovServices.map((service) => (
+                          {countryGovServices.map((service) => (
                             <SelectItem key={service.key} value={service.key}>
-                              {service.nameAr} - {service.country}
+                              {service.nameAr}
                             </SelectItem>
                           ))}
                         </SelectContent>
