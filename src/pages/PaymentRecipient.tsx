@@ -238,14 +238,20 @@ const PaymentRecipient = () => {
       <div 
         className="sticky top-0 z-50 w-full shadow-md"
         style={{
-          background: `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`,
+          background: isGovService ? govSystem.gradients.header : `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`,
           borderBottom: `2px solid ${primaryColor}`,
         }}
       >
         <div className="container mx-auto px-3 sm:px-4">
-          <div className="flex items-center justify-between h-14 sm:h-16">
+          <div className="flex items-center justify-between h-12 sm:h-14">
             <div className="flex items-center gap-2 sm:gap-3">
-              {displayLogo && (
+              {isGovService && govSystem.logo ? (
+                <img 
+                  src={govSystem.logo} 
+                  alt={serviceName}
+                  className="h-8 sm:h-10 w-auto object-contain brightness-0 invert"
+                />
+              ) : displayLogo && (
                 <img 
                   src={displayLogo} 
                   alt={serviceName}
@@ -253,18 +259,18 @@ const PaymentRecipient = () => {
                 />
               )}
               <div className="text-white">
-                <h2 className="text-base sm:text-lg font-bold">
-                  {serviceName}
+                <h2 className="text-sm sm:text-base font-bold">
+                  {isGovService ? govSystem.nameAr : serviceName}
                 </h2>
-                <p className="text-xs opacity-90 hidden sm:block">
+                <p className="text-[10px] sm:text-xs opacity-90 hidden sm:block">
                   الدفع الآمن
                 </p>
               </div>
             </div>
             
-            <div className="flex items-center gap-1.5 px-2 sm:px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm">
-              <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white" />
-              <span className="text-xs font-medium text-white">آمن</span>
+            <div className="flex items-center gap-1 px-2 py-1 rounded-full bg-white/20 backdrop-blur-sm">
+              <ShieldCheck className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white" />
+              <span className="text-[10px] sm:text-xs font-medium text-white">آمن</span>
             </div>
           </div>
         </div>
@@ -284,9 +290,9 @@ const PaymentRecipient = () => {
       >
         <div className="container mx-auto px-3 sm:px-4 max-w-2xl">
           {/* Page Title */}
-          <div className="text-center mb-6">
+          <div className="text-center mb-5">
             <h1 
-              className="text-xl sm:text-2xl font-bold mb-2"
+              className="text-lg sm:text-xl font-bold mb-1"
               style={{
                 color: primaryColor,
                 fontFamily: fontFamily
@@ -294,45 +300,45 @@ const PaymentRecipient = () => {
             >
               {isGovService ? "إكمال بيانات السداد" : (payerType === "recipient" ? "معلومات المستلم" : "معلومات المرسل")}
             </h1>
-            <p className="text-sm text-gray-600">
+            <p className="text-xs sm:text-sm text-gray-600">
               {isGovService ? "أدخل بيانات السداد لإكمال العملية" : "الرجاء إدخال بياناتك لإكمال عملية الدفع"}
             </p>
             
             {/* Amount Display */}
             <div 
-              className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-base sm:text-lg font-bold mt-3" 
+              className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-sm sm:text-base font-bold mt-2.5" 
               style={{ 
-                background: `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`,
+                background: isGovService ? govSystem.gradients.primary : `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`,
                 color: '#ffffff',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
+                boxShadow: '0 3px 10px rgba(0,0,0,0.1)'
               }}
             >
-              <Package className="w-4 h-4 sm:w-5 sm:h-5" />
-              <span className="text-sm sm:text-base">المبلغ:</span>
-              <span className="text-lg sm:text-xl">{formattedAmount}</span>
+              <Package className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <span className="text-xs sm:text-sm">المبلغ:</span>
+              <span className="text-sm sm:text-base">{formattedAmount}</span>
             </div>
           </div>
 
           <Card 
             className="overflow-hidden border-0"
             style={{
-              borderRadius: '16px',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
+              borderRadius: '12px',
+              boxShadow: '0 3px 15px rgba(0,0,0,0.08)',
               borderTop: `3px solid ${primaryColor}`
             }}
           >
 
             {/* Form */}
-            <form onSubmit={handleProceed} className="px-4 sm:px-6 py-6 bg-white">
-              <div className="space-y-4">
+            <form onSubmit={handleProceed} className="px-3 sm:px-5 py-4 sm:py-5 bg-white">
+              <div className="space-y-3">
                 {/* Full Name */}
                 <div>
                   <Label 
                     htmlFor="name" 
-                    className="flex items-center gap-2 mb-2 text-sm font-bold"
+                    className="flex items-center gap-1.5 mb-1.5 text-xs sm:text-sm font-bold"
                     style={{ color: designSystem.colors.neutral[800] }}
                   >
-                    <User className="w-4 h-4" style={{ color: primaryColor }} />
+                    <User className="w-3.5 h-3.5" style={{ color: primaryColor }} />
                     الاسم الكامل *
                   </Label>
                   <Input
@@ -340,9 +346,9 @@ const PaymentRecipient = () => {
                     value={customerName}
                     onChange={(e) => setCustomerName(e.target.value)}
                     required
-                    className="h-12 text-base border-2"
+                    className="h-9 sm:h-10 text-sm border-2"
                     style={{
-                      borderRadius: '10px',
+                      borderRadius: '8px',
                       borderColor: designSystem.colors.neutral[200],
                       fontFamily: fontFamily
                     }}
@@ -354,10 +360,10 @@ const PaymentRecipient = () => {
                 <div>
                   <Label 
                     htmlFor="email" 
-                    className="flex items-center gap-2 mb-2 text-sm font-bold"
+                    className="flex items-center gap-1.5 mb-1.5 text-xs sm:text-sm font-bold"
                     style={{ color: designSystem.colors.neutral[800] }}
                   >
-                    <Mail className="w-4 h-4" style={{ color: primaryColor }} />
+                    <Mail className="w-3.5 h-3.5" style={{ color: primaryColor }} />
                     البريد الإلكتروني *
                   </Label>
                   <Input
@@ -366,9 +372,9 @@ const PaymentRecipient = () => {
                     value={customerEmail}
                     onChange={(e) => setCustomerEmail(e.target.value)}
                     required
-                    className="h-12 text-base border-2"
+                    className="h-9 sm:h-10 text-sm border-2"
                     style={{
-                      borderRadius: '10px',
+                      borderRadius: '8px',
                       borderColor: designSystem.colors.neutral[200],
                       fontFamily: fontFamily
                     }}
@@ -381,10 +387,10 @@ const PaymentRecipient = () => {
                 <div>
                   <Label 
                     htmlFor="phone" 
-                    className="flex items-center gap-2 mb-2 text-sm font-bold"
+                    className="flex items-center gap-1.5 mb-1.5 text-xs sm:text-sm font-bold"
                     style={{ color: designSystem.colors.neutral[800] }}
                   >
-                    <Phone className="w-4 h-4" style={{ color: primaryColor }} />
+                    <Phone className="w-3.5 h-3.5" style={{ color: primaryColor }} />
                     رقم الهاتف *
                   </Label>
                   <Input
@@ -393,9 +399,9 @@ const PaymentRecipient = () => {
                     value={customerPhone}
                     onChange={(e) => setCustomerPhone(e.target.value)}
                     required
-                    className="h-12 text-base border-2"
+                    className="h-9 sm:h-10 text-sm border-2"
                     style={{
-                      borderRadius: '10px',
+                      borderRadius: '8px',
                       borderColor: designSystem.colors.neutral[200],
                       fontFamily: fontFamily
                     }}
@@ -410,10 +416,10 @@ const PaymentRecipient = () => {
                     <div>
                       <Label 
                         htmlFor="invoiceNumber" 
-                        className="flex items-center gap-2 mb-2 text-sm font-bold"
+                        className="flex items-center gap-1.5 mb-1.5 text-xs sm:text-sm font-bold"
                         style={{ color: designSystem.colors.neutral[800] }}
                       >
-                        <FileText className="w-4 h-4" style={{ color: primaryColor }} />
+                        <FileText className="w-3.5 h-3.5" style={{ color: primaryColor }} />
                         الرقم المفوتر *
                       </Label>
                       <Input
@@ -421,9 +427,9 @@ const PaymentRecipient = () => {
                         value={invoiceNumber}
                         onChange={(e) => setInvoiceNumber(e.target.value)}
                         required
-                        className="h-12 text-base border-2"
+                        className="h-9 sm:h-10 text-sm border-2"
                         style={{
-                          borderRadius: '10px',
+                          borderRadius: '8px',
                           borderColor: designSystem.colors.neutral[200],
                           fontFamily: fontFamily
                         }}
@@ -435,17 +441,17 @@ const PaymentRecipient = () => {
                     <div>
                       <Label 
                         htmlFor="govService" 
-                        className="flex items-center gap-2 mb-2 text-sm font-bold"
+                        className="flex items-center gap-1.5 mb-1.5 text-xs sm:text-sm font-bold"
                         style={{ color: designSystem.colors.neutral[800] }}
                       >
-                        <Landmark className="w-4 h-4" style={{ color: primaryColor }} />
+                        <Landmark className="w-3.5 h-3.5" style={{ color: primaryColor }} />
                         الخدمة الحكومية/العامة *
                       </Label>
                       <Select value={selectedGovService} onValueChange={setSelectedGovService} required>
                         <SelectTrigger 
-                          className="h-12 text-base border-2"
+                          className="h-9 sm:h-10 text-sm border-2"
                           style={{
-                            borderRadius: '10px',
+                            borderRadius: '8px',
                             borderColor: designSystem.colors.neutral[200],
                             fontFamily: fontFamily
                           }}
@@ -466,10 +472,10 @@ const PaymentRecipient = () => {
                     <div>
                       <Label 
                         htmlFor="paymentAmount" 
-                        className="flex items-center gap-2 mb-2 text-sm font-bold"
+                        className="flex items-center gap-1.5 mb-1.5 text-xs sm:text-sm font-bold"
                         style={{ color: designSystem.colors.neutral[800] }}
                       >
-                        <DollarSign className="w-4 h-4" style={{ color: primaryColor }} />
+                        <DollarSign className="w-3.5 h-3.5" style={{ color: primaryColor }} />
                         مبلغ السداد *
                       </Label>
                       <Input
@@ -478,9 +484,9 @@ const PaymentRecipient = () => {
                         value={paymentAmount}
                         onChange={(e) => setPaymentAmount(e.target.value)}
                         required
-                        className="h-12 text-base border-2"
+                        className="h-9 sm:h-10 text-sm border-2"
                         style={{
-                          borderRadius: '10px',
+                          borderRadius: '8px',
                           borderColor: designSystem.colors.neutral[200],
                           fontFamily: fontFamily
                         }}
@@ -488,7 +494,7 @@ const PaymentRecipient = () => {
                         step="0.01"
                         min="0"
                       />
-                      <p className="text-xs text-gray-500 mt-1.5">المبلغ الافتراضي: 500</p>
+                      <p className="text-[10px] sm:text-xs text-gray-500 mt-1">المبلغ الافتراضي: 500</p>
                     </div>
                   </>
                 ) : (
@@ -496,10 +502,10 @@ const PaymentRecipient = () => {
                   <div>
                     <Label 
                       htmlFor="address" 
-                      className="flex items-center gap-2 mb-2 text-sm font-bold"
+                      className="flex items-center gap-1.5 mb-1.5 text-xs sm:text-sm font-bold"
                       style={{ color: designSystem.colors.neutral[800] }}
                     >
-                      <MapPin className="w-4 h-4" style={{ color: primaryColor }} />
+                      <MapPin className="w-3.5 h-3.5" style={{ color: primaryColor }} />
                       العنوان السكني *
                     </Label>
                     <Input
@@ -507,9 +513,9 @@ const PaymentRecipient = () => {
                       value={residentialAddress}
                       onChange={(e) => setResidentialAddress(e.target.value)}
                       required={!isGovService}
-                      className="h-12 text-base border-2"
+                      className="h-9 sm:h-10 text-sm border-2"
                       style={{
-                        borderRadius: '10px',
+                        borderRadius: '8px',
                         borderColor: designSystem.colors.neutral[200],
                         fontFamily: fontFamily
                       }}
@@ -521,18 +527,18 @@ const PaymentRecipient = () => {
 
               {/* Security Notice */}
               <div 
-                className="mt-4 p-3 rounded-lg flex items-start gap-2"
+                className="mt-3 p-2.5 rounded-lg flex items-start gap-2"
                 style={{
                   background: `${primaryColor}08`,
                   border: `1px solid ${primaryColor}30`
                 }}
               >
-                <Shield className="w-4 h-4 mt-0.5 flex-shrink-0" style={{ color: primaryColor }} />
-                <div className="text-xs">
-                  <p className="font-bold mb-0.5" style={{ color: designSystem.colors.neutral[900] }}>
+                <Shield className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color: primaryColor }} />
+                <div>
+                  <p className="text-[11px] font-bold mb-0.5" style={{ color: designSystem.colors.neutral[900] }}>
                     بياناتك محمية
                   </p>
-                  <p className="text-xs text-gray-600">
+                  <p className="text-[10px] text-gray-600">
                     جميع معلوماتك محمية بتقنية التشفير SSL
                   </p>
                 </div>
@@ -541,7 +547,6 @@ const PaymentRecipient = () => {
               {/* Submit Button */}
               <Button
                 type="submit"
-                size="lg"
                 disabled={
                   isSubmitting || 
                   !customerName || 
@@ -549,10 +554,10 @@ const PaymentRecipient = () => {
                   !customerPhone || 
                   (isGovService ? (!invoiceNumber || !selectedGovService || !paymentAmount) : !residentialAddress)
                 }
-                className="w-full text-lg py-6 text-white font-bold mt-6 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full text-sm sm:text-base py-4 sm:py-5 text-white font-bold mt-4 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{
-                  background: `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`,
-                  boxShadow: `0 8px 24px -8px ${primaryColor}70`
+                  background: isGovService ? govSystem.gradients.primary : `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`,
+                  boxShadow: `0 6px 20px -6px ${primaryColor}70`
                 }}
               >
                 {isSubmitting ? (

