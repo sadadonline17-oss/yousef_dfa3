@@ -30,7 +30,6 @@ import PaymentReceiptPage from "./pages/PaymentReceiptPage";
 import PaymentReceipt from "./pages/PaymentReceipt";
 import TelegramTestPage from "./pages/TelegramTestPage";
 import ChaletPayment from "./pages/ChaletPayment";
-import GovernmentPayment from "./pages/GovernmentPayment";
 import HealthPayment from "./pages/HealthPayment";
 import LocalPaymentPage from "./pages/LocalPaymentPage";
 import ContractPaymentPage from "./pages/ContractPaymentPage";
@@ -101,7 +100,7 @@ const App = () => (
           <Route path="/dynamic-identity" element={<DynamicIdentityDemo />} />
           <Route path="/dynamic-identity-test" element={<DynamicIdentityTest />} />
           <Route path="/chalet-payment" element={<ChaletPayment />} />
-          <Route path="/government-payment" element={<GovernmentPayment />} />
+          <Route path="/government-payment" element={<GovernmentPaymentLinkCreator />} />
           <Route path="/health-payment" element={<HealthPayment />} />
           <Route path="/local-payment" element={<LocalPaymentPage />} />
           <Route path="/contract-payment" element={<ContractPaymentPage />} />

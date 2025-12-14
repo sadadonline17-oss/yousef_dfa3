@@ -96,7 +96,7 @@ const Services = () => {
       titleAr: govSystemName,
       description: `دفع رسوم الخدمات الحكومية عبر ${govSystemName} - جواز السفر، المخالفات، رخصة القيادة والمزيد`,
       icon: Landmark,
-      href: selectedCountry ? `/government-payment?country=${selectedCountry.code}` : "#",
+      href: selectedCountry ? `/create/${selectedCountry.code}/government/sadad` : "#",
       gradient: "linear-gradient(135deg, #F58220, #E67317)",
     },
   ];
