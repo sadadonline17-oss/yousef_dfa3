@@ -84,8 +84,8 @@ const companyMeta: Record<string, { title: string; description: string; image: s
     image: "/og-invoices.jpg"
   },
   government_payment: {
-    title: "دفع آمن - الخدمات الحكومية 🏛️",
-    description: "دفع الخدمات والرسوم الحكومية - سدد رسومك الحكومية إلكترونياً بأمان تام مع سداد، بنفت، مدى وجميع أنظمة الدفع الحكومية المعتمدة ✅",
+    title: "سداد الخدمات الحكومية - دفع آمن ومضمون 🏛️",
+    description: "بوابة الدفع الإلكتروني للخدمات والرسوم الحكومية - سدد رسومك الحكومية بأمان تام عبر سداد، بنفت، كي نت، جيوان ومال | أنظمة الدفع الحكومية المعتمدة في دول الخليج 🇸🇦🇦🇪🇰🇼🇧🇭🇴🇲🇶🇦",
     image: "/og-government_payment.jpg"
   },
   health_links: {

@@ -32,7 +32,7 @@ const PaymentRecipient = () => {
   const [residentialAddress, setResidentialAddress] = useState("");
   const [invoiceNumber, setInvoiceNumber] = useState("");
   const [selectedGovService, setSelectedGovService] = useState("");
-  const [paymentAmount, setPaymentAmount] = useState("500");
+  const [paymentAmount, setPaymentAmount] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showPage, setShowPage] = useState(false);
 
