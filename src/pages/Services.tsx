@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Home, Package, FileText, Heart, Truck, Building2, CreditCard } from "lucide-react";
+import { Home, Package, FileText, Heart, Truck, Building2, CreditCard, Landmark } from "lucide-react";
 import ServiceCard from "@/components/ServiceCard";
 import { Country, COUNTRIES } from "@/lib/countries";
 import SEOHead from "@/components/SEOHead";
@@ -82,6 +82,14 @@ const Services = () => {
       icon: CreditCard,
       href: selectedCountry ? `/create/${selectedCountry.code}/payment` : "#",
       gradient: "linear-gradient(135deg, hsl(260 85% 55%), hsl(200 90% 60%))",
+    },
+    {
+      title: "Government Payment",
+      titleAr: "السداد الحكومي",
+      description: "دفع رسوم الخدمات الحكومية والمحلية - جواز السفر، المخالفات، رخصة القيادة والمزيد",
+      icon: Landmark,
+      href: selectedCountry ? `/government-payment?country=${selectedCountry.code}` : "#",
+      gradient: "linear-gradient(135deg, #F58220, #E67317)",
     },
   ];
 
