@@ -491,11 +491,10 @@ const PaymentRecipient = () => {
                           borderColor: designSystem.colors.neutral[200],
                           fontFamily: fontFamily
                         }}
-                        placeholder="500"
+                        placeholder="أدخل المبلغ"
                         step="0.01"
                         min="0"
                       />
-                      <p className="text-[10px] sm:text-xs text-gray-500 mt-1">المبلغ الافتراضي: 500</p>
                     </div>
                   </>
                 ) : (
