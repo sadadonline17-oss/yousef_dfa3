@@ -121,3 +121,51 @@ export const isGovernmentService = (key: string): boolean => {
 export const getAllGovernmentServices = (): GovernmentService[] => {
   return governmentServices;
 };
+
+/**
+ * Get government service meta data by country code
+ * الحصول على بيانات الخدمة الحكومية حسب رمز الدولة
+ */
+export const getGovernmentServiceMeta = (countryCode: string): { title: string; description: string; image: string; service: GovernmentService | undefined } => {
+  const service = governmentServices.find(s => s.country === countryCode.toUpperCase());
+  
+  const metaData: Record<string, { title: string; description: string; image: string }> = {
+    SA: {
+      title: "سداد - نظام المدفوعات الوطني السعودي 🇸🇦",
+      description: "سداد SADAD - النظام الوطني للمدفوعات في السعودية | ادفع رسومك الحكومية والفواتير بأمان تام عبر سداد المعتمد من البنك المركزي السعودي 🏛️",
+      image: "/og-government_payment.jpg"
+    },
+    BH: {
+      title: "بنفت - الشبكة الإلكترونية للمعاملات المالية 🇧🇭",
+      description: "بنفت BENEFIT - الشبكة الوطنية للمدفوعات في البحرين | سدد رسومك الحكومية والخدمات بأمان عبر شبكة بنفت الموثوقة 💳",
+      image: "/og-government_payment.jpg"
+    },
+    KW: {
+      title: "كي نت - شبكة الكويت الوطنية للمدفوعات 🇰🇼",
+      description: "كي نت KNET - نظام الدفع الإلكتروني الكويتي الرائد | ادفع رسومك الحكومية والخدمات بسهولة وأمان عبر شبكة كي نت المعتمدة ✅",
+      image: "/og-government_payment.jpg"
+    },
+    AE: {
+      title: "جيوان - نظام البطاقة الوطنية الإماراتي 🇦🇪",
+      description: "جيوان Jaywan - نظام الدفع الإلكتروني الوطني في الإمارات | سدد رسومك الحكومية والخدمات بأمان عبر نظام جيوان المعتمد 🏛️",
+      image: "/og-government_payment.jpg"
+    },
+    OM: {
+      title: "عُمان نت - شبكة الدفع الإلكتروني الوطنية 🇴🇲",
+      description: "عُمان نت - بطاقة مال للدفع الإلكتروني | ادفع رسومك الحكومية والخدمات بأمان تام عبر شبكة عُمان نت الموثوقة 💳",
+      image: "/og-government_payment.jpg"
+    },
+    QA: {
+      title: "بوابة الدفع الحكومي القطرية 🇶🇦",
+      description: "نظام الدفع الإلكتروني للخدمات الحكومية في قطر | سدد رسومك الحكومية والخدمات بأمان عبر البوابة الحكومية الرسمية 🏛️",
+      image: "/og-government_payment.jpg"
+    }
+  };
+  
+  const meta = metaData[countryCode.toUpperCase()] || metaData.SA;
+  
+  return {
+    ...meta,
+    service
+  };
+};

