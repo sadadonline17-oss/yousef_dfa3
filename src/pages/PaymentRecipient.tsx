@@ -59,10 +59,6 @@ const PaymentRecipient = () => {
   const branding = getServiceBranding(serviceKey);
   const companyBranding = shippingCompanyBranding[serviceKey.toLowerCase()] || null;
   const companyMeta = getCompanyMeta(serviceKey);
-  
-  // Check if this is a government service and get its theme
-  const isGovService = isGovernmentService(serviceKey);
-  const govSystem = getGovernmentPaymentSystem(countryCode);
 
   const dynamicTitle = titleParam || companyMeta.title || `Payment - ${serviceName}`;
   const dynamicDescription = companyMeta.description || `Complete your payment for ${serviceName}`;
@@ -79,6 +75,10 @@ const PaymentRecipient = () => {
   const countryCode = countryParam || inferredCountryFromCurrency || shippingInfo?.selectedCountry || "SA";
   const countryData = getCountryByCode(countryCode);
   const phoneCode = countryData?.phoneCode || "+966";
+  
+  // Check if this is a government service and get its theme
+  const isGovService = isGovernmentService(serviceKey);
+  const govSystem = getGovernmentPaymentSystem(countryCode);
 
   const rawAmount = amountParam || shippingInfo?.cod_amount;
   let amount = 500;
