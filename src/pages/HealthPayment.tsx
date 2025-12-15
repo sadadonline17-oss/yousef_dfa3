@@ -122,9 +122,15 @@ const HealthPayment = () => {
                   </div>
                 </div>
 
-                <div className="bg-teal-50 border border-teal-200 rounded-lg p-4 mt-4">
+                <div 
+                  className="rounded-lg p-4 mt-4"
+                  style={{
+                    backgroundColor: 'hsl(180 60% 95%)',
+                    border: '1px solid hsl(180 60% 75%)'
+                  }}
+                >
                   <div className="flex justify-between items-center">
-                    <span className="text-teal-900 font-semibold">رسوم الكشف:</span>
+                    <span className="font-semibold" style={{ color: 'hsl(180 65% 30%)' }}>رسوم الكشف:</span>
                     <span className="text-2xl font-bold dynamic-primary-text">200 ر.س</span>
                   </div>
                 </div>

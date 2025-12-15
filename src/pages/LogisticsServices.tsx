@@ -499,8 +499,8 @@ const LogisticsServices = () => {
               <h2 className="text-lg font-bold mb-4" style={{ color: 'hsl(var(--foreground))' }}>مميزات الخدمة</h2>
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                    <Globe className="w-4 h-4 text-blue-600" />
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: 'hsl(210 85% 90%)' }}>
+                    <Globe className="w-4 h-4" style={{ color: 'hsl(210 85% 50%)' }} />
                   </div>
                   <div>
                     <p className="font-semibold text-sm">تغطية عالمية</p>
@@ -510,8 +510,8 @@ const LogisticsServices = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                    <MapPin className="w-4 h-4 text-green-600" />
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: 'hsl(140 70% 90%)' }}>
+                    <MapPin className="w-4 h-4" style={{ color: 'hsl(140 70% 45%)' }} />
                   </div>
                   <div>
                     <p className="font-semibold text-sm">تتبع مباشر</p>
@@ -521,8 +521,8 @@ const LogisticsServices = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
-                    <Shield className="w-4 h-4 text-purple-600" />
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: 'hsl(260 85% 90%)' }}>
+                    <Shield className="w-4 h-4" style={{ color: 'hsl(260 85% 55%)' }} />
                   </div>
                   <div>
                     <p className="font-semibold text-sm">تأمين شامل</p>
@@ -532,8 +532,8 @@ const LogisticsServices = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
-                    <Clock className="w-4 h-4 text-orange-600" />
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: 'hsl(30 95% 90%)' }}>
+                    <Clock className="w-4 h-4" style={{ color: 'hsl(30 95% 50%)' }} />
                   </div>
                   <div>
                     <p className="font-semibold text-sm">مواعيد دقيقة</p>

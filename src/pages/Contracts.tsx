@@ -294,8 +294,11 @@ const Contracts = () => {
           </Button>
 
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl flex items-center justify-center">
-              <Scale className="w-6 h-6 text-white" />
+            <div 
+              className="w-12 h-12 rounded-xl flex items-center justify-center"
+              style={{ background: 'linear-gradient(135deg, hsl(40 95% 55%), hsl(30 90% 50%))' }}
+            >
+              <Scale className="w-6 h-6" style={{ color: '#ffffff' }} />
             </div>
             <div>
               <h1 className="text-2xl font-bold">إدارة وتوثيق العقود الإلكترونية</h1>
@@ -479,11 +482,17 @@ const Contracts = () => {
             </Card>
 
             {/* Note */}
-            <Card className="p-6 bg-amber-50 border-amber-200">
-              <h2 className="text-lg font-bold mb-2 text-amber-800">
+            <Card 
+              className="p-6"
+              style={{
+                backgroundColor: 'hsl(40 95% 95%)',
+                borderColor: 'hsl(40 90% 70%)'
+              }}
+            >
+              <h2 className="text-lg font-bold mb-2" style={{ color: 'hsl(40 90% 35%)' }}>
                 ملاحظة مهمة
               </h2>
-              <p className="text-sm text-amber-700">
+              <p className="text-sm" style={{ color: 'hsl(40 85% 40%)' }}>
                 جميع العقود يتم إنشاؤها وفقاً للأنظمة والقوانين المحلية في {selectedCountry.nameAr}
               </p>
             </Card>

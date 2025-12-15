@@ -283,11 +283,16 @@ const CreatePaymentLink = () => {
                 </div>
                 
                 {/* Info Box */}
-                <div className={`mt-3 p-3 rounded-lg text-xs ${
-                  paymentMethod === 'card' 
-                    ? 'bg-blue-50 dark:bg-blue-950/20 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800'
-                    : 'bg-green-50 dark:bg-green-950/20 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-800'
-                }`}>
+                <div 
+                  className="mt-3 p-3 rounded-lg text-xs"
+                  style={{
+                    backgroundColor: paymentMethod === 'card' 
+                      ? `${countryData.primaryColor}10` 
+                      : `${countryData.secondaryColor}10`,
+                    color: paymentMethod === 'card' ? countryData.primaryColor : countryData.secondaryColor,
+                    border: `1px solid ${paymentMethod === 'card' ? countryData.primaryColor : countryData.secondaryColor}30`
+                  }}
+                >
                   <div className="flex items-start gap-2">
                     <span className="text-base">ℹ️</span>
                     <div>
@@ -319,7 +324,7 @@ const CreatePaymentLink = () => {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full h-11 text-white mt-6"
+                className="w-full h-11 mt-6"
                 style={{
                   background: `linear-gradient(135deg, ${countryData.primaryColor}, ${countryData.secondaryColor})`
                 }}

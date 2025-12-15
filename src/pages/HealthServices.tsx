@@ -136,8 +136,11 @@ const HealthServices = () => {
           </Button>
 
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-red-500 to-pink-500 rounded-xl flex items-center justify-center">
-              <Heart className="w-6 h-6 text-white" />
+            <div 
+              className="w-12 h-12 rounded-xl flex items-center justify-center"
+              style={{ background: 'linear-gradient(135deg, hsl(0 85% 55%), hsl(10 80% 60%))' }}
+            >
+              <Heart className="w-6 h-6" style={{ color: '#ffffff' }} />
             </div>
             <div>
               <h1 className="text-2xl font-bold">الخدمات الصحية المعتمدة</h1>
@@ -314,8 +317,8 @@ const HealthServices = () => {
               <h2 className="text-lg font-bold mb-4">مميزات الخدمة</h2>
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                    <Shield className="w-4 h-4 text-green-600" />
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: 'hsl(140 70% 90%)' }}>
+                    <Shield className="w-4 h-4" style={{ color: 'hsl(140 70% 45%)' }} />
                   </div>
                   <div>
                     <p className="font-semibold text-sm">مقدمو خدمة معتمدون</p>
@@ -325,8 +328,8 @@ const HealthServices = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                    <Clock className="w-4 h-4 text-blue-600" />
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: 'hsl(210 85% 90%)' }}>
+                    <Clock className="w-4 h-4" style={{ color: 'hsl(210 85% 50%)' }} />
                   </div>
                   <div>
                     <p className="font-semibold text-sm">حجز سريع ومرن</p>
@@ -336,8 +339,8 @@ const HealthServices = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
-                    <Award className="w-4 h-4 text-purple-600" />
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: 'hsl(260 85% 90%)' }}>
+                    <Award className="w-4 h-4" style={{ color: 'hsl(260 85% 55%)' }} />
                   </div>
                   <div>
                     <p className="font-semibold text-sm">أعلى معايير الجودة</p>
@@ -350,11 +353,17 @@ const HealthServices = () => {
             </Card>
 
             {/* Emergency Contact */}
-            <Card className="p-6 bg-red-50 border-red-200">
-              <h2 className="text-lg font-bold mb-4 text-red-800">
+            <Card 
+              className="p-6"
+              style={{
+                backgroundColor: 'hsl(0 85% 95%)',
+                borderColor: 'hsl(0 85% 70%)'
+              }}
+            >
+              <h2 className="text-lg font-bold mb-4" style={{ color: 'hsl(0 85% 40%)' }}>
                 في حالة الطوارئ
               </h2>
-              <p className="text-sm text-red-700 mb-3">
+              <p className="text-sm mb-3" style={{ color: 'hsl(0 85% 45%)' }}>
                 للطوارئ الطبية، اتصل مباشرة:
               </p>
               <Button
