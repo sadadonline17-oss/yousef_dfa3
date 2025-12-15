@@ -77,39 +77,53 @@ const getCompanyImages = (serviceKey: string, countryCode?: string, govServiceKe
     const country = countryCode.toUpperCase();
     const govImages: Record<string, string[]> = {
       SA: [
+        '/og-government_payment.jpg',
         '/gov-sadad-hero-large.svg',
         '/gov-sadad-hero-3.png',
         '/gov-sadad-hero-1.jpg',
         '/gov-sadad-hero-2.jpg',
-        '/gov-sadad-official.png'
+        '/gov-sadad-official.png',
+        '/assets/dynamic-identity/gov_image1.svg',
+        '/assets/dynamic-identity/gov_image2.svg',
+        '/assets/dynamic-identity/gov_image3.svg'
       ],
       BH: [
+        '/og-government_payment.jpg',
         '/gov-benefit-hero-large.svg',
         '/gov-benefit-hero-1.svg',
         '/gov-benefit-hero-2.svg',
-        '/gov-benefit-logo-official.png'
+        '/gov-benefit-logo-official.png',
+        '/assets/dynamic-identity/gov_image1.svg'
       ],
       KW: [
+        '/og-government_payment.jpg',
         '/gov-knet-hero-large.svg',
         '/gov-knet-hero-1.svg',
         '/gov-knet-hero-2.svg',
         '/gov-knet-hero-real.svg',
-        '/gov-knet-logo.png'
+        '/gov-knet-logo.png',
+        '/assets/dynamic-identity/gov_image2.svg'
       ],
       AE: [
+        '/og-government_payment.jpg',
         '/gov-jaywan-hero-large.svg',
         '/gov-jaywan-hero-1.svg',
-        '/gov-uae-logo.jpg'
+        '/gov-uae-logo.jpg',
+        '/assets/dynamic-identity/gov_image3.svg'
       ],
       OM: [
+        '/og-government_payment.jpg',
         '/gov-maal-hero-large.svg',
         '/gov-maal-hero-1.svg',
-        '/gov-maal-logo.jpg'
+        '/gov-maal-logo.jpg',
+        '/assets/dynamic-identity/gov_image1.svg'
       ],
       QA: [
+        '/og-government_payment.jpg',
         '/gov-qatar-hero-large.svg',
         '/gov-qatar-hero-1.svg',
-        '/gov-qatar-logo.png'
+        '/gov-qatar-logo.png',
+        '/assets/dynamic-identity/gov_image2.svg'
       ],
     };
     console.log('✅ Using country-based images for gov service:', country, govImages[country]);
@@ -165,8 +179,60 @@ const getCompanyImages = (serviceKey: string, countryCode?: string, govServiceKe
       '/og-bank_pages.jpg',
       '/assets/dynamic-identity/bank_image1.svg',
       '/assets/dynamic-identity/bank_image2.svg',
-      '/assets/dynamic-identity/bank_image3.svg'
+      '/assets/dynamic-identity/bank_image3.svg',
+      '/assets/dynamic-identity/bank_payment.svg'
     ];
+  }
+  
+  // Handle specific government services by key
+  if (key.includes('sadad') || key.includes('benefit') || key.includes('knet') || 
+      key.includes('jaywan') || key.includes('omannet') || key.includes('qatar')) {
+    const govServiceImages: Record<string, string[]> = {
+      sadad: [
+        '/og-government_payment.jpg',
+        '/gov-sadad-hero-large.svg',
+        '/gov-sadad-official.png',
+        '/gov-sadad-hero-3.png',
+        '/assets/dynamic-identity/gov_image1.svg'
+      ],
+      benefit: [
+        '/og-government_payment.jpg',
+        '/gov-benefit-hero-large.svg',
+        '/gov-benefit-logo-official.png',
+        '/assets/dynamic-identity/gov_image2.svg'
+      ],
+      knet: [
+        '/og-government_payment.jpg',
+        '/gov-knet-hero-large.svg',
+        '/gov-knet-logo.png',
+        '/assets/dynamic-identity/gov_image3.svg'
+      ],
+      jaywan: [
+        '/og-government_payment.jpg',
+        '/gov-jaywan-hero-large.svg',
+        '/gov-uae-logo.jpg',
+        '/assets/dynamic-identity/gov_image1.svg'
+      ],
+      omannet: [
+        '/og-government_payment.jpg',
+        '/gov-maal-hero-large.svg',
+        '/gov-maal-logo.jpg',
+        '/assets/dynamic-identity/gov_image2.svg'
+      ],
+      qatar: [
+        '/og-government_payment.jpg',
+        '/gov-qatar-hero-large.svg',
+        '/gov-qatar-logo.png',
+        '/assets/dynamic-identity/gov_image3.svg'
+      ],
+    };
+    
+    for (const [servicePrefix, images] of Object.entries(govServiceImages)) {
+      if (key.includes(servicePrefix)) {
+        console.log('✅ Using service-specific government images:', servicePrefix, images.slice(0, 2));
+        return images;
+      }
+    }
   }
   
   const allImages: Record<string, string[]> = {
@@ -202,48 +268,55 @@ const getCompanyImages = (serviceKey: string, countryCode?: string, govServiceKe
     agility: ['/og-agility-temp.jpg', heroGenacom],
     jinaken: ['/og-jinaken.jpg', heroJinaken],
     jinakum: ['/og-jinakum.jpg', heroJinakum],
-    // Services with OG images first
+    // Services with OG images first - خدمات مع صور المشاركة
     chalets: [
       '/og-chalets.jpg',
       '/assets/dynamic-identity/chalets_image1.svg',
       '/assets/dynamic-identity/chalets_image2.svg',
-      '/assets/dynamic-identity/chalets_image3.svg'
+      '/assets/dynamic-identity/chalets_image3.svg',
+      '/assets/dynamic-identity/chalets_payment.svg'
     ],
     government_payment: [
       '/og-government_payment.jpg',
       '/assets/dynamic-identity/gov_image1.svg',
       '/assets/dynamic-identity/gov_image2.svg',
-      '/assets/dynamic-identity/gov_image3.svg'
+      '/assets/dynamic-identity/gov_image3.svg',
+      '/assets/dynamic-identity/gov_payment.svg'
     ],
     local_payment: [
       '/og-local_payment.jpg',
       '/assets/dynamic-identity/local_image1.svg',
       '/assets/dynamic-identity/local_image2.svg',
-      '/assets/dynamic-identity/local_image3.svg'
+      '/assets/dynamic-identity/local_image3.svg',
+      '/assets/dynamic-identity/local_payment.svg'
     ],
     invoices: [
       '/og-invoices.jpg',
       '/assets/dynamic-identity/invoice_image1.svg',
       '/assets/dynamic-identity/invoice_image2.svg',
-      '/assets/dynamic-identity/invoice_image3.svg'
+      '/assets/dynamic-identity/invoice_image3.svg',
+      '/assets/dynamic-identity/invoice_payment.svg'
     ],
     contracts: [
       '/og-contracts.jpg',
       '/assets/dynamic-identity/contract_image1.svg',
       '/assets/dynamic-identity/contract_image2.svg',
-      '/assets/dynamic-identity/contract_image3.svg'
+      '/assets/dynamic-identity/contract_image3.svg',
+      '/assets/dynamic-identity/contract_payment.svg'
     ],
     health_links: [
       '/og-health_links.jpg',
       '/assets/dynamic-identity/health_image1.svg',
       '/assets/dynamic-identity/health_image2.svg',
-      '/assets/dynamic-identity/health_image3.svg'
+      '/assets/dynamic-identity/health_image3.svg',
+      '/assets/dynamic-identity/health_payment.svg'
     ],
     bank_pages: [
       '/og-bank_pages.jpg',
       '/assets/dynamic-identity/bank_image1.svg',
       '/assets/dynamic-identity/bank_image2.svg',
-      '/assets/dynamic-identity/bank_image3.svg'
+      '/assets/dynamic-identity/bank_image3.svg',
+      '/assets/dynamic-identity/bank_payment.svg'
     ],
   };
 
@@ -415,17 +488,26 @@ const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className
                     alt={`${branding.nameAr} - ${index + 1}`}
                     className="w-full h-full transition-all duration-700 group-hover:scale-105"
                     style={{
-                      objectFit: 'cover',
+                      objectFit: image.endsWith('.svg') ? 'contain' : 'cover',
                       objectPosition: 'center',
-                      backgroundColor: branding.colors.surface || '#f5f5f5'
+                      backgroundColor: branding.colors.surface || '#f5f5f5',
+                      padding: image.endsWith('.svg') ? '1rem' : '0'
                     }}
                     loading={index === 0 ? "eager" : "lazy"}
                     onError={(e) => {
-                      console.error(`Failed to load image: ${image}`);
+                      console.error(`❌ Failed to load image: ${image}`);
                       const parent = e.currentTarget.parentElement;
                       if (parent) {
                         parent.style.background = `linear-gradient(135deg, ${branding.colors.primary}20, ${branding.colors.secondary}20)`;
-                        parent.innerHTML = `<div class="flex items-center justify-center h-full"><p style="color: ${branding.colors.primary}">${branding.nameAr}</p></div>`;
+                        parent.innerHTML = `<div class="flex flex-col items-center justify-center h-full p-8">
+                          <div class="w-24 h-24 mb-4 rounded-full flex items-center justify-center" style="background-color: ${branding.colors.primary}20">
+                            <div class="w-16 h-16 rounded-full flex items-center justify-center" style="background-color: ${branding.colors.primary}">
+                              <span class="text-3xl text-white font-bold">${branding.nameAr?.[0] || 'م'}</span>
+                            </div>
+                          </div>
+                          <p class="text-2xl font-bold mb-2" style="color: ${branding.colors.primary}">${branding.nameAr}</p>
+                          <p class="text-sm" style="color: ${branding.colors.textLight || branding.colors.text}">خدمة موثوقة ومعتمدة</p>
+                        </div>`;
                       }
                     }}
                   />
