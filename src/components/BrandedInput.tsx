@@ -113,7 +113,7 @@ export const BrandedInput: React.FC<BrandedInputProps> = ({
         
         {success && !error && (
           <div className="absolute top-1/2 left-4 transform -translate-y-1/2">
-            <CheckCircle2 className="w-5 h-5 text-green-500" />
+            <CheckCircle2 className="w-5 h-5" style={{ color: 'hsl(142 76% 36%)' }} />
           </div>
         )}
         

@@ -46,8 +46,8 @@ class ErrorBoundary extends Component<Props, State> {
         >
           <Card className="max-w-md w-full p-8 text-center">
             <div className="flex justify-center mb-6">
-              <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center">
-                <AlertTriangle className="w-10 h-10 text-red-600" />
+              <div className="w-20 h-20 rounded-full flex items-center justify-center" style={{ backgroundColor: 'hsl(0 84% 95%)' }}>
+                <AlertTriangle className="w-10 h-10" style={{ color: 'hsl(0 84% 60%)' }} />
               </div>
             </div>
             
@@ -64,7 +64,7 @@ class ErrorBoundary extends Component<Props, State> {
                 <summary className="cursor-pointer text-sm text-gray-500 hover:text-gray-700 mb-2">
                   تفاصيل الخطأ (للمطورين)
                 </summary>
-                <pre className="text-xs bg-gray-100 p-4 rounded-lg overflow-auto text-red-600 max-h-40">
+                <pre className="text-xs p-4 rounded-lg overflow-auto max-h-40" style={{ backgroundColor: 'hsl(var(--muted))', color: 'hsl(0 84% 60%)' }}>
                   {this.state.error.toString()}
                 </pre>
               </details>

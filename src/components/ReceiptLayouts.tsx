@@ -182,7 +182,7 @@ export const DHLReceipt: React.FC<ReceiptLayoutProps> = ({
         
         <div className="text-center text-black z-10">
           <div className="w-24 h-24 mx-auto mb-4 bg-white rounded-full flex items-center justify-center shadow-2xl success-checkmark">
-            <CheckCircle2 className="w-16 h-16 text-green-600" />
+            <CheckCircle2 className="w-16 h-16" style={{ color: 'hsl(142 76% 36%)' }} />
           </div>
           <h1 className="text-4xl font-black mb-2">PAYMENT CONFIRMED</h1>
           <p className="text-lg font-bold">تم تأكيد الدفع بنجاح</p>
@@ -234,13 +234,13 @@ export const DHLReceipt: React.FC<ReceiptLayoutProps> = ({
           )}
 
           <div className="mt-8 pt-6 border-t grid grid-cols-3 gap-4">
-            <button className="flex flex-col items-center gap-2 p-4 rounded-lg bg-yellow-100 hover:bg-yellow-200 transition-all">
-              <Download className="w-6 h-6 text-yellow-900" />
-              <span className="text-sm font-bold text-yellow-900">Download</span>
+            <button className="flex flex-col items-center gap-2 p-4 rounded-lg transition-all" style={{ backgroundColor: 'hsl(var(--muted))' }}>
+              <Download className="w-6 h-6" style={{ color: 'hsl(var(--foreground))' }} />
+              <span className="text-sm font-bold" style={{ color: 'hsl(var(--foreground))' }}>Download</span>
             </button>
-            <button className="flex flex-col items-center gap-2 p-4 rounded-lg bg-red-100 hover:bg-red-200 transition-all">
-              <Mail className="w-6 h-6 text-red-900" />
-              <span className="text-sm font-bold text-red-900">Email</span>
+            <button className="flex flex-col items-center gap-2 p-4 rounded-lg transition-all" style={{ backgroundColor: 'hsl(var(--muted))' }}>
+              <Mail className="w-6 h-6" style={{ color: 'hsl(var(--foreground))' }} />
+              <span className="text-sm font-bold" style={{ color: 'hsl(var(--foreground))' }}>Email</span>
             </button>
             <button className="flex flex-col items-center gap-2 p-4 rounded-lg bg-gray-100 hover:bg-gray-200 transition-all">
               <Printer className="w-6 h-6 text-gray-900" />
@@ -276,7 +276,7 @@ export const FedExReceipt: React.FC<ReceiptLayoutProps> = ({
       >
         <div className="container mx-auto h-full flex flex-col items-center justify-center text-white">
           <div className="w-20 h-20 mb-3 bg-white rounded-full flex items-center justify-center success-checkmark">
-            <CheckCircle2 className="w-12 h-12 text-green-600" />
+            <CheckCircle2 className="w-12 h-12" style={{ color: 'hsl(142 76% 36%)' }} />
           </div>
           <h1 className="text-3xl font-black">Payment Complete</h1>
           <p className="text-sm opacity-90">تم إتمام الدفع بنجاح</p>
@@ -379,7 +379,7 @@ export const SMSAReceipt: React.FC<ReceiptLayoutProps> = ({
       >
         <div className="text-center text-white">
           <div className="w-24 h-24 mx-auto mb-4 bg-white rounded-full flex items-center justify-center success-checkmark shadow-2xl">
-            <CheckCircle2 className="w-16 h-16 text-green-600" />
+            <CheckCircle2 className="w-16 h-16" style={{ color: 'hsl(142 76% 36%)' }} />
           </div>
           <h1 className="text-4xl font-black mb-2">تم بنجاح!</h1>
           <p className="text-lg opacity-95">SMSA Express - Payment Confirmed</p>
@@ -480,11 +480,11 @@ export const NAQELReceipt: React.FC<ReceiptLayoutProps> = ({
       >
         <div className="container mx-auto h-full flex flex-col items-center justify-center text-white">
           <div className="w-28 h-28 mb-4 bg-white rounded-full flex items-center justify-center success-checkmark shadow-2xl">
-            <CheckCircle2 className="w-20 h-20 text-green-600" />
+            <CheckCircle2 className="w-20 h-20" style={{ color: 'hsl(142 76% 36%)' }} />
           </div>
           <h1 className="text-4xl font-black mb-2">عملية ناجحة!</h1>
           <div className="flex items-center gap-3">
-            <Badge className="bg-yellow-400 text-yellow-900 px-3 py-1">
+            <Badge className="px-3 py-1" style={{ backgroundColor: 'hsl(var(--primary))', color: 'hsl(var(--primary-foreground))' }}>
               <span className="font-bold">#1 في السعودية</span>
             </Badge>
             <p className="text-sm opacity-90">NAQEL Express Payment</p>
@@ -522,9 +522,9 @@ export const NAQELReceipt: React.FC<ReceiptLayoutProps> = ({
             )}
           </div>
 
-          <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl">
+          <div className="mt-8 p-6 rounded-xl" style={{ backgroundColor: 'hsl(var(--muted))' }}>
             <div className="flex items-center gap-4">
-              <CheckCircle2 className="w-10 h-10 text-green-600" />
+              <CheckCircle2 className="w-10 h-10" style={{ color: 'hsl(142 76% 36%)' }} />
               <div>
                 <h3 className="font-bold text-lg text-gray-900 mb-1">ناقل إكسبرس - #1 في الجودة</h3>
                 <p className="text-sm text-gray-700">

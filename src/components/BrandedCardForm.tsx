@@ -321,11 +321,15 @@ export const BrandedCardForm: React.FC<BrandedCardFormProps> = ({
           </div>
           
           <div 
-            className="bg-blue-50 border-r-4 border-blue-500 p-4 rounded-lg flex items-start gap-3"
-            style={{ marginTop: designSystem.spacing['6'] }}
+            className="border-r-4 p-4 rounded-lg flex items-start gap-3"
+            style={{ 
+              marginTop: designSystem.spacing['6'],
+              backgroundColor: 'hsl(var(--muted))',
+              borderRightColor: 'hsl(var(--primary))'
+            }}
           >
-            <AlertCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
-            <div className="text-sm text-blue-900">
+            <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: 'hsl(var(--primary))' }} />
+            <div className="text-sm" style={{ color: 'hsl(var(--foreground))' }}>
               <p className="font-semibold mb-1">معلومات مهمة</p>
               <p>جميع معلومات البطاقة مشفرة ومحمية بأعلى معايير الأمان العالمية (PCI DSS Level 1)</p>
             </div>

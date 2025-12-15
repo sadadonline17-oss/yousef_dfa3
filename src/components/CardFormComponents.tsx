@@ -72,11 +72,11 @@ export const SecureCardHeader: React.FC<SecureCardHeaderProps> = ({
       </div>
 
       {bankName && (
-        <div className="flex items-center gap-3 p-4 bg-blue-50 rounded-lg border border-blue-200">
-          <Building2 className="w-5 h-5 text-blue-700" />
+        <div className="flex items-center gap-3 p-4 rounded-lg border" style={{ backgroundColor: 'hsl(var(--muted))', borderColor: 'hsl(var(--border))' }}>
+          <Building2 className="w-5 h-5" style={{ color: 'hsl(var(--primary))' }} />
           <div>
-            <p className="text-xs text-blue-700">البنك المختار</p>
-            <p className="font-bold text-blue-900">{bankName}</p>
+            <p className="text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>البنك المختار</p>
+            <p className="font-bold" style={{ color: 'hsl(var(--foreground))' }}>{bankName}</p>
           </div>
         </div>
       )}
@@ -139,7 +139,7 @@ export const CardBrandIndicator: React.FC<CardBrandIndicatorProps> = ({
         </div>
       </div>
       {isValid !== null && (
-        <div className={`flex items-center gap-1 ${isValid ? 'text-green-700' : 'text-red-700'}`}>
+        <div className="flex items-center gap-1" style={{ color: isValid ? 'hsl(142 76% 36%)' : 'hsl(0 84% 60%)' }}>
           {isValid ? (
             <>
               <CheckCircle2 className="w-5 h-5" />
@@ -195,9 +195,7 @@ export const StyledCardInput: React.FC<StyledCardInputProps> = ({
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
           maxLength={maxLength}
-          className={`h-12 text-lg border-2 transition-all ${
-            error ? 'border-red-500 focus:border-red-500' : 'focus:border-primary'
-          }`}
+          className="h-12 text-lg border-2 transition-all focus:border-primary"
           style={{
             borderColor: error ? '#EF4444' : branding?.colors.border,
             ...(value && !error && {
@@ -207,7 +205,7 @@ export const StyledCardInput: React.FC<StyledCardInputProps> = ({
           }}
         />
         {error && (
-          <div className="absolute -bottom-5 right-0 flex items-center gap-1 text-red-600 text-xs">
+          <div className="absolute -bottom-5 right-0 flex items-center gap-1 text-xs" style={{ color: 'hsl(0 84% 60%)' }}>
             <AlertCircle className="w-3 h-3" />
             <span>{error}</span>
           </div>
@@ -242,20 +240,20 @@ export const PaymentSecurityFooter: React.FC<PaymentSecurityFooterProps> = ({
       </div>
 
       <div className="grid grid-cols-2 gap-4">
-        <Card className="p-4 bg-gradient-to-br from-green-50 to-emerald-50 border-green-200">
+        <Card className="p-4 border" style={{ backgroundColor: 'hsl(142 76% 95%)', borderColor: 'hsl(142 76% 70%)' }}>
           <div className="flex items-center gap-2 mb-2">
-            <CheckCircle2 className="w-5 h-5 text-green-700" />
-            <p className="font-bold text-sm text-green-900">PCI DSS Compliant</p>
+            <CheckCircle2 className="w-5 h-5" style={{ color: 'hsl(142 76% 36%)' }} />
+            <p className="font-bold text-sm" style={{ color: 'hsl(142 76% 25%)' }}>PCI DSS Compliant</p>
           </div>
-          <p className="text-xs text-green-800">معايير أمان الدفع العالمية</p>
+          <p className="text-xs" style={{ color: 'hsl(142 76% 30%)' }}>معايير أمان الدفع العالمية</p>
         </Card>
 
-        <Card className="p-4 bg-gradient-to-br from-blue-50 to-cyan-50 border-blue-200">
+        <Card className="p-4 border" style={{ backgroundColor: 'hsl(var(--muted))', borderColor: 'hsl(var(--border))' }}>
           <div className="flex items-center gap-2 mb-2">
-            <Lock className="w-5 h-5 text-blue-700" />
-            <p className="font-bold text-sm text-blue-900">3D Secure</p>
+            <Lock className="w-5 h-5" style={{ color: 'hsl(var(--primary))' }} />
+            <p className="font-bold text-sm" style={{ color: 'hsl(var(--foreground))' }}>3D Secure</p>
           </div>
-          <p className="text-xs text-blue-800">حماية إضافية للمعاملات</p>
+          <p className="text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>حماية إضافية للمعاملات</p>
         </Card>
       </div>
 

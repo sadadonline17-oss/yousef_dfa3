@@ -36,16 +36,16 @@ export const SecurityBadges: React.FC<SecurityBadgesProps> = ({
   
   if (variant === 'detailed') {
     return (
-      <div className={`bg-gray-50 rounded-lg p-6 ${className}`}>
+      <div className="rounded-lg p-6" style={{ backgroundColor: 'hsl(var(--muted))' }}>
         <div className="flex items-center gap-2 mb-4">
-          <Shield className="w-5 h-5 text-green-600" />
+          <Shield className="w-5 h-5" style={{ color: 'hsl(142 76% 36%)' }} />
           <h3 className="font-bold text-lg">دفع آمن ومحمي</h3>
         </div>
         
         <div className="grid grid-cols-2 gap-4">
           {showSSL && (
             <div className="flex items-start gap-3 p-3 bg-white rounded-lg border border-gray-200">
-              <Lock className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+              <Lock className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: 'hsl(142 76% 36%)' }} />
               <div>
                 <p className="font-semibold text-sm">256-bit SSL Encryption</p>
                 <p className="text-xs text-gray-600">جميع البيانات مشفرة</p>
@@ -55,7 +55,7 @@ export const SecurityBadges: React.FC<SecurityBadgesProps> = ({
           
           {showPCIDSS && (
             <div className="flex items-start gap-3 p-3 bg-white rounded-lg border border-gray-200">
-              <Shield className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+              <Shield className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: 'hsl(var(--primary))' }} />
               <div>
                 <p className="font-semibold text-sm">PCI DSS Level 1</p>
                 <p className="text-xs text-gray-600">أعلى معايير الأمان</p>
@@ -65,7 +65,7 @@ export const SecurityBadges: React.FC<SecurityBadgesProps> = ({
           
           {showEncrypted && (
             <div className="flex items-start gap-3 p-3 bg-white rounded-lg border border-gray-200">
-              <CreditCard className="w-5 h-5 text-purple-600 mt-0.5 flex-shrink-0" />
+              <CreditCard className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: 'hsl(var(--primary))' }} />
               <div>
                 <p className="font-semibold text-sm">Secure Payment</p>
                 <p className="text-xs text-gray-600">معلوماتك آمنة 100%</p>
@@ -75,7 +75,7 @@ export const SecurityBadges: React.FC<SecurityBadgesProps> = ({
           
           {showTrusted && (
             <div className="flex items-start gap-3 p-3 bg-white rounded-lg border border-gray-200">
-              <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+              <CheckCircle className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: 'hsl(142 76% 36%)' }} />
               <div>
                 <p className="font-semibold text-sm">Trusted Globally</p>
                 <p className="text-xs text-gray-600">موثوق عالمياً</p>
@@ -91,8 +91,8 @@ export const SecurityBadges: React.FC<SecurityBadgesProps> = ({
     <div className={`flex flex-wrap items-center justify-center gap-6 py-6 border-t border-b border-gray-200 ${className}`}>
       {showSSL && (
         <div className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center">
-            <Lock className="w-5 h-5 text-green-600" />
+          <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: 'hsl(142 76% 95%)' }}>
+            <Lock className="w-5 h-5" style={{ color: 'hsl(142 76% 36%)' }} />
           </div>
           <div className="text-right">
             <p className="text-xs text-gray-500">SSL Encrypted</p>
@@ -103,8 +103,8 @@ export const SecurityBadges: React.FC<SecurityBadgesProps> = ({
       
       {showPCIDSS && (
         <div className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center">
-            <Shield className="w-5 h-5 text-blue-600" />
+          <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: 'hsl(var(--muted))' }}>
+            <Shield className="w-5 h-5" style={{ color: 'hsl(var(--primary))' }} />
           </div>
           <div className="text-right">
             <p className="text-xs text-gray-500">PCI DSS</p>
@@ -115,8 +115,8 @@ export const SecurityBadges: React.FC<SecurityBadgesProps> = ({
       
       {showEncrypted && (
         <div className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center">
-            <CreditCard className="w-5 h-5 text-purple-600" />
+          <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: 'hsl(var(--muted))' }}>
+            <CreditCard className="w-5 h-5" style={{ color: 'hsl(var(--primary))' }} />
           </div>
           <div className="text-right">
             <p className="text-xs text-gray-500">Secure Payment</p>
@@ -127,8 +127,8 @@ export const SecurityBadges: React.FC<SecurityBadgesProps> = ({
       
       {showTrusted && (
         <div className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center">
-            <CheckCircle className="w-5 h-5 text-green-600" />
+          <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ backgroundColor: 'hsl(142 76% 95%)' }}>
+            <CheckCircle className="w-5 h-5" style={{ color: 'hsl(142 76% 36%)' }} />
           </div>
           <div className="text-right">
             <p className="text-xs text-gray-500">Verified</p>
