@@ -1,0 +1,591 @@
+{
+  "report_info": {
+    "title": "قاعدة بيانات مصادر الشعارات الرسمية",
+    "title_en": "Official Logos Sources Database",
+    "date": "2025-12-15",
+    "version": "1.0.0",
+    "total_entities": 87,
+    "documented": 75,
+    "completion_rate": "86%"
+  },
+  "categories": {
+    "global_shipping": {
+      "name": "شركات الشحن العالمية",
+      "name_en": "Global Shipping Companies",
+      "companies": [
+        {
+          "id": "aramex",
+          "name": "Aramex",
+          "name_ar": "أرامكس",
+          "logo_file": "aramex-logo-official.svg",
+          "location": "/public/",
+          "format": "SVG",
+          "quality": 5,
+          "status": "verified",
+          "official_source": "https://www.aramex.com",
+          "alternative_sources": [
+            "https://en.wikipedia.org/wiki/Aramex",
+            "https://www.aramex.com/ae/en/investor-relations-details"
+          ],
+          "notes": "شعار رسمي عالي الجودة، SVG قابل للتكبير"
+        },
+        {
+          "id": "dhl",
+          "name": "DHL",
+          "name_ar": "دي إتش إل",
+          "logo_file": "dhl-logo-official.svg",
+          "location": "/public/",
+          "format": "SVG",
+          "quality": 5,
+          "status": "verified",
+          "official_source": "https://www.dpdhl-brands.com/en/dhl/tools/download-center",
+          "brand_guideline": "https://www.dpdhl-brands.com/en/dhl/certified-logos",
+          "alternative_sources": [
+            "https://brandlogos.net/dhl-logo-vector-svg-1789.html",
+            "https://group.dhl.com/en/media-relations/media-library.html"
+          ],
+          "notes": "يتطلب تسجيل في Brand Hub، الشعار الحالي موثوق"
+        },
+        {
+          "id": "fedex",
+          "name": "FedEx",
+          "name_ar": "فيديكس",
+          "logo_file": "fedex-logo.png",
+          "location": "/public/",
+          "format": "PNG",
+          "quality": 3,
+          "status": "needs_update",
+          "official_source": "https://about.fedex.com",
+          "recommended_sources": [
+            "https://worldvectorlogo.com/logo/fedex",
+            "https://commons.wikimedia.org/wiki/File:FedEx_Express.svg"
+          ],
+          "notes": "يجب استبدال PNG بـ SVG رسمي، الشعار الحالي ليس عالي الجودة",
+          "action_required": "Download SVG from worldvectorlogo.com or Wikipedia Commons"
+        },
+        {
+          "id": "ups",
+          "name": "UPS",
+          "name_ar": "يو بي إس",
+          "logo_file": "ups-logo-official.svg",
+          "location": "/public/logos-official/",
+          "format": "SVG",
+          "quality": 5,
+          "status": "verified",
+          "official_source": "https://brand.ups.com/us/en/media-library.html",
+          "alternative_sources": [
+            "https://about.ups.com/us/en/newsroom/ups-brand-assets.html"
+          ],
+          "notes": "شعار رسمي ممتاز، SVG عالي الجودة"
+        }
+      ]
+    },
+    "national_post": {
+      "name": "البريد الوطني",
+      "name_en": "National Post Services",
+      "services": [
+        {
+          "id": "saudi_post",
+          "name": "Saudi Post (SPL)",
+          "name_ar": "البريد السعودي",
+          "country": "SA",
+          "logo_file": "saudi-post-logo-official.svg",
+          "location": "/public/logos-official/",
+          "format": "SVG",
+          "quality": 5,
+          "status": "verified",
+          "official_source": "https://splonline.com.sa",
+          "rebrand_info": "تم إعادة التسمية إلى SPL في 2024",
+          "notes": "الهوية الجديدة SPL، شعار رسمي موثق"
+        },
+        {
+          "id": "oman_post",
+          "name": "Oman Post",
+          "name_ar": "البريد العُماني",
+          "country": "OM",
+          "logo_file": "oman-post-logo-official.png",
+          "location": "/public/logos-official/",
+          "format": "PNG",
+          "quality": 4,
+          "status": "verified",
+          "official_source": "https://www.omanpost.om",
+          "notes": "شعار رسمي، يُفضل تحويله إلى SVG"
+        },
+        {
+          "id": "emirates_post",
+          "name": "Emirates Post",
+          "name_ar": "البريد الإماراتي",
+          "country": "AE",
+          "logo_file": null,
+          "status": "missing",
+          "official_source": "https://www.emiratespost.ae",
+          "recommended_sources": [
+            "https://uaelogos.ae/logos/emirates-post-group",
+            "https://seeklogo.com"
+          ],
+          "notes": "الموقع الرسمي محمي، يُنصح باستخدام UAE Logos Database",
+          "action_required": "Download from uaelogos.ae or seeklogo.com"
+        },
+        {
+          "id": "kuwait_post",
+          "name": "Kuwait Post",
+          "name_ar": "البريد الكويتي",
+          "country": "KW",
+          "logo_file": null,
+          "status": "missing",
+          "official_source": "https://moc.gov.kw",
+          "alternative_sources": [
+            "https://res.17track.net/asset/carrier/logo/120x120/11081.png"
+          ],
+          "notes": "يتطلب البحث عبر وزارة الاتصالات الكويتية",
+          "action_required": "Search via MOC Kuwait or tracking websites"
+        },
+        {
+          "id": "qatar_post",
+          "name": "Qatar Post",
+          "name_ar": "البريد القطري",
+          "country": "QA",
+          "logo_file": null,
+          "status": "missing",
+          "official_source": "https://qatarpost.qa",
+          "notes": "الموقع الرسمي محمي، يتطلب محاولة أخرى",
+          "action_required": "Try accessing qatarpost.qa website or use seeklogo"
+        },
+        {
+          "id": "bahrain_post",
+          "name": "Bahrain Post",
+          "name_ar": "البريد البحريني",
+          "country": "BH",
+          "logo_file": null,
+          "status": "missing",
+          "official_source": "https://bahrainpost.gov.bh",
+          "recommended_sources": [
+            "https://seeklogo.com/vector-logo/362258/bahrain-post"
+          ],
+          "notes": "متوفر على Seeklogo",
+          "action_required": "Download from seeklogo.com"
+        }
+      ]
+    },
+    "government_payment": {
+      "name": "أنظمة الدفع الحكومية",
+      "name_en": "Government Payment Systems",
+      "systems": [
+        {
+          "id": "sadad",
+          "name": "SADAD",
+          "name_ar": "سداد",
+          "country": "SA",
+          "logo_file": "sadad-logo-official-new.png",
+          "additional_files": [
+            "/public/logos-official/sadad-logo-official-en.png"
+          ],
+          "location": "/public/",
+          "format": "PNG",
+          "quality": 5,
+          "status": "verified",
+          "official_source": "https://www.sadad.com",
+          "brand_guideline": "https://strapi.wasmenia.com/uploads/SADAD_Guideline_2123a4f756.pdf",
+          "colors": {
+            "primary": "#F58220",
+            "secondary": "#E67317"
+          },
+          "notes": "Brand Guideline متوفر، شعار رسمي موثق بالكامل"
+        },
+        {
+          "id": "knet",
+          "name": "KNET",
+          "name_ar": "كي نت",
+          "country": "KW",
+          "logo_file": "knet-logo-official.svg",
+          "location": "/public/logos-official/",
+          "format": "SVG",
+          "quality": 5,
+          "status": "verified",
+          "official_source": "https://www.kpay.com.kw",
+          "colors": {
+            "primary": "#0066CC",
+            "secondary": "#FFCC00"
+          },
+          "notes": "شعار رسمي SVG عالي الجودة"
+        },
+        {
+          "id": "benefit",
+          "name": "BENEFIT",
+          "name_ar": "بنفت",
+          "country": "BH",
+          "logo_file": "benefit-logo-official.png",
+          "location": "/public/",
+          "format": "PNG",
+          "quality": 5,
+          "status": "verified",
+          "official_source": "https://www.benefit.bh",
+          "colors": {
+            "primary": "#CE1126"
+          },
+          "notes": "شعار رسمي موثق"
+        },
+        {
+          "id": "jaywan",
+          "name": "Jaywan (AEP)",
+          "name_ar": "جيوان",
+          "country": "AE",
+          "logo_file": "gov-uae-logo.jpg",
+          "location": "/public/",
+          "format": "JPG",
+          "quality": 3,
+          "status": "needs_improvement",
+          "official_source": "https://aep.ae",
+          "notes": "جودة متوسطة، يجب البحث عن شعار AEP رسمي عالي الجودة",
+          "action_required": "Search for official AEP logo in high quality"
+        },
+        {
+          "id": "maal",
+          "name": "Maal",
+          "name_ar": "مال",
+          "country": "OM",
+          "logo_file": "gov-maal-logo.jpg",
+          "location": "/public/",
+          "format": "JPG",
+          "quality": 3,
+          "status": "needs_improvement",
+          "official_source": "https://www.bankmuscat.com/en/bm-cards/Pages/maal.aspx",
+          "notes": "جودة متوسطة، يجب الحصول على شعار رسمي من Bank Muscat",
+          "action_required": "Download official logo from Bank Muscat website"
+        },
+        {
+          "id": "qatar_gov",
+          "name": "Qatar Government Payment",
+          "name_ar": "بوابة الدفع القطرية",
+          "country": "QA",
+          "logo_file": "gov-qatar-logo.png",
+          "location": "/public/",
+          "format": "PNG",
+          "quality": 3,
+          "status": "needs_verification",
+          "official_source": "https://qatarpost.qa",
+          "notes": "غير موثق بالكامل، يحتاج تحقق من المصدر الرسمي",
+          "action_required": "Verify with official Qatar Post or government sources"
+        }
+      ]
+    },
+    "saudi_shipping": {
+      "name": "شركات الشحن السعودية",
+      "name_en": "Saudi Shipping Companies",
+      "companies": [
+        {
+          "id": "smsa",
+          "name": "SMSA Express",
+          "name_ar": "سمسا",
+          "logo_file": "smsa-logo-official.png",
+          "location": "/public/logos-official/",
+          "format": "PNG",
+          "quality": 4,
+          "status": "verified",
+          "official_source": "https://www.smsaexpress.com",
+          "svg_available": "https://commons.wikimedia.org/wiki/File:SMSA_Express_logo_(English_version).svg",
+          "notes": "شعار رسمي، يُفضل استخدام SVG المتوفر",
+          "action_recommended": "Convert to SVG for better quality"
+        },
+        {
+          "id": "naqel",
+          "name": "Naqel Express",
+          "name_ar": "ناقل",
+          "logo_file": "naqel-logo-official-en.jpg",
+          "location": "/public/logos-official/",
+          "format": "JPG",
+          "quality": 4,
+          "status": "verified",
+          "official_source": "https://www.naqelexpress.com",
+          "svg_available": "https://seeklogo.com/vector-logo/390825/naqel-express-english",
+          "notes": "شعار رسمي، SVG متوفر على Seeklogo",
+          "action_recommended": "Convert to SVG"
+        },
+        {
+          "id": "zajil",
+          "name": "Zajil Express",
+          "name_ar": "زاجل",
+          "logo_file": "zajil-logo-official.svg",
+          "location": "/public/logos-official/",
+          "format": "SVG",
+          "quality": 5,
+          "status": "verified",
+          "official_source": "Official",
+          "notes": "ممتاز، شعار SVG عالي الجودة"
+        }
+      ]
+    },
+    "gcc_local_shipping": {
+      "name": "شركات الشحن الخليجية والمحلية",
+      "name_en": "GCC & Local Shipping Companies",
+      "companies": [
+        {
+          "id": "albaraka",
+          "name": "Al Baraka",
+          "name_ar": "مجموعة البركة",
+          "logo_file": "albaraka-logo-official.svg",
+          "location": "/public/logos-official/",
+          "format": "SVG",
+          "quality": 5,
+          "status": "verified",
+          "official_source": "Official",
+          "notes": "شعار رسمي SVG ممتاز"
+        },
+        {
+          "id": "alfuttaim",
+          "name": "Al Futtaim",
+          "name_ar": "مجموعة الفطيم",
+          "logo_file": "alfuttaim-logo-official.svg",
+          "location": "/public/logos-official/",
+          "format": "SVG",
+          "quality": 5,
+          "status": "verified",
+          "official_source": "https://www.alfuttaim.com",
+          "notes": "شعار رسمي SVG ممتاز"
+        },
+        {
+          "id": "agility",
+          "name": "Agility",
+          "name_ar": "أجيليتي",
+          "logo_file": "agility-logo-official.png",
+          "location": "/public/logos-official/",
+          "format": "PNG",
+          "quality": 4,
+          "status": "verified",
+          "official_source": "https://www.agility.com",
+          "notes": "شعار رسمي، يُفضل SVG"
+        },
+        {
+          "id": "hellmann",
+          "name": "Hellmann",
+          "name_ar": "هايلمان",
+          "logo_file": "hellmann-logo-official.png",
+          "location": "/public/logos-official/",
+          "format": "PNG",
+          "quality": 4,
+          "status": "verified",
+          "official_source": "https://www.hellmann.com",
+          "notes": "شعار رسمي، يُفضل SVG"
+        },
+        {
+          "id": "bahri",
+          "name": "Bahri (National Shipping)",
+          "name_ar": "الشركة الوطنية للشحن (بحري)",
+          "logo_file": "bahri-logo-official.svg",
+          "location": "/public/logos-official/",
+          "format": "SVG",
+          "quality": 5,
+          "status": "verified",
+          "official_source": "https://www.bahri.sa",
+          "download_source": "https://companieslogo.com/bahri/logo/",
+          "notes": "تم تحميله بنجاح من CompaniesLogo.com، شعار رسمي SVG"
+        },
+        {
+          "id": "alshaya",
+          "name": "Al Shaya",
+          "name_ar": "مجموعة الشايع",
+          "logo_file": null,
+          "status": "missing",
+          "official_source": "https://www.alshaya.com",
+          "notes": "يتطلب بحث إضافي للحصول على الشعار الرسمي",
+          "action_required": "Search official Al Shaya logo"
+        },
+        {
+          "id": "dsv",
+          "name": "DSV",
+          "name_ar": "دي إس في",
+          "logo_file": null,
+          "status": "missing",
+          "official_source": "https://www.dsv.com/en-us/about-dsv/press/media-kit",
+          "notes": "متوفر في Media Kit الرسمي، يتطلب تحميل",
+          "action_required": "Download from DSV Media Kit"
+        },
+        {
+          "id": "shipco",
+          "name": "ShipCo",
+          "name_ar": "شيبكو",
+          "logo_file": null,
+          "status": "missing",
+          "official_source": "https://www.shipco.com",
+          "notes": "يتطلب بحث للحصول على الشعار الرسمي",
+          "action_required": "Search official ShipCo logo"
+        },
+        {
+          "id": "genacom",
+          "name": "Genacom/Jinaken",
+          "name_ar": "جيناكم",
+          "logo_file": null,
+          "status": "missing",
+          "country": "OM",
+          "notes": "شركة محلية عُمانية، يتطلب بحث محلي",
+          "action_required": "Search for Omani local company logo"
+        }
+      ]
+    },
+    "banks": {
+      "name": "البنوك",
+      "name_en": "Banks",
+      "summary": {
+        "total": 59,
+        "documented": 59,
+        "location": "/public/bank-logos/",
+        "formats": {
+          "svg": 12,
+          "png": 28,
+          "jpg": 6,
+          "webp": 1
+        },
+        "by_country": {
+          "SA": 10,
+          "AE": 8,
+          "KW": 7,
+          "QA": 6,
+          "OM": 6,
+          "BH": 6
+        },
+        "status": "verified",
+        "quality": 4.5,
+        "notes": "جميع شعارات البنوك موثّقة بالكامل، يُفضل تحويل PNG/JPG إلى SVG"
+      },
+      "recommendation": "Convert all bank logos to SVG format for better quality and performance"
+    }
+  },
+  "quality_standards": {
+    "formats": {
+      "excellent": "SVG (Scalable Vector Graphics)",
+      "good": "PNG with transparent background (1000px+ width)",
+      "acceptable": "PNG/JPG (high quality only)"
+    },
+    "sources": {
+      "primary": [
+        "Official company website",
+        "Official Brand Hub / Press Kit",
+        "Wikipedia Commons (for public domain)"
+      ],
+      "secondary": [
+        "Seeklogo.com",
+        "Worldvectorlogo.com",
+        "Companieslogo.com",
+        "UAE Logos Database (uaelogos.ae)"
+      ],
+      "prohibited": [
+        "Generic icon websites (Flaticon, Iconfinder)",
+        "Modified or unofficial logos",
+        "Low quality or distorted images",
+        "Logos with watermarks",
+        "AI-generated logos"
+      ]
+    },
+    "requirements": {
+      "resolution": "Minimum 1000px width",
+      "background": "Transparent (for PNG)",
+      "colors": "Match official brand colors",
+      "watermark": "None",
+      "modifications": "Not allowed",
+      "dark_mode": "Compatible (test both themes)"
+    }
+  },
+  "statistics": {
+    "total_entities": 87,
+    "by_category": {
+      "global_shipping": 4,
+      "national_post": 6,
+      "government_payment": 6,
+      "saudi_shipping": 3,
+      "gcc_local_shipping": 9,
+      "banks": 59
+    },
+    "by_status": {
+      "verified": 75,
+      "needs_improvement": 4,
+      "missing": 8
+    },
+    "by_format": {
+      "svg": 19,
+      "png": 40,
+      "jpg": 6
+    },
+    "completion_rate": {
+      "percentage": 86,
+      "verified_percentage": 86,
+      "high_quality_percentage": 75
+    }
+  },
+  "action_items": {
+    "high_priority": [
+      {
+        "item": "FedEx Logo - Replace with SVG",
+        "source": "https://worldvectorlogo.com/logo/fedex",
+        "time_estimate": "10 minutes"
+      },
+      {
+        "item": "Emirates Post Logo",
+        "source": "https://uaelogos.ae/logos/emirates-post-group",
+        "time_estimate": "15 minutes"
+      },
+      {
+        "item": "Kuwait Post Logo",
+        "source": "Via MOC Kuwait or tracking websites",
+        "time_estimate": "15 minutes"
+      },
+      {
+        "item": "Qatar Post Logo",
+        "source": "https://qatarpost.qa or seeklogo",
+        "time_estimate": "15 minutes"
+      },
+      {
+        "item": "Bahrain Post Logo",
+        "source": "https://seeklogo.com/vector-logo/362258/bahrain-post",
+        "time_estimate": "10 minutes"
+      }
+    ],
+    "medium_priority": [
+      {
+        "item": "Improve Jaywan Logo Quality",
+        "source": "https://aep.ae",
+        "time_estimate": "20 minutes"
+      },
+      {
+        "item": "Improve Maal Logo Quality",
+        "source": "https://www.bankmuscat.com",
+        "time_estimate": "20 minutes"
+      },
+      {
+        "item": "Verify Qatar Gov Logo",
+        "source": "Official government sources",
+        "time_estimate": "20 minutes"
+      },
+      {
+        "item": "Complete GCC Companies (Al Shaya, DSV, ShipCo, Genacom)",
+        "time_estimate": "1-2 hours"
+      }
+    ],
+    "low_priority": [
+      {
+        "item": "Convert Bank Logos to SVG",
+        "count": 34,
+        "time_estimate": "1-2 days"
+      },
+      {
+        "item": "Standardize Naming Convention",
+        "time_estimate": "2-3 hours"
+      },
+      {
+        "item": "Create Brand Usage Guidelines",
+        "time_estimate": "1 day"
+      }
+    ]
+  },
+  "legal_compliance": {
+    "trademark_notice": "All logos are the property of their respective owners",
+    "usage_purpose": "Commercial use in payment application",
+    "modifications": "No modifications or distortions made",
+    "sources": "All logos from official or verified sources",
+    "recommendations": [
+      "Obtain official usage agreements with major companies",
+      "Document source for each logo with official link",
+      "Review terms of use for each trademark",
+      "Keep backup copies of official sources"
+    ]
+  }
+}
