@@ -75,7 +75,7 @@ export const SADADLayout: React.FC<GovernmentLayoutProps> = ({
                 <item.icon className="w-6 h-6" style={{ color: govSystem.colors.primary }} />
               </div>
               <p className="font-bold text-sm">{item.text}</p>
-              <p className="text-xs text-gray-600">{item.desc}</p>
+              <p className="text-xs" style={{ color: govSystem.colors.textLight }}>{item.desc}</p>
             </Card>
           ))}
         </div>
@@ -94,7 +94,7 @@ export const SADADLayout: React.FC<GovernmentLayoutProps> = ({
               </div>
               <div className="flex-1">
                 <h2 className="text-2xl font-bold">بوابة الدفع الحكومية</h2>
-                <p className="text-sm text-gray-600">{serviceName || 'خدمة حكومية'}</p>
+                <p className="text-sm" style={{ color: govSystem.colors.textLight }}>{serviceName || 'خدمة حكومية'}</p>
               </div>
               {amount && (
                 <div 
@@ -192,7 +192,7 @@ export const KNETLayout: React.FC<GovernmentLayoutProps> = ({
               </div>
               <div className="flex-1">
                 <h2 className="text-2xl font-bold">الدفع عبر كي نت</h2>
-                <p className="text-sm text-gray-600">نظام الدفع الإلكتروني الكويتي</p>
+                <p className="text-sm" style={{ color: govSystem.colors.textLight }}>نظام الدفع الإلكتروني الكويتي</p>
               </div>
               {amount && (
                 <div 
@@ -209,22 +209,22 @@ export const KNETLayout: React.FC<GovernmentLayoutProps> = ({
           </Card>
 
           <div className="mt-6 grid grid-cols-2 gap-4">
-            <Card className="p-4 bg-green-50 border-green-200">
+            <Card className="p-4" style={{ backgroundColor: `${govSystem.colors.primary}10`, borderColor: `${govSystem.colors.primary}30` }}>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-5 h-5 text-green-700" />
+                <CheckCircle2 className="w-5 h-5" style={{ color: govSystem.colors.primary }} />
                 <div>
-                  <p className="font-bold text-sm text-green-900">KNET Approved</p>
-                  <p className="text-xs text-green-700">معتمد من البنك المركزي</p>
+                  <p className="font-bold text-sm" style={{ color: govSystem.colors.text }}>KNET Approved</p>
+                  <p className="text-xs" style={{ color: govSystem.colors.textLight }}>معتمد من البنك المركزي</p>
                 </div>
               </div>
             </Card>
 
-            <Card className="p-4 bg-blue-50 border-blue-200">
+            <Card className="p-4" style={{ backgroundColor: `${govSystem.colors.secondary}10`, borderColor: `${govSystem.colors.secondary}30` }}>
               <div className="flex items-center gap-2">
-                <Smartphone className="w-5 h-5 text-blue-700" />
+                <Smartphone className="w-5 h-5" style={{ color: govSystem.colors.secondary }} />
                 <div>
-                  <p className="font-bold text-sm text-blue-900">WAMD Ready</p>
-                  <p className="text-xs text-blue-700">الدفع الفوري الجديد</p>
+                  <p className="font-bold text-sm" style={{ color: govSystem.colors.text }}>WAMD Ready</p>
+                  <p className="text-xs" style={{ color: govSystem.colors.textLight }}>الدفع الفوري الجديد</p>
                 </div>
               </div>
             </Card>
@@ -275,7 +275,7 @@ export const BENEFITLayout: React.FC<GovernmentLayoutProps> = ({
               </div>
               <div className="flex-1">
                 <h2 className="text-2xl font-bold">BenefitPay</h2>
-                <p className="text-sm text-gray-600">المحفظة الإلكترونية الوطنية</p>
+                <p className="text-sm" style={{ color: govSystem.colors.textLight }}>المحفظة الإلكترونية الوطنية</p>
               </div>
               {amount && (
                 <div 
@@ -290,12 +290,12 @@ export const BENEFITLayout: React.FC<GovernmentLayoutProps> = ({
             {children}
           </Card>
 
-          <Card className="mt-6 p-6 bg-gradient-to-r from-red-50 to-pink-50 border-red-200">
+          <Card className="mt-6 p-6" style={{ background: `linear-gradient(to right, ${govSystem.colors.primary}10, ${govSystem.colors.primary}15)`, borderColor: `${govSystem.colors.primary}30` }}>
             <div className="flex items-center gap-4">
-              <Shield className="w-10 h-10 text-red-700" />
+              <Shield className="w-10 h-10" style={{ color: govSystem.colors.primary }} />
               <div>
-                <h3 className="font-bold text-lg text-red-900 mb-1">BENEFIT Secure Payment</h3>
-                <p className="text-sm text-red-800">
+                <h3 className="font-bold text-lg mb-1" style={{ color: govSystem.colors.text }}>BENEFIT Secure Payment</h3>
+                <p className="text-sm" style={{ color: govSystem.colors.text }}>
                   نظام دفع وطني معتمد من مصرف البحرين المركزي منذ 1997
                 </p>
               </div>

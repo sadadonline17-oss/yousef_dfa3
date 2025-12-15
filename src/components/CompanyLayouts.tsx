@@ -32,7 +32,7 @@ export const AramexLayout: React.FC<CompanyLayoutProps> = ({
   const branding = getBrandingByCompany('aramex');
   
   return (
-    <div className="min-h-screen bg-gray-50" dir="rtl">
+    <div className="min-h-screen" style={{ backgroundColor: branding?.colors.surface }} dir="rtl">
       <div 
         className="h-16 flex items-center px-6 shadow-md"
         style={{ backgroundColor: branding?.colors.primary }}
@@ -64,8 +64,8 @@ export const AramexLayout: React.FC<CompanyLayoutProps> = ({
                 <Truck className="w-6 h-6" style={{ color: branding?.colors.primary }} />
               </div>
               <div>
-                <p className="text-sm text-gray-600">حالة الشحنة</p>
-                <p className="font-bold text-lg">قيد المعالجة</p>
+                <p className="text-sm" style={{ color: branding?.colors.textLight }}>حالة الشحنة</p>
+                <p className="font-bold text-lg" style={{ color: branding?.colors.text }}>قيد المعالجة</p>
               </div>
             </div>
           </Card>
@@ -79,8 +79,8 @@ export const AramexLayout: React.FC<CompanyLayoutProps> = ({
                 <Clock className="w-6 h-6" style={{ color: branding?.colors.primary }} />
               </div>
               <div>
-                <p className="text-sm text-gray-600">وقت التسليم</p>
-                <p className="font-bold text-lg">2-3 أيام عمل</p>
+                <p className="text-sm" style={{ color: branding?.colors.textLight }}>وقت التسليم</p>
+                <p className="font-bold text-lg" style={{ color: branding?.colors.text }}>2-3 أيام عمل</p>
               </div>
             </div>
           </Card>
@@ -94,29 +94,29 @@ export const AramexLayout: React.FC<CompanyLayoutProps> = ({
                 <Shield className="w-6 h-6" style={{ color: branding?.colors.primary }} />
               </div>
               <div>
-                <p className="text-sm text-gray-600">الدفع الآمن</p>
-                <p className="font-bold text-lg">{amount || 'محمي'}</p>
+                <p className="text-sm" style={{ color: branding?.colors.textLight }}>الدفع الآمن</p>
+                <p className="font-bold text-lg" style={{ color: branding?.colors.text }}>{amount || 'محمي'}</p>
               </div>
             </div>
           </Card>
         </div>
 
-        <Card className="p-8 shadow-lg">
+        <Card className="p-8" style={{ boxShadow: branding?.shadows.lg, backgroundColor: branding?.colors.background }}>
           <div 
             className="flex items-center gap-3 mb-6 pb-4 border-b-2"
             style={{ borderBottomColor: branding?.colors.primary }}
           >
             <CreditCard className="w-6 h-6" style={{ color: branding?.colors.primary }} />
-            <h2 className="text-2xl font-bold">إكمال عملية الدفع</h2>
+            <h2 className="text-2xl font-bold" style={{ color: branding?.colors.text, fontFamily: branding?.fonts.arabic }}>إكمال عملية الدفع</h2>
           </div>
 
           {children}
         </Card>
 
-        <div className="mt-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+        <div className="mt-6 p-4 rounded-lg" style={{ backgroundColor: `${branding?.colors.primary}10`, border: `1px solid ${branding?.colors.primary}30` }}>
           <div className="flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
-            <div className="text-sm text-blue-900">
+            <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" style={{ color: branding?.colors.primary }} />
+            <div className="text-sm" style={{ color: branding?.colors.text }}>
               <p className="font-semibold mb-1">معلومات مهمة</p>
               <p>سيتم معالجة طلبك خلال 24 ساعة. جميع المعاملات مشفرة ومحمية.</p>
             </div>
@@ -136,7 +136,7 @@ export const DHLLayout: React.FC<CompanyLayoutProps> = ({
   const branding = getBrandingByCompany('dhl');
   
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(to bottom, #FFF9E6, #FFFFFF)' }} dir="rtl">
+    <div className="min-h-screen" style={{ background: `linear-gradient(to bottom, ${branding?.colors.surface}, ${branding?.colors.background})` }} dir="rtl">
       <div 
         className="h-20 flex items-center shadow-lg"
         style={{ 
@@ -210,7 +210,7 @@ export const DHLLayout: React.FC<CompanyLayoutProps> = ({
                 <item.icon className="w-6 h-6" style={{ color: branding?.colors.secondary }} />
               </div>
               <p className="font-bold text-sm">{item.label}</p>
-              <p className="text-xs text-gray-600">{item.desc}</p>
+              <p className="text-xs" style={{ color: branding?.colors.textLight }}>{item.desc}</p>
             </Card>
           ))}
         </div>
@@ -249,7 +249,7 @@ export const FedExLayout: React.FC<CompanyLayoutProps> = ({
   const branding = getBrandingByCompany('fedex');
   
   return (
-    <div className="min-h-screen bg-gray-50" dir="rtl">
+    <div className="min-h-screen" style={{ backgroundColor: branding?.colors.surface }} dir="rtl">
       <div 
         className="h-16"
         style={{ 
@@ -271,8 +271,8 @@ export const FedExLayout: React.FC<CompanyLayoutProps> = ({
 
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">Secure Checkout</h1>
-          <p className="text-gray-600">إكمال عملية الدفع الآمنة</p>
+          <h1 className="text-3xl font-bold mb-2" style={{ color: branding?.colors.text, fontFamily: branding?.fonts.primary }}>Secure Checkout</h1>
+          <p style={{ color: branding?.colors.textLight }}>إكمال عملية الدفع الآمنة</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-6">
@@ -303,11 +303,11 @@ export const FedExLayout: React.FC<CompanyLayoutProps> = ({
               </h3>
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-gray-600">رسوم الشحن:</span>
+                  <span style={{ color: branding?.colors.textLight }}>رسوم الشحن:</span>
                   <span className="font-semibold">{amount || '--'}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-gray-600">الضريبة:</span>
+                  <span style={{ color: branding?.colors.textLight }}>الضريبة:</span>
                   <span className="font-semibold">متضمنة</span>
                 </div>
                 <div 
@@ -330,7 +330,7 @@ export const FedExLayout: React.FC<CompanyLayoutProps> = ({
                 <Shield className="w-6 h-6 mt-1 flex-shrink-0" style={{ color: branding?.colors.primary }} />
                 <div className="text-sm">
                   <h4 className="font-bold mb-2">FedEx Secure Payment</h4>
-                  <p className="text-gray-700">
+                  <p style={{ color: branding?.colors.text }}>
                     نستخدم أحدث تقنيات التشفير لحماية معلوماتك الشخصية والمالية
                   </p>
                 </div>
@@ -339,7 +339,7 @@ export const FedExLayout: React.FC<CompanyLayoutProps> = ({
 
             {trackingNumber && (
               <Card className="p-6 text-center">
-                <p className="text-xs text-gray-600 mb-2">Tracking Number</p>
+                <p className="text-xs mb-2" style={{ color: branding?.colors.textLight }}>Tracking Number</p>
                 <p className="font-mono font-bold text-lg">{trackingNumber}</p>
               </Card>
             )}
@@ -358,7 +358,7 @@ export const SMSALayout: React.FC<CompanyLayoutProps> = ({
   const branding = getBrandingByCompany('smsa');
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-orange-50" dir="rtl">
+    <div className="min-h-screen" style={{ background: `linear-gradient(135deg, ${branding?.colors.surface}, ${branding?.colors.background})` }} dir="rtl">
       <div 
         className="h-20 shadow-lg"
         style={{ background: branding?.gradients.primary }}

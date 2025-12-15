@@ -28,7 +28,7 @@ export const NAQELLayout: React.FC<CompanyLayoutProps> = ({
   const branding = getBrandingByCompany('naqel');
   
   return (
-    <div className="min-h-screen bg-gray-50" dir="rtl">
+    <div className="min-h-screen" style={{ backgroundColor: branding?.colors.surface }} dir="rtl">
       <div 
         className="h-24 shadow-lg"
         style={{ background: branding?.gradients.primary }}
@@ -46,7 +46,7 @@ export const NAQELLayout: React.FC<CompanyLayoutProps> = ({
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <Badge className="bg-yellow-400 text-yellow-900 px-3 py-1">
+            <Badge className="px-3 py-1" style={{ backgroundColor: branding?.colors.secondary, color: branding?.colors.textOnPrimary }}>
               <Star className="w-4 h-4 ml-1 fill-current" />
               الأعلى تقييماً
             </Badge>
@@ -104,23 +104,23 @@ export const NAQELLayout: React.FC<CompanyLayoutProps> = ({
                 <h3 className="font-bold mb-3">معلومات الشحنة</h3>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-gray-600">رقم التتبع:</span>
+                    <span style={{ color: branding?.colors.textLight }}>رقم التتبع:</span>
                     <span className="font-mono">{trackingNumber}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">الحالة:</span>
-                    <Badge className="bg-green-100 text-green-800">نشط</Badge>
+                    <span style={{ color: branding?.colors.textLight }}>الحالة:</span>
+                    <Badge style={{ backgroundColor: `${branding?.colors.primary}20`, color: branding?.colors.primary }}>نشط</Badge>
                   </div>
                 </div>
               </Card>
             )}
 
-            <Card className="p-6 bg-gradient-to-br from-blue-50 to-blue-100">
+            <Card className="p-6" style={{ background: `linear-gradient(135deg, ${branding?.colors.primary}10, ${branding?.colors.secondary}10)` }}>
               <div className="flex items-center gap-3 mb-3">
-                <Shield className="w-6 h-6 text-blue-700" />
-                <h3 className="font-bold text-blue-900">ناقل إكسبرس</h3>
+                <Shield className="w-6 h-6" style={{ color: branding?.colors.primary }} />
+                <h3 className="font-bold" style={{ color: branding?.colors.text }}>ناقل إكسبرس</h3>
               </div>
-              <p className="text-sm text-blue-800">
+              <p className="text-sm" style={{ color: branding?.colors.text }}>
                 أكثر من 50 مليون شحنة تم توصيلها بنجاح في 2025
               </p>
             </Card>
@@ -139,7 +139,7 @@ export const ZajilLayout: React.FC<CompanyLayoutProps> = ({
   const branding = getBrandingByCompany('zajil');
   
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#F8FAFC' }} dir="rtl">
+    <div className="min-h-screen" style={{ backgroundColor: branding?.colors.surface }} dir="rtl">
       <div 
         className="h-20"
         style={{ background: branding?.gradients.primary }}
@@ -165,7 +165,7 @@ export const ZajilLayout: React.FC<CompanyLayoutProps> = ({
             <h1 className="text-3xl font-bold">عملية الدفع</h1>
             {amount && (
               <div className="text-left">
-                <p className="text-sm text-gray-600">المجموع</p>
+                <p className="text-sm" style={{ color: branding?.colors.textLight }}>المجموع</p>
                 <p className="text-2xl font-bold" style={{ color: branding?.colors.primary }}>
                   {amount}
                 </p>
@@ -176,8 +176,8 @@ export const ZajilLayout: React.FC<CompanyLayoutProps> = ({
           {children}
 
           {trackingNumber && (
-            <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-              <p className="text-sm text-gray-600 mb-1">رقم التتبع</p>
+            <div className="mt-6 p-4 rounded-lg" style={{ backgroundColor: `${branding?.colors.primary}10` }}>
+              <p className="text-sm mb-1" style={{ color: branding?.colors.textLight }}>رقم التتبع</p>
               <p className="font-mono font-bold text-lg">{trackingNumber}</p>
             </div>
           )}
@@ -192,7 +192,7 @@ export const ZajilLayout: React.FC<CompanyLayoutProps> = ({
             <Card key={idx} className="p-4 text-center">
               <item.icon className="w-8 h-8 mx-auto mb-2" style={{ color: branding?.colors.primary }} />
               <p className="font-bold text-sm">{item.text}</p>
-              <p className="text-xs text-gray-600">{item.sub}</p>
+              <p className="text-xs" style={{ color: branding?.colors.textLight }}>{item.sub}</p>
             </Card>
           ))}
         </div>
@@ -209,7 +209,7 @@ export const SaudiPostLayout: React.FC<CompanyLayoutProps> = ({
   const branding = getBrandingByCompany('saudipost');
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-yellow-50" dir="rtl">
+    <div className="min-h-screen" style={{ background: `linear-gradient(135deg, ${branding?.colors.surface}, ${branding?.colors.background})` }} dir="rtl">
       <div 
         className="h-24"
         style={{ background: branding?.gradients.primary }}
@@ -285,10 +285,10 @@ export const SaudiPostLayout: React.FC<CompanyLayoutProps> = ({
             <Card className="mt-6 p-6 bg-gradient-to-r from-green-100 to-yellow-100">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-gray-700 mb-1">رقم الشحنة</p>
+                  <p className="text-sm mb-1" style={{ color: branding?.colors.textLight }}>رقم الشحنة</p>
                   <p className="font-mono font-bold text-xl">{trackingNumber}</p>
                 </div>
-                <Badge className="bg-green-600 text-white px-4 py-2">
+                <Badge className="px-4 py-2" style={{ backgroundColor: branding?.colors.primary, color: branding?.colors.textOnPrimary }}>
                   <CheckCircle2 className="w-4 h-4 ml-1" />
                   معتمد
                 </Badge>
@@ -309,7 +309,7 @@ export const UPSLayout: React.FC<CompanyLayoutProps> = ({
   const branding = getBrandingByCompany('ups');
   
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#FAF8F7' }} dir="rtl">
+    <div className="min-h-screen" style={{ backgroundColor: branding?.colors.surface }} dir="rtl">
       <div 
         className="h-20"
         style={{ backgroundColor: branding?.colors.primary }}
@@ -348,7 +348,7 @@ export const UPSLayout: React.FC<CompanyLayoutProps> = ({
             </div>
             <div className="flex-1">
               <h1 className="text-3xl font-bold mb-1">Secure Checkout</h1>
-              <p className="text-gray-600">What can brown do for you today?</p>
+              <p style={{ color: branding?.colors.textLight }}>What can brown do for you today?</p>
             </div>
           </div>
 

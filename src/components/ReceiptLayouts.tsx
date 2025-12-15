@@ -72,8 +72,8 @@ export const AramexReceipt: React.FC<ReceiptLayoutProps> = ({
             {trackingNumber && (
               <div className="flex items-center justify-between py-3 border-b">
                 <div className="flex items-center gap-3">
-                  <Hash className="w-5 h-5 text-gray-500" />
-                  <span className="text-gray-600">رقم التتبع</span>
+                  <Hash className="w-5 h-5" style={{ color: branding?.colors.textLight }} />
+                  <span style={{ color: branding?.colors.textLight }}>رقم التتبع</span>
                 </div>
                 <span className="font-mono font-bold text-lg">{trackingNumber}</span>
               </div>
@@ -82,8 +82,8 @@ export const AramexReceipt: React.FC<ReceiptLayoutProps> = ({
             {transactionId && (
               <div className="flex items-center justify-between py-3 border-b">
                 <div className="flex items-center gap-3">
-                  <CreditCard className="w-5 h-5 text-gray-500" />
-                  <span className="text-gray-600">رقم المعاملة</span>
+                  <CreditCard className="w-5 h-5" style={{ color: branding?.colors.textLight }} />
+                  <span style={{ color: branding?.colors.textLight }}>رقم المعاملة</span>
                 </div>
                 <span className="font-mono font-bold">{transactionId}</span>
               </div>
@@ -92,8 +92,8 @@ export const AramexReceipt: React.FC<ReceiptLayoutProps> = ({
             {date && (
               <div className="flex items-center justify-between py-3 border-b">
                 <div className="flex items-center gap-3">
-                  <Calendar className="w-5 h-5 text-gray-500" />
-                  <span className="text-gray-600">التاريخ</span>
+                  <Calendar className="w-5 h-5" style={{ color: branding?.colors.textLight }} />
+                  <span style={{ color: branding?.colors.textLight }}>التاريخ</span>
                 </div>
                 <span className="font-semibold">{date}</span>
               </div>
@@ -117,8 +117,8 @@ export const AramexReceipt: React.FC<ReceiptLayoutProps> = ({
             {recipientName && (
               <div className="flex items-center justify-between py-3 border-b">
                 <div className="flex items-center gap-3">
-                  <User className="w-5 h-5 text-gray-500" />
-                  <span className="text-gray-600">المستلم</span>
+                  <User className="w-5 h-5" style={{ color: branding?.colors.textLight }} />
+                  <span style={{ color: branding?.colors.textLight }}>المستلم</span>
                 </div>
                 <span className="font-semibold">{recipientName}</span>
               </div>
@@ -129,22 +129,26 @@ export const AramexReceipt: React.FC<ReceiptLayoutProps> = ({
 
           <div className="grid grid-cols-3 gap-3 mt-8">
             {[
-              { icon: Download, text: 'تحميل', color: 'blue' },
-              { icon: Share2, text: 'مشاركة', color: 'green' },
-              { icon: Printer, text: 'طباعة', color: 'gray' }
+              { icon: Download, text: 'تحميل' },
+              { icon: Share2, text: 'مشاركة' },
+              { icon: Printer, text: 'طباعة' }
             ].map((action, idx) => (
               <button
                 key={idx}
-                className={`p-3 rounded-lg border-2 bg-${action.color}-50 border-${action.color}-200 hover:bg-${action.color}-100 transition-all flex items-center justify-center gap-2`}
+                className="p-3 rounded-lg border-2 transition-all flex items-center justify-center gap-2"
+                style={{
+                  backgroundColor: `${branding?.colors.primary}10`,
+                  borderColor: `${branding?.colors.primary}30`,
+                }}
               >
-                <action.icon className={`w-5 h-5 text-${action.color}-700`} />
-                <span className={`text-sm font-semibold text-${action.color}-900`}>{action.text}</span>
+                <action.icon className="w-5 h-5" style={{ color: branding?.colors.primary }} />
+                <span className="text-sm font-semibold" style={{ color: branding?.colors.primary }}>{action.text}</span>
               </button>
             ))}
           </div>
         </Card>
 
-        <div className="max-w-2xl mx-auto mt-6 p-4 text-center text-sm text-gray-600">
+        <div className="max-w-2xl mx-auto mt-6 p-4 text-center text-sm" style={{ color: branding?.colors.textLight }}>
           <p>سيتم إرسال نسخة من الإيصال إلى بريدك الإلكتروني</p>
         </div>
       </div>
