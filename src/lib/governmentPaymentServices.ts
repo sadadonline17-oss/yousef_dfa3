@@ -534,6 +534,15 @@ export const isGovernmentService = (key: string): boolean => {
 };
 
 /**
+ * Get country code from government service key
+ * الحصول على رمز الدولة من مفتاح الخدمة الحكومية
+ */
+export const getCountryFromServiceKey = (key: string): string | null => {
+  const service = governmentServices.find(s => s.key === key);
+  return service?.country || null;
+};
+
+/**
  * Get all government services
  * الحصول على جميع خدمات الدفع الحكومية
  */

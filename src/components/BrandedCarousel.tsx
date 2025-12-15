@@ -64,6 +64,45 @@ interface BrandedCarouselProps {
 const getCompanyImages = (serviceKey: string, countryCode?: string, govServiceKey?: string): string[] => {
   const key = serviceKey.toLowerCase();
   
+  // Handle government services by their key (sadad, knet, benefit, etc.)
+  const govServiceImages: Record<string, string[]> = {
+    sadad: ['/gov-sadad-hero-3.png', '/gov-sadad-hero-1.jpg', '/gov-sadad-hero-2.jpg', '/gov-sadad-hero-4.svg'],
+    'sadad-passport': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-1.jpg', '/gov-sadad-hero-2.jpg'],
+    'sadad-traffic-violations': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-1.jpg'],
+    'sadad-driving-license': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-2.jpg'],
+    'sadad-municipal': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-1.jpg'],
+    'sadad-contracts': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-2.jpg'],
+    'sadad-id-card': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-1.jpg'],
+    'sadad-education': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-2.jpg'],
+    'sadad-health': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-1.jpg'],
+    'sadad-work-permit': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-2.jpg'],
+    'sadad-insurance': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-1.jpg'],
+    'sadad-vehicle-registration': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-2.jpg'],
+    'sadad-customs': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-1.jpg'],
+    'sadad-utilities': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-2.jpg'],
+    benefit: ['/gov-benefit-hero-1.svg', '/gov-benefit-hero-2.svg', '/gov-benefit-logo.png'],
+    'benefit-passport': ['/gov-benefit-hero-1.svg', '/gov-benefit-hero-2.svg'],
+    'benefit-traffic-violations': ['/gov-benefit-hero-1.svg', '/gov-benefit-logo.png'],
+    'benefit-cpr': ['/gov-benefit-hero-1.svg', '/gov-benefit-hero-2.svg'],
+    'benefit-municipal': ['/gov-benefit-hero-1.svg', '/gov-benefit-logo.png'],
+    knet: ['/gov-knet-hero-1.svg', '/gov-knet-hero-2.svg', '/gov-knet-logo.png'],
+    'knet-passport': ['/gov-knet-hero-1.svg', '/gov-knet-hero-2.svg'],
+    'knet-civil-id': ['/gov-knet-hero-1.svg', '/gov-knet-logo.png'],
+    'knet-traffic-violations': ['/gov-knet-hero-1.svg', '/gov-knet-hero-2.svg'],
+    'knet-municipal': ['/gov-knet-hero-1.svg', '/gov-knet-logo.png'],
+    jaywan: ['/gov-jaywan-hero-1.svg', '/gov-uae-logo.jpg'],
+    'jaywan-passport': ['/gov-jaywan-hero-1.svg', '/gov-uae-logo.jpg'],
+    'jaywan-emirates-id': ['/gov-jaywan-hero-1.svg', '/gov-uae-logo.jpg'],
+    'jaywan-traffic-violations': ['/gov-jaywan-hero-1.svg', '/gov-uae-logo.jpg'],
+    'jaywan-residence': ['/gov-jaywan-hero-1.svg', '/gov-uae-logo.jpg'],
+    maal: ['/gov-maal-hero-1.svg', '/gov-maal-logo.jpg'],
+    'oman-net': ['/gov-maal-hero-1.svg', '/gov-maal-logo.jpg'],
+  };
+  
+  if (govServiceImages[key]) {
+    return govServiceImages[key];
+  }
+  
   // Handle government_payment with country-specific images
   if (key === 'government_payment' && countryCode) {
     const country = countryCode.toUpperCase();
