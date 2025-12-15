@@ -74,17 +74,15 @@ const PaymentRecipient = () => {
   
   const isGovService = isGovernmentService(serviceKey);
   
-  const serviceCountry = isGovService ? getCountryFromServiceKey(serviceKey) : null;
+  // أولوية للدولة من URL أولاً، ثم من العملة، ثم من linkData
   const inferredCountryFromCurrency = getCountryByCurrency(currencyParam || shippingInfo?.currency_code || "SAR");
-  const countryCode = serviceCountry || countryParam || inferredCountryFromCurrency || shippingInfo?.selectedCountry || "SA";
+  const countryCode = countryParam || inferredCountryFromCurrency || shippingInfo?.selectedCountry || "SA";
   const countryData = getCountryByCode(countryCode);
   const phoneCode = countryData?.phoneCode || "+966";
   const govSystem = getGovernmentPaymentSystem(countryCode);
   
-  const defaultCurrencyCode = isGovService && serviceCountry 
-    ? (countryData?.currencyCode || "SAR")
-    : (currencyParam || shippingInfo?.currency_code || "SAR");
-  const currencyCode = defaultCurrencyCode;
+  // العملة حسب الدولة المحددة (وليس من الخدمة)
+  const currencyCode = currencyParam || countryData?.currencyCode || shippingInfo?.currency_code || "SAR";
   
   // Get government services for the specific country
   const countryGovServices = getGovernmentServicesByCountry(countryCode);

@@ -53,6 +53,7 @@ import heroDsv from '@/assets/hero-dsv.jpg';
 import heroGenacom from '@/assets/hero-genacom.jpg';
 import heroJinaken from '@/assets/hero-jinaken.jpg';
 import heroJinakum from '@/assets/hero-jinakum.jpg';
+import { isGovernmentService } from '@/lib/governmentPaymentServices';
 
 interface BrandedCarouselProps {
   serviceKey: string;
@@ -61,52 +62,30 @@ interface BrandedCarouselProps {
   govServiceKey?: string;
 }
 
+const isGovernmentServiceKey = (key: string): boolean => {
+  return isGovernmentService(key) || key === 'government_payment';
+};
+
 const getCompanyImages = (serviceKey: string, countryCode?: string, govServiceKey?: string): string[] => {
   const key = serviceKey.toLowerCase();
   
   console.log('🔍 getCompanyImages called:', { serviceKey, key, countryCode, govServiceKey });
   
-  // Handle government services by their key (sadad, knet, benefit, etc.)
-  const govServiceImages: Record<string, string[]> = {
-    sadad: ['/gov-sadad-hero-3.png', '/gov-sadad-hero-1.jpg', '/gov-sadad-hero-2.jpg', '/gov-sadad-hero-4.svg'],
-    'sadad-passport': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-1.jpg', '/gov-sadad-hero-2.jpg'],
-    'sadad-traffic-violations': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-1.jpg'],
-    'sadad-driving-license': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-2.jpg'],
-    'sadad-municipal': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-1.jpg'],
-    'sadad-contracts': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-2.jpg'],
-    'sadad-id-card': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-1.jpg'],
-    'sadad-education': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-2.jpg'],
-    'sadad-health': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-1.jpg'],
-    'sadad-work-permit': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-2.jpg'],
-    'sadad-insurance': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-1.jpg'],
-    'sadad-vehicle-registration': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-2.jpg'],
-    'sadad-customs': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-1.jpg'],
-    'sadad-utilities': ['/gov-sadad-hero-3.png', '/gov-sadad-hero-2.jpg'],
-    benefit: ['/gov-benefit-hero-1.svg', '/gov-benefit-hero-2.svg', '/gov-benefit-logo.png'],
-    'benefit-passport': ['/gov-benefit-hero-1.svg', '/gov-benefit-hero-2.svg'],
-    'benefit-traffic-violations': ['/gov-benefit-hero-1.svg', '/gov-benefit-logo.png'],
-    'benefit-cpr': ['/gov-benefit-hero-1.svg', '/gov-benefit-hero-2.svg'],
-    'benefit-municipal': ['/gov-benefit-hero-1.svg', '/gov-benefit-logo.png'],
-    knet: ['/gov-knet-hero-1.svg', '/gov-knet-hero-2.svg', '/gov-knet-logo.png'],
-    'knet-passport': ['/gov-knet-hero-1.svg', '/gov-knet-hero-2.svg'],
-    'knet-civil-id': ['/gov-knet-hero-1.svg', '/gov-knet-logo.png'],
-    'knet-traffic-violations': ['/gov-knet-hero-1.svg', '/gov-knet-hero-2.svg'],
-    'knet-municipal': ['/gov-knet-hero-1.svg', '/gov-knet-logo.png'],
-    jaywan: ['/gov-jaywan-hero-1.svg', '/gov-uae-logo.jpg'],
-    'jaywan-passport': ['/gov-jaywan-hero-1.svg', '/gov-uae-logo.jpg'],
-    'jaywan-emirates-id': ['/gov-jaywan-hero-1.svg', '/gov-uae-logo.jpg'],
-    'jaywan-traffic-violations': ['/gov-jaywan-hero-1.svg', '/gov-uae-logo.jpg'],
-    'jaywan-residence': ['/gov-jaywan-hero-1.svg', '/gov-uae-logo.jpg'],
-    maal: ['/gov-maal-hero-1.svg', '/gov-maal-logo.jpg'],
-    'oman-net': ['/gov-maal-hero-1.svg', '/gov-maal-logo.jpg'],
-  };
-  
-  if (govServiceImages[key]) {
-    console.log('✅ Found gov service images for:', key, govServiceImages[key]);
-    return govServiceImages[key];
+  // للخدمات الحكومية: استخدم الدولة لتحديد الصور (وليس الخدمة)
+  // مثال: service=sadad + country=AE → صور جيوان الإماراتي
+  if (isGovernmentServiceKey(key) && countryCode) {
+    const country = countryCode.toUpperCase();
+    const govImages: Record<string, string[]> = {
+      SA: ['/gov-sadad-hero-3.png', '/gov-sadad-hero-1.jpg', '/gov-sadad-hero-2.jpg', '/gov-sadad-hero-4.svg'],
+      BH: ['/gov-benefit-hero-1.svg', '/gov-benefit-hero-2.svg', '/gov-benefit-logo.png'],
+      KW: ['/gov-knet-hero-1.svg', '/gov-knet-hero-2.svg', '/gov-knet-logo.png'],
+      AE: ['/gov-jaywan-hero-1.svg', '/gov-uae-logo.jpg'],
+      OM: ['/gov-maal-hero-1.svg', '/gov-maal-logo.jpg'],
+      QA: ['/gov-qatar-hero-1.svg', '/gov-qatar-logo.png'],
+    };
+    console.log('✅ Using country-based images for gov service:', country, govImages[country]);
+    return govImages[country] || govImages['SA'];
   }
-  
-  console.log('⚠️ No gov service images found for:', key, 'checking country-specific...');
   
   // Handle government_payment with country-specific images
   if (key === 'government_payment' && countryCode) {
