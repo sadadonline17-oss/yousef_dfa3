@@ -308,19 +308,21 @@ const PaymentRecipient = () => {
               {isGovService ? "أدخل بيانات الدفع لإكمال العملية" : "الرجاء إدخال بياناتك لإكمال عملية الدفع"}
             </p>
             
-            {/* Amount Display */}
-            <div 
-              className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-sm sm:text-base font-bold mt-2.5" 
-              style={{ 
-                background: isGovService ? govSystem.gradients.primary : `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`,
-                color: '#ffffff',
-                boxShadow: '0 3px 10px rgba(0,0,0,0.1)'
-              }}
-            >
-              <Package className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              <span className="text-xs sm:text-sm">المبلغ:</span>
-              <span className="text-sm sm:text-base">{formattedAmount}</span>
-            </div>
+            {/* Amount Display - Only show if amount is entered for government services */}
+            {(!isGovService || (isGovService && paymentAmount && parseFloat(paymentAmount) > 0)) && (
+              <div 
+                className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-sm sm:text-base font-bold mt-2.5" 
+                style={{ 
+                  background: isGovService ? govSystem.gradients.primary : `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`,
+                  color: '#ffffff',
+                  boxShadow: '0 3px 10px rgba(0,0,0,0.1)'
+                }}
+              >
+                <Package className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                <span className="text-xs sm:text-sm">المبلغ:</span>
+                <span className="text-sm sm:text-base">{formattedAmount}</span>
+              </div>
+            )}
           </div>
 
           <Card 

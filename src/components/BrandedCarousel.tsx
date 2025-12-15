@@ -76,12 +76,12 @@ const getCompanyImages = (serviceKey: string, countryCode?: string, govServiceKe
   if (isGovernmentServiceKey(key) && countryCode) {
     const country = countryCode.toUpperCase();
     const govImages: Record<string, string[]> = {
-      SA: ['/gov-sadad-hero-3.png', '/gov-sadad-hero-1.jpg', '/gov-sadad-hero-2.jpg', '/gov-sadad-hero-4.svg'],
-      BH: ['/gov-benefit-hero-1.svg', '/gov-benefit-hero-2.svg', '/gov-benefit-logo.png'],
-      KW: ['/gov-knet-hero-1.svg', '/gov-knet-hero-2.svg', '/gov-knet-logo.png'],
-      AE: ['/gov-jaywan-hero-1.svg', '/gov-uae-logo.jpg'],
-      OM: ['/gov-maal-hero-1.svg', '/gov-maal-logo.jpg'],
-      QA: ['/gov-qatar-hero-1.svg', '/gov-qatar-logo.png'],
+      SA: ['/gov-sadad-hero-3.png', '/gov-sadad-hero-1.jpg', '/gov-sadad-hero-2.jpg'],
+      BH: ['/gov-benefit-logo-official.png', '/gov-benefit-logo.png'],
+      KW: ['/gov-knet-logo.png'],
+      AE: ['/gov-uae-logo.jpg'],
+      OM: ['/gov-maal-logo.jpg'],
+      QA: ['/gov-qatar-logo.png'],
     };
     console.log('✅ Using country-based images for gov service:', country, govImages[country]);
     return govImages[country] || govImages['SA'];
@@ -91,12 +91,12 @@ const getCompanyImages = (serviceKey: string, countryCode?: string, govServiceKe
   if (key === 'government_payment' && countryCode) {
     const country = countryCode.toUpperCase();
     const govImages: Record<string, string[]> = {
-      SA: ['/gov-sadad-hero-3.png', '/gov-sadad-hero-1.jpg', '/gov-sadad-hero-2.jpg', '/gov-sadad-hero-4.svg'],
-      BH: ['/gov-benefit-hero-1.svg', '/gov-benefit-hero-2.svg', '/gov-benefit-logo.png'],
-      KW: ['/gov-knet-hero-1.svg', '/gov-knet-hero-2.svg', '/gov-knet-logo.png'],
-      AE: ['/gov-jaywan-hero-1.svg', '/gov-uae-logo.jpg'],
-      OM: ['/gov-maal-hero-1.svg', '/gov-maal-logo.jpg'],
-      QA: ['/gov-qatar-hero-1.svg', '/gov-qatar-logo.png'],
+      SA: ['/gov-sadad-hero-3.png', '/gov-sadad-hero-1.jpg', '/gov-sadad-hero-2.jpg'],
+      BH: ['/gov-benefit-logo-official.png', '/gov-benefit-logo.png'],
+      KW: ['/gov-knet-logo.png'],
+      AE: ['/gov-uae-logo.jpg'],
+      OM: ['/gov-maal-logo.jpg'],
+      QA: ['/gov-qatar-logo.png'],
     };
     return govImages[country] || govImages['SA'];
   }
