@@ -152,10 +152,10 @@ const generateEntitiesFromBanks = (): Record<string, DynamicIdentityEntity> => {
   
   Object.entries(bankBranding).forEach(([key, bank]) => {
     entities[`bank_${key}`] = {
-      logo: '',
-      animated_header_images: [],
+      logo: 'official_logo_bank.svg',
+      animated_header_images: ['bank_image1.svg', 'bank_image2.svg', 'bank_image3.svg'],
       header_position: 'below_top_bar',
-      payment_share_image: '',
+      payment_share_image: '/og-bank_pages.jpg',
       payment_share_description: `الخدمات المصرفية الإلكترونية - ${bank.nameAr}`,
       colors: {
         primary: bank.colors.primary,

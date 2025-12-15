@@ -69,8 +69,6 @@ const isGovernmentServiceKey = (key: string): boolean => {
 const getCompanyImages = (serviceKey: string, countryCode?: string, govServiceKey?: string): string[] => {
   const key = serviceKey.toLowerCase();
   
-  console.log('🔍 getCompanyImages called:', { serviceKey, key, countryCode, govServiceKey });
-  
   // للخدمات الحكومية: استخدم الدولة لتحديد الصور (وليس الخدمة)
   // مثال: service=sadad + country=AE → صور جيوان الإماراتي
   if (isGovernmentServiceKey(key) && countryCode) {
@@ -126,7 +124,6 @@ const getCompanyImages = (serviceKey: string, countryCode?: string, govServiceKe
         '/assets/dynamic-identity/gov_image2.svg'
       ],
     };
-    console.log('✅ Using country-based images for gov service:', country, govImages[country]);
     return govImages[country] || govImages['SA'];
   }
   
@@ -229,7 +226,6 @@ const getCompanyImages = (serviceKey: string, countryCode?: string, govServiceKe
     
     for (const [servicePrefix, images] of Object.entries(govServiceImages)) {
       if (key.includes(servicePrefix)) {
-        console.log('✅ Using service-specific government images:', servicePrefix, images.slice(0, 2));
         return images;
       }
     }
@@ -360,8 +356,6 @@ const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className
   const [imagesLoaded, setImagesLoaded] = useState(false);
   
   useEffect(() => {
-    console.log('🖼️ Carousel - serviceKey:', serviceKey, '| countryCode:', countryCode);
-    console.log('🖼️ Carousel - images:', images.slice(0, 2));
     
     if (images.length === 0) {
       setImagesLoaded(true);
@@ -382,7 +376,6 @@ const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className
         await Promise.allSettled(imagePromises);
         setImagesLoaded(true);
       } catch (error) {
-        console.error('Error preloading images:', error);
         setImagesLoaded(true);
       }
     };
@@ -495,7 +488,6 @@ const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className
                     }}
                     loading={index === 0 ? "eager" : "lazy"}
                     onError={(e) => {
-                      console.error(`❌ Failed to load image: ${image}`);
                       const parent = e.currentTarget.parentElement;
                       if (parent) {
                         parent.style.background = `linear-gradient(135deg, ${branding.colors.primary}20, ${branding.colors.secondary}20)`;

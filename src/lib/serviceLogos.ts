@@ -32,13 +32,13 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "فيدكس - شحن دولي موثوق وسريع | توصيل في 24-48 ساعة | تتبع حي لشحنتك | دفع COD آمن"
   },
   ups: {
-    logo: "/ups-logo.png",
+    logo: "/logos-official/ups-logo-official.svg",
     colors: {
       primary: "#351C15",
       secondary: "#FFB500"
     },
-    ogImage: "/og-ups.jpg",
-    heroImage: "/og-ups.jpg",
+    ogImage: "/ups-hero-official.png",
+    heroImage: "/ups-hero-official.png",
     description: "يو بي إس - حلول شحن عالمية متكاملة | توصيل سريع وموثوق | تتبع شحنتك في أي وقت | دفع COD آمن"
   },
   empost: {
@@ -54,7 +54,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
   
   // Saudi Arabia - السعودية
   smsa: {
-    logo: "/smsa-logo.svg",
+    logo: "/logos-official/smsa-logo-official.png",
     colors: {
       primary: "#662D91",
       secondary: "#FF6600"
@@ -64,7 +64,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "سمسا إكسبرس - أكبر شركة شحن سعودية | توصيل في نفس اليوم للمدن الرئيسية | تغطية شاملة للمملكة | دفع COD فوري"
   },
   zajil: {
-    logo: "/zajil-logo-official.png",
+    logo: "/logos-official/zajil-logo-official.svg",
     colors: {
       primary: "#1C4587",
       secondary: "#FF9900"
@@ -74,7 +74,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "زاجل الجزيرة - شحن سعودي متخصص | توصيل سريع داخل المملكة | خدمة عملاء مميزة | دفع COD آمن"
   },
   naqel: {
-    logo: "/og-naqel.jpg",
+    logo: "/logos-official/naqel-logo-official-en.jpg",
     colors: {
       primary: "#E61838",
       secondary: "#002E60"
@@ -84,7 +84,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "ناقل إكسبرس - حلول شحن متطورة | توصيل فائق السرعة في جميع أنحاء المملكة | تتبع مباشر 24/7 | دفع COD مضمون"
   },
   saudipost: {
-    logo: "/saudipost-logo-official.png",
+    logo: "/logos-official/saudi-post-logo-official.svg",
     colors: {
       primary: "#006C35",
       secondary: "#FFB81C"
@@ -140,7 +140,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
   
   // Oman - عمان
   omanpost: {
-    logo: "/og-omanpost.jpg",
+    logo: "/logos-official/oman-post-logo-official.png",
     colors: {
       primary: "#ED1C24",
       secondary: "#009639"
@@ -184,7 +184,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
 
   // Real GCC Shipping Companies - Additional
   albaraka: {
-    logo: "/og-albaraka.jpg",
+    logo: "/logos-official/albaraka-logo-official.svg",
     colors: {
       primary: "#D89A00",
       secondary: "#FFFFFF"
@@ -194,7 +194,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "خدمات شحن وبنكية متكاملة تابعة لمجموعة البركة، حلول مالية ولوجستية متكاملة في الخليج"
   },
   alfuttaim: {
-    logo: "/og-alfuttaim.jpg",
+    logo: "/logos-official/alfuttaim-logo-official.svg",
     colors: {
       primary: "#00559B",
       secondary: "#FFFFFF"
@@ -234,7 +234,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "مزود خدمات شحن دولي ومحلي متخصص في الشحن البحري والجوي وحلول الشحن للمستوردين والمصدرين"
   },
   hellmann: {
-    logo: "/og-hellmann.jpg",
+    logo: "/logos-official/hellmann-logo-official.png",
     colors: {
       primary: "#0C4DA2",
       secondary: "#FFFFFF"
@@ -254,7 +254,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "حلول شحن ولوجستيات متطورة تشمل الشحن الجوي، البحري، والنقل البري بالإضافة إلى تخزين وإدارة سلسلة الإمداد"
   },
   agility: {
-    logo: "/og-agility-temp.jpg",
+    logo: "/logos-official/agility-logo-official.png",
     colors: {
       primary: "#003A63",
       secondary: "#FFFFFF"
@@ -286,7 +286,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
 
   // Government Payment Services - خدمات الدفع الحكومية
   sadad: {
-    logo: "/sadad-logo-official-new.png",
+    logo: "/logos-official/sadad-logo-official-en.png",
     colors: {
       primary: "#F58220",
       secondary: "#E67317"
@@ -296,7 +296,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "سداد - نظام المدفوعات الوطني السعودي للخدمات الحكومية والفواتير"
   },
   benefit: {
-    logo: "/benefit-logo-official.png",
+    logo: "/logos-official/benefit-logo-official-white.png",
     colors: {
       primary: "#CE1126",
       secondary: "#D32027"
@@ -306,7 +306,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "بنفت - الشبكة الإلكترونية البحرينية للمعاملات المالية"
   },
   knet: {
-    logo: "/gov-knet-logo.png",
+    logo: "/logos-official/knet-logo-official.svg",
     colors: {
       primary: "#007A3D",
       secondary: "#CE1126"
@@ -350,13 +350,13 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
 export const getServiceBranding = (serviceName: string) => {
   const key = serviceName.toLowerCase();
   return serviceLogos[key] || {
-    logo: "",
+    logo: "/placeholder.svg",
     colors: {
       primary: "#0EA5E9",
       secondary: "#06B6D4"
     },
     ogImage: "/og-aramex.jpg",
     heroImage: "/og-aramex.jpg",
-    description: "خدمة شحن موثوقة"
+    description: "خدمة موثوقة ومعتمدة"
   };
 };
