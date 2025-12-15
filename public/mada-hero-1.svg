@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 514">
+  <defs>
+    <linearGradient id="mada_bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00AEEF"/>
+      <stop offset="50%" style="stop-color:#0088CC"/>
+      <stop offset="100%" style="stop-color:#006699"/>
+    </linearGradient>
+    <linearGradient id="mada_accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#7CB342"/>
+      <stop offset="100%" style="stop-color:#558B2F"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="514" fill="url(#mada_bg)"/>
+  
+  <!-- Decorative Elements -->
+  <circle cx="1000" cy="100" r="120" fill="white" opacity="0.05"/>
+  <circle cx="150" cy="400" r="80" fill="white" opacity="0.05"/>
+  
+  <!-- Mada Card -->
+  <g transform="translate(130, 120)">
+    <rect x="0" y="0" width="380" height="240" rx="20" fill="white" opacity="0.95"/>
+    <rect x="15" y="15" width="350" height="210" rx="15" fill="url(#mada_bg)"/>
+    
+    <!-- Mada Logo Style (Cyan + Green bars) -->
+    <rect x="40" y="80" width="80" height="100" rx="5" fill="#00AEEF"/>
+    <rect x="130" y="80" width="80" height="100" rx="5" fill="#7CB342"/>
+    
+    <!-- Card Text -->
+    <text x="230" y="130" font-family="Cairo, sans-serif" font-size="36" font-weight="bold" fill="white">
+      مدى
+    </text>
+    <text x="230" y="165" font-family="Arial, sans-serif" font-size="28" fill="white" opacity="0.9">
+      mada
+    </text>
+    
+    <!-- Chip -->
+    <rect x="260" y="40" width="55" height="45" rx="6" fill="#FFD700" opacity="0.95"/>
+    
+    <!-- Contactless -->
+    <g transform="translate(330, 40)">
+      <path d="M0,15 Q5,5 10,15" fill="none" stroke="white" stroke-width="2.5" opacity="0.7"/>
+      <path d="M5,15 Q10,8 15,15" fill="none" stroke="white" stroke-width="2.5" opacity="0.7"/>
+      <path d="M10,15 Q15,11 20,15" fill="none" stroke="white" stroke-width="2.5" opacity="0.7"/>
+    </g>
+  </g>
+  
+  <!-- Text Content -->
+  <text x="600" y="140" font-family="Cairo, sans-serif" font-size="62" font-weight="bold" fill="white">
+    مدى - mada
+  </text>
+  <text x="600" y="200" font-family="Cairo, sans-serif" font-size="28" fill="white" opacity="0.95">
+    شبكة المدفوعات الوطنية السعودية
+  </text>
+  <text x="600" y="260" font-family="Cairo, sans-serif" font-size="22" fill="white" opacity="0.9">
+    ✓ أكثر من 1.7 مليون نقطة بيع
+  </text>
+  <text x="600" y="300" font-family="Cairo, sans-serif" font-size="22" fill="white" opacity="0.9">
+    ✓ 8.9 مليار عملية في 2023
+  </text>
+  <text x="600" y="340" font-family="Cairo, sans-serif" font-size="22" fill="white" opacity="0.9">
+    ✓ 47.7 مليون بطاقة مدى
+  </text>
+  <text x="600" y="380" font-family="Cairo, sans-serif" font-size="22" fill="white" opacity="0.9">
+    ✓ دعم Apple Pay ومدى Pay
+  </text>
+  <text x="600" y="420" font-family="Cairo, sans-serif" font-size="22" fill="white" opacity="0.9">
+    ✓ معتمد من البنك المركزي السعودي
+  </text>
+</svg>
