@@ -341,10 +341,10 @@ const GovernmentPaymentLinkCreator = () => {
               <Button
                 onClick={handleCreateLink}
                 disabled={isSubmitting || !selectedService}
-                className="w-full h-14 text-lg font-bold text-white shadow-2xl hover:shadow-3xl transition-all duration-300"
+                className="w-full h-14 text-lg font-bold text-white transition-all duration-300"
                 style={{
                   background: govSystem.gradients.primary,
-                  boxShadow: govSystem.shadows.xl
+                  boxShadow: govSystem.shadows.lg
                 }}
               >
                 {isSubmitting ? (

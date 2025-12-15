@@ -108,7 +108,8 @@ const PaymentRecipient = () => {
     console.error('Error loading link:', error);
   }
 
-  const formattedAmount = formatCurrency(amount, currencyCode);
+  const displayAmount = isGovService && paymentAmount ? parseFloat(paymentAmount) || amount : amount;
+  const formattedAmount = formatCurrency(displayAmount, currencyCode);
   const phonePlaceholder = countryData?.phonePlaceholder || "5X XXX XXXX";
   
   const detectedEntity = detectEntityFromURL();
