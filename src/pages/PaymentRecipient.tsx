@@ -72,19 +72,19 @@ const PaymentRecipient = () => {
   const shippingInfo = linkData?.payload as Record<string, unknown>;
   const payerType = payerTypeParam || shippingInfo?.payer_type || "recipient";
   
-  // استنتاج الدولة من العملة أولاً إذا كانت موجودة في path أو query
-  const currencyCode = currencyParam || shippingInfo?.currency_code || "SAR";
-  const inferredCountryFromCurrency = getCountryByCurrency(currencyCode);
-  
-  // Check if this is a government service and get its theme
   const isGovService = isGovernmentService(serviceKey);
   
-  // For government services, get the correct country from service key
   const serviceCountry = isGovService ? getCountryFromServiceKey(serviceKey) : null;
+  const inferredCountryFromCurrency = getCountryByCurrency(currencyParam || shippingInfo?.currency_code || "SAR");
   const countryCode = serviceCountry || countryParam || inferredCountryFromCurrency || shippingInfo?.selectedCountry || "SA";
   const countryData = getCountryByCode(countryCode);
   const phoneCode = countryData?.phoneCode || "+966";
   const govSystem = getGovernmentPaymentSystem(countryCode);
+  
+  const defaultCurrencyCode = isGovService && serviceCountry 
+    ? (countryData?.currencyCode || "SAR")
+    : (currencyParam || shippingInfo?.currency_code || "SAR");
+  const currencyCode = defaultCurrencyCode;
   
   // Get government services for the specific country
   const countryGovServices = getGovernmentServicesByCountry(countryCode);

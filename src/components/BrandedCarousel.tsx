@@ -223,7 +223,6 @@ const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className
   
   let images: string[] = [];
   
-  // Priority 1: Get images from serviceKey (for government services)
   if (serviceKey) {
     const localImages = getCompanyImages(serviceKey, countryCode, govServiceKey);
     if (localImages.length > 0) {
@@ -231,7 +230,6 @@ const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className
     }
   }
   
-  // Priority 2: Try detectEntityFromURL only if no images found
   if (images.length === 0) {
     const detectedEntity = detectEntityFromURL();
     if (detectedEntity) {
@@ -242,7 +240,6 @@ const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className
     }
   }
   
-  // Priority 3: Try entity images from key as fallback
   if (images.length === 0 && serviceKey) {
     const entityImagesFromKey = getEntityHeaderImages(serviceKey);
     if (entityImagesFromKey.length > 0) {
@@ -281,7 +278,7 @@ const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className
     };
     
     preloadImages();
-  }, [images, serviceKey, detectedEntity]);
+  }, [images, serviceKey, countryCode]);
   
   const autoplayRef = useRef(
     Autoplay({
