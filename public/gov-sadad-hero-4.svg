@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 514">
+  <defs>
+    <linearGradient id="sadad_gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F58220"/>
+      <stop offset="100%" style="stop-color:#E67317"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="514" fill="url(#sadad_gradient)"/>
+  
+  <!-- Saudi Arabia Map Pattern -->
+  <g transform="translate(100, 80)" opacity="0.1">
+    <path d="M0,200 Q50,150 100,180 T200,200 Q250,220 300,180 T400,200" fill="none" stroke="white" stroke-width="2"/>
+  </g>
+  
+  <!-- Payment Card Icon -->
+  <g transform="translate(150, 150)">
+    <rect x="0" y="0" width="350" height="220" rx="20" fill="white" opacity="0.95"/>
+    <rect x="0" y="40" width="350" height="60" fill="#1A1A1A"/>
+    <rect x="30" y="130" width="120" height="25" rx="5" fill="#F58220"/>
+    <rect x="30" y="170" width="180" height="15" rx="3" fill="#E0E0E0"/>
+    <circle cx="300" cy="150" r="25" fill="#F58220" opacity="0.3"/>
+    <circle cx="320" cy="150" r="25" fill="#E67317" opacity="0.3"/>
+  </g>
+  
+  <!-- Text Content -->
+  <text x="600" y="180" font-family="Cairo, sans-serif" font-size="56" font-weight="bold" fill="white">
+    سداد - SADAD
+  </text>
+  <text x="600" y="240" font-family="Cairo, sans-serif" font-size="28" fill="white" opacity="0.95">
+    نظام المدفوعات الوطني
+  </text>
+  <text x="600" y="290" font-family="Cairo, sans-serif" font-size="22" fill="white" opacity="0.85">
+    ✓ دفع آمن ومضمون
+  </text>
+  <text x="600" y="330" font-family="Cairo, sans-serif" font-size="22" fill="white" opacity="0.85">
+    ✓ متاح على مدار الساعة
+  </text>
+  <text x="600" y="370" font-family="Cairo, sans-serif" font-size="22" fill="white" opacity="0.85">
+    ✓ جميع البنوك السعودية
+  </text>
+  
+  <!-- SAMA Logo Area -->
+  <rect x="900" y="400" width="250" height="80" rx="10" fill="white" opacity="0.2"/>
+  <text x="1025" y="450" font-family="Arial, sans-serif" font-size="16" fill="white" text-anchor="middle">
+    Saudi Central Bank
+  </text>
+</svg>

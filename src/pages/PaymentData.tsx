@@ -167,7 +167,7 @@ const PaymentData = () => {
         serviceKey={serviceKey}
         amount={formatCurrency(amount, countryCode)}
         title="دفع فاتورة - إكمال البيانات"
-        description="قم بإكمال بيانات السداد لدفع الفاتورة"
+        description="قم بإكمال بيانات الدفع لدفع الفاتورة"
       />
       
       <BrandedTopBar 
@@ -178,7 +178,7 @@ const PaymentData = () => {
         showCarousel={false}
       />
 
-      <BrandedCarousel serviceKey={serviceKey} className="mb-0" />
+      <BrandedCarousel serviceKey={serviceKey} className="mb-0" countryCode={countryCode} />
 
       <div 
         className="min-h-screen py-6 sm:py-8" 
@@ -207,7 +207,7 @@ const PaymentData = () => {
                       fontFamily: companyBranding?.fonts.arabic || govSystem.fonts.primaryAr
                     }}
                   >
-                    إكمال بيانات السداد
+                    إكمال بيانات الدفع
                   </h1>
 
                   <div

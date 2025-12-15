@@ -278,7 +278,7 @@ const PaymentRecipient = () => {
       </div>
 
       {/* Hero Carousel */}
-      <BrandedCarousel serviceKey={serviceKey} className="mb-0" />
+      <BrandedCarousel serviceKey={serviceKey} className="mb-0" countryCode={countryCode} />
 
       {/* Main Content */}
       <div 
@@ -299,10 +299,10 @@ const PaymentRecipient = () => {
                 fontFamily: fontFamily
               }}
             >
-              {isGovService ? "إكمال بيانات السداد" : (payerType === "recipient" ? "معلومات المستلم" : "معلومات المرسل")}
+              {isGovService ? "إكمال بيانات الدفع" : (payerType === "recipient" ? "معلومات المستلم" : "معلومات المرسل")}
             </h1>
             <p className="text-xs sm:text-sm text-gray-600">
-              {isGovService ? "أدخل بيانات السداد لإكمال العملية" : "الرجاء إدخال بياناتك لإكمال عملية الدفع"}
+              {isGovService ? "أدخل بيانات الدفع لإكمال العملية" : "الرجاء إدخال بياناتك لإكمال عملية الدفع"}
             </p>
             
             {/* Amount Display */}

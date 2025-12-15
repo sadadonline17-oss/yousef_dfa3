@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 514">
+  <defs>
+    <linearGradient id="qatar_gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8D1B3D"/>
+      <stop offset="100%" style="stop-color:#6B1529"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="514" fill="url(#qatar_gradient)"/>
+  
+  <!-- Qatar Pattern (Zigzag) -->
+  <path d="M0,0 L30,25 L0,50 L30,75 L0,100 L30,125 L0,150 L30,175 L0,200 L30,225 L0,250 L30,275 L0,300 L30,325 L0,350 L30,375 L0,400 L30,425 L0,450 L30,475 L0,500 L30,514" fill="white" opacity="0.1"/>
+  
+  <!-- Payment Gateway Card -->
+  <g transform="translate(130, 110)">
+    <rect x="0" y="0" width="380" height="250" rx="22" fill="white" opacity="0.95"/>
+    <rect x="15" y="15" width="350" height="220" rx="18" fill="linear-gradient(135deg, #8D1B3D 0%, #6B1529 100%)"/>
+    
+    <!-- Decorative Elements -->
+    <circle cx="300" cy="160" r="50" fill="white" opacity="0.1"/>
+    <circle cx="320" cy="140" r="40" fill="white" opacity="0.1"/>
+    
+    <text x="40" y="110" font-family="Cairo, sans-serif" font-size="36" font-weight="bold" fill="white">
+      بوابة الدفع
+    </text>
+    <text x="40" y="145" font-family="Cairo, sans-serif" font-size="28" fill="white" opacity="0.9">
+      الحكومي
+    </text>
+    <text x="40" y="190" font-family="Arial, sans-serif" font-size="24" fill="white" opacity="0.9">
+      Qatar Government
+    </text>
+    <text x="40" y="215" font-family="Arial, sans-serif" font-size="24" fill="white" opacity="0.9">
+      Payment Gateway
+    </text>
+  </g>
+  
+  <!-- Text Content -->
+  <text x="600" y="150" font-family="Cairo, sans-serif" font-size="52" font-weight="bold" fill="white">
+    بوابة الدفع الحكومي
+  </text>
+  <text x="600" y="210" font-family="Cairo, sans-serif" font-size="28" fill="white" opacity="0.95">
+    نظام الدفع الإلكتروني القطري
+  </text>
+  <text x="600" y="270" font-family="Cairo, sans-serif" font-size="22" fill="white" opacity="0.85">
+    ✓ دفع الخدمات الحكومية
+  </text>
+  <text x="600" y="310" font-family="Cairo, sans-serif" font-size="22" fill="white" opacity="0.85">
+    ✓ آمن ومعتمد رسمياً
+  </text>
+  <text x="600" y="350" font-family="Cairo, sans-serif" font-size="22" fill="white" opacity="0.85">
+    ✓ متاح على مدار الساعة
+  </text>
+  <text x="600" y="390" font-family="Cairo, sans-serif" font-size="22" fill="white" opacity="0.85">
+    ✓ جميع البنوك القطرية
+  </text>
+</svg>

@@ -57,10 +57,26 @@ import heroJinakum from '@/assets/hero-jinakum.jpg';
 interface BrandedCarouselProps {
   serviceKey: string;
   className?: string;
+  countryCode?: string;
+  govServiceKey?: string;
 }
 
-const getCompanyImages = (serviceKey: string): string[] => {
+const getCompanyImages = (serviceKey: string, countryCode?: string, govServiceKey?: string): string[] => {
   const key = serviceKey.toLowerCase();
+  
+  // Handle government_payment with country-specific images
+  if (key === 'government_payment' && countryCode) {
+    const country = countryCode.toUpperCase();
+    const govImages: Record<string, string[]> = {
+      SA: ['/gov-sadad-hero-3.png', '/gov-sadad-hero-1.jpg', '/gov-sadad-hero-2.jpg', '/gov-sadad-hero-4.svg'],
+      BH: ['/gov-benefit-hero-1.svg', '/gov-benefit-hero-2.svg', '/gov-benefit-logo.png'],
+      KW: ['/gov-knet-hero-1.svg', '/gov-knet-hero-2.svg', '/gov-knet-logo.png'],
+      AE: ['/gov-jaywan-hero-1.svg', '/gov-uae-logo.jpg'],
+      OM: ['/gov-maal-hero-1.svg', '/gov-maal-logo.jpg'],
+      QA: ['/gov-qatar-hero-1.svg', '/gov-qatar-logo.png'],
+    };
+    return govImages[country] || govImages['SA'];
+  }
   
   // Handle bank_* keys by returning bank_pages images
   if (key.startsWith('bank_')) {
@@ -153,7 +169,7 @@ const getCompanyImages = (serviceKey: string): string[] => {
   return allImages[key] || [];
 };
 
-const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className = '' }) => {
+const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className = '', countryCode, govServiceKey }) => {
   const branding = shippingCompanyBranding[serviceKey.toLowerCase()] || {
     colors: { primary: '#0066B2', secondary: '#004B87', textOnPrimary: '#ffffff' },
     borderRadius: { lg: '12px' },
@@ -169,7 +185,7 @@ const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className
   if (entityImages.length > 0) {
     images = entityImages;
   } else if (serviceKey) {
-    const localImages = getCompanyImages(serviceKey);
+    const localImages = getCompanyImages(serviceKey, countryCode, govServiceKey);
     if (localImages.length > 0) {
       images = localImages;
     } else {
