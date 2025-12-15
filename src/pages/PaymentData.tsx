@@ -439,8 +439,12 @@ const PaymentData = () => {
                   size="lg"
                   className="w-full text-sm sm:text-lg py-5 sm:py-7 text-white font-bold shadow-2xl hover:shadow-3xl transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                   style={{
-                    background: `linear-gradient(135deg, ${branding.colors.primary}, ${branding.colors.secondary})`,
-                    boxShadow: companyBranding?.shadows.xl || `0 20px 60px -15px ${branding.colors.primary}90`,
+                    background: serviceKey === 'government_payment' 
+                      ? govSystem.gradients.primary 
+                      : `linear-gradient(135deg, ${branding.colors.primary}, ${branding.colors.secondary})`,
+                    boxShadow: companyBranding?.shadows.xl || (serviceKey === 'government_payment' 
+                      ? govSystem.shadows.lg 
+                      : `0 20px 60px -15px ${branding.colors.primary}90`),
                     fontFamily: companyBranding?.fonts.arabic || govSystem.fonts.primaryAr
                   }}
                   disabled={isSubmitting || !customerName || !customerEmail || !customerPhone || !invoiceNumber || !selectedService || !paymentAmount}
