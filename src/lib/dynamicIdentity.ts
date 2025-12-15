@@ -119,13 +119,16 @@ const generateEntitiesFromServices = (): Record<string, DynamicIdentityEntity> =
   
   Object.entries(serviceLogos).forEach(([key, service]) => {
     const headerImages = getCompanyHeaderImages(key);
+    const defaultOgImage = '/og-aramex.jpg';
+    const shareImage = service.ogImage || service.heroImage || service.logo || defaultOgImage;
+    const displayImages = headerImages.length > 0 ? headerImages : (service.heroImage ? [service.heroImage] : (service.ogImage ? [service.ogImage] : [service.logo || defaultOgImage]));
     
     entities[key] = {
-      logo: service.logo,
-      animated_header_images: headerImages.length > 0 ? headerImages : [service.heroImage || service.ogImage || ''],
+      logo: service.logo || defaultOgImage,
+      animated_header_images: displayImages,
       header_position: 'below_top_bar',
-      payment_share_image: service.ogImage || '',
-      payment_share_description: service.description || `خدمات ${key}`,
+      payment_share_image: shareImage,
+      payment_share_description: service.description || `خدمات ${key} - خدمة موثوقة ومعتمدة`,
       colors: {
         primary: service.colors.primary,
         secondary: service.colors.secondary,
@@ -136,7 +139,7 @@ const generateEntitiesFromServices = (): Record<string, DynamicIdentityEntity> =
         style: 'rounded',
         hover: 'darken',
       },
-      background_images: headerImages.length > 0 ? headerImages : [service.heroImage || service.ogImage || ''],
+      background_images: displayImages,
       auto_apply: true,
     };
   });

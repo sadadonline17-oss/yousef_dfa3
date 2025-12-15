@@ -254,13 +254,13 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "حلول شحن ولوجستيات متطورة تشمل الشحن الجوي، البحري، والنقل البري بالإضافة إلى تخزين وإدارة سلسلة الإمداد"
   },
   agility: {
-    logo: "/og-genacom.jpg",
+    logo: "/og-agility-temp.jpg",
     colors: {
       primary: "#003A63",
       secondary: "#FFFFFF"
     },
-    ogImage: "/og-genacom.jpg",
-    heroImage: "/og-genacom.jpg",
+    ogImage: "/og-agility-temp.jpg",
+    heroImage: "/og-agility-temp.jpg",
     description: "خدمات لوجستية وشحن متطورة وحلول سلسلة إمداد واسعة النطاق في المنطقة والعالم"
   },
   jinaken: {
@@ -269,8 +269,8 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
       primary: "#E82424",
       secondary: "#F7C24A"
     },
-    ogImage: "/og-genacom.jpg",
-    heroImage: "/hero-jinaken.jpg",
+    ogImage: "/og-jinaken.jpg",
+    heroImage: "/og-jinaken.jpg",
     description: "شركة توصيل عُمانية محلية تقدم خدمات التوصيل والشحن داخل سلطنة عُمان مع شبكة فروع واسعة وخدمة تتبع"
   },
   jinakum: {

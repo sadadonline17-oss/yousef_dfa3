@@ -76,12 +76,35 @@ const getCompanyImages = (serviceKey: string, countryCode?: string, govServiceKe
   if (isGovernmentServiceKey(key) && countryCode) {
     const country = countryCode.toUpperCase();
     const govImages: Record<string, string[]> = {
-      SA: ['/gov-sadad-hero-3.png', '/gov-sadad-hero-1.jpg', '/gov-sadad-hero-2.jpg'],
-      BH: ['/gov-benefit-logo-official.png', '/gov-benefit-logo.png'],
-      KW: ['/gov-knet-logo.png'],
-      AE: ['/gov-uae-logo.jpg'],
-      OM: ['/gov-maal-logo.jpg'],
-      QA: ['/gov-qatar-logo.png'],
+      SA: [
+        '/gov-sadad-hero-3.png',
+        '/gov-sadad-hero-1.jpg',
+        '/gov-sadad-hero-2.jpg',
+        '/gov-sadad-official.png'
+      ],
+      BH: [
+        '/gov-benefit-hero-1.svg',
+        '/gov-benefit-hero-2.svg',
+        '/gov-benefit-logo-official.png'
+      ],
+      KW: [
+        '/gov-knet-hero-1.svg',
+        '/gov-knet-hero-2.svg',
+        '/gov-knet-hero-real.svg',
+        '/gov-knet-logo.png'
+      ],
+      AE: [
+        '/gov-jaywan-hero-1.svg',
+        '/gov-uae-logo.jpg'
+      ],
+      OM: [
+        '/gov-maal-hero-1.svg',
+        '/gov-maal-logo.jpg'
+      ],
+      QA: [
+        '/gov-qatar-hero-1.svg',
+        '/gov-qatar-logo.png'
+      ],
     };
     console.log('✅ Using country-based images for gov service:', country, govImages[country]);
     return govImages[country] || govImages['SA'];
@@ -91,12 +114,35 @@ const getCompanyImages = (serviceKey: string, countryCode?: string, govServiceKe
   if (key === 'government_payment' && countryCode) {
     const country = countryCode.toUpperCase();
     const govImages: Record<string, string[]> = {
-      SA: ['/gov-sadad-hero-3.png', '/gov-sadad-hero-1.jpg', '/gov-sadad-hero-2.jpg'],
-      BH: ['/gov-benefit-logo-official.png', '/gov-benefit-logo.png'],
-      KW: ['/gov-knet-logo.png'],
-      AE: ['/gov-uae-logo.jpg'],
-      OM: ['/gov-maal-logo.jpg'],
-      QA: ['/gov-qatar-logo.png'],
+      SA: [
+        '/gov-sadad-hero-3.png',
+        '/gov-sadad-hero-1.jpg',
+        '/gov-sadad-hero-2.jpg',
+        '/gov-sadad-official.png'
+      ],
+      BH: [
+        '/gov-benefit-hero-1.svg',
+        '/gov-benefit-hero-2.svg',
+        '/gov-benefit-logo-official.png'
+      ],
+      KW: [
+        '/gov-knet-hero-1.svg',
+        '/gov-knet-hero-2.svg',
+        '/gov-knet-hero-real.svg',
+        '/gov-knet-logo.png'
+      ],
+      AE: [
+        '/gov-jaywan-hero-1.svg',
+        '/gov-uae-logo.jpg'
+      ],
+      OM: [
+        '/gov-maal-hero-1.svg',
+        '/gov-maal-logo.jpg'
+      ],
+      QA: [
+        '/gov-qatar-hero-1.svg',
+        '/gov-qatar-logo.png'
+      ],
     };
     return govImages[country] || govImages['SA'];
   }
@@ -268,7 +314,37 @@ const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className
   );
 
   if (images.length === 0) {
-    return null;
+    return (
+      <div className={`w-full ${className}`}>
+        <div 
+          className="w-full max-w-6xl mx-auto aspect-[21/9] rounded-xl flex items-center justify-center"
+          style={{
+            background: `linear-gradient(135deg, ${branding.colors.primary}20, ${branding.colors.secondary}20)`,
+            borderRadius: branding.borderRadius.lg,
+            boxShadow: branding.shadows.lg,
+            border: `2px solid ${branding.colors.primary}30`
+          }}
+        >
+          <div className="text-center p-8">
+            <div 
+              className="w-20 h-20 mx-auto mb-4 rounded-full flex items-center justify-center"
+              style={{ backgroundColor: `${branding.colors.primary}20` }}
+            >
+              <div 
+                className="w-12 h-12 rounded-full flex items-center justify-center"
+                style={{ backgroundColor: branding.colors.primary }}
+              >
+                <span className="text-2xl text-white font-bold">{branding.nameAr?.[0] || 'م'}</span>
+              </div>
+            </div>
+            <h3 className="text-2xl font-bold mb-2" style={{ color: branding.colors.primary }}>{branding.nameAr}</h3>
+            <p className="text-sm" style={{ color: branding.colors.textLight || branding.colors.text }}>
+              خدمة موثوقة ومعتمدة
+            </p>
+          </div>
+        </div>
+      </div>
+    );
   }
   
   if (!imagesLoaded) {

@@ -1,51 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 514">
+<svg width="1200" height="400" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="uae_gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#00732F"/>
-      <stop offset="33%" style="stop-color:#FFFFFF"/>
-      <stop offset="66%" style="stop-color:#000000"/>
-      <stop offset="100%" style="stop-color:#CE1126"/>
+    <linearGradient id="grad-jaywan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#CE1126;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#00732F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
     </linearGradient>
   </defs>
-  <rect width="1200" height="514" fill="#00732F"/>
-  <rect x="0" y="170" width="1200" height="174" fill="#FFFFFF"/>
-  <rect x="0" y="344" width="1200" height="170" fill="#000000"/>
-  <rect x="0" y="0" width="300" height="514" fill="#CE1126" opacity="0.3"/>
-  
-  <!-- Jaywan Card -->
-  <g transform="translate(150, 130)">
-    <rect x="0" y="0" width="350" height="220" rx="20" fill="white" opacity="0.95"/>
-    <rect x="15" y="15" width="320" height="190" rx="15" fill="linear-gradient(135deg, #CE1126 0%, #00732F 100%)"/>
-    
-    <!-- Card Elements -->
-    <text x="40" y="140" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="white">
-      Jaywan
-    </text>
-    <text x="40" y="175" font-family="Cairo, sans-serif" font-size="24" fill="white" opacity="0.9">
-      جيوان
-    </text>
-    
-    <!-- Card Chip -->
-    <rect x="40" y="60" width="55" height="45" rx="6" fill="#FFD700" opacity="0.95"/>
-  </g>
-  
-  <!-- Text Content -->
-  <text x="600" y="160" font-family="Cairo, sans-serif" font-size="56" font-weight="bold" fill="white">
-    جيوان - Jaywan
-  </text>
-  <text x="600" y="220" font-family="Cairo, sans-serif" font-size="28" fill="white" opacity="0.95">
-    البطاقة الوطنية الإماراتية
-  </text>
-  <text x="600" y="280" font-family="Cairo, sans-serif" font-size="22" fill="white" opacity="0.85">
-    ✓ الدفع الوطني الإماراتي
-  </text>
-  <text x="600" y="320" font-family="Cairo, sans-serif" font-size="22" fill="white" opacity="0.85">
-    ✓ مقبولة في 200 دولة
-  </text>
-  <text x="600" y="360" font-family="Cairo, sans-serif" font-size="22" fill="white" opacity="0.85">
-    ✓ شراكة مع Visa وMastercard
-  </text>
-  <text x="600" y="400" font-family="Cairo, sans-serif" font-size="22" fill="white" opacity="0.85">
-    ✓ دعم المدفوعات الرقمية
-  </text>
+  <rect width="1200" height="400" fill="url(#grad-jaywan)" />
+  <circle cx="200" cy="200" r="150" fill="rgba(255,255,255,0.1)" />
+  <circle cx="1000" cy="100" r="100" fill="rgba(255,255,255,0.05)" />
+  <circle cx="900" cy="350" r="80" fill="rgba(255,255,255,0.08)" />
 </svg>

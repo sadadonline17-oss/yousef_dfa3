@@ -1,57 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 514">
+<svg width="1200" height="400" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="knet_gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#007A3D"/>
-      <stop offset="100%" style="stop-color:#005028"/>
+    <linearGradient id="grad-knet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#007A3D;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#CE1126;stop-opacity:1" />
     </linearGradient>
   </defs>
-  <rect width="1200" height="514" fill="url(#knet_gradient2)"/>
-  
-  <!-- Kuwait Flag Pattern (subtle) -->
-  <rect x="0" y="0" width="100" height="514" fill="#CE1126" opacity="0.1"/>
-  <path d="M100,0 L100,514 L200,400 L100,286 L200,171 L100,57 Z" fill="#000000" opacity="0.1"/>
-  
-  <!-- POS Terminal Illustration -->
-  <g transform="translate(150, 120)">
-    <rect x="0" y="0" width="200" height="240" rx="15" fill="white" opacity="0.95"/>
-    <rect x="20" y="20" width="160" height="120" rx="10" fill="#007A3D"/>
-    
-    <!-- Screen Display -->
-    <text x="100" y="80" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="white" text-anchor="middle">
-      K-Pay
-    </text>
-    <text x="100" y="110" font-family="Cairo, sans-serif" font-size="16" fill="white" text-anchor="middle" opacity="0.9">
-      ادفع الآن
-    </text>
-    
-    <!-- Keypad -->
-    <g transform="translate(30, 160)">
-      <rect x="0" y="0" width="35" height="30" rx="5" fill="#E0E0E0"/>
-      <rect x="45" y="0" width="35" height="30" rx="5" fill="#E0E0E0"/>
-      <rect x="90" y="0" width="35" height="30" rx="5" fill="#E0E0E0"/>
-      <rect x="0" y="40" width="35" height="30" rx="5" fill="#E0E0E0"/>
-      <rect x="45" y="40" width="35" height="30" rx="5" fill="#E0E0E0"/>
-      <rect x="90" y="40" width="35" height="30" rx="5" fill="#E0E0E0"/>
-    </g>
-  </g>
-  
-  <!-- Text Content -->
-  <text x="450" y="150" font-family="Cairo, sans-serif" font-size="58" font-weight="bold" fill="white">
-    كي نت - K-Pay
-  </text>
-  <text x="450" y="210" font-family="Cairo, sans-serif" font-size="28" fill="white" opacity="0.95">
-    الدفع الإلكتروني السريع والآمن
-  </text>
-  <text x="450" y="280" font-family="Cairo, sans-serif" font-size="22" fill="white" opacity="0.85">
-    ✓ أكثر من 25,000 نقطة بيع
-  </text>
-  <text x="450" y="325" font-family="Cairo, sans-serif" font-size="22" fill="white" opacity="0.85">
-    ✓ 13 بنك كويتي مشارك
-  </text>
-  <text x="450" y="370" font-family="Cairo, sans-serif" font-size="22" fill="white" opacity="0.85">
-    ✓ دفع الفواتير الحكومية
-  </text>
-  <text x="450" y="415" font-family="Cairo, sans-serif" font-size="22" fill="white" opacity="0.85">
-    ✓ معتمد من بنك الكويت المركزي
-  </text>
+  <rect width="1200" height="400" fill="url(#grad-knet)" />
+  <circle cx="200" cy="200" r="150" fill="rgba(255,255,255,0.1)" />
+  <circle cx="1000" cy="100" r="100" fill="rgba(255,255,255,0.05)" />
+  <circle cx="900" cy="350" r="80" fill="rgba(255,255,255,0.08)" />
 </svg>

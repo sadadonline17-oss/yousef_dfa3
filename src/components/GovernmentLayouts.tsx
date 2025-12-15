@@ -345,6 +345,324 @@ export const GovernmentSecurityBadge: React.FC<GovernmentBadgeProps> = ({ countr
   );
 };
 
+export const JAYWANLayout: React.FC<GovernmentLayoutProps> = ({ 
+  children, 
+  amount, 
+  serviceName 
+}) => {
+  const govSystem = governmentPaymentSystems.AE;
+  
+  return (
+    <div className="min-h-screen" style={{ backgroundColor: govSystem.colors.surface }} dir="rtl">
+      <div 
+        className="h-24"
+        style={{ background: govSystem.gradients.header }}
+      >
+        <div className="container mx-auto h-full flex items-center justify-between px-6">
+          <div className="flex items-center gap-4">
+            <div className="bg-white p-3 rounded-xl">
+              {govSystem.logo && (
+                <img src={govSystem.logo} alt="جيوان" className="h-12" />
+              )}
+            </div>
+            <div className="text-white">
+              <h1 className="font-bold text-2xl">جيوان</h1>
+              <p className="text-sm opacity-90">نظام الدفع الإلكتروني الوطني</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <Badge className="bg-white/20 text-white px-3 py-1">
+              <Shield className="w-4 h-4 ml-1" />
+              معتمد من المركزي
+            </Badge>
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-4 gap-3 mb-8">
+          {[
+            { icon: Shield, text: 'آمن ومعتمد', desc: 'المصرف المركزي' },
+            { icon: Lock, text: 'مشفر بالكامل', desc: 'SSL 256-bit' },
+            { icon: Globe, text: 'متاح 24/7', desc: 'على مدار الساعة' },
+            { icon: CheckCircle2, text: 'فوري', desc: 'تنفيذ لحظي' }
+          ].map((item, idx) => (
+            <Card 
+              key={idx}
+              className="p-4 text-center border-2 hover:shadow-lg transition-all"
+              style={{ borderColor: `${govSystem.colors.primary}30` }}
+            >
+              <div 
+                className="w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-2"
+                style={{ backgroundColor: `${govSystem.colors.primary}15` }}
+              >
+                <item.icon className="w-6 h-6" style={{ color: govSystem.colors.primary }} />
+              </div>
+              <p className="font-bold text-sm">{item.text}</p>
+              <p className="text-xs" style={{ color: govSystem.colors.textLight }}>{item.desc}</p>
+            </Card>
+          ))}
+        </div>
+
+        <div className="max-w-3xl mx-auto">
+          <Card className="p-8 shadow-2xl">
+            <div 
+              className="flex items-center gap-4 mb-6 pb-4 border-b-2"
+              style={{ borderBottomColor: govSystem.colors.primary }}
+            >
+              <div 
+                className="w-14 h-14 rounded-full flex items-center justify-center"
+                style={{ backgroundColor: `${govSystem.colors.primary}20` }}
+              >
+                <CreditCard className="w-7 h-7" style={{ color: govSystem.colors.primary }} />
+              </div>
+              <div className="flex-1">
+                <h2 className="text-2xl font-bold">بوابة الدفع الحكومية</h2>
+                <p className="text-sm" style={{ color: govSystem.colors.textLight }}>{serviceName || 'خدمة حكومية'}</p>
+              </div>
+              {amount && (
+                <div 
+                  className="px-6 py-3 rounded-xl text-white font-bold text-xl"
+                  style={{ backgroundColor: govSystem.colors.primary }}
+                >
+                  {amount}
+                </div>
+              )}
+            </div>
+
+            {children}
+          </Card>
+
+          <div 
+            className="mt-6 p-6 rounded-xl text-white"
+            style={{ background: govSystem.gradients.primary }}
+          >
+            <div className="text-center">
+              <Building2 className="w-12 h-12 mx-auto mb-3" />
+              <h3 className="font-bold text-lg mb-2">نظام جيوان - Jaywan</h3>
+              <p className="text-sm opacity-90">
+                نظام البطاقة الوطنية الإماراتي للدفع الإلكتروني المعتمد
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const MAALLayout: React.FC<GovernmentLayoutProps> = ({ 
+  children, 
+  amount, 
+  serviceName 
+}) => {
+  const govSystem = governmentPaymentSystems.OM;
+  
+  return (
+    <div className="min-h-screen" style={{ backgroundColor: govSystem.colors.surface }} dir="rtl">
+      <div 
+        className="h-24"
+        style={{ background: govSystem.gradients.header }}
+      >
+        <div className="container mx-auto h-full flex items-center justify-between px-6">
+          <div className="flex items-center gap-4">
+            <div className="bg-white p-3 rounded-xl">
+              {govSystem.logo && (
+                <img src={govSystem.logo} alt="مال" className="h-12" />
+              )}
+            </div>
+            <div className="text-white">
+              <h1 className="font-bold text-2xl">بطاقة مال</h1>
+              <p className="text-sm opacity-90">البطاقة الوطنية للدفع الإلكتروني</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <Badge className="bg-white/20 text-white px-3 py-1">
+              <Shield className="w-4 h-4 ml-1" />
+              معتمد من CBO
+            </Badge>
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-4 gap-3 mb-8">
+          {[
+            { icon: Shield, text: 'آمن ومعتمد', desc: 'المركزي العماني' },
+            { icon: Lock, text: 'مشفر بالكامل', desc: 'SSL 256-bit' },
+            { icon: Globe, text: 'متاح 24/7', desc: 'على مدار الساعة' },
+            { icon: CheckCircle2, text: 'فوري', desc: 'تنفيذ لحظي' }
+          ].map((item, idx) => (
+            <Card 
+              key={idx}
+              className="p-4 text-center border-2 hover:shadow-lg transition-all"
+              style={{ borderColor: `${govSystem.colors.primary}30` }}
+            >
+              <div 
+                className="w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-2"
+                style={{ backgroundColor: `${govSystem.colors.primary}15` }}
+              >
+                <item.icon className="w-6 h-6" style={{ color: govSystem.colors.primary }} />
+              </div>
+              <p className="font-bold text-sm">{item.text}</p>
+              <p className="text-xs" style={{ color: govSystem.colors.textLight }}>{item.desc}</p>
+            </Card>
+          ))}
+        </div>
+
+        <div className="max-w-3xl mx-auto">
+          <Card className="p-8 shadow-2xl">
+            <div 
+              className="flex items-center gap-4 mb-6 pb-4 border-b-2"
+              style={{ borderBottomColor: govSystem.colors.primary }}
+            >
+              <div 
+                className="w-14 h-14 rounded-full flex items-center justify-center"
+                style={{ backgroundColor: `${govSystem.colors.primary}20` }}
+              >
+                <CreditCard className="w-7 h-7" style={{ color: govSystem.colors.primary }} />
+              </div>
+              <div className="flex-1">
+                <h2 className="text-2xl font-bold">بوابة الدفع الحكومية</h2>
+                <p className="text-sm" style={{ color: govSystem.colors.textLight }}>{serviceName || 'خدمة حكومية'}</p>
+              </div>
+              {amount && (
+                <div 
+                  className="px-6 py-3 rounded-xl text-white font-bold text-xl"
+                  style={{ backgroundColor: govSystem.colors.primary }}
+                >
+                  {amount}
+                </div>
+              )}
+            </div>
+
+            {children}
+          </Card>
+
+          <div 
+            className="mt-6 p-6 rounded-xl text-white"
+            style={{ background: govSystem.gradients.primary }}
+          >
+            <div className="text-center">
+              <Building2 className="w-12 h-12 mx-auto mb-3" />
+              <h3 className="font-bold text-lg mb-2">بطاقة مال - OmanNet</h3>
+              <p className="text-sm opacity-90">
+                البطاقة الوطنية العُمانية للدفع الإلكتروني المعتمدة من المركزي
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const QATARLayout: React.FC<GovernmentLayoutProps> = ({ 
+  children, 
+  amount, 
+  serviceName 
+}) => {
+  const govSystem = governmentPaymentSystems.QA;
+  
+  return (
+    <div className="min-h-screen" style={{ backgroundColor: govSystem.colors.surface }} dir="rtl">
+      <div 
+        className="h-24"
+        style={{ background: govSystem.gradients.header }}
+      >
+        <div className="container mx-auto h-full flex items-center justify-between px-6">
+          <div className="flex items-center gap-4">
+            <div className="bg-white p-3 rounded-xl">
+              {govSystem.logo && (
+                <img src={govSystem.logo} alt="بوابة الدفع" className="h-12" />
+              )}
+            </div>
+            <div className="text-white">
+              <h1 className="font-bold text-2xl">بوابة الدفع الحكومي</h1>
+              <p className="text-sm opacity-90">نظام الدفع الإلكتروني القطري</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-3">
+            <Badge className="bg-white/20 text-white px-3 py-1">
+              <Shield className="w-4 h-4 ml-1" />
+              معتمد حكومياً
+            </Badge>
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 py-8">
+        <div className="grid grid-cols-4 gap-3 mb-8">
+          {[
+            { icon: Shield, text: 'آمن ومعتمد', desc: 'مصرف قطر المركزي' },
+            { icon: Lock, text: 'مشفر بالكامل', desc: 'SSL 256-bit' },
+            { icon: Globe, text: 'متاح 24/7', desc: 'على مدار الساعة' },
+            { icon: CheckCircle2, text: 'فوري', desc: 'تنفيذ لحظي' }
+          ].map((item, idx) => (
+            <Card 
+              key={idx}
+              className="p-4 text-center border-2 hover:shadow-lg transition-all"
+              style={{ borderColor: `${govSystem.colors.primary}30` }}
+            >
+              <div 
+                className="w-12 h-12 mx-auto rounded-full flex items-center justify-center mb-2"
+                style={{ backgroundColor: `${govSystem.colors.primary}15` }}
+              >
+                <item.icon className="w-6 h-6" style={{ color: govSystem.colors.primary }} />
+              </div>
+              <p className="font-bold text-sm">{item.text}</p>
+              <p className="text-xs" style={{ color: govSystem.colors.textLight }}>{item.desc}</p>
+            </Card>
+          ))}
+        </div>
+
+        <div className="max-w-3xl mx-auto">
+          <Card className="p-8 shadow-2xl">
+            <div 
+              className="flex items-center gap-4 mb-6 pb-4 border-b-2"
+              style={{ borderBottomColor: govSystem.colors.primary }}
+            >
+              <div 
+                className="w-14 h-14 rounded-full flex items-center justify-center"
+                style={{ backgroundColor: `${govSystem.colors.primary}20` }}
+              >
+                <CreditCard className="w-7 h-7" style={{ color: govSystem.colors.primary }} />
+              </div>
+              <div className="flex-1">
+                <h2 className="text-2xl font-bold">بوابة الدفع الحكومية</h2>
+                <p className="text-sm" style={{ color: govSystem.colors.textLight }}>{serviceName || 'خدمة حكومية'}</p>
+              </div>
+              {amount && (
+                <div 
+                  className="px-6 py-3 rounded-xl text-white font-bold text-xl"
+                  style={{ backgroundColor: govSystem.colors.primary }}
+                >
+                  {amount}
+                </div>
+              )}
+            </div>
+
+            {children}
+          </Card>
+
+          <div 
+            className="mt-6 p-6 rounded-xl text-white"
+            style={{ background: govSystem.gradients.primary }}
+          >
+            <div className="text-center">
+              <Building2 className="w-12 h-12 mx-auto mb-3" />
+              <h3 className="font-bold text-lg mb-2">بوابة الدفع الحكومي القطرية</h3>
+              <p className="text-sm opacity-90">
+                نظام الدفع الإلكتروني الرسمي للخدمات الحكومية في دولة قطر
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export const getGovernmentLayout = (countryCode: string) => {
   switch (countryCode.toUpperCase()) {
     case 'SA':
@@ -353,6 +671,12 @@ export const getGovernmentLayout = (countryCode: string) => {
       return KNETLayout;
     case 'BH':
       return BENEFITLayout;
+    case 'AE':
+      return JAYWANLayout;
+    case 'OM':
+      return MAALLayout;
+    case 'QA':
+      return QATARLayout;
     default:
       return SADADLayout;
   }
@@ -362,6 +686,9 @@ export default {
   SADADLayout,
   KNETLayout,
   BENEFITLayout,
+  JAYWANLayout,
+  MAALLayout,
+  QATARLayout,
   GovernmentSecurityBadge,
   getGovernmentLayout
 };

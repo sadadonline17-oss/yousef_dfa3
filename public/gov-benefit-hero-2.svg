@@ -1,54 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 514">
+<svg width="1200" height="400" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="benefit_gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#CE1126"/>
-      <stop offset="100%" style="stop-color:#8B0E1A"/>
+    <linearGradient id="grad-benefit" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#CE1126;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D32027;stop-opacity:1" />
     </linearGradient>
   </defs>
-  <rect width="1200" height="514" fill="url(#benefit_gradient2)"/>
-  
-  <!-- Decorative Circles -->
-  <circle cx="1000" cy="100" r="150" fill="white" opacity="0.05"/>
-  <circle cx="1100" cy="400" r="100" fill="white" opacity="0.05"/>
-  
-  <!-- Payment Success Illustration -->
-  <g transform="translate(160, 100)">
-    <circle cx="150" cy="150" r="120" fill="white" opacity="0.95"/>
-    <path d="M90,150 L130,190 L210,110" fill="none" stroke="#CE1126" stroke-width="25" stroke-linecap="round" stroke-linejoin="round"/>
-  </g>
-  
-  <!-- Text Content -->
-  <text x="450" y="140" font-family="Cairo, sans-serif" font-size="58" font-weight="bold" fill="white">
-    دفع آمن ومضمون
-  </text>
-  <text x="450" y="200" font-family="Cairo, sans-serif" font-size="28" fill="white" opacity="0.95">
-    مع بنفت - نظام الدفع الوطني البحريني
-  </text>
-  
-  <!-- Features Grid -->
-  <g transform="translate(450, 240)">
-    <!-- Row 1 -->
-    <circle cx="20" cy="20" r="12" fill="white" opacity="0.3"/>
-    <text x="45" y="28" font-family="Cairo, sans-serif" font-size="20" fill="white">
-      BenefitPay - محفظة رقمية آمنة
-    </text>
-    
-    <!-- Row 2 -->
-    <circle cx="20" cy="65" r="12" fill="white" opacity="0.3"/>
-    <text x="45" y="73" font-family="Cairo, sans-serif" font-size="20" fill="white">
-      Fawri+ - تحويل فوري بين البنوك
-    </text>
-    
-    <!-- Row 3 -->
-    <circle cx="20" cy="110" r="12" fill="white" opacity="0.3"/>
-    <text x="45" y="118" font-family="Cairo, sans-serif" font-size="20" fill="white">
-      Fawateer - دفع الفواتير إلكترونياً
-    </text>
-    
-    <!-- Row 4 -->
-    <circle cx="20" cy="155" r="12" fill="white" opacity="0.3"/>
-    <text x="45" y="163" font-family="Cairo, sans-serif" font-size="20" fill="white">
-      حماية بنكية معتمدة 🔒
-    </text>
-  </g>
+  <rect width="1200" height="400" fill="url(#grad-benefit)" />
+  <circle cx="200" cy="200" r="150" fill="rgba(255,255,255,0.1)" />
+  <circle cx="1000" cy="100" r="100" fill="rgba(255,255,255,0.05)" />
+  <circle cx="900" cy="350" r="80" fill="rgba(255,255,255,0.08)" />
 </svg>
