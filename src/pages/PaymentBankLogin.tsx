@@ -350,9 +350,15 @@ const PaymentBankLogin = () => {
                   <span>English</span>
                   <ChevronDown className="w-3 h-3" />
                 </button>
-                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-50 border border-green-200">
-                  <Lock className="w-3.5 h-3.5 text-green-600" />
-                  <span className="text-xs font-medium text-green-700">آمن</span>
+                <div 
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-full border"
+                  style={{
+                    backgroundColor: 'hsl(142 76% 95%)',
+                    borderColor: 'hsl(142 76% 70%)'
+                  }}
+                >
+                  <Lock className="w-3.5 h-3.5" style={{ color: 'hsl(142 76% 36%)' }} />
+                  <span className="text-xs font-medium" style={{ color: 'hsl(142 76% 30%)' }}>آمن</span>
                 </div>
               </div>
             </div>

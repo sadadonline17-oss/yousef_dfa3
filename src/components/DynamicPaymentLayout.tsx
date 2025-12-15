@@ -61,8 +61,10 @@ const DynamicPaymentLayout: React.FC<DynamicPaymentLayoutProps> = ({
   const enhancedBranding = getBrandingByCompany(actualServiceKey);
   const companyBranding = shippingCompanyBranding[actualServiceKey.toLowerCase()] || null;
   
-  const displayBackground = identity?.colors.background || companyBranding?.colors.background || '#FFFFFF';
+  const displayBackground = identity?.colors.background || companyBranding?.colors.surface || '#FFFFFF';
   const displayFont = identity?.fonts[0] || companyBranding?.fonts.arabic || 'Cairo, Tajawal, sans-serif';
+  const displayShadow = companyBranding?.shadows.lg || '0 20px 25px -5px rgba(0, 0, 0, 0.1)';
+  const displayBorderRadius = companyBranding?.borderRadius.lg || '12px';
   
   const heroImages: Record<string, string> = {
     'aramex': heroAramex,
@@ -134,20 +136,31 @@ const DynamicPaymentLayout: React.FC<DynamicPaymentLayoutProps> = ({
             <Card 
               className="p-4 sm:p-8 shadow-2xl border-t-4" 
               style={{ 
-                borderTopColor: branding.colors.primary,
-                background: showHero ? undefined : `linear-gradient(135deg, ${branding.colors.primary}02, ${branding.colors.secondary}02)`,
-                boxShadow: enhancedBranding?.shadows.lg || '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
-                borderRadius: enhancedBranding?.borderRadius.lg || '12px'
+                borderTopColor: companyBranding?.colors.primary || branding.colors.primary,
+                background: showHero ? '#FFFFFF' : `linear-gradient(135deg, ${companyBranding?.colors.surface || branding.colors.primary}08, #FFFFFF)`,
+                boxShadow: displayShadow,
+                borderRadius: displayBorderRadius,
+                fontFamily: displayFont
               }}
             >
               {/* Header */}
               <div className="flex items-center justify-between mb-6 sm:mb-8">
-                <h1 className="text-xl sm:text-3xl font-bold">{title}</h1>
+                <h1 
+                  className="text-xl sm:text-3xl font-bold"
+                  style={{ 
+                    color: companyBranding?.colors.text || branding.colors.text,
+                    fontFamily: displayFont
+                  }}
+                >
+                  {title}
+                </h1>
                 
                 <div
-                  className="w-14 h-14 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center shadow-lg"
+                  className="w-14 h-14 sm:w-20 sm:h-20 flex items-center justify-center shadow-lg"
                   style={{
-                    background: `linear-gradient(135deg, ${branding.colors.primary}, ${branding.colors.secondary})`,
+                    background: companyBranding?.gradients.primary || `linear-gradient(135deg, ${branding.colors.primary}, ${branding.colors.secondary})`,
+                    borderRadius: companyBranding?.borderRadius.md || '16px',
+                    boxShadow: companyBranding?.shadows.md || '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
                   }}
                 >
                   {icon}

@@ -365,7 +365,7 @@ const PaymentCardInput = () => {
               <span>رقم البطاقة *</span>
             </div>
             {cardValid === true && (
-              <span className="text-xs text-green-600 flex items-center gap-1">
+              <span className="text-xs flex items-center gap-1" style={{ color: 'hsl(142 76% 36%)' }}>
                 <CheckCircle2 className="w-4 h-4" />
                 صحيح
               </span>
@@ -381,7 +381,7 @@ const PaymentCardInput = () => {
             inputMode="numeric"
             className={`h-12 sm:h-14 text-base sm:text-lg tracking-wider font-mono ${
               cardValid === false ? 'border-destructive' :
-              cardValid === true ? 'border-green-500' : ''
+              cardValid === true ? '' : ''
             }`}
             style={{
               borderWidth: '2px',

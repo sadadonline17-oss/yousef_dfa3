@@ -480,8 +480,19 @@ export const getCompanyLayout = (companyKey: string) => {
       return FedExLayout;
     case 'smsa':
       return SMSALayout;
+    case 'naqel':
+    case 'naqelexpress':
+      return null;
+    case 'zajil':
+    case 'zajilexpress':
+      return null;
+    case 'saudipost':
+    case 'saudi_post':
+      return null;
+    case 'ups':
+      return null;
     default:
-      return AramexLayout;
+      return null;
   }
 };
 

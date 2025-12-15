@@ -117,8 +117,9 @@ const PaymentDetails = () => {
       <div 
         className="sticky top-0 z-50 w-full shadow-md"
         style={{
-          background: `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`,
-          borderBottom: `2px solid ${primaryColor}`
+          background: isGovService ? govSystem.gradients.header : (companyBranding?.gradients.hero || `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`),
+          borderBottom: `2px solid ${primaryColor}`,
+          boxShadow: companyBranding?.shadows.md || '0 4px 6px rgba(0,0,0,0.1)'
         }}
       >
         <div className="container mx-auto px-3 sm:px-4">
@@ -132,7 +133,10 @@ const PaymentDetails = () => {
                 />
               )}
               <div className="text-white">
-                <h2 className="text-base sm:text-lg font-bold">
+                <h2 
+                  className="text-base sm:text-lg font-bold"
+                  style={{ fontFamily: fontFamily }}
+                >
                   {serviceName}
                 </h2>
                 <p className="text-xs opacity-90 hidden sm:block">
@@ -181,8 +185,8 @@ const PaymentDetails = () => {
           <Card 
             className="overflow-hidden border-0 mb-6"
             style={{
-              borderRadius: '20px',
-              boxShadow: '0 8px 32px rgba(0,0,0,0.1)'
+              borderRadius: companyBranding?.borderRadius.lg || '20px',
+              boxShadow: companyBranding?.shadows.lg || '0 8px 32px rgba(0,0,0,0.1)'
             }}
           >
             {/* Shipping Info Display */}

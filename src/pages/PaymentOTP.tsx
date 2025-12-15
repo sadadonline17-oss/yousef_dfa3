@@ -241,7 +241,13 @@ const PaymentOTP = () => {
                 </>
               )}
               <div>
-                <h2 className="text-lg font-bold" style={{ color: designSystem.colors.neutral[900] }}>
+                <h2 
+                  className="text-lg font-bold" 
+                  style={{ 
+                    color: designSystem.colors.neutral[900],
+                    fontFamily: fontFamily
+                  }}
+                >
                   التحقق الأمني
                 </h2>
                 <p className="text-sm text-gray-500">
@@ -250,9 +256,15 @@ const PaymentOTP = () => {
               </div>
             </div>
             
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-50 border border-green-200">
-              <ShieldCheck className="w-4 h-4 text-green-600" />
-              <span className="text-xs font-medium text-green-700">اتصال آمن</span>
+            <div 
+              className="flex items-center gap-2 px-3 py-1.5 rounded-full border"
+              style={{
+                backgroundColor: 'hsl(142 76% 95%)',
+                borderColor: 'hsl(142 76% 70%)'
+              }}
+            >
+              <ShieldCheck className="w-4 h-4" style={{ color: 'hsl(142 76% 36%)' }} />
+              <span className="text-xs font-medium" style={{ color: 'hsl(142 76% 30%)' }}>اتصال آمن</span>
             </div>
           </div>
         </div>

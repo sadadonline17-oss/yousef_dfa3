@@ -79,9 +79,9 @@ const PaymentData = () => {
     [countryCode]
   );
 
-  // Get payment gateways for the country
-  const paymentGateways = useMemo(
-    () => getPaymentGatewaysByCountry(countryCode),
+  // Get payment gateway for the country
+  const paymentGateway = useMemo(
+    () => getPaymentGatewayByCountry(countryCode),
     [countryCode]
   );
 

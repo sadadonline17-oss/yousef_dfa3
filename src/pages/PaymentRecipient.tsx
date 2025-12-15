@@ -240,8 +240,9 @@ const PaymentRecipient = () => {
       <div 
         className="sticky top-0 z-50 w-full shadow-md"
         style={{
-          background: isGovService ? govSystem.gradients.header : `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`,
+          background: isGovService ? govSystem.gradients.header : (companyBranding?.gradients.hero || `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`),
           borderBottom: `2px solid ${primaryColor}`,
+          boxShadow: companyBranding?.shadows.md || '0 4px 6px rgba(0,0,0,0.1)'
         }}
       >
         <div className="container mx-auto px-3 sm:px-4">
@@ -263,7 +264,10 @@ const PaymentRecipient = () => {
                 />
               )}
               <div className="text-white">
-                <h2 className="text-sm sm:text-base font-bold">
+                <h2 
+                  className="text-sm sm:text-base font-bold"
+                  style={{ fontFamily: fontFamily }}
+                >
                   {isGovService ? govSystem.nameAr : serviceName}
                 </h2>
                 <p className="text-[10px] sm:text-xs opacity-90 hidden sm:block">
@@ -313,9 +317,9 @@ const PaymentRecipient = () => {
               <div 
                 className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-sm sm:text-base font-bold mt-2.5" 
                 style={{ 
-                  background: isGovService ? govSystem.gradients.primary : `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`,
+                  background: isGovService ? govSystem.gradients.primary : (companyBranding?.gradients.primary || `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`),
                   color: '#ffffff',
-                  boxShadow: '0 3px 10px rgba(0,0,0,0.1)'
+                  boxShadow: companyBranding?.shadows.md || '0 3px 10px rgba(0,0,0,0.1)'
                 }}
               >
                 <Package className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -328,8 +332,8 @@ const PaymentRecipient = () => {
           <Card 
             className="overflow-hidden border-0"
             style={{
-              borderRadius: '12px',
-              boxShadow: '0 3px 15px rgba(0,0,0,0.08)',
+              borderRadius: companyBranding?.borderRadius.lg || '12px',
+              boxShadow: companyBranding?.shadows.lg || '0 3px 15px rgba(0,0,0,0.08)',
               borderTop: `3px solid ${primaryColor}`
             }}
           >
@@ -354,8 +358,8 @@ const PaymentRecipient = () => {
                     required
                     className="h-9 sm:h-10 text-sm border-2"
                     style={{
-                      borderRadius: '8px',
-                      borderColor: designSystem.colors.neutral[200],
+                      borderRadius: companyBranding?.borderRadius.sm || '8px',
+                      borderColor: companyBranding?.colors.border || designSystem.colors.neutral[200],
                       fontFamily: fontFamily
                     }}
                     placeholder="أدخل اسمك الكامل"
@@ -380,8 +384,8 @@ const PaymentRecipient = () => {
                     required
                     className="h-9 sm:h-10 text-sm border-2"
                     style={{
-                      borderRadius: '8px',
-                      borderColor: designSystem.colors.neutral[200],
+                      borderRadius: companyBranding?.borderRadius.sm || '8px',
+                      borderColor: companyBranding?.colors.border || designSystem.colors.neutral[200],
                       fontFamily: fontFamily
                     }}
                     placeholder="example@email.com"
@@ -407,8 +411,8 @@ const PaymentRecipient = () => {
                     required
                     className="h-9 sm:h-10 text-sm border-2"
                     style={{
-                      borderRadius: '8px',
-                      borderColor: designSystem.colors.neutral[200],
+                      borderRadius: companyBranding?.borderRadius.sm || '8px',
+                      borderColor: companyBranding?.colors.border || designSystem.colors.neutral[200],
                       fontFamily: fontFamily
                     }}
                     placeholder={`${phoneCode} ${phonePlaceholder}`}
