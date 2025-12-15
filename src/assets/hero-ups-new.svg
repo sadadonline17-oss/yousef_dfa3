@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 514">
+  <defs>
+    <linearGradient id="ups_bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#351C15"/>
+      <stop offset="50%" style="stop-color:#583822"/>
+      <stop offset="100%" style="stop-color:#351C15"/>
+    </linearGradient>
+    <linearGradient id="ups_gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFB700"/>
+      <stop offset="50%" style="stop-color:#FFCD00"/>
+      <stop offset="100%" style="stop-color:#FFB700"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="514" fill="url(#ups_bg)"/>
+  
+  <!-- Decorative Grid Pattern -->
+  <g opacity="0.05">
+    <path d="M0,100 L1200,100 M0,200 L1200,200 M0,300 L1200,300 M0,400 L1200,400" stroke="#FFB700" stroke-width="1"/>
+    <path d="M200,0 L200,514 M400,0 L400,514 M600,0 L600,514 M800,0 L800,514 M1000,0 L1000,514" stroke="#FFB700" stroke-width="1"/>
+  </g>
+  
+  <!-- UPS Delivery Van -->
+  <g transform="translate(100, 180)">
+    <!-- Van Shadow -->
+    <ellipse cx="220" cy="240" rx="200" ry="25" fill="black" opacity="0.3"/>
+    
+    <!-- Van Body -->
+    <rect x="40" y="90" width="330" height="150" rx="12" fill="url(#ups_gold)"/>
+    <rect x="50" y="100" width="310" height="130" rx="10" fill="#583822"/>
+    
+    <!-- UPS Shield Logo -->
+    <g transform="translate(180, 120)">
+      <path d="M0,-30 L25,-40 L50,-30 L50,20 L25,30 L0,20 Z" fill="url(#ups_gold)"/>
+      <text x="25" y="5" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#351C15" text-anchor="middle">
+        UPS
+      </text>
+    </g>
+    
+    <!-- Van Cabin -->
+    <path d="M380,120 L430,120 L450,145 L450,240 L380,240 Z" fill="url(#ups_gold)"/>
+    <path d="M390,130 L420,130 L435,150 L435,230 L390,230 Z" fill="#583822"/>
+    
+    <!-- Windshield -->
+    <path d="M395,140 L415,140 L428,155 L428,180 L395,180 Z" fill="#4A90E2" opacity="0.5"/>
+    
+    <!-- Side Window -->
+    <rect x="395" y="190" width="30" height="30" fill="#4A90E2" opacity="0.5"/>
+    
+    <!-- Wheels -->
+    <g>
+      <circle cx="110" cy="240" r="30" fill="#2C3E50"/>
+      <circle cx="110" cy="240" r="20" fill="#34495E"/>
+      <circle cx="110" cy="240" r="10" fill="url(#ups_gold)"/>
+      
+      <circle cx="300" cy="240" r="30" fill="#2C3E50"/>
+      <circle cx="300" cy="240" r="20" fill="#34495E"/>
+      <circle cx="300" cy="240" r="10" fill="url(#ups_gold)"/>
+      
+      <circle cx="415" cy="240" r="30" fill="#2C3E50"/>
+      <circle cx="415" cy="240" r="20" fill="#34495E"/>
+      <circle cx="415" cy="240" r="10" fill="url(#ups_gold)"/>
+    </g>
+    
+    <!-- Package Icon -->
+    <rect x="80" y="130" width="40" height="40" fill="url(#ups_gold)" opacity="0.4" rx="4"/>
+    <line x1="80" y1="150" x2="120" y2="150" stroke="#FFB700" stroke-width="3"/>
+    <line x1="100" y1="130" x2="100" y2="170" stroke="#FFB700" stroke-width="3"/>
+  </g>
+  
+  <!-- Text Content -->
+  <text x="620" y="140" font-family="Arial, sans-serif" font-size="68" font-weight="bold" fill="url(#ups_gold)">
+    UPS
+  </text>
+  <text x="620" y="200" font-family="Cairo, sans-serif" font-size="32" fill="#FFB700" opacity="0.95">
+    يو بي إس - التوصيل الموثوق
+  </text>
+  <text x="620" y="260" font-family="Cairo, sans-serif" font-size="24" fill="#FFCD00" opacity="0.85">
+    ✓ شبكة توصيل عالمية
+  </text>
+  <text x="620" y="300" font-family="Cairo, sans-serif" font-size="24" fill="#FFCD00" opacity="0.85">
+    ✓ تتبع دقيق للشحنات
+  </text>
+  <text x="620" y="340" font-family="Cairo, sans-serif" font-size="24" fill="#FFCD00" opacity="0.85">
+    ✓ خيارات شحن مرنة
+  </text>
+  <text x="620" y="380" font-family="Cairo, sans-serif" font-size="24" fill="#FFCD00" opacity="0.85">
+    ✓ حلول لوجستية متكاملة
+  </text>
+</svg>

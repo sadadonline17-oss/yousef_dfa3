@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 514">
+  <defs>
+    <linearGradient id="fedex_bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4D148C"/>
+      <stop offset="50%" style="stop-color:#663399"/>
+      <stop offset="100%" style="stop-color:#4D148C"/>
+    </linearGradient>
+    <linearGradient id="plane_gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FFFFFF"/>
+      <stop offset="100%" style="stop-color:#E8E8E8"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="514" fill="url(#fedex_bg)"/>
+  
+  <!-- Cloud Elements -->
+  <g opacity="0.1">
+    <ellipse cx="200" cy="120" rx="60" ry="40" fill="white"/>
+    <ellipse cx="240" cy="120" rx="50" ry="35" fill="white"/>
+    <ellipse cx="160" cy="130" rx="55" ry="35" fill="white"/>
+    
+    <ellipse cx="900" cy="80" rx="70" ry="45" fill="white"/>
+    <ellipse cx="950" cy="80" rx="60" ry="40" fill="white"/>
+    <ellipse cx="850" cy="90" rx="60" ry="38" fill="white"/>
+  </g>
+  
+  <!-- Cargo Plane -->
+  <g transform="translate(100, 220)">
+    <!-- Plane Body -->
+    <ellipse cx="250" cy="120" rx="220" ry="60" fill="url(#plane_gradient)"/>
+    <path d="M50,120 Q150,100 250,100 Q350,100 450,120 Q350,140 250,140 Q150,140 50,120" fill="url(#plane_gradient)"/>
+    
+    <!-- FedEx Logo on Plane -->
+    <g transform="translate(180, 95)">
+      <text x="0" y="0" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#4D148C">
+        Fed
+      </text>
+      <text x="58" y="0" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#FF6600">
+        Ex
+      </text>
+    </g>
+    
+    <!-- Wings -->
+    <path d="M250,120 L100,140 L80,145 L100,148 L250,130" fill="#FFFFFF" opacity="0.9"/>
+    <path d="M250,120 L400,140 L420,145 L400,148 L250,130" fill="#FFFFFF" opacity="0.9"/>
+    
+    <!-- Tail -->
+    <path d="M430,120 L470,60 L480,60 L480,120 Z" fill="url(#plane_gradient)"/>
+    <rect x="465" y="70" width="10" height="30" fill="#4D148C"/>
+    <rect x="465" y="100" width="10" height="15" fill="#FF6600"/>
+    
+    <!-- Windows -->
+    <circle cx="380" cy="115" r="8" fill="#4A90E2" opacity="0.6"/>
+    <circle cx="400" cy="115" r="8" fill="#4A90E2" opacity="0.6"/>
+    <circle cx="420" cy="115" r="8" fill="#4A90E2" opacity="0.6"/>
+    
+    <!-- Engine -->
+    <ellipse cx="180" cy="145" rx="35" ry="20" fill="#E8E8E8"/>
+    <ellipse cx="320" cy="145" rx="35" ry="20" fill="#E8E8E8"/>
+  </g>
+  
+  <!-- Text Content -->
+  <text x="650" y="140" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#FFFFFF">
+    Fed
+  </text>
+  <text x="753" y="140" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#FF6600">
+    Ex
+  </text>
+  <text x="650" y="190" font-family="Cairo, sans-serif" font-size="28" fill="#FFFFFF" opacity="0.95">
+    فيدكس - شحن عالمي موثوق
+  </text>
+  <text x="650" y="250" font-family="Cairo, sans-serif" font-size="22" fill="#FFFFFF" opacity="0.85">
+    ✓ شحن جوي سريع لأكثر من 220 دولة
+  </text>
+  <text x="650" y="290" font-family="Cairo, sans-serif" font-size="22" fill="#FFFFFF" opacity="0.85">
+    ✓ خدمة توصيل في اليوم التالي
+  </text>
+  <text x="650" y="330" font-family="Cairo, sans-serif" font-size="22" fill="#FFFFFF" opacity="0.85">
+    ✓ تتبع متقدم في الوقت الفعلي
+  </text>
+  <text x="650" y="370" font-family="Cairo, sans-serif" font-size="22" fill="#FFFFFF" opacity="0.85">
+    ✓ حلول الشحن المخصصة
+  </text>
+  <text x="650" y="410" font-family="Cairo, sans-serif" font-size="22" fill="#FFFFFF" opacity="0.85">
+    ✓ خدمة FedEx Express السريعة
+  </text>
+</svg>

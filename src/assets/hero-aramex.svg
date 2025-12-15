@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 514">
+  <defs>
+    <linearGradient id="aramex_bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B0000"/>
+      <stop offset="50%" style="stop-color:#DC143C"/>
+      <stop offset="100%" style="stop-color:#8B0000"/>
+    </linearGradient>
+    <linearGradient id="truck_shadow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:0"/>
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0.3"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="514" fill="url(#aramex_bg)"/>
+  
+  <!-- Decorative Road Lines -->
+  <path d="M0,450 Q300,440 600,450 T1200,450" fill="none" stroke="white" stroke-width="2" opacity="0.2"/>
+  <path d="M0,470 Q300,460 600,470 T1200,470" fill="none" stroke="white" stroke-width="2" opacity="0.1"/>
+  
+  <!-- Delivery Truck -->
+  <g transform="translate(120, 200)">
+    <!-- Truck Shadow -->
+    <ellipse cx="200" cy="220" rx="180" ry="20" fill="url(#truck_shadow)"/>
+    
+    <!-- Truck Body -->
+    <rect x="50" y="80" width="300" height="140" rx="10" fill="#FFFFFF"/>
+    <rect x="60" y="90" width="280" height="120" rx="8" fill="#8B0000"/>
+    
+    <!-- Aramex Logo on Truck -->
+    <text x="200" y="150" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#FFFFFF" text-anchor="middle">
+      ARAMEX
+    </text>
+    
+    <!-- Truck Cabin -->
+    <path d="M360,120 L400,120 L420,150 L420,220 L360,220 Z" fill="#FFFFFF"/>
+    <path d="M370,130 L390,130 L405,155 L405,210 L370,210 Z" fill="#DC143C"/>
+    
+    <!-- Windows -->
+    <rect x="375" y="140" width="25" height="30" fill="#4A90E2" opacity="0.6"/>
+    
+    <!-- Wheels -->
+    <circle cx="120" cy="220" r="25" fill="#2C3E50"/>
+    <circle cx="120" cy="220" r="15" fill="#34495E"/>
+    <circle cx="300" cy="220" r="25" fill="#2C3E50"/>
+    <circle cx="300" cy="220" r="15" fill="#34495E"/>
+    <circle cx="390" cy="220" r="25" fill="#2C3E50"/>
+    <circle cx="390" cy="220" r="15" fill="#34495E"/>
+    
+    <!-- Package Icon -->
+    <g transform="translate(140, 110)">
+      <rect x="0" y="0" width="50" height="50" fill="#FFD700" opacity="0.3" rx="5"/>
+      <path d="M5,25 L25,15 L45,25 L25,35 Z" fill="#FFD700" opacity="0.5"/>
+    </g>
+  </g>
+  
+  <!-- Text Content -->
+  <text x="650" y="150" font-family="Arial, sans-serif" font-size="64" font-weight="bold" fill="#FFFFFF">
+    ARAMEX
+  </text>
+  <text x="650" y="200" font-family="Cairo, sans-serif" font-size="32" fill="#FFFFFF" opacity="0.95">
+    أرامكس - شحن سريع وموثوق
+  </text>
+  <text x="650" y="260" font-family="Cairo, sans-serif" font-size="24" fill="#FFFFFF" opacity="0.85">
+    ✓ تتبع الشحنات لحظياً
+  </text>
+  <text x="650" y="300" font-family="Cairo, sans-serif" font-size="24" fill="#FFFFFF" opacity="0.85">
+    ✓ توصيل سريع في جميع أنحاء العالم
+  </text>
+  <text x="650" y="340" font-family="Cairo, sans-serif" font-size="24" fill="#FFFFFF" opacity="0.85">
+    ✓ خدمة عملاء 24/7
+  </text>
+  <text x="650" y="380" font-family="Cairo, sans-serif" font-size="24" fill="#FFFFFF" opacity="0.85">
+    ✓ أكثر من 600 موقع حول العالم
+  </text>
+</svg>
