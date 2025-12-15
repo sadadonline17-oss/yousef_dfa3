@@ -2,33 +2,33 @@
 export const serviceLogos: Record<string, { logo: string; colors: { primary: string; secondary: string }; ogImage?: string; heroImage?: string; description?: string }> = {
   // UAE - الإمارات
   aramex: {
-    logo: "/aramex-logo.svg",
+    logo: "/aramex-logo-official.svg",
     colors: {
       primary: "#DC291E",
       secondary: "#8B1A12"
     },
-    ogImage: "/og-aramex.jpg",
-    heroImage: "/og-aramex.jpg",
+    ogImage: "/aramex-hero-official.png",
+    heroImage: "/aramex-hero-official.png",
     description: "شحن عالمي سريع ومضمون | أرامكس رائدة في خدمات الشحن واللوجستيات | تتبع شحنتك لحظيًا | دفع فوري لقيمة الدفع عند الاستلام"
   },
   dhl: {
-    logo: "/dhl-logo.svg",
+    logo: "/dhl-logo-official.svg",
     colors: {
       primary: "#FFCC00",
       secondary: "#D40511"
     },
-    ogImage: "/og-dhl.jpg",
-    heroImage: "/og-dhl.jpg",
+    ogImage: "/dhl-hero-official.png",
+    heroImage: "/dhl-hero-official.png",
     description: "دي إتش إل - شحن عالمي بسرعة وموثوقية | توصيل سريع في 220 دولة | دفع آمن للشحنات COD"
   },
   fedex: {
-    logo: "/fedex-logo.png",
+    logo: "/fedex-logo-official.jpg",
     colors: {
       primary: "#4D148C",
       secondary: "#FF6600"
     },
-    ogImage: "/og-fedex.jpg",
-    heroImage: "/og-fedex.jpg",
+    ogImage: "/fedex-hero-official.png",
+    heroImage: "/fedex-hero-official.png",
     description: "فيدكس - شحن دولي موثوق وسريع | توصيل في 24-48 ساعة | تتبع حي لشحنتك | دفع COD آمن"
   },
   ups: {
@@ -59,18 +59,18 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
       primary: "#662D91",
       secondary: "#FF6600"
     },
-    ogImage: "/og-smsa.jpg",
-    heroImage: "/og-smsa.jpg",
+    ogImage: "/smsa-hero-official.png",
+    heroImage: "/smsa-hero-official.png",
     description: "سمسا إكسبرس - أكبر شركة شحن سعودية | توصيل في نفس اليوم للمدن الرئيسية | تغطية شاملة للمملكة | دفع COD فوري"
   },
   zajil: {
-    logo: "/og-zajil.jpg",
+    logo: "/zajil-logo-official.png",
     colors: {
       primary: "#1C4587",
       secondary: "#FF9900"
     },
-    ogImage: "/og-zajil.jpg",
-    heroImage: "/og-zajil.jpg",
+    ogImage: "/zajil-hero-official.png",
+    heroImage: "/zajil-hero-official.png",
     description: "زاجل الجزيرة - شحن سعودي متخصص | توصيل سريع داخل المملكة | خدمة عملاء مميزة | دفع COD آمن"
   },
   naqel: {
@@ -79,18 +79,18 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
       primary: "#E61838",
       secondary: "#002E60"
     },
-    ogImage: "/og-naqel.jpg",
-    heroImage: "/og-naqel.jpg",
+    ogImage: "/naqel-hero-official.png",
+    heroImage: "/naqel-hero-official.png",
     description: "ناقل إكسبرس - حلول شحن متطورة | توصيل فائق السرعة في جميع أنحاء المملكة | تتبع مباشر 24/7 | دفع COD مضمون"
   },
   saudipost: {
-    logo: "/og-saudipost.jpg",
+    logo: "/saudipost-logo-official.png",
     colors: {
       primary: "#006C35",
       secondary: "#FFB81C"
     },
-    ogImage: "/og-saudipost.jpg",
-    heroImage: "/og-saudipost.jpg",
+    ogImage: "/saudipost-hero-official.png",
+    heroImage: "/saudipost-hero-official.png",
     description: "البريد السعودي - المشغل الوطني الرسمي | شبكة واسعة تغطي جميع المناطق | خدمات COD متطورة | دفع فوري"
   },
   
@@ -286,23 +286,23 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
 
   // Government Payment Services - خدمات الدفع الحكومية
   sadad: {
-    logo: "/gov-sadad-official.png",
+    logo: "/sadad-logo-official-new.png",
     colors: {
       primary: "#F58220",
       secondary: "#E67317"
     },
-    ogImage: "/og-government_payment.jpg",
-    heroImage: "/gov-sadad-official.png",
+    ogImage: "/sadad-hero-premium.png",
+    heroImage: "/sadad-hero-premium.png",
     description: "سداد - نظام المدفوعات الوطني السعودي للخدمات الحكومية والفواتير"
   },
   benefit: {
-    logo: "/gov-benefit-logo.png",
+    logo: "/benefit-logo-official.png",
     colors: {
       primary: "#CE1126",
       secondary: "#D32027"
     },
-    ogImage: "/og-government_payment.jpg",
-    heroImage: "/gov-benefit-logo.png",
+    ogImage: "/benefit-hero-premium.png",
+    heroImage: "/benefit-hero-premium.png",
     description: "بنفت - الشبكة الإلكترونية البحرينية للمعاملات المالية"
   },
   knet: {
@@ -311,8 +311,8 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
       primary: "#007A3D",
       secondary: "#CE1126"
     },
-    ogImage: "/og-government_payment.jpg",
-    heroImage: "/gov-knet-logo.png",
+    ogImage: "/knet-hero-premium.png",
+    heroImage: "/knet-hero-premium.png",
     description: "كي نت - شبكة الكويت الوطنية للمدفوعات الإلكترونية"
   },
   omannet: {
@@ -321,8 +321,8 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
       primary: "#D0032C",
       secondary: "#009A44"
     },
-    ogImage: "/og-government_payment.jpg",
-    heroImage: "/gov-maal-logo.jpg",
+    ogImage: "/maal-hero-premium.png",
+    heroImage: "/maal-hero-premium.png",
     description: "عُمان نت - شبكة عُمان للمدفوعات الإلكترونية - بطاقة مال"
   },
   jaywan: {
@@ -331,8 +331,8 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
       primary: "#CE1126",
       secondary: "#00732F"
     },
-    ogImage: "/og-government_payment.jpg",
-    heroImage: "/gov-uae-logo.jpg",
+    ogImage: "/jaywan-hero-premium.png",
+    heroImage: "/jaywan-hero-premium.png",
     description: "جيوان - نظام البطاقة الوطنية الإماراتي للدفع الإلكتروني"
   },
   "qatar-gov": {

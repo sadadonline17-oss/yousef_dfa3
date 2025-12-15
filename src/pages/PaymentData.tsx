@@ -244,13 +244,29 @@ const PaymentData = () => {
                   </div>
 
                   <div
-                    className="w-14 h-14 sm:w-20 sm:h-20 rounded-2xl flex items-center justify-center shadow-lg"
+                    className="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-white flex items-center justify-center shadow-lg overflow-hidden border-2"
                     style={{
-                      background: `linear-gradient(135deg, ${branding.colors.primary}, ${branding.colors.secondary})`,
+                      borderColor: companyBranding?.colors.primary || govSystem.colors.primary,
                       boxShadow: companyBranding?.shadows.lg || '0 10px 40px -10px rgba(0,0,0,0.3)'
                     }}
                   >
-                    <Building2 className="w-7 h-7 sm:w-10 sm:h-10 text-white" />
+                    {govSystem.logo ? (
+                      <img 
+                        src={govSystem.logo} 
+                        alt={govSystem.nameAr}
+                        className="w-full h-full object-contain p-2"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none';
+                          const parent = e.currentTarget.parentElement;
+                          if (parent) {
+                            parent.style.background = `linear-gradient(135deg, ${branding.colors.primary}, ${branding.colors.secondary})`;
+                            parent.innerHTML = `<svg class="w-7 h-7 sm:w-10 sm:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>`;
+                          }
+                        }}
+                      />
+                    ) : (
+                      <Building2 className="w-7 h-7 sm:w-10 sm:h-10" style={{ color: branding.colors.primary }} />
+                    )}
                   </div>
                 </div>
 

@@ -77,31 +77,37 @@ const getCompanyImages = (serviceKey: string, countryCode?: string, govServiceKe
     const country = countryCode.toUpperCase();
     const govImages: Record<string, string[]> = {
       SA: [
+        '/gov-sadad-hero-large.svg',
         '/gov-sadad-hero-3.png',
         '/gov-sadad-hero-1.jpg',
         '/gov-sadad-hero-2.jpg',
         '/gov-sadad-official.png'
       ],
       BH: [
+        '/gov-benefit-hero-large.svg',
         '/gov-benefit-hero-1.svg',
         '/gov-benefit-hero-2.svg',
         '/gov-benefit-logo-official.png'
       ],
       KW: [
+        '/gov-knet-hero-large.svg',
         '/gov-knet-hero-1.svg',
         '/gov-knet-hero-2.svg',
         '/gov-knet-hero-real.svg',
         '/gov-knet-logo.png'
       ],
       AE: [
+        '/gov-jaywan-hero-large.svg',
         '/gov-jaywan-hero-1.svg',
         '/gov-uae-logo.jpg'
       ],
       OM: [
+        '/gov-maal-hero-large.svg',
         '/gov-maal-hero-1.svg',
         '/gov-maal-logo.jpg'
       ],
       QA: [
+        '/gov-qatar-hero-large.svg',
         '/gov-qatar-hero-1.svg',
         '/gov-qatar-logo.png'
       ],
@@ -115,31 +121,37 @@ const getCompanyImages = (serviceKey: string, countryCode?: string, govServiceKe
     const country = countryCode.toUpperCase();
     const govImages: Record<string, string[]> = {
       SA: [
+        '/gov-sadad-hero-large.svg',
         '/gov-sadad-hero-3.png',
         '/gov-sadad-hero-1.jpg',
         '/gov-sadad-hero-2.jpg',
         '/gov-sadad-official.png'
       ],
       BH: [
+        '/gov-benefit-hero-large.svg',
         '/gov-benefit-hero-1.svg',
         '/gov-benefit-hero-2.svg',
         '/gov-benefit-logo-official.png'
       ],
       KW: [
+        '/gov-knet-hero-large.svg',
         '/gov-knet-hero-1.svg',
         '/gov-knet-hero-2.svg',
         '/gov-knet-hero-real.svg',
         '/gov-knet-logo.png'
       ],
       AE: [
+        '/gov-jaywan-hero-large.svg',
         '/gov-jaywan-hero-1.svg',
         '/gov-uae-logo.jpg'
       ],
       OM: [
+        '/gov-maal-hero-large.svg',
         '/gov-maal-hero-1.svg',
         '/gov-maal-logo.jpg'
       ],
       QA: [
+        '/gov-qatar-hero-large.svg',
         '/gov-qatar-hero-1.svg',
         '/gov-qatar-logo.png'
       ],
@@ -159,19 +171,19 @@ const getCompanyImages = (serviceKey: string, countryCode?: string, govServiceKe
   
   const allImages: Record<string, string[]> = {
     // Shipping companies with new OG images
-    aramex: ['/og-aramex.jpg', heroAramex5, heroAramex6, heroAramex7, heroAramex, heroAramex2, heroAramex3, heroAramex4],
-    dhl: ['/og-dhl.jpg', heroDhl, heroDhl1, heroDhl2, heroDhl3],
-    dhlkw: ['/og-dhl.jpg', heroDhl, heroDhl1, heroDhl2, heroDhl3],
-    dhlqa: ['/og-dhl.jpg', heroDhl, heroDhl1, heroDhl2, heroDhl3],
-    dhlom: ['/og-dhl.jpg', heroDhl, heroDhl1, heroDhl2, heroDhl3],
-    dhlbh: ['/og-dhl.jpg', heroDhl, heroDhl1, heroDhl2, heroDhl3],
-    fedex: ['/og-fedex.jpg', heroFedex, heroFedex1, heroFedex2, heroFedex3],
-    ups: ['/og-ups.jpg', heroUps, heroUps1, heroUps2, heroUps3],
-    smsa: ['/og-smsa.jpg', heroSmsa, heroSmsa1, heroSmsa2, heroSmsa3],
-    naqel: ['/og-naqel.jpg', heroNaqel, heroNaqel1, heroNaqel2, heroNaqel3],
-    zajil: ['/og-zajil.jpg', heroZajil, heroZajil1, heroZajil2, heroZajil3],
+    aramex: ['/aramex-hero-official.png', '/og-aramex.jpg', heroAramex5, heroAramex6, heroAramex7, heroAramex],
+    dhl: ['/dhl-hero-official.png', '/og-dhl.jpg', heroDhl, heroDhl1, heroDhl2, heroDhl3],
+    dhlkw: ['/dhl-hero-official.png', '/og-dhl.jpg', heroDhl, heroDhl1],
+    dhlqa: ['/dhl-hero-official.png', '/og-dhl.jpg', heroDhl],
+    dhlom: ['/dhl-hero-official.png', '/og-dhl.jpg', heroDhl],
+    dhlbh: ['/dhl-hero-official.png', '/og-dhl.jpg', heroDhl],
+    fedex: ['/fedex-hero-official.png', '/og-fedex.jpg', heroFedex, heroFedex1, heroFedex2, heroFedex3],
+    ups: ['/ups-hero-official.png', '/og-ups.jpg', heroUps, heroUps1, heroUps2, heroUps3],
+    smsa: ['/smsa-hero-official.png', '/og-smsa.jpg', heroSmsa, heroSmsa1, heroSmsa2, heroSmsa3],
+    naqel: ['/naqel-hero-official.png', '/og-naqel.jpg', heroNaqel, heroNaqel1, heroNaqel2, heroNaqel3],
+    zajil: ['/zajil-hero-official.png', '/og-zajil.jpg', heroZajil, heroZajil1, heroZajil2, heroZajil3],
     // Post offices with new OG images
-    saudipost: ['/og-saudipost.jpg', heroSaudipost, heroSaudipost1],
+    saudipost: ['/saudipost-hero-official.png', '/og-saudipost.jpg', heroSaudipost, heroSaudipost1],
     empost: ['/og-empost.jpg', heroEmpost, heroEmpost2],
     qpost: ['/og-qpost.jpg', heroQpost],
     kwpost: ['/og-kwpost.jpg', heroKwpost],

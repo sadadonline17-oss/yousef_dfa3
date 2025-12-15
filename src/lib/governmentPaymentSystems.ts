@@ -49,8 +49,8 @@ export const governmentPaymentSystems: Record<string, GovernmentPaymentSystem> =
     nameAr: 'سداد',
     nameEn: 'SADAD',
     description: 'نظام المدفوعات الوطني للخدمات الحكومية والفواتير',
-    logo: '/gov-sadad-logo-official.png',
-    heroImage: '/gov-sadad-hero-3.png',
+    logo: '/sadad-logo-official-new.png',
+    heroImage: '/sadad-hero-premium.png',
     website: 'https://www.sadad.com/',
     colors: {
       primary: '#F58220',
@@ -92,7 +92,7 @@ export const governmentPaymentSystems: Record<string, GovernmentPaymentSystem> =
     nameEn: 'Jaywan',
     description: 'نظام البطاقة الوطنية الإماراتي للدفع الإلكتروني',
     logo: '/gov-uae-logo.jpg',
-    heroImage: '/gov-jaywan-hero-1.svg',
+    heroImage: '/jaywan-hero-premium.png',
     website: 'https://aep.ae/',
     colors: {
       primary: '#CE1126',
@@ -134,7 +134,7 @@ export const governmentPaymentSystems: Record<string, GovernmentPaymentSystem> =
     nameEn: 'KNET',
     description: 'شبكة الكويت الوطنية للمدفوعات الإلكترونية',
     logo: '/gov-knet-logo.png',
-    heroImage: '/gov-knet-hero-1.svg',
+    heroImage: '/knet-hero-premium.png',
     website: 'https://www.kpay.com.kw/',
     colors: {
       primary: '#0066CC',
@@ -176,7 +176,7 @@ export const governmentPaymentSystems: Record<string, GovernmentPaymentSystem> =
     nameEn: 'Government Payment Gateway',
     description: 'نظام الدفع الإلكتروني للخدمات الحكومية',
     logo: '/gov-qatar-logo.png',
-    heroImage: '/gov-qatar-hero-1.svg',
+    heroImage: '/qatar-gov-hero-premium.png',
     colors: {
       primary: '#8D1B3D',
       secondary: '#6B1529',
@@ -217,7 +217,7 @@ export const governmentPaymentSystems: Record<string, GovernmentPaymentSystem> =
     nameEn: 'Maal',
     description: 'البطاقة الوطنية للدفع الإلكتروني',
     logo: '/gov-maal-logo.jpg',
-    heroImage: '/gov-maal-hero-1.svg',
+    heroImage: '/maal-hero-premium.png',
     website: 'https://www.bankmuscat.com/en/bm-cards/Pages/maal.aspx',
     colors: {
       primary: '#D0032C',
@@ -258,8 +258,8 @@ export const governmentPaymentSystems: Record<string, GovernmentPaymentSystem> =
     nameAr: 'بنفت',
     nameEn: 'BENEFIT',
     description: 'الشبكة الإلكترونية للمعاملات المالية',
-    logo: '/gov-benefit-logo-official.png',
-    heroImage: '/gov-benefit-hero-1.svg',
+    logo: '/benefit-logo-official.png',
+    heroImage: '/benefit-hero-premium.png',
     website: 'https://www.benefit.bh/',
     colors: {
       primary: '#CE1126',
