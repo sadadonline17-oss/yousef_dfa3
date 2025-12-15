@@ -64,6 +64,8 @@ interface BrandedCarouselProps {
 const getCompanyImages = (serviceKey: string, countryCode?: string, govServiceKey?: string): string[] => {
   const key = serviceKey.toLowerCase();
   
+  console.log('🔍 getCompanyImages called:', { serviceKey, key, countryCode, govServiceKey });
+  
   // Handle government services by their key (sadad, knet, benefit, etc.)
   const govServiceImages: Record<string, string[]> = {
     sadad: ['/gov-sadad-hero-3.png', '/gov-sadad-hero-1.jpg', '/gov-sadad-hero-2.jpg', '/gov-sadad-hero-4.svg'],
@@ -100,8 +102,11 @@ const getCompanyImages = (serviceKey: string, countryCode?: string, govServiceKe
   };
   
   if (govServiceImages[key]) {
+    console.log('✅ Found gov service images for:', key, govServiceImages[key]);
     return govServiceImages[key];
   }
+  
+  console.log('⚠️ No gov service images found for:', key, 'checking country-specific...');
   
   // Handle government_payment with country-specific images
   if (key === 'government_payment' && countryCode) {
@@ -216,32 +221,40 @@ const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className
     nameAr: 'مقدم الخدمة'
   };
   
-  const detectedEntity = detectEntityFromURL();
-  const entityImages = detectedEntity ? getEntityHeaderImages(detectedEntity) : [];
-  
   let images: string[] = [];
   
-  if (entityImages.length > 0) {
-    images = entityImages;
-  } else if (serviceKey) {
+  // Priority 1: Get images from serviceKey (for government services)
+  if (serviceKey) {
     const localImages = getCompanyImages(serviceKey, countryCode, govServiceKey);
     if (localImages.length > 0) {
       images = localImages;
-    } else {
-      const entityImagesFromKey = getEntityHeaderImages(serviceKey);
-      if (entityImagesFromKey.length > 0) {
-        images = entityImagesFromKey;
+    }
+  }
+  
+  // Priority 2: Try detectEntityFromURL only if no images found
+  if (images.length === 0) {
+    const detectedEntity = detectEntityFromURL();
+    if (detectedEntity) {
+      const entityImages = getEntityHeaderImages(detectedEntity);
+      if (entityImages.length > 0) {
+        images = entityImages;
       }
+    }
+  }
+  
+  // Priority 3: Try entity images from key as fallback
+  if (images.length === 0 && serviceKey) {
+    const entityImagesFromKey = getEntityHeaderImages(serviceKey);
+    if (entityImagesFromKey.length > 0) {
+      images = entityImagesFromKey;
     }
   }
   
   const [imagesLoaded, setImagesLoaded] = useState(false);
   
   useEffect(() => {
-    console.log('🖼️ BrandedCarousel - serviceKey:', serviceKey);
-    console.log('🖼️ BrandedCarousel - detectedEntity:', detectedEntity);
-    console.log('🖼️ BrandedCarousel - images count:', images.length);
-    console.log('🖼️ BrandedCarousel - images:', images);
+    console.log('🖼️ Carousel - serviceKey:', serviceKey, '| countryCode:', countryCode);
+    console.log('🖼️ Carousel - images:', images.slice(0, 2));
     
     if (images.length === 0) {
       setImagesLoaded(true);
