@@ -277,13 +277,24 @@ const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className
         <div 
           className="w-full max-w-6xl mx-auto aspect-[21/9] rounded-xl flex items-center justify-center"
           style={{
-            background: `linear-gradient(135deg, ${branding.colors.primary}20, ${branding.colors.secondary}20)`,
+            background: `linear-gradient(135deg, ${branding.colors.primary}15, ${branding.colors.secondary}15)`,
             borderRadius: branding.borderRadius.lg,
+            boxShadow: branding.shadows.lg,
+            border: `1px solid ${branding.colors.primary}20`
           }}
         >
           <div className="animate-pulse text-center">
-            <div className="w-16 h-16 mx-auto mb-2 rounded-full bg-white/30" />
-            <p className="text-sm" style={{ color: branding.colors.primary }}>جاري التحميل...</p>
+            <div 
+              className="w-16 h-16 mx-auto mb-2 rounded-full flex items-center justify-center"
+              style={{ backgroundColor: `${branding.colors.primary}20` }}
+            >
+              <div 
+                className="w-8 h-8 rounded-full"
+                style={{ backgroundColor: branding.colors.primary }}
+              />
+            </div>
+            <p className="text-sm font-bold" style={{ color: branding.colors.primary }}>جاري التحميل...</p>
+            <p className="text-xs mt-1" style={{ color: branding.colors.textLight || branding.colors.text }}>{branding.nameAr}</p>
           </div>
         </div>
       </div>
@@ -314,11 +325,20 @@ const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className
                   <img
                     src={image}
                     alt={`${branding.nameAr} - ${index + 1}`}
-                    className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                    className="w-full h-full transition-all duration-700 group-hover:scale-105"
+                    style={{
+                      objectFit: 'cover',
+                      objectPosition: 'center',
+                      backgroundColor: branding.colors.surface || '#f5f5f5'
+                    }}
                     loading={index === 0 ? "eager" : "lazy"}
                     onError={(e) => {
                       console.error(`Failed to load image: ${image}`);
-                      e.currentTarget.style.display = 'none';
+                      const parent = e.currentTarget.parentElement;
+                      if (parent) {
+                        parent.style.background = `linear-gradient(135deg, ${branding.colors.primary}20, ${branding.colors.secondary}20)`;
+                        parent.innerHTML = `<div class="flex items-center justify-center h-full"><p style="color: ${branding.colors.primary}">${branding.nameAr}</p></div>`;
+                      }
                     }}
                   />
                 </div>

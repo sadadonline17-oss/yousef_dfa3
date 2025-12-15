@@ -219,7 +219,7 @@ const LogisticsServices = () => {
   }
 
   return (
-    <div className="min-h-screen py-6" dir="rtl">
+    <div className="min-h-screen py-6" style={{ background: 'linear-gradient(to bottom, hsl(var(--background)), hsl(var(--muted) / 0.1))' }} dir="rtl">
       <div className="container mx-auto px-4">
         <div className="mb-4">
           <BackButton />
@@ -236,12 +236,18 @@ const LogisticsServices = () => {
           </Button>
 
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 rounded-xl flex items-center justify-center">
+            <div 
+              className="w-12 h-12 rounded-xl flex items-center justify-center"
+              style={{
+                background: 'linear-gradient(135deg, hsl(260 95% 55%), hsl(280 90% 60%))',
+                boxShadow: '0 4px 12px -2px rgba(0, 0, 0, 0.12)'
+              }}
+            >
               <Truck className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold">الخدمات اللوجستية المتكاملة</h1>
-              <p className="text-sm text-muted-foreground">
+              <h1 className="text-2xl font-bold" style={{ color: 'hsl(var(--foreground))' }}>الخدمات اللوجستية المتكاملة</h1>
+              <p className="text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
                 {selectedCountry.nameAr}
               </p>
             </div>
@@ -445,16 +451,23 @@ const LogisticsServices = () => {
           {/* Sidebar */}
           <div className="space-y-6">
             {/* Logistics Providers */}
-            <Card className="p-6">
-              <h2 className="text-lg font-bold mb-4">شركاء الخدمات اللوجستية</h2>
+            <Card className="p-6" style={{ backgroundColor: 'hsl(var(--card))', borderColor: 'hsl(var(--border))', boxShadow: '0 4px 12px -2px rgba(0, 0, 0, 0.08)' }}>
+              <h2 className="text-lg font-bold mb-4" style={{ color: 'hsl(var(--foreground))' }}>شركاء الخدمات اللوجستية</h2>
               <div className="space-y-4">
                 {logisticsProviders.map((provider, index) => (
-                  <div key={index} className="p-4 border rounded-lg">
+                  <div 
+                    key={index} 
+                    className="p-4 rounded-lg transition-all hover:shadow-md"
+                    style={{ 
+                      border: '1px solid hsl(var(--border))',
+                      backgroundColor: 'hsl(var(--card))'
+                    }}
+                  >
                     <div className="flex items-center gap-2 mb-2">
                       <span className="text-2xl">{provider.logo}</span>
                       <div>
-                        <h3 className="font-bold text-sm">{provider.name}</h3>
-                        <p className="text-xs text-muted-foreground">{provider.nameEn}</p>
+                        <h3 className="font-bold text-sm" style={{ color: 'hsl(var(--foreground))' }}>{provider.name}</h3>
+                        <p className="text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>{provider.nameEn}</p>
                       </div>
                     </div>
                     <div className="flex flex-wrap gap-1 mb-2">
@@ -465,12 +478,12 @@ const LogisticsServices = () => {
                       ))}
                     </div>
                     <div className="flex items-center justify-between text-xs">
-                      <span className="text-muted-foreground">
+                      <span style={{ color: 'hsl(var(--muted-foreground))' }}>
                         ⭐ {provider.rating}
                       </span>
                       <div className="flex gap-1">
                         {provider.features.map((feature, i) => (
-                          <span key={i} className="text-green-600" title={feature}>
+                          <span key={i} style={{ color: 'hsl(140 70% 45%)' }} title={feature}>
                             ✓
                           </span>
                         ))}
@@ -482,8 +495,8 @@ const LogisticsServices = () => {
             </Card>
 
             {/* Features */}
-            <Card className="p-6">
-              <h2 className="text-lg font-bold mb-4">مميزات الخدمة</h2>
+            <Card className="p-6" style={{ backgroundColor: 'hsl(var(--card))', borderColor: 'hsl(var(--border))', boxShadow: '0 4px 12px -2px rgba(0, 0, 0, 0.08)' }}>
+              <h2 className="text-lg font-bold mb-4" style={{ color: 'hsl(var(--foreground))' }}>مميزات الخدمة</h2>
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
@@ -533,14 +546,21 @@ const LogisticsServices = () => {
             </Card>
 
             {/* Tracking Info */}
-            <Card className="p-6 bg-blue-50 border-blue-200">
-              <h2 className="text-lg font-bold mb-4 text-blue-800">
+            <Card 
+              className="p-6"
+              style={{ 
+                backgroundColor: 'hsl(210 100% 95%)', 
+                borderColor: 'hsl(210 85% 70%)',
+                boxShadow: '0 4px 12px -2px rgba(0, 0, 0, 0.08)'
+              }}
+            >
+              <h2 className="text-lg font-bold mb-4" style={{ color: 'hsl(210 85% 35%)' }}>
                 تتبع الشحنات
               </h2>
-              <p className="text-sm text-blue-700 mb-3">
+              <p className="text-sm mb-3" style={{ color: 'hsl(210 85% 40%)' }}>
                 تتبع شحنتك في الوقت الفعلي
               </p>
-              <Button variant="outline" className="w-full border-blue-300 text-blue-700">
+              <Button variant="outline" className="w-full" style={{ borderColor: 'hsl(210 85% 60%)', color: 'hsl(210 85% 40%)' }}>
                 <MapPin className="w-4 h-4 ml-2" />
                 تتبع شحنة موجودة
               </Button>
