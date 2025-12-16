@@ -26,8 +26,8 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'تجديد وإصدار جوازات السفر عبر سداد',
-    logo: '/gov-sadad-official.png',
-    heroImage: '/gov-sadad-official.png',
+    logo: '/logos-official/sadad-logo-official-en.png',
+    heroImage: '/sadad-hero-premium.png',
   },
   {
     id: 'sadad-traffic-violations',
@@ -38,8 +38,8 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'دفع مخالفات المرور عبر سداد',
-    logo: '/gov-sadad-official.png',
-    heroImage: '/gov-sadad-official.png',
+    logo: '/logos-official/sadad-logo-official-en.png',
+    heroImage: '/sadad-hero-premium.png',
   },
   {
     id: 'sadad-driving-license',
@@ -50,8 +50,8 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'إصدار وتجديد رخص القيادة عبر سداد',
-    logo: '/gov-sadad-official.png',
-    heroImage: '/gov-sadad-official.png',
+    logo: '/logos-official/sadad-logo-official-en.png',
+    heroImage: '/sadad-hero-premium.png',
   },
   {
     id: 'sadad-municipal',
@@ -62,8 +62,8 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'دفع رسوم الخدمات البلدية عبر سداد',
-    logo: '/gov-sadad-official.png',
-    heroImage: '/gov-sadad-official.png',
+    logo: '/logos-official/sadad-logo-official-en.png',
+    heroImage: '/sadad-hero-premium.png',
   },
   {
     id: 'sadad-contracts',
@@ -74,8 +74,8 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'دفع رسوم توثيق العقود عبر سداد',
-    logo: '/gov-sadad-official.png',
-    heroImage: '/gov-sadad-official.png',
+    logo: '/logos-official/sadad-logo-official-en.png',
+    heroImage: '/sadad-hero-premium.png',
   },
   {
     id: 'sadad-id-card',
@@ -86,8 +86,8 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'إصدار وتجديد بطاقة الأحوال المدنية',
-    logo: '/gov-sadad-official.png',
-    heroImage: '/gov-sadad-official.png',
+    logo: '/logos-official/sadad-logo-official-en.png',
+    heroImage: '/sadad-hero-premium.png',
   },
   {
     id: 'sadad-education',
@@ -98,8 +98,8 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'دفع الرسوم الدراسية والخدمات التعليمية',
-    logo: '/gov-sadad-official.png',
-    heroImage: '/gov-sadad-official.png',
+    logo: '/logos-official/sadad-logo-official-en.png',
+    heroImage: '/sadad-hero-premium.png',
   },
   {
     id: 'sadad-health',
@@ -110,8 +110,8 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'دفع رسوم المستشفيات والخدمات الصحية',
-    logo: '/gov-sadad-official.png',
-    heroImage: '/gov-sadad-official.png',
+    logo: '/logos-official/sadad-logo-official-en.png',
+    heroImage: '/sadad-hero-premium.png',
   },
   {
     id: 'sadad-work-permit',
@@ -122,8 +122,8 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'دفع رسوم تصاريح العمل والإقامة',
-    logo: '/gov-sadad-official.png',
-    heroImage: '/gov-sadad-official.png',
+    logo: '/logos-official/sadad-logo-official-en.png',
+    heroImage: '/sadad-hero-premium.png',
   },
   {
     id: 'sadad-insurance',
@@ -134,8 +134,8 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'دفع أقساط التأمين الطبي والسيارات',
-    logo: '/gov-sadad-official.png',
-    heroImage: '/gov-sadad-official.png',
+    logo: '/logos-official/sadad-logo-official-en.png',
+    heroImage: '/sadad-hero-premium.png',
   },
   {
     id: 'sadad-vehicle-registration',
@@ -146,8 +146,8 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'تجديد استمارة المركبة عبر سداد',
-    logo: '/gov-sadad-official.png',
-    heroImage: '/gov-sadad-official.png',
+    logo: '/logos-official/sadad-logo-official-en.png',
+    heroImage: '/sadad-hero-premium.png',
   },
   {
     id: 'sadad-customs',
@@ -158,8 +158,8 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'دفع الرسوم الجمركية عبر سداد',
-    logo: '/gov-sadad-official.png',
-    heroImage: '/gov-sadad-official.png',
+    logo: '/logos-official/sadad-logo-official-en.png',
+    heroImage: '/sadad-hero-premium.png',
   },
   {
     id: 'sadad-utilities',
@@ -170,8 +170,8 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'دفع فواتير الكهرباء والماء والاتصالات',
-    logo: '/gov-sadad-official.png',
-    heroImage: '/gov-sadad-official.png',
+    logo: '/logos-official/sadad-logo-official-en.png',
+    heroImage: '/sadad-hero-premium.png',
   },
   {
     id: 'sadad',
@@ -182,8 +182,8 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'نظام المدفوعات الوطني السعودي للخدمات الحكومية',
-    logo: '/gov-sadad-official.png',
-    heroImage: '/gov-sadad-official.png',
+    logo: '/logos-official/sadad-logo-official-en.png',
+    heroImage: '/sadad-hero-premium.png',
   },
 
   // البحرين - بنفت
@@ -196,8 +196,8 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'تجديد وإصدار جوازات السفر عبر بنفت',
-    logo: '/gov-benefit-logo.png',
-    heroImage: '/gov-benefit-logo.png',
+    logo: '/logos-official/benefit-logo-official-white.png',
+    heroImage: '/benefit-hero-premium.png',
   },
   {
     id: 'benefit-traffic',
@@ -208,8 +208,8 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'دفع مخالفات المرور عبر بنفت',
-    logo: '/gov-benefit-logo.png',
-    heroImage: '/gov-benefit-logo.png',
+    logo: '/logos-official/benefit-logo-official-white.png',
+    heroImage: '/benefit-hero-premium.png',
   },
   {
     id: 'benefit-cpr',
@@ -220,8 +220,8 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'إصدار وتجديد البطاقة الشخصية',
-    logo: '/gov-benefit-logo.png',
-    heroImage: '/gov-benefit-logo.png',
+    logo: '/logos-official/benefit-logo-official-white.png',
+    heroImage: '/benefit-hero-premium.png',
   },
   {
     id: 'benefit-municipal',
@@ -232,8 +232,8 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'دفع رسوم الخدمات البلدية',
-    logo: '/gov-benefit-logo.png',
-    heroImage: '/gov-benefit-logo.png',
+    logo: '/logos-official/benefit-logo-official-white.png',
+    heroImage: '/benefit-hero-premium.png',
   },
   {
     id: 'benefit',
@@ -244,8 +244,8 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'الشبكة الإلكترونية البحرينية للمعاملات المالية',
-    logo: '/gov-benefit-logo.png',
-    heroImage: '/gov-benefit-logo.png',
+    logo: '/logos-official/benefit-logo-official-white.png',
+    heroImage: '/benefit-hero-premium.png',
   },
 
   // الكويت - كي نت
@@ -258,8 +258,8 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'تجديد وإصدار جوازات السفر عبر كي نت',
-    logo: '/gov-knet-logo.png',
-    heroImage: '/gov-knet-logo.png',
+    logo: '/logos-official/knet-logo-official.svg',
+    heroImage: '/knet-hero-premium.png',
   },
   {
     id: 'knet-paci',
@@ -270,8 +270,8 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'رسوم البطاقة المدنية عبر كي نت',
-    logo: '/gov-knet-logo.png',
-    heroImage: '/gov-knet-logo.png',
+    logo: '/logos-official/knet-logo-official.svg',
+    heroImage: '/knet-hero-premium.png',
   },
   {
     id: 'knet-traffic',
@@ -282,8 +282,8 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'دفع مخالفات المرور عبر كي نت',
-    logo: '/gov-knet-logo.png',
-    heroImage: '/gov-knet-logo.png',
+    logo: '/logos-official/knet-logo-official.svg',
+    heroImage: '/knet-hero-premium.png',
   },
   {
     id: 'knet-municipal',
@@ -294,8 +294,8 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'دفع رسوم البلدية عبر كي نت',
-    logo: '/gov-knet-logo.png',
-    heroImage: '/gov-knet-logo.png',
+    logo: '/logos-official/knet-logo-official.svg',
+    heroImage: '/knet-hero-premium.png',
   },
   {
     id: 'knet',
@@ -306,8 +306,8 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'شبكة الكويت الوطنية للمدفوعات الإلكترونية',
-    logo: '/gov-knet-logo.png',
-    heroImage: '/gov-knet-logo.png',
+    logo: '/logos-official/knet-logo-official.svg',
+    heroImage: '/knet-hero-premium.png',
   },
 
   // عُمان - عُمان نت
@@ -321,7 +321,7 @@ export const governmentServices: GovernmentService[] = [
     supportsPaymentLinks: true,
     description: 'تجديد وإصدار جوازات السفر',
     logo: '/gov-maal-logo.jpg',
-    heroImage: '/gov-maal-logo.jpg',
+    heroImage: '/maal-hero-premium.png',
   },
   {
     id: 'omannet-id',
@@ -333,7 +333,7 @@ export const governmentServices: GovernmentService[] = [
     supportsPaymentLinks: true,
     description: 'إصدار وتجديد بطاقة الهوية',
     logo: '/gov-maal-logo.jpg',
-    heroImage: '/gov-maal-logo.jpg',
+    heroImage: '/maal-hero-premium.png',
   },
   {
     id: 'omannet-traffic',
@@ -345,7 +345,7 @@ export const governmentServices: GovernmentService[] = [
     supportsPaymentLinks: true,
     description: 'دفع مخالفات المرور',
     logo: '/gov-maal-logo.jpg',
-    heroImage: '/gov-maal-logo.jpg',
+    heroImage: '/maal-hero-premium.png',
   },
   {
     id: 'omannet-municipal',
@@ -357,7 +357,7 @@ export const governmentServices: GovernmentService[] = [
     supportsPaymentLinks: true,
     description: 'دفع رسوم الخدمات البلدية',
     logo: '/gov-maal-logo.jpg',
-    heroImage: '/gov-maal-logo.jpg',
+    heroImage: '/maal-hero-premium.png',
   },
   {
     id: 'omannet',
@@ -369,7 +369,7 @@ export const governmentServices: GovernmentService[] = [
     supportsPaymentLinks: true,
     description: 'شبكة عُمان للمدفوعات الإلكترونية - بطاقة مال',
     logo: '/gov-maal-logo.jpg',
-    heroImage: '/gov-maal-logo.jpg',
+    heroImage: '/maal-hero-premium.png',
   },
 
   // الإمارات - جيوان
@@ -383,7 +383,7 @@ export const governmentServices: GovernmentService[] = [
     supportsPaymentLinks: true,
     description: 'تجديد وإصدار جوازات السفر',
     logo: '/gov-uae-logo.jpg',
-    heroImage: '/gov-uae-logo.jpg',
+    heroImage: '/jaywan-hero-premium.png',
   },
   {
     id: 'jaywan-emirates-id',
@@ -395,7 +395,7 @@ export const governmentServices: GovernmentService[] = [
     supportsPaymentLinks: true,
     description: 'إصدار وتجديد الهوية الإماراتية',
     logo: '/gov-uae-logo.jpg',
-    heroImage: '/gov-uae-logo.jpg',
+    heroImage: '/jaywan-hero-premium.png',
   },
   {
     id: 'jaywan-traffic',
@@ -407,7 +407,7 @@ export const governmentServices: GovernmentService[] = [
     supportsPaymentLinks: true,
     description: 'دفع مخالفات المرور',
     logo: '/gov-uae-logo.jpg',
-    heroImage: '/gov-uae-logo.jpg',
+    heroImage: '/jaywan-hero-premium.png',
   },
   {
     id: 'jaywan-municipal',
@@ -419,7 +419,7 @@ export const governmentServices: GovernmentService[] = [
     supportsPaymentLinks: true,
     description: 'دفع رسوم الخدمات البلدية',
     logo: '/gov-uae-logo.jpg',
-    heroImage: '/gov-uae-logo.jpg',
+    heroImage: '/jaywan-hero-premium.png',
   },
   {
     id: 'jaywan-visa',
@@ -431,7 +431,7 @@ export const governmentServices: GovernmentService[] = [
     supportsPaymentLinks: true,
     description: 'رسوم الإقامة والتأشيرات',
     logo: '/gov-uae-logo.jpg',
-    heroImage: '/gov-uae-logo.jpg',
+    heroImage: '/jaywan-hero-premium.png',
   },
   {
     id: 'jaywan',
@@ -443,7 +443,7 @@ export const governmentServices: GovernmentService[] = [
     supportsPaymentLinks: true,
     description: 'نظام البطاقة الوطنية الإماراتي للدفع الإلكتروني',
     logo: '/gov-uae-logo.jpg',
-    heroImage: '/gov-uae-logo.jpg',
+    heroImage: '/jaywan-hero-premium.png',
   },
 
   // قطر - بوابة الدفع الحكومي
@@ -457,7 +457,7 @@ export const governmentServices: GovernmentService[] = [
     supportsPaymentLinks: true,
     description: 'تجديد وإصدار جوازات السفر',
     logo: '/gov-qatar-logo.png',
-    heroImage: '/gov-qatar-logo.png',
+    heroImage: '/qatar-gov-hero-premium.png',
   },
   {
     id: 'qatar-id',
@@ -469,7 +469,7 @@ export const governmentServices: GovernmentService[] = [
     supportsPaymentLinks: true,
     description: 'إصدار وتجديد بطاقة الهوية',
     logo: '/gov-qatar-logo.png',
-    heroImage: '/gov-qatar-logo.png',
+    heroImage: '/qatar-gov-hero-premium.png',
   },
   {
     id: 'qatar-traffic',
@@ -481,7 +481,7 @@ export const governmentServices: GovernmentService[] = [
     supportsPaymentLinks: true,
     description: 'دفع مخالفات المرور',
     logo: '/gov-qatar-logo.png',
-    heroImage: '/gov-qatar-logo.png',
+    heroImage: '/qatar-gov-hero-premium.png',
   },
   {
     id: 'qatar-municipal',
@@ -493,7 +493,7 @@ export const governmentServices: GovernmentService[] = [
     supportsPaymentLinks: true,
     description: 'دفع رسوم الخدمات البلدية',
     logo: '/gov-qatar-logo.png',
-    heroImage: '/gov-qatar-logo.png',
+    heroImage: '/qatar-gov-hero-premium.png',
   },
   {
     id: 'qatar-gov',
@@ -505,7 +505,7 @@ export const governmentServices: GovernmentService[] = [
     supportsPaymentLinks: true,
     description: 'نظام الدفع الإلكتروني للخدمات الحكومية القطرية',
     logo: '/gov-qatar-logo.png',
-    heroImage: '/gov-qatar-logo.png',
+    heroImage: '/qatar-gov-hero-premium.png',
   },
 ];
 

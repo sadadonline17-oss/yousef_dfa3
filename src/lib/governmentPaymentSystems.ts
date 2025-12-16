@@ -49,7 +49,7 @@ export const governmentPaymentSystems: Record<string, GovernmentPaymentSystem> =
     nameAr: 'سداد',
     nameEn: 'SADAD',
     description: 'نظام المدفوعات الوطني للخدمات الحكومية والفواتير',
-    logo: '/sadad-logo-official-new.png',
+    logo: '/logos-official/sadad-logo-official-en.png',
     heroImage: '/sadad-hero-premium.png',
     website: 'https://www.sadad.com/',
     colors: {
@@ -258,7 +258,7 @@ export const governmentPaymentSystems: Record<string, GovernmentPaymentSystem> =
     nameAr: 'بنفت',
     nameEn: 'BENEFIT',
     description: 'الشبكة الإلكترونية للمعاملات المالية',
-    logo: '/benefit-logo-official.png',
+    logo: '/logos-official/benefit-logo-official-white.png',
     heroImage: '/benefit-hero-premium.png',
     website: 'https://www.benefit.bh/',
     colors: {

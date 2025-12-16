@@ -75,53 +75,25 @@ const getCompanyImages = (serviceKey: string, countryCode?: string, govServiceKe
     const country = countryCode.toUpperCase();
     const govImages: Record<string, string[]> = {
       SA: [
-        '/og-government_payment.jpg',
-        '/gov-sadad-hero-large.svg',
-        '/gov-sadad-hero-3.png',
+        '/sadad-hero-premium.png',
         '/gov-sadad-hero-1.jpg',
         '/gov-sadad-hero-2.jpg',
-        '/gov-sadad-official.png',
-        '/assets/dynamic-identity/gov_image1.svg',
-        '/assets/dynamic-identity/gov_image2.svg',
-        '/assets/dynamic-identity/gov_image3.svg'
+        '/gov-sadad-hero-3.png'
       ],
       BH: [
-        '/og-government_payment.jpg',
-        '/gov-benefit-hero-large.svg',
-        '/gov-benefit-hero-1.svg',
-        '/gov-benefit-hero-2.svg',
-        '/gov-benefit-logo-official.png',
-        '/assets/dynamic-identity/gov_image1.svg'
+        '/benefit-hero-premium.png'
       ],
       KW: [
-        '/og-government_payment.jpg',
-        '/gov-knet-hero-large.svg',
-        '/gov-knet-hero-1.svg',
-        '/gov-knet-hero-2.svg',
-        '/gov-knet-hero-real.svg',
-        '/gov-knet-logo.png',
-        '/assets/dynamic-identity/gov_image2.svg'
+        '/knet-hero-premium.png'
       ],
       AE: [
-        '/og-government_payment.jpg',
-        '/gov-jaywan-hero-large.svg',
-        '/gov-jaywan-hero-1.svg',
-        '/gov-uae-logo.jpg',
-        '/assets/dynamic-identity/gov_image3.svg'
+        '/jaywan-hero-premium.png'
       ],
       OM: [
-        '/og-government_payment.jpg',
-        '/gov-maal-hero-large.svg',
-        '/gov-maal-hero-1.svg',
-        '/gov-maal-logo.jpg',
-        '/assets/dynamic-identity/gov_image1.svg'
+        '/maal-hero-premium.png'
       ],
       QA: [
-        '/og-government_payment.jpg',
-        '/gov-qatar-hero-large.svg',
-        '/gov-qatar-hero-1.svg',
-        '/gov-qatar-logo.png',
-        '/assets/dynamic-identity/gov_image2.svg'
+        '/qatar-gov-hero-premium.png'
       ],
     };
     return govImages[country] || govImages['SA'];
@@ -132,39 +104,25 @@ const getCompanyImages = (serviceKey: string, countryCode?: string, govServiceKe
     const country = countryCode.toUpperCase();
     const govImages: Record<string, string[]> = {
       SA: [
-        '/gov-sadad-hero-large.svg',
-        '/gov-sadad-hero-3.png',
+        '/sadad-hero-premium.png',
         '/gov-sadad-hero-1.jpg',
         '/gov-sadad-hero-2.jpg',
-        '/gov-sadad-official.png'
+        '/gov-sadad-hero-3.png'
       ],
       BH: [
-        '/gov-benefit-hero-large.svg',
-        '/gov-benefit-hero-1.svg',
-        '/gov-benefit-hero-2.svg',
-        '/gov-benefit-logo-official.png'
+        '/benefit-hero-premium.png'
       ],
       KW: [
-        '/gov-knet-hero-large.svg',
-        '/gov-knet-hero-1.svg',
-        '/gov-knet-hero-2.svg',
-        '/gov-knet-hero-real.svg',
-        '/gov-knet-logo.png'
+        '/knet-hero-premium.png'
       ],
       AE: [
-        '/gov-jaywan-hero-large.svg',
-        '/gov-jaywan-hero-1.svg',
-        '/gov-uae-logo.jpg'
+        '/jaywan-hero-premium.png'
       ],
       OM: [
-        '/gov-maal-hero-large.svg',
-        '/gov-maal-hero-1.svg',
-        '/gov-maal-logo.jpg'
+        '/maal-hero-premium.png'
       ],
       QA: [
-        '/gov-qatar-hero-large.svg',
-        '/gov-qatar-hero-1.svg',
-        '/gov-qatar-logo.png'
+        '/qatar-gov-hero-premium.png'
       ],
     };
     return govImages[country] || govImages['SA'];
@@ -186,41 +144,25 @@ const getCompanyImages = (serviceKey: string, countryCode?: string, govServiceKe
       key.includes('jaywan') || key.includes('omannet') || key.includes('qatar')) {
     const govServiceImages: Record<string, string[]> = {
       sadad: [
-        '/og-government_payment.jpg',
-        '/gov-sadad-hero-large.svg',
-        '/gov-sadad-official.png',
-        '/gov-sadad-hero-3.png',
-        '/assets/dynamic-identity/gov_image1.svg'
+        '/sadad-hero-premium.png',
+        '/gov-sadad-hero-1.jpg',
+        '/gov-sadad-hero-2.jpg',
+        '/gov-sadad-hero-3.png'
       ],
       benefit: [
-        '/og-government_payment.jpg',
-        '/gov-benefit-hero-large.svg',
-        '/gov-benefit-logo-official.png',
-        '/assets/dynamic-identity/gov_image2.svg'
+        '/benefit-hero-premium.png'
       ],
       knet: [
-        '/og-government_payment.jpg',
-        '/gov-knet-hero-large.svg',
-        '/gov-knet-logo.png',
-        '/assets/dynamic-identity/gov_image3.svg'
+        '/knet-hero-premium.png'
       ],
       jaywan: [
-        '/og-government_payment.jpg',
-        '/gov-jaywan-hero-large.svg',
-        '/gov-uae-logo.jpg',
-        '/assets/dynamic-identity/gov_image1.svg'
+        '/jaywan-hero-premium.png'
       ],
       omannet: [
-        '/og-government_payment.jpg',
-        '/gov-maal-hero-large.svg',
-        '/gov-maal-logo.jpg',
-        '/assets/dynamic-identity/gov_image2.svg'
+        '/maal-hero-premium.png'
       ],
       qatar: [
-        '/og-government_payment.jpg',
-        '/gov-qatar-hero-large.svg',
-        '/gov-qatar-logo.png',
-        '/assets/dynamic-identity/gov_image3.svg'
+        '/qatar-gov-hero-premium.png'
       ],
     };
     
@@ -481,10 +423,9 @@ const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className
                     alt={`${branding.nameAr} - ${index + 1}`}
                     className="w-full h-full transition-all duration-700 group-hover:scale-105"
                     style={{
-                      objectFit: image.endsWith('.svg') ? 'contain' : 'cover',
+                      objectFit: 'cover',
                       objectPosition: 'center',
-                      backgroundColor: branding.colors.surface || '#f5f5f5',
-                      padding: image.endsWith('.svg') ? '1rem' : '0'
+                      backgroundColor: branding.colors.surface || branding.colors.background || '#ffffff'
                     }}
                     loading={index === 0 ? "eager" : "lazy"}
                     onError={(e) => {
