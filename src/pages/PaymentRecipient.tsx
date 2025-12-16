@@ -281,7 +281,7 @@ const PaymentRecipient = () => {
       </div>
 
       {/* Hero Carousel */}
-      <BrandedCarousel serviceKey={serviceKey} className="mb-0" countryCode={countryCode} />
+      <BrandedCarousel serviceKey={serviceKey} className="mb-0" countryCode={countryCode} staticMode={!!companyBranding && !isGovService} />
 
       {/* Main Content */}
       <div 

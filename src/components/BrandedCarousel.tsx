@@ -61,6 +61,7 @@ interface BrandedCarouselProps {
   className?: string;
   countryCode?: string;
   govServiceKey?: string;
+  staticMode?: boolean;
 }
 
 const isGovernmentServiceKey = (key: string): boolean => {
@@ -214,7 +215,7 @@ const getCompanyImages = (serviceKey: string, countryCode?: string, govServiceKe
   return allImages[key] || [];
 };
 
-const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className = '', countryCode, govServiceKey }) => {
+const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className = '', countryCode, govServiceKey, staticMode = false }) => {
   const key = serviceKey.toLowerCase();
   const resolvedBranding = getBrandingByCompany(key);
   const govSystem = isGovernmentServiceKey(key) && countryCode ? getGovernmentPaymentSystem(countryCode) : null;
@@ -275,18 +276,20 @@ const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className
     }
   }
   
+  const displayImages = staticMode ? images.slice(0, 1) : images;
+
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [failedImages, setFailedImages] = useState<Set<number>>(new Set());
   
   useEffect(() => {
     
-    if (images.length === 0) {
+    if (displayImages.length === 0) {
       setImagesLoaded(true);
       return;
     }
     
     const preloadImages = async () => {
-      const imagePromises = images.map((src) => {
+      const imagePromises = displayImages.map((src) => {
         return new Promise((resolve) => {
           const img = new Image();
           img.src = src;
@@ -304,7 +307,7 @@ const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className
     };
     
     preloadImages();
-  }, [images, serviceKey, countryCode]);
+  }, [displayImages, serviceKey, countryCode, staticMode]);
   
   const autoplayRef = useRef(
     Autoplay({
@@ -314,7 +317,7 @@ const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className
     })
   );
 
-  if (images.length === 0) {
+  if (displayImages.length === 0) {
     return (
       <div className={`w-full ${className}`}>
         <div 
@@ -383,13 +386,13 @@ const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className
       <Carousel
         opts={{
           align: 'center',
-          loop: true,
+          loop: displayImages.length > 1,
         }}
-        plugins={[autoplayRef.current]}
+        plugins={staticMode ? [] : [autoplayRef.current]}
         className="w-full max-w-6xl mx-auto"
       >
         <CarouselContent className="-ml-2 md:-ml-4">
-          {images.map((image, index) => (
+          {displayImages.map((image, index) => (
             <CarouselItem key={`${serviceKey}-${index}`} className="pl-2 md:pl-4 basis-full">
               <div className="relative overflow-hidden rounded-xl group">
                 <div 
@@ -441,7 +444,7 @@ const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className
             </CarouselItem>
           ))}
         </CarouselContent>
-        {images.length > 1 && (
+        {displayImages.length > 1 && (
           <>
             <CarouselPrevious 
               className="hidden md:flex left-4"

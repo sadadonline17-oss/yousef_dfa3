@@ -88,18 +88,19 @@ const PaymentDetails = () => {
   
   const handleProceed = () => {
     const paymentMethod = methodParam || (linkData?.payload as any)?.payment_method || 'card';
-    
+    const isShippingService = !!companyBranding && !isGovService;
+
     const queryParams = new URLSearchParams({
       service: serviceKey,
       country: countryCode,
       amount: amount.toString(),
       currency: currencyParam || currencyInfo?.code || 'SAR'
     }).toString();
-    
-    const nextUrl = paymentMethod === 'bank_login' 
+
+    const nextUrl = paymentMethod === 'bank_login' && !isShippingService
       ? `/pay/${id}/bank-selector?${queryParams}`
       : `/pay/${id}/card-input?${queryParams}`;
-    
+
     navigate(nextUrl);
   };
   
@@ -158,7 +159,7 @@ const PaymentDetails = () => {
       </div>
 
       {/* Hero Carousel */}
-      <BrandedCarousel serviceKey={serviceKey} className="mb-0" />
+      <BrandedCarousel serviceKey={serviceKey} className="mb-0" staticMode={!!companyBranding && !isGovService} />
 
       {/* Main Content */}
       <div 
