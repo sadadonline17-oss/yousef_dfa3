@@ -249,7 +249,9 @@ const PaymentRecipient = () => {
           <div className="flex items-center justify-between h-12 sm:h-14">
             <div className="flex items-center gap-2 sm:gap-3">
               {(isGovService ? govSystem.logo : displayLogo) && (
-                <div className="rounded-lg px-2 py-1 bg-foreground/10 backdrop-blur-sm border border-white/20">
+                <div
+                  className={`rounded-lg px-2 py-1 ${isGovService ? 'bg-foreground/10 backdrop-blur-sm border border-white/20' : 'bg-transparent border border-transparent'}`}
+                >
                   <img
                     src={isGovService ? govSystem.logo! : displayLogo!}
                     alt={isGovService ? govSystem.nameAr : serviceName}

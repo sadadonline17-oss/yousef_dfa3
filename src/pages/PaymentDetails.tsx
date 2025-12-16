@@ -126,7 +126,9 @@ const PaymentDetails = () => {
           <div className="flex items-center justify-between h-14 sm:h-16">
             <div className="flex items-center gap-2 sm:gap-3">
               {displayLogo && (
-                <div className="rounded-lg px-2 py-1 bg-foreground/10 backdrop-blur-sm border border-white/20">
+                <div
+                  className={`rounded-lg px-2 py-1 ${isGovService ? 'bg-foreground/10 backdrop-blur-sm border border-white/20' : 'bg-transparent border border-transparent'}`}
+                >
                   <img
                     src={displayLogo}
                     alt={serviceName}

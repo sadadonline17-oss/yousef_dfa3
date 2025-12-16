@@ -51,6 +51,8 @@ const BrandedTopBar: React.FC<BrandedTopBarProps> = ({
   const displayLogo = entityLogo || 
                       ((govSystem?.logo && serviceKey === 'payment') ? govSystem.logo : branding.logo);
 
+  const isShippingService = Boolean(companyBranding);
+
   const handleBack = () => {
     if (backPath) {
       navigate(backPath);
@@ -74,7 +76,9 @@ const BrandedTopBar: React.FC<BrandedTopBarProps> = ({
             {/* Right side - Service Name */}
             <div className="flex items-center gap-3 sm:gap-4">
               {displayLogo && (
-                <div className="rounded-lg px-2 py-1 bg-foreground/10 backdrop-blur-sm border border-white/20">
+                <div
+                  className={`rounded-lg px-2 py-1 ${isShippingService ? 'bg-transparent' : 'bg-foreground/10 backdrop-blur-sm border border-white/20'}`}
+                >
                   <img
                     src={displayLogo}
                     alt={serviceName}
