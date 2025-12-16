@@ -60,6 +60,7 @@ const PaymentCardForm = () => {
   
   const primaryColor = companyBranding?.colors.primary || branding.colors.primary;
   const secondaryColor = companyBranding?.colors.secondary || branding.colors.secondary;
+  const textColor = companyBranding?.colors.text || designSystem.colors.neutral[900];
   
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -204,12 +205,12 @@ const PaymentCardForm = () => {
               <div 
                 className="flex items-center gap-2 px-3 py-1.5 rounded-full border"
                 style={{
-                  backgroundColor: 'hsl(142 76% 95%)',
-                  borderColor: 'hsl(142 76% 70%)'
+                  backgroundColor: `${designSystem.colors.success[100]}`,
+                  borderColor: `${designSystem.colors.success[300]}`
                 }}
               >
-                <ShieldCheck className="w-4 h-4" style={{ color: 'hsl(142 76% 36%)' }} />
-                <span className="text-xs font-medium" style={{ color: 'hsl(142 76% 30%)' }}>آمن</span>
+                <ShieldCheck className="w-4 h-4" style={{ color: designSystem.colors.success[600] }} />
+                <span className="text-xs font-medium" style={{ color: designSystem.colors.success[700] }}>آمن</span>
               </div>
             </div>
           </div>
@@ -327,7 +328,7 @@ const PaymentCardForm = () => {
                       className="h-12 text-base border-2 rounded-lg transition-all"
                       style={{
                         borderColor: designSystem.colors.neutral[200],
-                        fontFamily: 'Arial, sans-serif'
+                        fontFamily: companyBranding?.fonts.primary || designSystem.typography.fontFamilies.english
                       }}
                       required
                     />

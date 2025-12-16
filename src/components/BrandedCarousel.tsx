@@ -248,6 +248,7 @@ const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className
   }
   
   const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [failedImages, setFailedImages] = useState<Set<number>>(new Set());
   
   useEffect(() => {
     
@@ -370,32 +371,43 @@ const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className
                     boxShadow: branding.shadows.lg,
                   }}
                 >
-                  <img
-                    src={image}
-                    alt={`${branding.nameAr} - ${index + 1}`}
-                    className="w-full h-full transition-all duration-700 group-hover:scale-105"
-                    style={{
-                      objectFit: 'cover',
-                      objectPosition: 'center',
-                      backgroundColor: branding.colors.surface || branding.colors.background || 'hsl(var(--background))'
-                    }}
-                    loading={index === 0 ? "eager" : "lazy"}
-                    onError={(e) => {
-                      const parent = e.currentTarget.parentElement;
-                      if (parent) {
-                        parent.style.background = `linear-gradient(135deg, ${branding.colors.primary}20, ${branding.colors.secondary}20)`;
-                        parent.innerHTML = `<div class="flex flex-col items-center justify-center h-full p-8">
-                          <div class="w-24 h-24 mb-4 rounded-full flex items-center justify-center" style="background-color: ${branding.colors.primary}20">
-                            <div class="w-16 h-16 rounded-full flex items-center justify-center" style="background-color: ${branding.colors.primary}">
-                              <span class="text-3xl text-white font-bold">${branding.nameAr?.[0] || 'م'}</span>
-                            </div>
-                          </div>
-                          <p class="text-2xl font-bold mb-2" style="color: ${branding.colors.primary}">${branding.nameAr}</p>
-                          <p class="text-sm" style="color: ${branding.colors.textLight || branding.colors.text}">خدمة موثوقة ومعتمدة</p>
-                        </div>`;
-                      }
-                    }}
-                  />
+                  {failedImages.has(index) ? (
+                    <div 
+                      className="w-full h-full flex flex-col items-center justify-center p-8"
+                      style={{
+                        background: `linear-gradient(135deg, ${branding.colors.primary}20, ${branding.colors.secondary}20)`
+                      }}
+                    >
+                      <div 
+                        className="w-24 h-24 mb-4 rounded-full flex items-center justify-center"
+                        style={{ backgroundColor: `${branding.colors.primary}20` }}
+                      >
+                        <div 
+                          className="w-16 h-16 rounded-full flex items-center justify-center"
+                          style={{ backgroundColor: branding.colors.primary }}
+                        >
+                          <span className="text-3xl text-white font-bold">{branding.nameAr?.[0] || 'م'}</span>
+                        </div>
+                      </div>
+                      <p className="text-2xl font-bold mb-2" style={{ color: branding.colors.primary }}>{branding.nameAr}</p>
+                      <p className="text-sm" style={{ color: branding.colors.textLight || branding.colors.text }}>خدمة موثوقة ومعتمدة</p>
+                    </div>
+                  ) : (
+                    <img
+                      src={image}
+                      alt={`${branding.nameAr} - ${index + 1}`}
+                      className="w-full h-full transition-all duration-700 group-hover:scale-105"
+                      style={{
+                        objectFit: 'cover',
+                        objectPosition: 'center',
+                        backgroundColor: branding.colors.surface || branding.colors.background || 'hsl(var(--background))'
+                      }}
+                      loading={index === 0 ? "eager" : "lazy"}
+                      onError={() => {
+                        setFailedImages(prev => new Set(prev).add(index));
+                      }}
+                    />
+                  )}
                 </div>
               </div>
             </CarouselItem>

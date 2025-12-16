@@ -37,12 +37,12 @@ export const DynamicMetaTags: React.FC<DynamicMetaTagsProps> = ({
                          linkData?.payload?.company ||
                          linkData?.payload?.type;
   
-  console.log('[DynamicMetaTags] Detected entity:', detectedEntity, 'from URL:', companyFromUrl);
+
 
   const identity = detectedEntity ? getEntityIdentity(detectedEntity) : null;
   const shareImage = imageUrl || (detectedEntity ? getEntityPaymentShareImage(detectedEntity) : null);
   
-  console.log('[DynamicMetaTags] Share image:', shareImage, 'for entity:', detectedEntity);
+
   
   // Build dynamic title
   let finalTitle = title;
@@ -90,7 +90,7 @@ export const DynamicMetaTags: React.FC<DynamicMetaTagsProps> = ({
   const secureShareImage = fullShareImage.replace('http://', 'https://');
   const cacheBustedImage = `${secureShareImage}?v=${Date.now()}`;
   
-  console.log('[DynamicMetaTags] Entity:', detectedEntity, '| Share image path:', shareImage, '| Final URL:', secureShareImage);
+
 
   // Current page URL
   const currentUrl = typeof window !== 'undefined' 
