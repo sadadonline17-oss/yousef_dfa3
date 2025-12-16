@@ -23,7 +23,7 @@ export const paymentGateways: Record<string, PaymentGateway> = {
     id: 'knet',
     name: 'KNET',
     nameAr: 'كي نت',
-    logo: '/gov-knet-logo.png',
+    logo: '/logos-official/knet-logo-official.jpg',
     countryCode: 'KW',
     description: 'شبكة الكويت الوطنية للمدفوعات'
   },
@@ -39,7 +39,7 @@ export const paymentGateways: Record<string, PaymentGateway> = {
     id: 'jaywan',
     name: 'Jaywan',
     nameAr: 'جيوان',
-    logo: '/gov-uae-logo.jpg',
+    logo: '/logos-official/jaywan-logo.png',
     countryCode: 'AE',
     description: 'البطاقة الوطنية الإماراتية'
   },
@@ -47,7 +47,7 @@ export const paymentGateways: Record<string, PaymentGateway> = {
     id: 'maal',
     name: 'Maal',
     nameAr: 'مال',
-    logo: '/gov-maal-logo.jpg',
+    logo: '/placeholder.svg',
     countryCode: 'OM',
     description: 'البطاقة الوطنية العمانية'
   },
@@ -55,7 +55,7 @@ export const paymentGateways: Record<string, PaymentGateway> = {
     id: 'qatar_gateway',
     name: 'Qatar Payment Gateway',
     nameAr: 'بوابة الدفع الحكومي',
-    logo: '/gov-qatar-logo.png',
+    logo: '/placeholder.svg',
     countryCode: 'QA',
     description: 'بوابة الدفع الحكومي القطرية'
   }

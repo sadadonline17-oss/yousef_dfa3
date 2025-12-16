@@ -331,7 +331,7 @@ const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className
             border: `1px solid ${branding.colors.primary}20`
           }}
         >
-          <div className="animate-pulse text-center">
+          <div className="text-center">
             <div 
               className="w-16 h-16 mx-auto mb-2 rounded-full flex items-center justify-center"
               style={{ backgroundColor: `${branding.colors.primary}20` }}
@@ -377,7 +377,7 @@ const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className
                     style={{
                       objectFit: 'cover',
                       objectPosition: 'center',
-                      backgroundColor: branding.colors.surface || branding.colors.background || '#ffffff'
+                      backgroundColor: branding.colors.surface || branding.colors.background || 'hsl(var(--background))'
                     }}
                     loading={index === 0 ? "eager" : "lazy"}
                     onError={(e) => {

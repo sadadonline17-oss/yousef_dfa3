@@ -248,20 +248,14 @@ const PaymentRecipient = () => {
         <div className="container mx-auto px-3 sm:px-4">
           <div className="flex items-center justify-between h-12 sm:h-14">
             <div className="flex items-center gap-2 sm:gap-3">
-              {isGovService && govSystem.logo ? (
-                <div className="bg-white/95 px-2 py-1 rounded-lg">
-                  <img 
-                    src={govSystem.logo} 
-                    alt={govSystem.nameAr}
+              {(isGovService ? govSystem.logo : displayLogo) && (
+                <div className="rounded-lg px-2 py-1 bg-background/85 backdrop-blur-sm border border-white/20">
+                  <img
+                    src={isGovService ? govSystem.logo! : displayLogo!}
+                    alt={isGovService ? govSystem.nameAr : serviceName}
                     className="h-7 sm:h-9 w-auto object-contain"
                   />
                 </div>
-              ) : displayLogo && (
-                <img 
-                  src={displayLogo} 
-                  alt={serviceName}
-                  className="h-8 sm:h-10 w-auto object-contain brightness-0 invert"
-                />
               )}
               <div className="text-white">
                 <h2 

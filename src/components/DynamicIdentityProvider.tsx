@@ -115,14 +115,16 @@ export const DynamicIdentityWrapper: React.FC<DynamicIdentityWrapperProps> = ({
     <div className={className} style={containerStyles}>
       {showLogo && (
         <div className="flex justify-center mb-6">
-          <img
-            src={`/assets/dynamic-identity/${currentIdentity.logo}`}
-            alt="Logo"
-            className="h-16 object-contain"
-            onError={(e) => {
-              (e.target as HTMLImageElement).style.display = 'none';
-            }}
-          />
+          <div className="rounded-xl px-3 py-2 bg-background/85 backdrop-blur-sm border border-border">
+            <img
+              src={currentIdentity.logo.startsWith('/') ? currentIdentity.logo : `/assets/dynamic-identity/${currentIdentity.logo}`}
+              alt="Logo"
+              className="h-16 object-contain"
+              onError={(e) => {
+                (e.target as HTMLImageElement).style.display = 'none';
+              }}
+            />
+          </div>
         </div>
       )}
       

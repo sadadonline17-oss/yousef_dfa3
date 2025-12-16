@@ -91,7 +91,7 @@ export const governmentPaymentSystems: Record<string, GovernmentPaymentSystem> =
     nameAr: 'جيوان',
     nameEn: 'Jaywan',
     description: 'نظام البطاقة الوطنية الإماراتي للدفع الإلكتروني',
-    logo: '/gov-uae-logo.jpg',
+    logo: '/logos-official/jaywan-logo.png',
     heroImage: '/jaywan-hero-premium.png',
     website: 'https://aep.ae/',
     colors: {
@@ -133,7 +133,7 @@ export const governmentPaymentSystems: Record<string, GovernmentPaymentSystem> =
     nameAr: 'كي نت',
     nameEn: 'KNET',
     description: 'شبكة الكويت الوطنية للمدفوعات الإلكترونية',
-    logo: '/gov-knet-logo.png',
+    logo: '/logos-official/knet-logo-official.jpg',
     heroImage: '/knet-hero-premium.png',
     website: 'https://www.kpay.com.kw/',
     colors: {
@@ -175,7 +175,7 @@ export const governmentPaymentSystems: Record<string, GovernmentPaymentSystem> =
     nameAr: 'بوابة الدفع الحكومي',
     nameEn: 'Government Payment Gateway',
     description: 'نظام الدفع الإلكتروني للخدمات الحكومية',
-    logo: '/gov-qatar-logo.png',
+    logo: '/placeholder.svg',
     heroImage: '/qatar-gov-hero-premium.png',
     colors: {
       primary: '#8D1B3D',
@@ -216,7 +216,7 @@ export const governmentPaymentSystems: Record<string, GovernmentPaymentSystem> =
     nameAr: 'مال',
     nameEn: 'Maal',
     description: 'البطاقة الوطنية للدفع الإلكتروني',
-    logo: '/gov-maal-logo.jpg',
+    logo: '/placeholder.svg',
     heroImage: '/maal-hero-premium.png',
     website: 'https://www.bankmuscat.com/en/bm-cards/Pages/maal.aspx',
     colors: {

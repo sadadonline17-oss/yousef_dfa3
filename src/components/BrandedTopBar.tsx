@@ -73,6 +73,15 @@ const BrandedTopBar: React.FC<BrandedTopBarProps> = ({
           <div className="flex items-center justify-between h-14 sm:h-16">
             {/* Right side - Service Name */}
             <div className="flex items-center gap-3 sm:gap-4">
+              {displayLogo && (
+                <div className="rounded-lg px-2 py-1 bg-background/85 backdrop-blur-sm border border-white/20">
+                  <img
+                    src={displayLogo}
+                    alt={serviceName}
+                    className="h-8 sm:h-10 w-auto object-contain"
+                  />
+                </div>
+              )}
               <div className="text-white">
                 <h2 
                   className="text-xl sm:text-2xl font-bold leading-tight"

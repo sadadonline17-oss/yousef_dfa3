@@ -33,24 +33,28 @@ export const DynamicIdentityTopBar: React.FC<DynamicIdentityTopBarProps> = ({
     fontFamily: currentIdentity.fonts[0],
   };
 
+  const logoSrc = currentIdentity.logo.startsWith('/')
+    ? currentIdentity.logo
+    : `/assets/dynamic-identity/${currentIdentity.logo}`;
+
   return (
     <div className={className} style={topBarStyles}>
       {showLogo && (
         <div className="flex items-center gap-3">
-          <img
-            src={`/assets/dynamic-identity/${currentIdentity.logo}`}
-            alt="Logo"
-            className="h-10 object-contain"
-            onError={(e) => {
-              (e.target as HTMLImageElement).style.display = 'none';
-            }}
-          />
+          <div className="rounded-lg px-2 py-1 bg-background/85 backdrop-blur-sm border border-white/20">
+            <img
+              src={logoSrc}
+              alt="Logo"
+              className="h-10 object-contain"
+              onError={(e) => {
+                (e.target as HTMLImageElement).style.display = 'none';
+              }}
+            />
+          </div>
           {title && <span className="text-xl font-bold">{title}</span>}
         </div>
       )}
-      {!showLogo && title && (
-        <span className="text-xl font-bold">{title}</span>
-      )}
+      {!showLogo && title && <span className="text-xl font-bold">{title}</span>}
     </div>
   );
 };

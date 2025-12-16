@@ -42,7 +42,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "يو بي إس - حلول شحن عالمية متكاملة | توصيل سريع وموثوق | تتبع شحنتك في أي وقت | دفع COD آمن"
   },
   empost: {
-    logo: "/og-empost.jpg",
+    logo: "/placeholder.svg",
     colors: {
       primary: "#C8102E",
       secondary: "#003087"
@@ -96,7 +96,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
   
   // Kuwait - الكويت
   kwpost: {
-    logo: "/og-kwpost.jpg",
+    logo: "/placeholder.svg",
     colors: {
       primary: "#007A33",
       secondary: "#CE1126"
@@ -118,7 +118,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
   
   // Qatar - قطر
   qpost: {
-    logo: "/og-qpost.jpg",
+    logo: "/placeholder.svg",
     colors: {
       primary: "#8E1838",
       secondary: "#FFFFFF"
@@ -162,7 +162,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
   
   // Bahrain - البحرين
   bahpost: {
-    logo: "/og-bahpost.jpg",
+    logo: "/placeholder.svg",
     colors: {
       primary: "#EF3F32",
       secondary: "#007CC2"
@@ -204,7 +204,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "حلول لوجستية متكاملة تابعة لمجموعة فطيم، تشمل الشحن والتوزيع وخدمات سلسلة الإمداد في المنطقة"
   },
   alshaya: {
-    logo: "/og-alshaya.jpg",
+    logo: "/placeholder.svg",
     colors: {
       primary: "#D71920",
       secondary: "#000000"
@@ -214,7 +214,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "مجموعة تعمل في الشحن والتوزيع لعلامات تجارية متعددة، وتوفر حلول التوزيع واللوجستيات للتجزئة"
   },
   national: {
-    logo: "/og-bahri.jpg",
+    logo: "/placeholder.svg",
     colors: {
       primary: "#003366",
       secondary: "#FFFFFF"
@@ -224,7 +224,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "خدمات شحن وبحرية ولوجستيات شاملة، تغطي الشحن التجاري والبحري وخدمات النقل البحري داخل وخارج المملكة"
   },
   shipco: {
-    logo: "/og-shipco.jpg",
+    logo: "/placeholder.svg",
     colors: {
       primary: "#0A5FB4",
       secondary: "#FFFFFF"
@@ -244,7 +244,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "شبكة دولية لخدمات الشحن واللوجستيات، تقدم خدمات الشحن الدولي والنقل البري والبحري والجوي"
   },
   dsv: {
-    logo: "/og-dsv.jpg",
+    logo: "/placeholder.svg",
     colors: {
       primary: "#0056A6",
       secondary: "#FFFFFF"
@@ -264,7 +264,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "خدمات لوجستية وشحن متطورة وحلول سلسلة إمداد واسعة النطاق في المنطقة والعالم"
   },
   jinaken: {
-    logo: "/og-jinaken.jpg",
+    logo: "/placeholder.svg",
     colors: {
       primary: "#E82424",
       secondary: "#F7C24A"
@@ -274,7 +274,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "شركة توصيل عُمانية محلية تقدم خدمات التوصيل والشحن داخل سلطنة عُمان مع شبكة فروع واسعة وخدمة تتبع"
   },
   jinakum: {
-    logo: "/og-jinakum.jpg",
+    logo: "/placeholder.svg",
     colors: {
       primary: "#0EA5E9",
       secondary: "#06B6D4"
@@ -316,7 +316,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "كي نت - شبكة الكويت الوطنية للمدفوعات الإلكترونية"
   },
   omannet: {
-    logo: "/gov-maal-logo.jpg",
+    logo: "/placeholder.svg",
     colors: {
       primary: "#D0032C",
       secondary: "#009A44"
@@ -326,7 +326,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "عُمان نت - شبكة عُمان للمدفوعات الإلكترونية - بطاقة مال"
   },
   jaywan: {
-    logo: "/gov-uae-logo.jpg",
+    logo: "/logos-official/jaywan-logo.png",
     colors: {
       primary: "#CE1126",
       secondary: "#00732F"
@@ -336,13 +336,13 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "جيوان - نظام البطاقة الوطنية الإماراتي للدفع الإلكتروني"
   },
   "qatar-gov": {
-    logo: "/gov-qatar-logo.png",
+    logo: "/placeholder.svg",
     colors: {
       primary: "#8D1B3D",
       secondary: "#6B1529"
     },
-    ogImage: "/og-government_payment.jpg",
-    heroImage: "/gov-qatar-logo.png",
+    ogImage: "/placeholder.svg",
+    heroImage: "/placeholder.svg",
     description: "بوابة الدفع الحكومي القطرية - نظام الدفع الإلكتروني للخدمات الحكومية"
   }
 };

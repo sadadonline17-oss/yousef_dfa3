@@ -258,7 +258,7 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'تجديد وإصدار جوازات السفر عبر كي نت',
-    logo: '/logos-official/knet-logo-official.svg',
+    logo: '/logos-official/knet-logo-official.jpg',
     heroImage: '/knet-hero-premium.png',
   },
   {
@@ -270,7 +270,7 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'رسوم البطاقة المدنية عبر كي نت',
-    logo: '/logos-official/knet-logo-official.svg',
+    logo: '/logos-official/knet-logo-official.jpg',
     heroImage: '/knet-hero-premium.png',
   },
   {
@@ -282,7 +282,7 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'دفع مخالفات المرور عبر كي نت',
-    logo: '/logos-official/knet-logo-official.svg',
+    logo: '/logos-official/knet-logo-official.jpg',
     heroImage: '/knet-hero-premium.png',
   },
   {
@@ -294,7 +294,7 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'دفع رسوم البلدية عبر كي نت',
-    logo: '/logos-official/knet-logo-official.svg',
+    logo: '/logos-official/knet-logo-official.jpg',
     heroImage: '/knet-hero-premium.png',
   },
   {
@@ -306,7 +306,7 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'شبكة الكويت الوطنية للمدفوعات الإلكترونية',
-    logo: '/logos-official/knet-logo-official.svg',
+    logo: '/logos-official/knet-logo-official.jpg',
     heroImage: '/knet-hero-premium.png',
   },
 
@@ -320,7 +320,7 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'تجديد وإصدار جوازات السفر',
-    logo: '/gov-maal-logo.jpg',
+    logo: '/placeholder.svg',
     heroImage: '/maal-hero-premium.png',
   },
   {
@@ -332,7 +332,7 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'إصدار وتجديد بطاقة الهوية',
-    logo: '/gov-maal-logo.jpg',
+    logo: '/placeholder.svg',
     heroImage: '/maal-hero-premium.png',
   },
   {
@@ -344,7 +344,7 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'دفع مخالفات المرور',
-    logo: '/gov-maal-logo.jpg',
+    logo: '/placeholder.svg',
     heroImage: '/maal-hero-premium.png',
   },
   {
@@ -356,7 +356,7 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'دفع رسوم الخدمات البلدية',
-    logo: '/gov-maal-logo.jpg',
+    logo: '/placeholder.svg',
     heroImage: '/maal-hero-premium.png',
   },
   {
@@ -368,7 +368,7 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'شبكة عُمان للمدفوعات الإلكترونية - بطاقة مال',
-    logo: '/gov-maal-logo.jpg',
+    logo: '/placeholder.svg',
     heroImage: '/maal-hero-premium.png',
   },
 
@@ -382,7 +382,7 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'تجديد وإصدار جوازات السفر',
-    logo: '/gov-uae-logo.jpg',
+    logo: '/logos-official/jaywan-logo.png',
     heroImage: '/jaywan-hero-premium.png',
   },
   {
@@ -394,7 +394,7 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'إصدار وتجديد الهوية الإماراتية',
-    logo: '/gov-uae-logo.jpg',
+    logo: '/logos-official/jaywan-logo.png',
     heroImage: '/jaywan-hero-premium.png',
   },
   {
@@ -406,7 +406,7 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'دفع مخالفات المرور',
-    logo: '/gov-uae-logo.jpg',
+    logo: '/logos-official/jaywan-logo.png',
     heroImage: '/jaywan-hero-premium.png',
   },
   {
@@ -418,7 +418,7 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'دفع رسوم الخدمات البلدية',
-    logo: '/gov-uae-logo.jpg',
+    logo: '/logos-official/jaywan-logo.png',
     heroImage: '/jaywan-hero-premium.png',
   },
   {
@@ -430,7 +430,7 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'رسوم الإقامة والتأشيرات',
-    logo: '/gov-uae-logo.jpg',
+    logo: '/logos-official/jaywan-logo.png',
     heroImage: '/jaywan-hero-premium.png',
   },
   {
@@ -442,7 +442,7 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'نظام البطاقة الوطنية الإماراتي للدفع الإلكتروني',
-    logo: '/gov-uae-logo.jpg',
+    logo: '/logos-official/jaywan-logo.png',
     heroImage: '/jaywan-hero-premium.png',
   },
 
@@ -456,7 +456,7 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'تجديد وإصدار جوازات السفر',
-    logo: '/gov-qatar-logo.png',
+    logo: '/placeholder.svg',
     heroImage: '/qatar-gov-hero-premium.png',
   },
   {
@@ -468,7 +468,7 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'إصدار وتجديد بطاقة الهوية',
-    logo: '/gov-qatar-logo.png',
+    logo: '/placeholder.svg',
     heroImage: '/qatar-gov-hero-premium.png',
   },
   {
@@ -480,7 +480,7 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'دفع مخالفات المرور',
-    logo: '/gov-qatar-logo.png',
+    logo: '/placeholder.svg',
     heroImage: '/qatar-gov-hero-premium.png',
   },
   {
@@ -492,7 +492,7 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'دفع رسوم الخدمات البلدية',
-    logo: '/gov-qatar-logo.png',
+    logo: '/placeholder.svg',
     heroImage: '/qatar-gov-hero-premium.png',
   },
   {
@@ -504,7 +504,7 @@ export const governmentServices: GovernmentService[] = [
     type: 'government',
     supportsPaymentLinks: true,
     description: 'نظام الدفع الإلكتروني للخدمات الحكومية القطرية',
-    logo: '/gov-qatar-logo.png',
+    logo: '/placeholder.svg',
     heroImage: '/qatar-gov-hero-premium.png',
   },
 ];

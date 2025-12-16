@@ -126,11 +126,13 @@ const PaymentDetails = () => {
           <div className="flex items-center justify-between h-14 sm:h-16">
             <div className="flex items-center gap-2 sm:gap-3">
               {displayLogo && (
-                <img 
-                  src={displayLogo} 
-                  alt={serviceName}
-                  className="h-8 sm:h-10 w-auto object-contain brightness-0 invert"
-                />
+                <div className="rounded-lg px-2 py-1 bg-background/85 backdrop-blur-sm border border-white/20">
+                  <img
+                    src={displayLogo}
+                    alt={serviceName}
+                    className="h-7 sm:h-9 w-auto object-contain"
+                  />
+                </div>
               )}
               <div className="text-white">
                 <h2 

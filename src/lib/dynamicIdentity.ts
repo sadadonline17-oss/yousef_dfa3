@@ -152,10 +152,10 @@ const generateEntitiesFromBanks = (): Record<string, DynamicIdentityEntity> => {
   
   Object.entries(bankBranding).forEach(([key, bank]) => {
     entities[`bank_${key}`] = {
-      logo: 'official_logo_bank.svg',
-      animated_header_images: ['bank_image1.svg', 'bank_image2.svg', 'bank_image3.svg'],
+      logo: '/placeholder.svg',
+      animated_header_images: [],
       header_position: 'below_top_bar',
-      payment_share_image: '/og-bank_pages.jpg',
+      payment_share_image: '/placeholder.svg',
       payment_share_description: `الخدمات المصرفية الإلكترونية - ${bank.nameAr}`,
       colors: {
         primary: bank.colors.primary,
@@ -185,14 +185,10 @@ export const dynamicIdentityConfig: DynamicIdentityConfig = {
     ...generateEntitiesFromServices(),
     ...generateEntitiesFromBanks(),
     chalets: {
-      logo: '/assets/dynamic-identity/official_logo_chalets.svg',
-      animated_header_images: [
-        '/assets/dynamic-identity/chalets_image1.svg',
-        '/assets/dynamic-identity/chalets_image2.svg',
-        '/assets/dynamic-identity/chalets_image3.svg'
-      ],
+      logo: '/placeholder.svg',
+      animated_header_images: [],
       header_position: 'below_top_bar',
-      payment_share_image: '/og-chalets.jpg',
+      payment_share_image: '/placeholder.svg',
       payment_share_description: 'حجز شاليهك بسهولة وأمان | أفضل الشاليهات في مكان واحد | دفع فوري وتأكيد فوري',
       colors: { primary: '#FF6F00', secondary: '#FFA000', background: '#FFF3E0' },
       fonts: ['Cairo', 'Tajawal', 'Arial'],
