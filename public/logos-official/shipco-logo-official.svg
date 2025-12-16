@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 100">
+  <rect width="300" height="100" fill="#0A5FB4"/>
+  <path d="M40 60 L60 40 L80 60 L60 50 Z" fill="white" opacity="0.3"/>
+  <text x="150" y="60" font-family="Arial, sans-serif" font-size="42" font-weight="bold" fill="white" text-anchor="middle">SHIPCO</text>
+</svg>
