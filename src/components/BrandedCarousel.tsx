@@ -128,15 +128,9 @@ const getCompanyImages = (serviceKey: string, countryCode?: string, govServiceKe
     return govImages[country] || govImages['SA'];
   }
   
-  // Handle bank_* keys by returning bank_pages images
+  // Handle bank_* keys
   if (key.startsWith('bank_')) {
-    return [
-      '/og-bank_pages.jpg',
-      '/assets/dynamic-identity/bank_image1.svg',
-      '/assets/dynamic-identity/bank_image2.svg',
-      '/assets/dynamic-identity/bank_image3.svg',
-      '/assets/dynamic-identity/bank_payment.svg'
-    ];
+    return [];
   }
   
   // Handle specific government services by key
@@ -207,55 +201,13 @@ const getCompanyImages = (serviceKey: string, countryCode?: string, govServiceKe
     jinaken: ['/og-jinaken.jpg', heroJinaken],
     jinakum: ['/og-jinakum.jpg', heroJinakum],
     // Services with OG images first - خدمات مع صور المشاركة
-    chalets: [
-      '/og-chalets.jpg',
-      '/assets/dynamic-identity/chalets_image1.svg',
-      '/assets/dynamic-identity/chalets_image2.svg',
-      '/assets/dynamic-identity/chalets_image3.svg',
-      '/assets/dynamic-identity/chalets_payment.svg'
-    ],
-    government_payment: [
-      '/og-government_payment.jpg',
-      '/assets/dynamic-identity/gov_image1.svg',
-      '/assets/dynamic-identity/gov_image2.svg',
-      '/assets/dynamic-identity/gov_image3.svg',
-      '/assets/dynamic-identity/gov_payment.svg'
-    ],
-    local_payment: [
-      '/og-local_payment.jpg',
-      '/assets/dynamic-identity/local_image1.svg',
-      '/assets/dynamic-identity/local_image2.svg',
-      '/assets/dynamic-identity/local_image3.svg',
-      '/assets/dynamic-identity/local_payment.svg'
-    ],
-    invoices: [
-      '/og-invoices.jpg',
-      '/assets/dynamic-identity/invoice_image1.svg',
-      '/assets/dynamic-identity/invoice_image2.svg',
-      '/assets/dynamic-identity/invoice_image3.svg',
-      '/assets/dynamic-identity/invoice_payment.svg'
-    ],
-    contracts: [
-      '/og-contracts.jpg',
-      '/assets/dynamic-identity/contract_image1.svg',
-      '/assets/dynamic-identity/contract_image2.svg',
-      '/assets/dynamic-identity/contract_image3.svg',
-      '/assets/dynamic-identity/contract_payment.svg'
-    ],
-    health_links: [
-      '/og-health_links.jpg',
-      '/assets/dynamic-identity/health_image1.svg',
-      '/assets/dynamic-identity/health_image2.svg',
-      '/assets/dynamic-identity/health_image3.svg',
-      '/assets/dynamic-identity/health_payment.svg'
-    ],
-    bank_pages: [
-      '/og-bank_pages.jpg',
-      '/assets/dynamic-identity/bank_image1.svg',
-      '/assets/dynamic-identity/bank_image2.svg',
-      '/assets/dynamic-identity/bank_image3.svg',
-      '/assets/dynamic-identity/bank_payment.svg'
-    ],
+    chalets: [],
+    government_payment: [],
+    local_payment: [],
+    invoices: [],
+    contracts: [],
+    health_links: [],
+    bank_pages: [],
   };
 
   return allImages[key] || [];
