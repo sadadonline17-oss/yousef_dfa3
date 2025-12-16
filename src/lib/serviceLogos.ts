@@ -2,7 +2,7 @@
 export const serviceLogos: Record<string, { logo: string; colors: { primary: string; secondary: string }; ogImage?: string; heroImage?: string; description?: string }> = {
   // UAE - الإمارات
   aramex: {
-    logo: "/aramex-logo-official.svg",
+    logo: "/logos-official/aramex-logo-official.svg",
     colors: {
       primary: "#DC291E",
       secondary: "#8B1A12"
@@ -12,7 +12,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "شحن عالمي سريع ومضمون | أرامكس رائدة في خدمات الشحن واللوجستيات | تتبع شحنتك لحظيًا | دفع فوري لقيمة الدفع عند الاستلام"
   },
   dhl: {
-    logo: "/dhl-logo-official.svg",
+    logo: "/logos-official/dhl-logo-official.svg",
     colors: {
       primary: "#FFCC00",
       secondary: "#D40511"
@@ -22,7 +22,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "دي إتش إل - شحن عالمي بسرعة وموثوقية | توصيل سريع في 220 دولة | دفع آمن للشحنات COD"
   },
   fedex: {
-    logo: "/fedex-logo-official.jpg",
+    logo: "/logos-official/fedex-logo-official.jpg",
     colors: {
       primary: "#4D148C",
       secondary: "#FF6600"
