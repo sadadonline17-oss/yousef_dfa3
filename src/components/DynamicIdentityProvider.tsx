@@ -115,7 +115,7 @@ export const DynamicIdentityWrapper: React.FC<DynamicIdentityWrapperProps> = ({
     <div className={className} style={containerStyles}>
       {showLogo && (
         <div className="flex justify-center mb-6">
-          <div className="rounded-xl px-3 py-2 bg-background/85 backdrop-blur-sm border border-border">
+          <div className="rounded-xl px-3 py-2 bg-foreground/10 backdrop-blur-sm border border-border">
             <img
               src={currentIdentity.logo.startsWith('/') ? currentIdentity.logo : `/assets/dynamic-identity/${currentIdentity.logo}`}
               alt="Logo"
@@ -164,7 +164,7 @@ const AnimatedHeader: React.FC<AnimatedHeaderProps> = ({ images, entityKey }) =>
       {images.map((image, index) => (
         <img
           key={index}
-          src={`/assets/dynamic-identity/${image}`}
+          src={image.startsWith('/') ? image : `/assets/dynamic-identity/${image}`}
           alt={`Header ${index + 1}`}
           className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
           style={{

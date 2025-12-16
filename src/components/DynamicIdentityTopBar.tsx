@@ -41,7 +41,7 @@ export const DynamicIdentityTopBar: React.FC<DynamicIdentityTopBarProps> = ({
     <div className={className} style={topBarStyles}>
       {showLogo && (
         <div className="flex items-center gap-3">
-          <div className="rounded-lg px-2 py-1 bg-background/85 backdrop-blur-sm border border-white/20">
+          <div className="rounded-lg px-2 py-1 bg-foreground/10 backdrop-blur-sm border border-white/20">
             <img
               src={logoSrc}
               alt="Logo"

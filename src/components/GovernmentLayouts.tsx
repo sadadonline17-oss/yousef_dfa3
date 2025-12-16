@@ -250,9 +250,9 @@ export const BENEFITLayout: React.FC<GovernmentLayoutProps> = ({
       >
         <div className="container mx-auto h-full flex items-center justify-between px-6">
           <div className="flex items-center gap-4">
-            <div className="bg-white p-3 rounded-xl">
+            <div className="bg-foreground/10 p-3 rounded-xl">
               {govSystem.logo && (
-                <img src={govSystem.logo} alt="BENEFIT" className="h-10" />
+                <img src={govSystem.logo} alt="BENEFIT" className="h-10 w-auto object-contain" />
               )}
             </div>
             <div className="text-white">

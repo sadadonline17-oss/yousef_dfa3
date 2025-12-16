@@ -106,7 +106,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "بريد الكويت - المشغل الوطني الرسمي | خدمات بريدية شاملة | توصيل محلي ودولي | دفع COD"
   },
   dhlkw: {
-    logo: "/dhl-logo.svg",
+    logo: "/logos-official/dhl-logo-official.svg",
     colors: {
       primary: "#FFCC00",
       secondary: "#D40511"
@@ -128,7 +128,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "بريد قطر - المشغل الوطني الرسمي | خدمات بريدية متميزة | توصيل محلي ودولي | دفع فوري"
   },
   dhlqa: {
-    logo: "/dhl-logo.svg",
+    logo: "/logos-official/dhl-logo-official.svg",
     colors: {
       primary: "#FFCC00",
       secondary: "#D40511"
@@ -150,7 +150,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "بريد عُمان - المشغل الوطني الرسمي | خدمات بريدية شاملة | توصيل مضمون | دفع آمن"
   },
   dhlom: {
-    logo: "/dhl-logo.svg",
+    logo: "/logos-official/dhl-logo-official.svg",
     colors: {
       primary: "#FFCC00",
       secondary: "#D40511"
@@ -172,7 +172,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "بريد البحرين - المشغل الوطني الرسمي | خدمات بريدية مميزة | توصيل موثوق | دفع COD"
   },
   dhlbh: {
-    logo: "/dhl-logo.svg",
+    logo: "/logos-official/dhl-logo-official.svg",
     colors: {
       primary: "#FFCC00",
       secondary: "#D40511"
@@ -306,7 +306,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     description: "بنفت - الشبكة الإلكترونية البحرينية للمعاملات المالية"
   },
   knet: {
-    logo: "/logos-official/knet-logo-official.svg",
+    logo: "/logos-official/knet-logo-official.jpg",
     colors: {
       primary: "#007A3D",
       secondary: "#CE1126"

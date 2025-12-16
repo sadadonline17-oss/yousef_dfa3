@@ -235,7 +235,6 @@ export const BrandedHeader: React.FC<BrandedHeaderProps> = ({
           style={{
             maxHeight: '60px',
             marginBottom: '16px',
-            filter: 'brightness(0) invert(1)',
           }}
         />
       )}

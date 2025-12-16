@@ -287,7 +287,7 @@ const SaddadRecipientPage = () => {
             
             {/* Logo */}
             {govSystem.logo && (
-              <div className="absolute top-4 left-4 rounded-lg px-2 py-1 bg-background/85 backdrop-blur-sm border border-white/20">
+              <div className="absolute top-4 left-4 rounded-lg px-2 py-1 bg-foreground/10 backdrop-blur-sm border border-white/20">
                 <img
                   src={govSystem.logo}
                   alt={govSystem.nameAr}

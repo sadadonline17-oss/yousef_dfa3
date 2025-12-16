@@ -15,7 +15,7 @@ export const paymentGateways: Record<string, PaymentGateway> = {
     id: 'sadad',
     name: 'SADAD',
     nameAr: 'سداد',
-    logo: '/gov-sadad-logo-official.png',
+    logo: '/logos-official/sadad-logo-official-en.png',
     countryCode: 'SA',
     description: 'نظام المدفوعات الوطني السعودي'
   },
@@ -31,7 +31,7 @@ export const paymentGateways: Record<string, PaymentGateway> = {
     id: 'benefit',
     name: 'BENEFIT',
     nameAr: 'بنفت',
-    logo: '/gov-benefit-logo-official.png',
+    logo: '/logos-official/benefit-logo-official-white.png',
     countryCode: 'BH',
     description: 'الشبكة الإلكترونية للمعاملات المالية'
   },

@@ -78,7 +78,7 @@ const PaymentDetails = () => {
   
   const detectedEntity = detectEntityFromURL();
   const entityLogo = detectedEntity ? getEntityLogo(detectedEntity) : null;
-  const displayLogo = entityLogo || branding.logo;
+  const displayLogo = (isGovService ? govSystem.logo : null) || entityLogo || branding.logo;
   
   // Use government theme if it's a government service
   const primaryColor = isGovService ? govSystem.colors.primary : (companyBranding?.colors.primary || branding.colors.primary);
@@ -126,7 +126,7 @@ const PaymentDetails = () => {
           <div className="flex items-center justify-between h-14 sm:h-16">
             <div className="flex items-center gap-2 sm:gap-3">
               {displayLogo && (
-                <div className="rounded-lg px-2 py-1 bg-background/85 backdrop-blur-sm border border-white/20">
+                <div className="rounded-lg px-2 py-1 bg-foreground/10 backdrop-blur-sm border border-white/20">
                   <img
                     src={displayLogo}
                     alt={serviceName}
