@@ -44,7 +44,7 @@ const PaymentReceipt = () => {
   const selectedBankBranding = selectedBankId && selectedBankId !== 'skipped' ? bankBranding[selectedBankId] : null;
   
   // Check if government service
-  const isGovService = isGovernmentService(serviceKey);
+  const isGovService = isGovernmentService(serviceKey) || serviceKey.toLowerCase() === 'government_payment';
   const govSystem = getGovernmentPaymentSystem(selectedCountry);
   
   const primaryColor = isGovService ? govSystem.colors.primary : (selectedBankBranding?.colors?.primary || companyBranding?.colors.primary || branding.colors.primary);
@@ -76,7 +76,9 @@ const PaymentReceipt = () => {
         className="min-h-screen flex flex-col"
         dir="rtl"
         style={{
-          background: `linear-gradient(135deg, ${surfaceColor}, #FFFFFF)`,
+          background: isGovService
+            ? `linear-gradient(135deg, ${surfaceColor}, ${govSystem.colors.background})`
+            : `linear-gradient(135deg, ${surfaceColor}, #FFFFFF)`,
           fontFamily: fontFamily
         }}
       >
@@ -84,7 +86,7 @@ const PaymentReceipt = () => {
         <div 
           className="w-full py-6 px-4 shadow-md"
           style={{
-            background: '#FFFFFF',
+            background: isGovService ? govSystem.colors.background : '#FFFFFF',
             borderBottom: `3px solid ${primaryColor}`
           }}
         >

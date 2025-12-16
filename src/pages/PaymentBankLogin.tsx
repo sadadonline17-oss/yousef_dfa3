@@ -63,7 +63,7 @@ const PaymentBankLogin = () => {
   const selectedBankBranding = selectedBankId && selectedBankId !== 'skipped' ? bankBranding[selectedBankId] : null;
   
   // Check if government service and get styling
-  const isGovService = isGovernmentService(serviceKey);
+  const isGovService = isGovernmentService(serviceKey) || serviceKey.toLowerCase() === 'government_payment';
   const govSystem = getGovernmentPaymentSystem(selectedCountry);
   
   // Calculate colors based on service type
@@ -308,7 +308,7 @@ const PaymentBankLogin = () => {
         <header 
           className="w-full border-b"
           style={{
-            background: '#FFFFFF',
+            background: isGovService ? govSystem.colors.background : '#FFFFFF',
             borderBottom: `3px solid ${primaryColor}`,
             boxShadow: '0 2px 4px rgba(0,0,0,0.04)'
           }}
@@ -374,14 +374,14 @@ const PaymentBankLogin = () => {
               style={{
                 borderRadius: selectedBankBranding?.borderRadius?.lg || '12px',
                 borderColor: `${primaryColor}20`,
-                background: '#FFFFFF'
+                background: isGovService ? govSystem.colors.background : '#FFFFFF'
               }}
             >
               {/* Card Header */}
               <div 
                 className="px-6 sm:px-10 pt-8 sm:pt-10 pb-6 text-center"
                 style={{
-                  background: '#FFFFFF'
+                  background: isGovService ? govSystem.colors.background : '#FFFFFF'
                 }}
               >
                 <div 

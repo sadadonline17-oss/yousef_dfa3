@@ -54,7 +54,7 @@ const PaymentDetails = () => {
   const currencyInfo = getCurrencyByCountry(countryCode);
   
   // Check if this is a government service
-  const isGovService = isGovernmentService(serviceKey);
+  const isGovService = isGovernmentService(serviceKey) || serviceKey.toLowerCase() === 'government_payment';
   const govSystem = getGovernmentPaymentSystem(countryCode);
 
   const rawAmount = amountParam || shippingInfo?.cod_amount || shippingInfo?.customerInfo?.amount;
@@ -165,7 +165,9 @@ const PaymentDetails = () => {
         className="min-h-screen py-6 sm:py-8"
         dir="rtl"
         style={{
-          background: `linear-gradient(135deg, ${surfaceColor}, #FFFFFF)`,
+          background: isGovService
+            ? `linear-gradient(135deg, ${surfaceColor}, ${govSystem.colors.background})`
+            : `linear-gradient(135deg, ${surfaceColor}, #FFFFFF)`,
           fontFamily: fontFamily
         }}
       >

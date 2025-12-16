@@ -47,7 +47,7 @@ const Services = () => {
       description: "إنشاء وإدارة الفواتير بسهولة",
       icon: FileText,
       href: selectedCountry ? `/invoices/create/${selectedCountry.code}` : "#",
-      gradient: "linear-gradient(135deg, hsl(210 95% 50%), hsl(220 90% 60%))",
+      gradient: "var(--gradient-info)",
       sublinks: [
         {
           title: "إنشاء فاتورة جديدة",
@@ -65,7 +65,7 @@ const Services = () => {
       description: "خدمات طبية وصحية معتمدة",
       icon: Heart,
       href: selectedCountry ? `/health/${selectedCountry.code}` : "#",
-      gradient: "linear-gradient(135deg, hsl(0 85% 55%), hsl(10 80% 60%))",
+      gradient: "var(--gradient-danger)",
     },
     {
       title: "Logistics",
@@ -73,7 +73,7 @@ const Services = () => {
       description: "حلول لوجستية متكاملة",
       icon: Truck,
       href: selectedCountry ? `/logistics/${selectedCountry.code}` : "#",
-      gradient: "linear-gradient(135deg, hsl(260 95% 55%), hsl(280 90% 60%))",
+      gradient: "var(--gradient-primary)",
     },
     {
       title: "Contracts",
@@ -81,7 +81,7 @@ const Services = () => {
       description: "إدارة وتوثيق العقود الإلكترونية",
       icon: Building2,
       href: selectedCountry ? `/contracts/${selectedCountry.code}` : "#",
-      gradient: "linear-gradient(135deg, hsl(40 95% 55%), hsl(30 90% 50%))",
+      gradient: "var(--gradient-warning)",
     },
     {
       title: "Payment Links",
@@ -89,7 +89,7 @@ const Services = () => {
       description: "إنشاء روابط دفع متغيرة وسريعة",
       icon: CreditCard,
       href: selectedCountry ? `/create/${selectedCountry.code}/payment` : "#",
-      gradient: "linear-gradient(135deg, hsl(260 85% 55%), hsl(200 90% 60%))",
+      gradient: "var(--gradient-primary)",
     },
     {
       title: "Government Payment",
@@ -97,7 +97,7 @@ const Services = () => {
       description: `دفع رسوم الخدمات الحكومية عبر ${govSystemName} - جواز السفر، المخالفات، رخصة القيادة والمزيد`,
       icon: Landmark,
       href: selectedCountry ? `/create/${selectedCountry.code}/government/sadad` : "#",
-      gradient: "linear-gradient(135deg, #F58220, #E67317)",
+      gradient: selectedCountry ? getGovernmentPaymentSystem(selectedCountry.code).gradients.primary : "var(--gradient-warning)",
     },
   ];
 

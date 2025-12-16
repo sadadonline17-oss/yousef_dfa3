@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import { shippingCompanyBranding } from '@/lib/brandingSystem';
+import { getBrandingByCompany } from '@/lib/brandingSystem';
+import { getGovernmentPaymentSystem } from '@/lib/governmentPaymentSystems';
 import { getEntityHeaderImages, detectEntityFromURL } from '@/lib/dynamicIdentity';
 import Autoplay from 'embla-carousel-autoplay';
 
@@ -214,12 +215,39 @@ const getCompanyImages = (serviceKey: string, countryCode?: string, govServiceKe
 };
 
 const BrandedCarousel: React.FC<BrandedCarouselProps> = ({ serviceKey, className = '', countryCode, govServiceKey }) => {
-  const branding = shippingCompanyBranding[serviceKey.toLowerCase()] || {
-    colors: { primary: '#0066B2', secondary: '#004B87', textOnPrimary: '#ffffff' },
+  const key = serviceKey.toLowerCase();
+  const resolvedBranding = getBrandingByCompany(key);
+  const govSystem = isGovernmentServiceKey(key) && countryCode ? getGovernmentPaymentSystem(countryCode) : null;
+
+  const branding = resolvedBranding || (govSystem ? {
+    colors: {
+      primary: govSystem.colors.primary,
+      secondary: govSystem.colors.secondary,
+      textOnPrimary: govSystem.colors.textOnPrimary,
+      surface: govSystem.colors.surface,
+      background: govSystem.colors.background,
+      text: govSystem.colors.text,
+      textLight: govSystem.colors.textLight,
+      border: govSystem.colors.border,
+    },
+    borderRadius: { lg: govSystem.borderRadius.lg },
+    shadows: { lg: govSystem.shadows.lg },
+    nameAr: govSystem.nameAr,
+  } : {
+    colors: {
+      primary: '#0066B2',
+      secondary: '#004B87',
+      textOnPrimary: '#ffffff',
+      surface: '#F8F9FA',
+      background: '#F8F9FA',
+      text: '#1A1A1A',
+      textLight: '#666666',
+      border: '#E5E7EB'
+    },
     borderRadius: { lg: '12px' },
     shadows: { lg: '0 10px 25px rgba(0,0,0,0.1)' },
     nameAr: 'مقدم الخدمة'
-  };
+  });
   
   let images: string[] = [];
   

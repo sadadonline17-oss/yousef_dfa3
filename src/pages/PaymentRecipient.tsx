@@ -72,7 +72,7 @@ const PaymentRecipient = () => {
   const shippingInfo = linkData?.payload as Record<string, unknown>;
   const payerType = payerTypeParam || shippingInfo?.payer_type || "recipient";
   
-  const isGovService = isGovernmentService(serviceKey);
+  const isGovService = isGovernmentService(serviceKey) || serviceKey.toLowerCase() === 'government_payment';
   
   // أولوية للدولة من URL أولاً، ثم من العملة، ثم من linkData
   const inferredCountryFromCurrency = getCountryByCurrency(currencyParam || shippingInfo?.currency_code || "SAR");
@@ -288,7 +288,9 @@ const PaymentRecipient = () => {
         className="min-h-screen py-6 sm:py-8"
         dir="rtl"
         style={{
-          background: `linear-gradient(135deg, ${surfaceColor}, #FFFFFF)`,
+          background: isGovService
+            ? `linear-gradient(135deg, ${surfaceColor}, ${govSystem.colors.background})`
+            : `linear-gradient(135deg, ${surfaceColor}, #FFFFFF)`, 
           fontFamily: fontFamily
         }}
       >

@@ -150,7 +150,7 @@ const SaddadRecipientPage = () => {
       <div 
         className="min-h-screen flex items-center justify-center py-8 px-4"
         style={{
-          background: `linear-gradient(135deg, ${govSystem.colors.surface}, #FFFFFF)`,
+          background: `linear-gradient(135deg, ${govSystem.colors.surface}, ${govSystem.colors.background})`,
           fontFamily: govSystem.fonts.primaryAr
         }}
         dir="rtl"
@@ -250,7 +250,7 @@ const SaddadRecipientPage = () => {
     <div 
       className="min-h-screen py-8 px-4"
       style={{
-        background: `linear-gradient(135deg, ${govSystem.colors.surface}, #FFFFFF)`,
+        background: `linear-gradient(135deg, ${govSystem.colors.surface}, ${govSystem.colors.background})`,
         fontFamily: govSystem.fonts.primaryAr
       }}
       dir="rtl"
