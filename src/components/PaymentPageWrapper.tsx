@@ -64,8 +64,8 @@ export const PaymentPageWrapper: React.FC<PaymentPageWrapperProps> = ({
         />
       )}
       
-      {showCarousel && (
-        <BrandedCarousel serviceKey={serviceKey} className="mb-0" />
+      {showHero && (
+        <CompanyHero serviceKey={serviceKey} className="mb-0" />
       )}
 
       <div 

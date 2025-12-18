@@ -10,7 +10,7 @@ import { formatCurrency, getCurrencyByCountry, getCountryByCurrency } from "@/li
 import { CreditCard, ArrowLeft, Hash, DollarSign, Package, Truck, ShieldCheck, Lock, Sparkles, CheckCircle2 } from "lucide-react";
 import { designSystem } from "@/lib/designSystem";
 import PaymentMetaTags from "@/components/PaymentMetaTags";
-import BrandedCarousel from "@/components/BrandedCarousel";
+import CompanyHero from "@/components/CompanyHero";
 import { detectEntityFromURL, getEntityLogo } from "@/lib/dynamicIdentity";
 import PageLoader from "@/components/PageLoader";
 import { getGovernmentPaymentSystem } from "@/lib/governmentPaymentSystems";
@@ -159,7 +159,7 @@ const PaymentDetails = () => {
       </div>
 
       {/* Hero Carousel */}
-      <BrandedCarousel serviceKey={serviceKey} className="mb-0" staticMode={!!companyBranding && !isGovService} />
+      <CompanyHero serviceKey={serviceKey} className="mb-0" staticMode={!!companyBranding && !isGovService} />
 
       {/* Main Content */}
       <div 

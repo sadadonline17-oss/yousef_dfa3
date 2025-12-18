@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea";
 import { FileText, CreditCard, Building2, User, Phone, Hash, ArrowLeft, Calendar } from "lucide-react";
 import BrandedTopBar from "@/components/BrandedTopBar";
-import BrandedCarousel from "@/components/BrandedCarousel";
+import CompanyHero from "@/components/CompanyHero";
 import PaymentMetaTags from "@/components/PaymentMetaTags";
 import { getServiceBranding } from "@/lib/serviceLogos";
 import { useAutoApplyIdentity } from "@/hooks/useAutoApplyIdentity";
@@ -60,7 +60,7 @@ const ContractPaymentPage = () => {
         showCarousel={false}
       />
 
-      <BrandedCarousel serviceKey={serviceKey} className="mb-0" />
+      <CompanyHero serviceKey={serviceKey} className="mb-0" />
 
       <div 
         className="min-h-screen py-6 sm:py-8" 

