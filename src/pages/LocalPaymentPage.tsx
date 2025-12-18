@@ -61,7 +61,7 @@ const LocalPaymentPage = () => {
         serviceKey={serviceKey}
         serviceName="السداد المحلي"
         showBackButton={true}
-        showCarousel={false}
+        showHero={false}
       />
 
       <CompanyHero serviceKey={serviceKey} className="mb-0" />

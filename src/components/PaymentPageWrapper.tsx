@@ -23,7 +23,7 @@ export const PaymentPageWrapper: React.FC<PaymentPageWrapperProps> = ({
   serviceKey = 'aramex',
   serviceName,
   showTopBar = true,
-  showCarousel = true,
+  showHero = true,
   showBackButton = true,
   backPath,
   title,
@@ -60,7 +60,7 @@ export const PaymentPageWrapper: React.FC<PaymentPageWrapperProps> = ({
           serviceName={serviceName || serviceKey}
           showBackButton={showBackButton}
           backPath={backPath}
-          showCarousel={false}
+          showHero={false}
         />
       )}
       

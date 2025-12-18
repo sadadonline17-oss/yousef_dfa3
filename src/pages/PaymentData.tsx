@@ -194,7 +194,7 @@ const PaymentData = () => {
         serviceName={govSystem.nameAr || serviceName}
         showBackButton={true}
         countryCode={countryCode}
-        showCarousel={false}
+        showHero={false}
       />
 
       <CompanyHero serviceKey={serviceKey} className="mb-0" countryCode={countryCode} />

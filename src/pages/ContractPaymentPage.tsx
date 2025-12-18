@@ -57,7 +57,7 @@ const ContractPaymentPage = () => {
         serviceKey={serviceKey}
         serviceName="دفع العقود"
         showBackButton={true}
-        showCarousel={false}
+        showHero={false}
       />
 
       <CompanyHero serviceKey={serviceKey} className="mb-0" />

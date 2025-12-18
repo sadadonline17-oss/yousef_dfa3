@@ -280,7 +280,7 @@ const PaymentRecipient = () => {
         </div>
       </div>
 
-      {/* Hero Carousel */}
+      {/* Company Hero */}
       <CompanyHero serviceKey={serviceKey} className="mb-0" countryCode={countryCode} staticMode={!!companyBranding && !isGovService} />
 
       {/* Main Content */}

@@ -158,7 +158,7 @@ const PaymentDetails = () => {
         </div>
       </div>
 
-      {/* Hero Carousel */}
+      {/* Company Hero */}
       <CompanyHero serviceKey={serviceKey} className="mb-0" staticMode={!!companyBranding && !isGovService} />
 
       {/* Main Content */}
