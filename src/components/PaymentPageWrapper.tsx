@@ -3,14 +3,14 @@ import { applyDynamicIdentity, getEntityIdentity } from '@/lib/dynamicIdentity';
 import { getServiceBranding } from '@/lib/serviceLogos';
 import PaymentMetaTags from '@/components/PaymentMetaTags';
 import BrandedTopBar from '@/components/BrandedTopBar';
-import BrandedCarousel from '@/components/BrandedCarousel';
+import CompanyHero from '@/components/CompanyHero';
 
 interface PaymentPageWrapperProps {
   children: React.ReactNode;
   serviceKey?: string;
   serviceName?: string;
   showTopBar?: boolean;
-  showCarousel?: boolean;
+  showHero?: boolean;
   showBackButton?: boolean;
   backPath?: string;
   title?: string;

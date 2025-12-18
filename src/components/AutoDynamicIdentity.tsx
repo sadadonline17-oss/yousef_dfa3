@@ -15,7 +15,7 @@ interface AutoDynamicIdentityProps {
   children: React.ReactNode;
   entityKey?: string;
   showTopBar?: boolean;
-  showCarousel?: boolean;
+  showHero?: boolean;
   serviceKey?: string;
   serviceName?: string;
 }
@@ -24,7 +24,7 @@ export const AutoDynamicIdentity: React.FC<AutoDynamicIdentityProps> = ({
   children,
   entityKey,
   showTopBar = true,
-  showCarousel = true,
+  showHero = true,
   serviceKey,
   serviceName,
 }) => {
@@ -74,7 +74,7 @@ export const AutoDynamicIdentity: React.FC<AutoDynamicIdentityProps> = ({
           serviceKey={finalServiceKey}
           serviceName={finalServiceName}
           showBackButton={true}
-          showCarousel={showCarousel}
+          showHero={showHero}
         />
       )}
 

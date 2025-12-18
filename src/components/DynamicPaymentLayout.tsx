@@ -5,7 +5,7 @@ import { getBrandingByCompany, shippingCompanyBranding } from "@/lib/brandingSys
 import { DynamicBranding } from "@/components/DynamicBranding";
 import PaymentMetaTags from "@/components/PaymentMetaTags";
 import BrandedTopBar from "@/components/BrandedTopBar";
-import BrandedCarousel from "@/components/BrandedCarousel";
+import CompanyHero from "@/components/CompanyHero";
 import { useAutoApplyIdentity } from "@/hooks/useAutoApplyIdentity";
 import { DynamicMetaTags } from "@/components/DynamicMetaTags";
 import { CreditCard, ArrowLeft } from "lucide-react";
@@ -118,10 +118,10 @@ const DynamicPaymentLayout: React.FC<DynamicPaymentLayoutProps> = ({
         serviceName={serviceName}
         showBackButton={true}
         bankId={bankId}
-        showCarousel={false}
+        showHero={false}
       />
 
-      <BrandedCarousel serviceKey={actualServiceKey} className="mb-0" staticMode={!!companyBranding} />
+      <CompanyHero serviceKey={actualServiceKey} className="mb-0" staticMode={!!companyBranding} />
 
       <div 
         className="min-h-screen" 

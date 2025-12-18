@@ -5,7 +5,7 @@ import { getServiceBranding } from '@/lib/serviceLogos';
 import { shippingCompanyBranding, bankBranding } from '@/lib/brandingSystem';
 import { getGovernmentPaymentSystem } from '@/lib/governmentPaymentSystems';
 import { detectEntityFromURL, getEntityLogo } from '@/lib/dynamicIdentity';
-import BrandedCarousel from '@/components/BrandedCarousel';
+import CompanyHero from '@/components/CompanyHero';
 
 interface BrandedTopBarProps {
   serviceKey: string;
@@ -14,7 +14,7 @@ interface BrandedTopBarProps {
   backPath?: string;
   bankId?: string;
   countryCode?: string;
-  showCarousel?: boolean;
+  showHero?: boolean;
 }
 
 const BrandedTopBar: React.FC<BrandedTopBarProps> = ({
@@ -24,7 +24,7 @@ const BrandedTopBar: React.FC<BrandedTopBarProps> = ({
   backPath,
   bankId,
   countryCode,
-  showCarousel = false
+  showHero = false
 }) => {
   const navigate = useNavigate();
   const branding = getServiceBranding(serviceKey);
@@ -125,11 +125,11 @@ const BrandedTopBar: React.FC<BrandedTopBarProps> = ({
         />
       </div>
 
-      {/* Branded Carousel - shown when showCarousel is true and company has branding */}
-      {showCarousel && companyBranding && (
+      {/* Company Hero - shown when showHero is true and company has branding */}
+      {showHero && companyBranding && (
         <div className="w-full bg-gradient-to-b from-gray-50 to-white py-6">
           <div className="container mx-auto px-4">
-            <BrandedCarousel serviceKey={serviceKey} />
+            <CompanyHero serviceKey={serviceKey} />
           </div>
         </div>
       )}

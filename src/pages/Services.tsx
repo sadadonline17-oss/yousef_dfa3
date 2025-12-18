@@ -116,46 +116,31 @@ const Services = () => {
         image="/og-aramex.jpg"
         type="website"
       />
-      <div className="min-h-screen py-6" style={{ background: 'linear-gradient(to bottom right, hsl(var(--background)), hsl(var(--muted) / 0.15))' }} dir="rtl">
+      <div className="min-h-screen py-6 bg-background" dir="rtl">
       <div className="container mx-auto px-4 max-w-4xl">
         <div className="mb-4">
           <BackButton />
         </div>
         
         <div className="text-center mb-8">
-          <h1 
-            className="text-3xl md:text-4xl font-bold mb-3"
-            style={{
-              background: 'linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)))',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text'
-            }}
-          >
+          <h1 className="text-3xl md:text-4xl font-bold mb-3 text-foreground">
             اختر خدمتك
           </h1>
-          <p className="text-base" style={{ color: 'hsl(var(--muted-foreground))' }}>
+          <p className="text-base text-muted-foreground">
             ابدأ بتحديد الدولة، ثم اختر الخدمة المناسبة
           </p>
         </div>
 
         <div className="mb-8">
           <div className="max-w-md mx-auto">
-            <label className="block text-lg font-bold mb-3 text-center" style={{ color: 'hsl(var(--foreground))' }}>
+            <label className="block text-lg font-bold mb-3 text-center text-foreground">
               اختر الدولة
             </label>
             <Select onValueChange={handleCountryChange}>
-              <SelectTrigger 
-                className="w-full h-14 text-lg backdrop-blur-sm border-2 transition-all"
-                style={{
-                  backgroundColor: 'hsl(var(--card) / 0.8)',
-                  borderColor: 'hsl(var(--border))',
-                  boxShadow: '0 4px 12px -2px rgba(0, 0, 0, 0.08)'
-                }}
-              >
+              <SelectTrigger className="w-full h-14 text-lg border-2">
                 <SelectValue placeholder="اختر دولة..." />
               </SelectTrigger>
-              <SelectContent style={{ backgroundColor: 'hsl(var(--popover))', borderColor: 'hsl(var(--border))' }}>
+              <SelectContent>
                 {COUNTRIES.map((country) => (
                   <SelectItem
                     key={country.code}
@@ -166,7 +151,7 @@ const Services = () => {
                       <span className="text-2xl">{country.flag}</span>
                       <div className="text-right">
                         <div className="font-bold text-base">{country.nameAr}</div>
-                        <div className="text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
+                        <div className="text-sm text-muted-foreground">
                           {country.name}
                         </div>
                       </div>
@@ -179,16 +164,8 @@ const Services = () => {
         </div>
 
         {selectedCountry ? (
-          <div className="animate-fade-in">
-            <h2 
-              className="text-xl font-bold mb-6 text-center"
-              style={{
-                background: 'linear-gradient(to right, hsl(var(--primary)), hsl(var(--accent)))',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
-              }}
-            >
+          <div>
+            <h2 className="text-xl font-bold mb-6 text-center text-foreground">
               الخدمات المتاحة في {selectedCountry.nameAr}
             </h2>
             <div className="grid grid-cols-2 gap-3 sm:gap-4 max-w-4xl mx-auto">
@@ -199,16 +176,10 @@ const Services = () => {
           </div>
         ) : (
           <div className="text-center py-16">
-            <div 
-              className="w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 animate-pulse"
-              style={{
-                background: 'linear-gradient(to bottom right, hsl(var(--primary)), hsl(var(--accent)))',
-                boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
-              }}
-            >
-              <Package className="w-10 h-10" style={{ color: 'hsl(var(--primary-foreground))' }} />
+            <div className="w-20 h-20 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <Package className="w-10 h-10 text-primary-foreground" />
             </div>
-            <p className="text-base" style={{ color: 'hsl(var(--muted-foreground))' }}>
+            <p className="text-base text-muted-foreground">
               الرجاء اختيار دولة لعرض الخدمات المتاحة
             </p>
           </div>

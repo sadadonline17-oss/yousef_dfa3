@@ -219,7 +219,7 @@ const LogisticsServices = () => {
   }
 
   return (
-    <div className="min-h-screen py-6" style={{ background: 'linear-gradient(to bottom, hsl(var(--background)), hsl(var(--muted) / 0.1))' }} dir="rtl">
+    <div className="min-h-screen py-6 bg-background" dir="rtl">
       <div className="container mx-auto px-4">
         <div className="mb-4">
           <BackButton />
@@ -236,18 +236,12 @@ const LogisticsServices = () => {
           </Button>
 
           <div className="flex items-center gap-3 mb-4">
-            <div 
-              className="w-12 h-12 rounded-xl flex items-center justify-center"
-              style={{
-                background: 'linear-gradient(135deg, hsl(260 95% 55%), hsl(280 90% 60%))',
-                boxShadow: '0 4px 12px -2px rgba(0, 0, 0, 0.12)'
-              }}
-            >
-              <Truck className="w-6 h-6 text-white" />
+            <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-primary">
+              <Truck className="w-6 h-6 text-primary-foreground" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold" style={{ color: 'hsl(var(--foreground))' }}>الخدمات اللوجستية المتكاملة</h1>
-              <p className="text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
+              <h1 className="text-2xl font-bold text-foreground">الخدمات اللوجستية المتكاملة</h1>
+              <p className="text-sm text-muted-foreground">
                 {selectedCountry.nameAr}
               </p>
             </div>
@@ -452,22 +446,18 @@ const LogisticsServices = () => {
           <div className="space-y-6">
             {/* Logistics Providers */}
             <Card className="p-6" style={{ backgroundColor: 'hsl(var(--card))', borderColor: 'hsl(var(--border))', boxShadow: '0 4px 12px -2px rgba(0, 0, 0, 0.08)' }}>
-              <h2 className="text-lg font-bold mb-4" style={{ color: 'hsl(var(--foreground))' }}>شركاء الخدمات اللوجستية</h2>
+              <h2 className="text-lg font-bold mb-4 text-foreground">شركاء الخدمات اللوجستية</h2>
               <div className="space-y-4">
                 {logisticsProviders.map((provider, index) => (
                   <div 
                     key={index} 
-                    className="p-4 rounded-lg transition-all hover:shadow-md"
-                    style={{ 
-                      border: '1px solid hsl(var(--border))',
-                      backgroundColor: 'hsl(var(--card))'
-                    }}
+                    className="p-4 rounded-lg border border-border bg-card transition-all hover:shadow-md"
                   >
                     <div className="flex items-center gap-2 mb-2">
                       <span className="text-2xl">{provider.logo}</span>
                       <div>
-                        <h3 className="font-bold text-sm" style={{ color: 'hsl(var(--foreground))' }}>{provider.name}</h3>
-                        <p className="text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>{provider.nameEn}</p>
+                        <h3 className="font-bold text-sm text-foreground">{provider.name}</h3>
+                        <p className="text-xs text-muted-foreground">{provider.nameEn}</p>
                       </div>
                     </div>
                     <div className="flex flex-wrap gap-1 mb-2">
@@ -478,12 +468,12 @@ const LogisticsServices = () => {
                       ))}
                     </div>
                     <div className="flex items-center justify-between text-xs">
-                      <span style={{ color: 'hsl(var(--muted-foreground))' }}>
+                      <span className="text-muted-foreground">
                         ⭐ {provider.rating}
                       </span>
                       <div className="flex gap-1">
                         {provider.features.map((feature, i) => (
-                          <span key={i} style={{ color: 'hsl(140 70% 45%)' }} title={feature}>
+                          <span key={i} className="text-success" title={feature}>
                             ✓
                           </span>
                         ))}
@@ -495,12 +485,12 @@ const LogisticsServices = () => {
             </Card>
 
             {/* Features */}
-            <Card className="p-6" style={{ backgroundColor: 'hsl(var(--card))', borderColor: 'hsl(var(--border))', boxShadow: '0 4px 12px -2px rgba(0, 0, 0, 0.08)' }}>
-              <h2 className="text-lg font-bold mb-4" style={{ color: 'hsl(var(--foreground))' }}>مميزات الخدمة</h2>
+            <Card className="p-6">
+              <h2 className="text-lg font-bold mb-4 text-foreground">مميزات الخدمة</h2>
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: 'hsl(210 85% 90%)' }}>
-                    <Globe className="w-4 h-4" style={{ color: 'hsl(210 85% 50%)' }} />
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-info/10">
+                    <Globe className="w-4 h-4 text-info" />
                   </div>
                   <div>
                     <p className="font-semibold text-sm">تغطية عالمية</p>
@@ -510,8 +500,8 @@ const LogisticsServices = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: 'hsl(140 70% 90%)' }}>
-                    <MapPin className="w-4 h-4" style={{ color: 'hsl(140 70% 45%)' }} />
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-success/10">
+                    <MapPin className="w-4 h-4 text-success" />
                   </div>
                   <div>
                     <p className="font-semibold text-sm">تتبع مباشر</p>
@@ -521,8 +511,8 @@ const LogisticsServices = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: 'hsl(260 85% 90%)' }}>
-                    <Shield className="w-4 h-4" style={{ color: 'hsl(260 85% 55%)' }} />
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-primary/10">
+                    <Shield className="w-4 h-4 text-primary" />
                   </div>
                   <div>
                     <p className="font-semibold text-sm">تأمين شامل</p>
@@ -532,8 +522,8 @@ const LogisticsServices = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{ backgroundColor: 'hsl(30 95% 90%)' }}>
-                    <Clock className="w-4 h-4" style={{ color: 'hsl(30 95% 50%)' }} />
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-warning/10">
+                    <Clock className="w-4 h-4 text-warning" />
                   </div>
                   <div>
                     <p className="font-semibold text-sm">مواعيد دقيقة</p>
@@ -546,21 +536,14 @@ const LogisticsServices = () => {
             </Card>
 
             {/* Tracking Info */}
-            <Card 
-              className="p-6"
-              style={{ 
-                backgroundColor: 'hsl(210 100% 95%)', 
-                borderColor: 'hsl(210 85% 70%)',
-                boxShadow: '0 4px 12px -2px rgba(0, 0, 0, 0.08)'
-              }}
-            >
-              <h2 className="text-lg font-bold mb-4" style={{ color: 'hsl(210 85% 35%)' }}>
+            <Card className="p-6 bg-info/5 border-info/30">
+              <h2 className="text-lg font-bold mb-4 text-info">
                 تتبع الشحنات
               </h2>
-              <p className="text-sm mb-3" style={{ color: 'hsl(210 85% 40%)' }}>
+              <p className="text-sm mb-3 text-info/80">
                 تتبع شحنتك في الوقت الفعلي
               </p>
-              <Button variant="outline" className="w-full" style={{ borderColor: 'hsl(210 85% 60%)', color: 'hsl(210 85% 40%)' }}>
+              <Button variant="outline" className="w-full border-info text-info">
                 <MapPin className="w-4 h-4 ml-2" />
                 تتبع شحنة موجودة
               </Button>
