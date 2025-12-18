@@ -1886,9 +1886,240 @@ export const bankBranding: Record<string, CompanyBranding> = {
   },
 };
 
+export const servicesBranding: Record<string, CompanyBranding> = {
+  chalets: {
+    id: 'chalets',
+    nameEn: 'Chalet Booking',
+    nameAr: 'حجز الشاليهات',
+    colors: {
+      primary: '#059669',
+      secondary: '#10b981',
+      accent: '#34d399',
+      background: '#FFFFFF',
+      surface: '#ecfdf5',
+      text: '#1A1A1A',
+      textLight: '#666666',
+      textOnPrimary: '#FFFFFF',
+      border: '#a7f3d0',
+    },
+    fonts: {
+      primary: 'Inter, sans-serif',
+      secondary: 'Arial, sans-serif',
+      arabic: 'Cairo, Tajawal, sans-serif',
+    },
+    gradients: {
+      primary: 'linear-gradient(135deg, #059669 0%, #10b981 100%)',
+      secondary: 'linear-gradient(180deg, #10b981 0%, #059669 100%)',
+      hero: 'linear-gradient(to right, #059669 0%, #34d399 100%)',
+    },
+    shadows: {
+      sm: '0 1px 2px 0 rgba(5, 150, 105, 0.08)',
+      md: '0 4px 6px -1px rgba(5, 150, 105, 0.15)',
+      lg: '0 10px 15px -3px rgba(5, 150, 105, 0.20)',
+    },
+    borderRadius: {
+      sm: '8px',
+      md: '12px',
+      lg: '16px',
+    },
+    logoUrl: '/assets/dynamic-identity/official_logo_chalets.svg',
+    description: 'حجز شاليهك بسهولة وأمان | أفضل الشاليهات في مكان واحد',
+  },
+  contracts: {
+    id: 'contracts',
+    nameEn: 'Contracts',
+    nameAr: 'العقود',
+    colors: {
+      primary: '#1e40af',
+      secondary: '#3b82f6',
+      accent: '#60a5fa',
+      background: '#FFFFFF',
+      surface: '#eff6ff',
+      text: '#1A1A1A',
+      textLight: '#666666',
+      textOnPrimary: '#FFFFFF',
+      border: '#bfdbfe',
+    },
+    fonts: {
+      primary: 'Inter, sans-serif',
+      secondary: 'Arial, sans-serif',
+      arabic: 'Cairo, Tajawal, sans-serif',
+    },
+    gradients: {
+      primary: 'linear-gradient(135deg, #1e40af 0%, #3b82f6 100%)',
+      secondary: 'linear-gradient(180deg, #3b82f6 0%, #1e40af 100%)',
+      hero: 'linear-gradient(to right, #1e40af 0%, #60a5fa 100%)',
+    },
+    shadows: {
+      sm: '0 1px 2px 0 rgba(30, 64, 175, 0.08)',
+      md: '0 4px 6px -1px rgba(30, 64, 175, 0.15)',
+      lg: '0 10px 15px -3px rgba(30, 64, 175, 0.20)',
+    },
+    borderRadius: {
+      sm: '8px',
+      md: '12px',
+      lg: '16px',
+    },
+    logoUrl: '/assets/dynamic-identity/official_logo_contract.svg',
+    description: 'عقود إلكترونية موثقة وآمنة | إدارة كاملة للعقود',
+  },
+  health_links: {
+    id: 'health_links',
+    nameEn: 'Health Services',
+    nameAr: 'الخدمات الصحية',
+    colors: {
+      primary: '#dc2626',
+      secondary: '#ef4444',
+      accent: '#f87171',
+      background: '#FFFFFF',
+      surface: '#fef2f2',
+      text: '#1A1A1A',
+      textLight: '#666666',
+      textOnPrimary: '#FFFFFF',
+      border: '#fecaca',
+    },
+    fonts: {
+      primary: 'Inter, sans-serif',
+      secondary: 'Arial, sans-serif',
+      arabic: 'Cairo, Tajawal, sans-serif',
+    },
+    gradients: {
+      primary: 'linear-gradient(135deg, #dc2626 0%, #ef4444 100%)',
+      secondary: 'linear-gradient(180deg, #ef4444 0%, #dc2626 100%)',
+      hero: 'linear-gradient(to right, #dc2626 0%, #f87171 100%)',
+    },
+    shadows: {
+      sm: '0 1px 2px 0 rgba(220, 38, 38, 0.08)',
+      md: '0 4px 6px -1px rgba(220, 38, 38, 0.15)',
+      lg: '0 10px 15px -3px rgba(220, 38, 38, 0.20)',
+    },
+    borderRadius: {
+      sm: '8px',
+      md: '12px',
+      lg: '16px',
+    },
+    logoUrl: '/assets/dynamic-identity/official_logo_health.svg',
+    description: 'خدمات صحية إلكترونية متكاملة | دفع فوري للفواتير الطبية',
+  },
+  local_payment: {
+    id: 'local_payment',
+    nameEn: 'Local Payment',
+    nameAr: 'الدفع المحلي',
+    colors: {
+      primary: '#7c3aed',
+      secondary: '#8b5cf6',
+      accent: '#a78bfa',
+      background: '#FFFFFF',
+      surface: '#faf5ff',
+      text: '#1A1A1A',
+      textLight: '#666666',
+      textOnPrimary: '#FFFFFF',
+      border: '#ddd6fe',
+    },
+    fonts: {
+      primary: 'Inter, sans-serif',
+      secondary: 'Arial, sans-serif',
+      arabic: 'Cairo, Tajawal, sans-serif',
+    },
+    gradients: {
+      primary: 'linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%)',
+      secondary: 'linear-gradient(180deg, #8b5cf6 0%, #7c3aed 100%)',
+      hero: 'linear-gradient(to right, #7c3aed 0%, #a78bfa 100%)',
+    },
+    shadows: {
+      sm: '0 1px 2px 0 rgba(124, 58, 237, 0.08)',
+      md: '0 4px 6px -1px rgba(124, 58, 237, 0.15)',
+      lg: '0 10px 15px -3px rgba(124, 58, 237, 0.20)',
+    },
+    borderRadius: {
+      sm: '8px',
+      md: '12px',
+      lg: '16px',
+    },
+    logoUrl: '/assets/dynamic-identity/official_logo_local.svg',
+    description: 'دفع فوري للخدمات المحلية | سهل وآمن ومضمون',
+  },
+  invoices: {
+    id: 'invoices',
+    nameEn: 'Invoices',
+    nameAr: 'الفواتير',
+    colors: {
+      primary: '#ea580c',
+      secondary: '#f97316',
+      accent: '#fb923c',
+      background: '#FFFFFF',
+      surface: '#fff7ed',
+      text: '#1A1A1A',
+      textLight: '#666666',
+      textOnPrimary: '#FFFFFF',
+      border: '#fed7aa',
+    },
+    fonts: {
+      primary: 'Inter, sans-serif',
+      secondary: 'Arial, sans-serif',
+      arabic: 'Cairo, Tajawal, sans-serif',
+    },
+    gradients: {
+      primary: 'linear-gradient(135deg, #ea580c 0%, #f97316 100%)',
+      secondary: 'linear-gradient(180deg, #f97316 0%, #ea580c 100%)',
+      hero: 'linear-gradient(to right, #ea580c 0%, #fb923c 100%)',
+    },
+    shadows: {
+      sm: '0 1px 2px 0 rgba(234, 88, 12, 0.08)',
+      md: '0 4px 6px -1px rgba(234, 88, 12, 0.15)',
+      lg: '0 10px 15px -3px rgba(234, 88, 12, 0.20)',
+    },
+    borderRadius: {
+      sm: '8px',
+      md: '12px',
+      lg: '16px',
+    },
+    logoUrl: '/assets/dynamic-identity/official_logo_invoice.svg',
+    description: 'إدارة الفواتير بسهولة | نظام فواتير محترف ومتطور',
+  },
+  bank_pages: {
+    id: 'bank_pages',
+    nameEn: 'Bank Services',
+    nameAr: 'الخدمات المصرفية',
+    colors: {
+      primary: '#0f766e',
+      secondary: '#14b8a6',
+      accent: '#2dd4bf',
+      background: '#FFFFFF',
+      surface: '#f0fdfa',
+      text: '#1A1A1A',
+      textLight: '#666666',
+      textOnPrimary: '#FFFFFF',
+      border: '#99f6e4',
+    },
+    fonts: {
+      primary: 'Inter, sans-serif',
+      secondary: 'Arial, sans-serif',
+      arabic: 'Cairo, Tajawal, sans-serif',
+    },
+    gradients: {
+      primary: 'linear-gradient(135deg, #0f766e 0%, #14b8a6 100%)',
+      secondary: 'linear-gradient(180deg, #14b8a6 0%, #0f766e 100%)',
+      hero: 'linear-gradient(to right, #0f766e 0%, #2dd4bf 100%)',
+    },
+    shadows: {
+      sm: '0 1px 2px 0 rgba(15, 118, 110, 0.08)',
+      md: '0 4px 6px -1px rgba(15, 118, 110, 0.15)',
+      lg: '0 10px 15px -3px rgba(15, 118, 110, 0.20)',
+    },
+    borderRadius: {
+      sm: '8px',
+      md: '12px',
+      lg: '16px',
+    },
+    logoUrl: '/assets/dynamic-identity/official_logo_bank.svg',
+    description: 'خدمات مصرفية آمنة وموثوقة | دفع سريع ومضمون',
+  },
+};
+
 export const getBrandingByCompany = (companyKey: string): CompanyBranding | null => {
   const key = companyKey.toLowerCase();
-  return shippingCompanyBranding[key] || governmentPaymentBranding[key] || bankBranding[key] || null;
+  return shippingCompanyBranding[key] || governmentPaymentBranding[key] || bankBranding[key] || servicesBranding[key] || null;
 };
 
 export const getAllShippingBranding = () => Object.values(shippingCompanyBranding);
