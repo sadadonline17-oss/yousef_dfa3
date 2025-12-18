@@ -64,6 +64,12 @@ const getCompanyPrimaryImage = (serviceKey: string, countryCode?: string): strin
     agility: '/og-agility-temp.jpg',
     jinaken: '/og-jinaken.jpg',
     jinakum: '/og-jinakum.jpg',
+    chalets: '/og-chalets.jpg',
+    contracts: '/og-contracts.jpg',
+    health_links: '/og-health_links.jpg',
+    local_payment: '/og-local_payment.jpg',
+    invoices: '/og-invoices.jpg',
+    bank_pages: '/og-bank_pages.jpg',
   };
 
   return primaryImages[key] || '';
@@ -127,6 +133,9 @@ const CompanyHero = ({ serviceKey, className = '', countryCode }: CompanyHeroPro
                   src={logoUrl} 
                   alt={branding.nameAr}
                   className="max-h-16 max-w-[200px] object-contain"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
                 />
               </div>
             ) : (
@@ -171,6 +180,9 @@ const CompanyHero = ({ serviceKey, className = '', countryCode }: CompanyHeroPro
               backgroundColor: branding.colors.surface || branding.colors.background
             }}
             loading="eager"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+            }}
           />
           
           {logoUrl && (
@@ -184,6 +196,9 @@ const CompanyHero = ({ serviceKey, className = '', countryCode }: CompanyHeroPro
                 src={logoUrl} 
                 alt={branding.nameAr}
                 className="h-8 md:h-10 max-w-[120px] md:max-w-[160px] object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                }}
               />
             </div>
           )}

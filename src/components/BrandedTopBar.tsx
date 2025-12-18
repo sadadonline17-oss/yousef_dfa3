@@ -126,8 +126,5 @@ const BrandedTopBar: React.FC<BrandedTopBarProps> = ({
     </>
   );
 };
-    </>
-  );
-};
 
 export default BrandedTopBar;
