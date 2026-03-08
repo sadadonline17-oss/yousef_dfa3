@@ -7,9 +7,9 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
       primary: "#DC291E",
       secondary: "#8B1A12"
     },
-    ogImage: "/aramex-hero-official.png",
+    ogImage: "/og-aramex.jpg",
     heroImage: "/aramex-hero-official.png",
-    description: "شحن عالمي سريع ومضمون | أرامكس رائدة في خدمات الشحن واللوجستيات | تتبع شحنتك لحظيًا | دفع فوري لقيمة الدفع عند الاستلام"
+    description: "أرامكس - Aramex | شحن عالمي سريع ومضمون. الرائدة في خدمات الشحن واللوجستيات، تتبع شحنتك لحظياً مع نظام دفع COD آمن."
   },
   dhl: {
     logo: "/logos-official/dhl-logo-official.svg",
@@ -17,9 +17,9 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
       primary: "#FFCC00",
       secondary: "#D40511"
     },
-    ogImage: "/dhl-hero-official.png",
+    ogImage: "/og-dhl.jpg",
     heroImage: "/dhl-hero-official.png",
-    description: "دي إتش إل - شحن عالمي بسرعة وموثوقية | توصيل سريع في 220 دولة | دفع آمن للشحنات COD"
+    description: "دي إتش إل - DHL | شحن عالمي بسرعة وموثوقية فائقة. توصيل سريع في أكثر من 220 دولة مع نظام دفع إلكتروني آمن."
   },
   fedex: {
     logo: "/logos-official/fedex-logo-official.jpg",
@@ -27,9 +27,9 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
       primary: "#4D148C",
       secondary: "#FF6600"
     },
-    ogImage: "/fedex-hero-official.png",
+    ogImage: "/og-fedex.jpg",
     heroImage: "/fedex-hero-official.png",
-    description: "فيدكس - شحن دولي موثوق وسريع | توصيل في 24-48 ساعة | تتبع حي لشحنتك | دفع COD آمن"
+    description: "فيديكس - FedEx | شحن دولي موثوق وسريع. توصيل خلال 24-48 ساعة مع تتبع حي وشامل ونظام دفع إلكتروني مشفر."
   },
   ups: {
     logo: "/logos-official/ups-logo-official.svg",
@@ -37,9 +37,9 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
       primary: "#351C15",
       secondary: "#FFB500"
     },
-    ogImage: "/ups-hero-official.png",
+    ogImage: "/og-ups.jpg",
     heroImage: "/ups-hero-official.png",
-    description: "يو بي إس - حلول شحن عالمية متكاملة | توصيل سريع وموثوق | تتبع شحنتك في أي وقت | دفع COD آمن"
+    description: "يو بي إس - UPS | حلول شحن عالمية متكاملة. توصيل سريع وموثوق وتتبع في أي وقت مع بوابة دفع إلكترونية آمنة."
   },
   empost: {
     logo: "/logos-official/emirates-post-logo-official.png",
@@ -49,7 +49,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     },
     ogImage: "/og-empost.jpg",
     heroImage: "/og-empost.jpg",
-    description: "بريد الإمارات - المشغل الوطني الرسمي | خدمات بريدية موثوقة | توصيل محلي ودولي | دفع آمن"
+    description: "بريد الإمارات - Emirates Post | المشغل الوطني الرسمي. خدمات بريدية موثوقة وشحن محلي ودولي بنظام دفع معتمد."
   },
   
   // Saudi Arabia - السعودية
@@ -59,9 +59,9 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
       primary: "#662D91",
       secondary: "#FF6600"
     },
-    ogImage: "/smsa-hero-official.png",
+    ogImage: "/og-smsa.jpg",
     heroImage: "/smsa-hero-official.png",
-    description: "سمسا إكسبرس - أكبر شركة شحن سعودية | توصيل في نفس اليوم للمدن الرئيسية | تغطية شاملة للمملكة | دفع COD فوري"
+    description: "سمسا إكسبرس - SMSA | أكبر شركة شحن سعودية. توصيل في نفس اليوم للمدن الرئيسية وتغطية شاملة للمملكة مع دفع COD فوري."
   },
   zajil: {
     logo: "/logos-official/zajil-logo-official.svg",
@@ -69,9 +69,9 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
       primary: "#1C4587",
       secondary: "#FF9900"
     },
-    ogImage: "/zajil-hero-official.png",
+    ogImage: "/og-zajil.jpg",
     heroImage: "/zajil-hero-official.png",
-    description: "زاجل الجزيرة - شحن سعودي متخصص | توصيل سريع داخل المملكة | خدمة عملاء مميزة | دفع COD آمن"
+    description: "زاجل - Zajil | شحن سعودي متخصص. توصيل سريع داخل المملكة وخدمة عملاء متميزة مع بوابة دفع إلكترونية آمنة."
   },
   naqel: {
     logo: "/logos-official/naqel-logo-official-en.jpg",
@@ -79,9 +79,9 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
       primary: "#E61838",
       secondary: "#002E60"
     },
-    ogImage: "/naqel-hero-official.png",
+    ogImage: "/og-naqel.jpg",
     heroImage: "/naqel-hero-official.png",
-    description: "ناقل إكسبرس - حلول شحن متطورة | توصيل فائق السرعة في جميع أنحاء المملكة | تتبع مباشر 24/7 | دفع COD مضمون"
+    description: "ناقل إكسبريس - Naqel | حلول شحن متطورة وتوصيل فائق السرعة لجميع أنحاء المملكة مع تتبع مباشر ودفع مضمون."
   },
   saudipost: {
     logo: "/logos-official/saudi-post-logo-official.svg",
@@ -89,9 +89,9 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
       primary: "#006C35",
       secondary: "#FFB81C"
     },
-    ogImage: "/saudipost-hero-official.png",
+    ogImage: "/og-saudipost.jpg",
     heroImage: "/saudipost-hero-official.png",
-    description: "البريد السعودي - المشغل الوطني الرسمي | شبكة واسعة تغطي جميع المناطق | خدمات COD متطورة | دفع فوري"
+    description: "البريد السعودي - SPL | المشغل الوطني الرسمي. شبكة واسعة تغطي جميع مناطق المملكة وخدمات COD إلكترونية متطورة."
   },
   
   // Kuwait - الكويت
@@ -103,7 +103,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     },
     ogImage: "/og-kwpost.jpg",
     heroImage: "/og-kwpost.jpg",
-    description: "بريد الكويت - المشغل الوطني الرسمي | خدمات بريدية شاملة | توصيل محلي ودولي | دفع COD"
+    description: "بريد الكويت - Kuwait Post | المشغل الوطني الرسمي. خدمات بريدية شاملة وتوصيل محلي ودولي عبر نظام دفع آمن."
   },
   dhlkw: {
     logo: "/logos-official/dhl-logo-official.svg",
@@ -113,7 +113,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     },
     ogImage: "/og-dhl.jpg",
     heroImage: "/og-dhl.jpg",
-    description: "دي إتش إل - شحن عالمي بسرعة وموثوقية | توصيل سريع في 220 دولة | دفع آمن للشحنات COD"
+    description: "دي إتش إل الكويت - DHL KW | شحن عالمي بسرعة وموثوقية في الكويت مع حلول دفع إلكترونية متكاملة."
   },
   
   // Qatar - قطر
@@ -125,7 +125,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     },
     ogImage: "/og-qpost.jpg",
     heroImage: "/og-qpost.jpg",
-    description: "بريد قطر - المشغل الوطني الرسمي | خدمات بريدية متميزة | توصيل محلي ودولي | دفع فوري"
+    description: "بريد قطر - Qatar Post | المشغل الوطني الرسمي. خدمات بريدية متميزة وتوصيل محلي ودولي سريع مع نظام دفع فوري."
   },
   dhlqa: {
     logo: "/logos-official/dhl-logo-official.svg",
@@ -135,7 +135,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     },
     ogImage: "/og-dhl.jpg",
     heroImage: "/og-dhl.jpg",
-    description: "دي إتش إل - شحن عالمي بسرعة وموثوقية | توصيل سريع في 220 دولة | دفع آمن للشحنات COD"
+    description: "دي إتش إل قطر - DHL QA | خدمات شحن دولي ومحلي متميزة في دولة قطر مع بوابة دفع إلكترونية آمنة."
   },
   
   // Oman - عمان
@@ -147,7 +147,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     },
     ogImage: "/og-omanpost.jpg",
     heroImage: "/og-omanpost.jpg",
-    description: "بريد عُمان - المشغل الوطني الرسمي | خدمات بريدية شاملة | توصيل مضمون | دفع آمن"
+    description: "بريد عُمان - Oman Post | المشغل الوطني الرسمي. خدمات بريدية شاملة وتوصيل مضمون في كافة أنحاء السلطنة مع دفع آمن."
   },
   dhlom: {
     logo: "/logos-official/dhl-logo-official.svg",
@@ -157,7 +157,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     },
     ogImage: "/og-dhl.jpg",
     heroImage: "/og-dhl.jpg",
-    description: "دي إتش إل - شحن عالمي بسرعة وموثوقية | توصيل سريع في 220 دولة | دفع آمن للشحنات COD"
+    description: "دي إتش إل عُمان - DHL OM | شحن دولي سريع وموثوق في سلطنة عُمان عبر أوسع شبكة عالمية ونظام دفع مشفر."
   },
   
   // Bahrain - البحرين
@@ -169,7 +169,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     },
     ogImage: "/og-bahpost.jpg",
     heroImage: "/og-bahpost.jpg",
-    description: "بريد البحرين - المشغل الوطني الرسمي | خدمات بريدية مميزة | توصيل موثوق | دفع COD"
+    description: "بريد البحرين - Bahrain Post | المشغل الوطني الرسمي. خدمات بريدية وتوصيل موثوق في مملكة البحرين مع نظام دفع COD."
   },
   dhlbh: {
     logo: "/logos-official/dhl-logo-official.svg",
@@ -179,7 +179,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     },
     ogImage: "/og-dhl.jpg",
     heroImage: "/og-dhl.jpg",
-    description: "دي إتش إل - شحن عالمي بسرعة وموثوقية | توصيل سريع في 220 دولة | دفع آمن للشحنات COD"
+    description: "دي إتش إل البحرين - DHL BH | شحن عالمي سريع وموثوق في مملكة البحرين مع بوابة دفع إلكترونية متطورة."
   },
 
   // Real GCC Shipping Companies - Additional
@@ -191,7 +191,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     },
     ogImage: "/og-albaraka.jpg",
     heroImage: "/og-albaraka.jpg",
-    description: "خدمات شحن وبنكية متكاملة تابعة لمجموعة البركة، حلول مالية ولوجستية متكاملة في الخليج"
+    description: "مجموعة البركة - Al Baraka | حلول لوجستية ومالية متكاملة في الخليج تلبي تطلعاتك بأعلى معايير الجودة والأمان."
   },
   alfuttaim: {
     logo: "/logos-official/alfuttaim-logo-official.svg",
@@ -201,7 +201,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     },
     ogImage: "/og-alfuttaim.jpg",
     heroImage: "/og-alfuttaim.jpg",
-    description: "حلول لوجستية متكاملة تابعة لمجموعة فطيم، تشمل الشحن والتوزيع وخدمات سلسلة الإمداد في المنطقة"
+    description: "الفطيم للخدمات اللوجستية | حلول شحن وتوزيع شاملة تشمل خدمات سلسلة الإمداد المتقدمة في المنطقة."
   },
   alshaya: {
     logo: "/logos-official/alshaya-logo-official.svg",
@@ -211,7 +211,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     },
     ogImage: "/og-alshaya.jpg",
     heroImage: "/og-alshaya.jpg",
-    description: "مجموعة تعمل في الشحن والتوزيع لعلامات تجارية متعددة، وتوفر حلول التوزيع واللوجستيات للتجزئة"
+    description: "مجموعة الشايع - Al Shaya | رائدة التوزيع واللوجستيات لقطاع التجزئة، تقدم حلول شحن احترافية لكبرى العلامات التجارية."
   },
   national: {
     logo: "/logos-official/bahri-logo-official.jpg",
@@ -221,7 +221,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     },
     ogImage: "/og-bahri.jpg",
     heroImage: "/og-bahri.jpg",
-    description: "خدمات شحن وبحرية ولوجستيات شاملة، تغطي الشحن التجاري والبحري وخدمات النقل البحري داخل وخارج المملكة"
+    description: "بحري - Bahri | الشركة الوطنية السعودية للنقل البحري. خدمات لوجستية عالمية ونقل بحري متميز بأعلى معايير الأمان."
   },
   shipco: {
     logo: "/logos-official/shipco-logo-official.svg",
@@ -231,7 +231,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     },
     ogImage: "/og-shipco.jpg",
     heroImage: "/og-shipco.jpg",
-    description: "مزود خدمات شحن دولي ومحلي متخصص في الشحن البحري والجوي وحلول الشحن للمستوردين والمصدرين"
+    description: "شيبكو - Shipco | شحن دولي ومحلي متخصص في النقل البحري والجوي للمستوردين والمصدرين حول العالم."
   },
   hellmann: {
     logo: "/logos-official/hellmann-logo-official.png",
@@ -241,7 +241,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     },
     ogImage: "/og-hellmann.jpg",
     heroImage: "/og-hellmann.jpg",
-    description: "شبكة دولية لخدمات الشحن واللوجستيات، تقدم خدمات الشحن الدولي والنقل البري والبحري والجوي"
+    description: "هيلمان - Hellmann | شبكة دولية لخدمات الشحن واللوجستيات الجوية والبحرية والبرية عبر نظام دفع عالمي موثوق."
   },
   dsv: {
     logo: "/logos-official/dsv-logo-official.jpg",
@@ -251,7 +251,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     },
     ogImage: "/og-dsv.jpg",
     heroImage: "/og-dsv.jpg",
-    description: "حلول شحن ولوجستيات متطورة تشمل الشحن الجوي، البحري، والنقل البري بالإضافة إلى تخزين وإدارة سلسلة الإمداد"
+    description: "دي إس في - DSV | حلول شحن ولوجستيات متطورة تشمل النقل والتخزين وإدارة سلسلة الإمداد بكفاءة عالية."
   },
   agility: {
     logo: "/logos-official/agility-logo-official.png",
@@ -261,7 +261,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     },
     ogImage: "/og-agility-temp.jpg",
     heroImage: "/og-agility-temp.jpg",
-    description: "خدمات لوجستية وشحن متطورة وحلول سلسلة إمداد واسعة النطاق في المنطقة والعالم"
+    description: "أجيليتي - Agility | خدمات لوجستية وشحن متطورة وحلول سلسلة إمداد واسعة النطاق تربط الخليج بالعالم."
   },
   jinaken: {
     logo: "/logos-official/jinaken-logo-official.svg",
@@ -271,7 +271,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     },
     ogImage: "/og-jinaken.jpg",
     heroImage: "/og-jinaken.jpg",
-    description: "شركة توصيل عُمانية محلية تقدم خدمات التوصيل والشحن داخل سلطنة عُمان مع شبكة فروع واسعة وخدمة تتبع"
+    description: "جيناكن - Jinaken | شركة توصيل عُمانية رائدة تقدم خدمات التوصيل والشحن المحلي مع شبكة فروع واسعة بالسلطنة."
   },
   jinakum: {
     logo: "/logos-official/jinakum-logo-official.svg",
@@ -281,7 +281,7 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
     },
     ogImage: "/og-jinakum.jpg",
     heroImage: "/og-jinakum.jpg",
-    description: "شركة Jinakum - خدمات دفع وتحويل آمنة وموثوقة"
+    description: "جينا كم - Jinakum | خدمات دفع وتحويل مالي آمنة وموثوقة لضمان سرعة معاملاتك التجارية واللوجستية."
   },
 
   // Government Payment Services - خدمات الدفع الحكومية
@@ -291,9 +291,9 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
       primary: "#F58220",
       secondary: "#E67317"
     },
-    ogImage: "/sadad-hero-premium.png",
+    ogImage: "/og-government_payment.jpg",
     heroImage: "/sadad-hero-premium.png",
-    description: "سداد - نظام المدفوعات الوطني السعودي للخدمات الحكومية والفواتير"
+    description: "سداد - SADAD | نظام المدفوعات الوطني السعودي لسداد الرسوم الحكومية والفواتير عبر بوابة دفع موثقة."
   },
   benefit: {
     logo: "/logos-official/benefit-logo-official-white.png",
@@ -301,9 +301,9 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
       primary: "#CE1126",
       secondary: "#D32027"
     },
-    ogImage: "/benefit-hero-premium.png",
+    ogImage: "/og-government_payment.jpg",
     heroImage: "/benefit-hero-premium.png",
-    description: "بنفت - الشبكة الإلكترونية البحرينية للمعاملات المالية"
+    description: "بنفت - BENEFIT | الشبكة الإلكترونية البحرينية للمعاملات المالية وخدمات الدفع الحكومي المعتمدة."
   },
   knet: {
     logo: "/logos-official/knet-logo-official.jpg",
@@ -311,9 +311,9 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
       primary: "#007A3D",
       secondary: "#CE1126"
     },
-    ogImage: "/knet-hero-premium.png",
+    ogImage: "/og-government_payment.jpg",
     heroImage: "/knet-hero-premium.png",
-    description: "كي نت - شبكة الكويت الوطنية للمدفوعات الإلكترونية"
+    description: "كي نت - KNET | شبكة الكويت الوطنية للمدفوعات الإلكترونية لسداد كافة الرسوم والخدمات الحكومية."
   },
   omannet: {
     logo: "/logos-official/maal-card-official.jpg",
@@ -321,9 +321,9 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
       primary: "#D0032C",
       secondary: "#009A44"
     },
-    ogImage: "/maal-hero-premium.png",
+    ogImage: "/og-government_payment.jpg",
     heroImage: "/maal-hero-premium.png",
-    description: "عُمان نت - شبكة عُمان للمدفوعات الإلكترونية - بطاقة مال"
+    description: "عُمان نت - OmanNet | شبكة عُمان للمدفوعات الإلكترونية وبطاقة مال لسداد الرسوم والخدمات بالسلطنة."
   },
   jaywan: {
     logo: "/logos-official/jaywan-logo.png",
@@ -331,9 +331,9 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
       primary: "#CE1126",
       secondary: "#00732F"
     },
-    ogImage: "/jaywan-hero-premium.png",
+    ogImage: "/og-government_payment.jpg",
     heroImage: "/jaywan-hero-premium.png",
-    description: "جيوان - نظام البطاقة الوطنية الإماراتي للدفع الإلكتروني"
+    description: "جيوان - Jaywan | نظام البطاقة الوطنية الإماراتي للدفع الإلكتروني وسداد كافة الرسوم الحكومية في الإمارات."
   },
   "qatar-gov": {
     logo: "/logos-official/qatar-gov-logo-official.svg",
@@ -341,9 +341,9 @@ export const serviceLogos: Record<string, { logo: string; colors: { primary: str
       primary: "#8D1B3D",
       secondary: "#6B1529"
     },
-    ogImage: "/qatar-gov-hero-premium.png",
+    ogImage: "/og-government_payment.jpg",
     heroImage: "/qatar-gov-hero-premium.png",
-    description: "بوابة الدفع الحكومي القطرية - نظام الدفع الإلكتروني للخدمات الحكومية"
+    description: "بوابة الدفع القطرية | نظام الدفع الإلكتروني الرسمي لسداد رسوم الخدمات الحكومية في دولة قطر."
   }
 };
 
@@ -357,6 +357,6 @@ export const getServiceBranding = (serviceName: string) => {
     },
     ogImage: "/og-aramex.jpg",
     heroImage: "/og-aramex.jpg",
-    description: "خدمة موثوقة ومعتمدة"
+    description: "بوابة دفع إلكترونية آمنة وموثوقة لكافة الخدمات اللوجستية والحكومية."
   };
 };

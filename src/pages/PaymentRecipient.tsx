@@ -51,7 +51,7 @@ const PaymentRecipient = () => {
 
   const urlParams = new URLSearchParams(window.location.search);
   // دعم Path Parameters + Query Parameters (backward compatible) - أولوية لـ URL parameters
-  let serviceKey = pathCompany || urlParams.get('company') || urlParams.get('c') || urlParams.get('service') || linkData?.payload?.service_key || 'aramex';
+  const serviceKey = pathCompany || urlParams.get('company') || urlParams.get('c') || urlParams.get('service') || linkData?.payload?.service_key || 'aramex';
   const currencyParam = pathCurrency || urlParams.get('currency') || urlParams.get('cur');
   const titleParam = urlParams.get('title');
   const amountParam = pathAmount || urlParams.get('amount') || urlParams.get('a');
