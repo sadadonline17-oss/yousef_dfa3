@@ -103,11 +103,13 @@ const Microsite = () => {
   const companyMeta = getCompanyMeta(serviceKey);
 
   // Update URL to include service information for better SEO
-  React.useEffect(() => {
-    const currentUrl = new URL(window.location.href);
-    if (isShipping && serviceKey && !currentUrl.searchParams.has('service')) {
-      currentUrl.searchParams.set('service', serviceKey);
-      window.history.replaceState({}, '', currentUrl.toString());
+  useEffect(() => {
+    if (isShipping && serviceKey) {
+      const currentUrl = new URL(window.location.href);
+      if (!currentUrl.searchParams.has('service')) {
+        currentUrl.searchParams.set('service', serviceKey);
+        window.history.replaceState({}, '', currentUrl.toString());
+      }
     }
   }, [isShipping, serviceKey]);
 

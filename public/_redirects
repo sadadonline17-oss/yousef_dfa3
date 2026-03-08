@@ -1,3 +1,8 @@
-# SPA routing: All routes go to React app
+# Dynamic OG Tags for Social Sharing
+/r/*    /.netlify/functions/microsite-meta    200
+/pay/*  /.netlify/functions/microsite-meta    200
+/p/*    /.netlify/functions/microsite-meta    200
+
+# SPA routing: All other routes go to React app
 # React Router will handle the routing client-side
 /*    /index.html   200
