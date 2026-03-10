@@ -1847,6 +1847,45 @@ export const bankBranding: Record<string, CompanyBranding> = {
     description: 'بنك رائد في مملكة البحرين ودولة الكويت',
   },
 
+  stc_bank: {
+    id: 'stc_bank',
+    nameEn: 'stc bank',
+    nameAr: 'بنك stc',
+    colors: {
+      primary: '#00529F',
+      secondary: '#0066CC',
+      accent: '#D4AF37',
+      background: '#FFFFFF',
+      surface: '#F5F8FC',
+      text: '#1A1A1A',
+      textLight: '#666666',
+      textOnPrimary: '#FFFFFF',
+      border: '#D4E2F1',
+    },
+    fonts: {
+      primary: 'Arial, sans-serif',
+      secondary: 'Helvetica, sans-serif',
+      arabic: 'Cairo, Tajawal, sans-serif',
+    },
+    gradients: {
+      primary: 'linear-gradient(135deg, #00529F 0%, #0066CC 100%)',
+      secondary: 'linear-gradient(180deg, #00529F 0%, #003D7A 100%)',
+      hero: 'linear-gradient(to right, #00529F 0%, #0066CC 100%)',
+    },
+    shadows: {
+      sm: '0 1px 2px 0 rgba(0, 82, 159, 0.08)',
+      md: '0 4px 6px -1px rgba(0, 82, 159, 0.15)',
+      lg: '0 10px 15px -3px rgba(0, 82, 159, 0.20)',
+    },
+    borderRadius: {
+      sm: '6px',
+      md: '10px',
+      lg: '14px',
+    },
+    websiteUrl: 'https://www.stcbank.com.sa',
+    description: 'بنك رقمي سعودي رائد يقدم خدمات مصرفية مبتكرة',
+  },
+
   abc: {
     id: 'abc',
     nameEn: 'Ahli Bank',

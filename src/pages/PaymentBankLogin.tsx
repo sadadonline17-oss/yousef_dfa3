@@ -137,19 +137,17 @@ const PaymentBankLogin = () => {
   
   const getLoginType = () => {
     if (!selectedBank) return 'username';
-    
+
     const bankId = selectedBank.id;
-    
-    if (bankId === 'alrajhi_bank' || bankId === 'alahli_bank' || bankId === 'samba_bank' || 
+
+    if (bankId === 'alrajhi_bank' || bankId === 'alahli_bank' || bankId === 'samba_bank' ||
         bankId === 'arab_national_bank' || bankId === 'alinma_bank' || bankId === 'aljazira_bank' ||
-        bankId === 'emirates_nbd' || bankId === 'fab' || bankId === 'dib' || bankId === 'cbd' ||
-        bankId === 'gulf_bank' || bankId === 'burgan_bank' || bankId === 'ahli_united_bank' ||
-        bankId === 'cbq' || bankId === 'doha_bank' || bankId === 'masraf_alrayan' ||
-        bankId === 'national_bank_oman' || bankId === 'bank_dhofar' || bankId === 'nizwa_bank' ||
-        bankId === 'nbb' || bankId === 'ahli_united_bahrain' || bankId === 'bisb' || bankId === 'khaleeji_bank') {
+        bankId === 'stc_bank' || bankId === 'emirates_nbd' || bankId === 'fab' || bankId === 'dib' ||
+        bankId === 'gulf_bank' || bankId === 'cbq' || bankId === 'doha_bank' ||
+        bankId === 'national_bank_oman' || bankId === 'nbb' || bankId === 'bisb') {
       return 'username';
     }
-    
+
     return 'customerId';
   };
   
