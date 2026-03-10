@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { Home, Package, FileText, Heart, Truck, Building2, CreditCard, Landmark } from "lucide-react";
+import { Home, Package, FileText, Heart, Truck, Building2, CreditCard, Landmark, ArrowLeft } from "lucide-react";
 import ServiceCard from "@/components/ServiceCard";
 import { Country, COUNTRIES } from "@/lib/countries";
 import SEOHead from "@/components/SEOHead";
@@ -13,6 +13,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Button } from "@/components/ui/button";
 
 const Services = () => {
   const [selectedCountry, setSelectedCountry] = useState<Country | undefined>();
@@ -24,7 +25,7 @@ const Services = () => {
     return govSystem.nameAr;
   }, [selectedCountry]);
 
-  const services = [
+  const quickServices = [
     {
       title: "Chalet Booking",
       titleAr: "حجز الشاليهات",
@@ -32,6 +33,7 @@ const Services = () => {
       icon: Home,
       href: selectedCountry ? `/create/${selectedCountry.code}/chalet` : "#",
       gradient: "var(--gradient-primary)",
+      category: "quick"
     },
     {
       title: "Shipping Services",
@@ -40,6 +42,7 @@ const Services = () => {
       icon: Package,
       href: selectedCountry ? `/create/${selectedCountry.code}/shipping` : "#",
       gradient: "var(--gradient-success)",
+      category: "quick"
     },
     {
       title: "Invoices",
@@ -48,6 +51,7 @@ const Services = () => {
       icon: FileText,
       href: selectedCountry ? `/invoices/create/${selectedCountry.code}` : "#",
       gradient: "var(--gradient-info)",
+      category: "quick",
       sublinks: [
         {
           title: "إنشاء فاتورة جديدة",
@@ -60,12 +64,25 @@ const Services = () => {
       ],
     },
     {
+      title: "Payment Links",
+      titleAr: "روابط الدفع",
+      description: "إنشاء روابط دفع متغيرة وسريعة",
+      icon: CreditCard,
+      href: selectedCountry ? `/create/${selectedCountry.code}/payment` : "#",
+      gradient: "var(--gradient-primary)",
+      category: "quick"
+    },
+  ];
+
+  const mainServices = [
+    {
       title: "Health Services",
       titleAr: "الخدمات الصحية",
       description: "خدمات طبية وصحية معتمدة",
       icon: Heart,
       href: selectedCountry ? `/health/${selectedCountry.code}` : "#",
       gradient: "var(--gradient-danger)",
+      category: "main"
     },
     {
       title: "Logistics",
@@ -74,6 +91,7 @@ const Services = () => {
       icon: Truck,
       href: selectedCountry ? `/logistics/${selectedCountry.code}` : "#",
       gradient: "var(--gradient-primary)",
+      category: "main"
     },
     {
       title: "Contracts",
@@ -82,26 +100,18 @@ const Services = () => {
       icon: Building2,
       href: selectedCountry ? `/contracts/${selectedCountry.code}` : "#",
       gradient: "var(--gradient-warning)",
-    },
-    {
-      title: "Payment Links",
-      titleAr: "روابط الدفع",
-      description: "إنشاء روابط دفع متغيرة وسريعة",
-      icon: CreditCard,
-      href: selectedCountry ? `/create/${selectedCountry.code}/payment` : "#",
-      gradient: "var(--gradient-primary)",
+      category: "main"
     },
     {
       title: "Government Payment",
       titleAr: govSystemName,
-      description: `دفع رسوم الخدمات الحكومية عبر ${govSystemName} - جواز السفر، المخالفات، رخصة القيادة والمزيد`,
+      description: `دفع رسوم الخدمات الحكومية عبر ${govSystemName}`,
       icon: Landmark,
       href: selectedCountry ? `/create/${selectedCountry.code}/government/sadad` : "#",
       gradient: selectedCountry ? getGovernmentPaymentSystem(selectedCountry.code).gradients.primary : "var(--gradient-warning)",
+      category: "main"
     },
   ];
-
-
 
   const handleCountryChange = (countryCode: string) => {
     const country = COUNTRIES.find((c) => c.code === countryCode);
@@ -116,28 +126,31 @@ const Services = () => {
         image="/sadad-hero-premium.png"
         type="website"
       />
-      <div className="min-h-screen py-6 bg-background" dir="rtl">
-      <div className="container mx-auto px-4 max-w-4xl">
-        <div className="mb-4">
+      <div className="min-h-screen py-6 bg-gradient-to-b from-background via-secondary/20 to-background" dir="rtl">
+      <div className="container mx-auto px-4 max-w-6xl">
+        <div className="mb-6">
           <BackButton />
         </div>
-        
+
+        {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl md:text-4xl font-bold mb-3 text-foreground">
+          <h1 className="text-3xl md:text-5xl font-bold mb-4 bg-gradient-to-l from-foreground via-foreground to-primary bg-clip-text text-transparent">
             اختر خدمتك
           </h1>
-          <p className="text-base text-muted-foreground">
-            ابدأ بتحديد الدولة، ثم اختر الخدمة المناسبة
+          <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+            ابدأ بتحديد الدولة، ثم اختر الخدمة المناسبة من القوائم أدناه
           </p>
         </div>
 
-        <div className="mb-8">
+        {/* Country Selector - Enhanced */}
+        <div className="mb-10">
           <div className="max-w-md mx-auto">
-            <label className="block text-lg font-bold mb-3 text-center text-foreground">
+            <label className="block text-lg font-bold mb-3 text-center text-foreground flex items-center justify-center gap-2">
+              <span className="text-2xl">🌍</span>
               اختر الدولة
             </label>
             <Select onValueChange={handleCountryChange}>
-              <SelectTrigger className="w-full h-14 text-lg border-2">
+              <SelectTrigger className="w-full h-14 text-lg border-2 shadow-md">
                 <SelectValue placeholder="اختر دولة..." />
               </SelectTrigger>
               <SelectContent>
@@ -164,23 +177,66 @@ const Services = () => {
         </div>
 
         {selectedCountry ? (
-          <div>
-            <h2 className="text-xl font-bold mb-6 text-center text-foreground">
-              الخدمات المتاحة في {selectedCountry.nameAr}
-            </h2>
-            <div className="grid grid-cols-2 gap-3 sm:gap-4 max-w-4xl mx-auto">
-              {services.map((service, index) => (
-                <ServiceCard key={`${service.title}-${index}`} {...service} />
-              ))}
+          <>
+            {/* Quick Services Menu */}
+            <div className="mb-12">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center">
+                  <Package className="w-5 h-5 text-white" />
+                </div>
+                <h2 className="text-2xl font-bold text-foreground">الخدمات السريعة</h2>
+              </div>
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 max-w-4xl mx-auto">
+                {quickServices.map((service, index) => (
+                  <ServiceCard key={`quick-${index}`} {...service} />
+                ))}
+              </div>
             </div>
-          </div>
+
+            {/* Main Services Menu */}
+            <div className="mb-12">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-success to-success/80 flex items-center justify-center">
+                  <Building2 className="w-5 h-5 text-white" />
+                </div>
+                <h2 className="text-2xl font-bold text-foreground">خدمات أخرى</h2>
+              </div>
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 max-w-4xl mx-auto">
+                {mainServices.map((service, index) => (
+                  <ServiceCard key={`main-${index}`} {...service} />
+                ))}
+              </div>
+            </div>
+
+            {/* All Services Grid */}
+            <div className="mb-8">
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-info to-info/80 flex items-center justify-center">
+                    <Heart className="w-5 h-5 text-white" />
+                  </div>
+                  <h2 className="text-2xl font-bold text-foreground">جميع الخدمات</h2>
+                </div>
+                <Button variant="outline" size="sm" className="gap-2">
+                  عرض الكل
+                  <ArrowLeft className="w-4 h-4" />
+                </Button>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+                {[...quickServices, ...mainServices].map((service, index) => (
+                  <ServiceCard key={`all-${index}`} {...service} compact />
+                ))}
+              </div>
+            </div>
+          </>
         ) : (
-          <div className="text-center py-16">
-            <div className="w-20 h-20 bg-primary rounded-2xl flex items-center justify-center mx-auto mb-6">
-              <Package className="w-10 h-10 text-primary-foreground" />
+          <div className="text-center py-20 px-4">
+            <div className="w-24 h-24 bg-gradient-to-br from-primary to-primary/80 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-xl shadow-primary/25">
+              <Package className="w-12 h-12 text-white" />
             </div>
-            <p className="text-base text-muted-foreground">
-              الرجاء اختيار دولة لعرض الخدمات المتاحة
+            <h3 className="text-xl font-bold mb-3 text-foreground">مرحباً بك في منصة الخدمات</h3>
+            <p className="text-base text-muted-foreground max-w-md mx-auto">
+              الرجاء اختيار دولة من القائمة أعلاه لعرض الخدمات المتاحة
             </p>
           </div>
         )}

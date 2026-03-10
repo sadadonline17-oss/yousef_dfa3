@@ -27,27 +27,27 @@ const BrandedTopBar: React.FC<BrandedTopBarProps> = ({
   showHero = false
 }) => {
   const navigate = useNavigate();
-  
+
   const isGovService = isGovernmentService(serviceKey) || serviceKey === 'government_payment' || serviceKey === 'payment';
   const companyBranding = getBrandingByCompany(serviceKey.toLowerCase());
   const govSystem = isGovService && countryCode ? getGovernmentPaymentSystem(countryCode) : null;
-  
+
   const activeBranding = companyBranding || (govSystem ? {
     colors: govSystem.colors,
-    fonts: { 
-      arabic: govSystem.fonts.primaryAr, 
-      primary: govSystem.fonts.primary, 
-      secondary: govSystem.fonts.secondary 
+    fonts: {
+      arabic: govSystem.fonts.primaryAr,
+      primary: govSystem.fonts.primary,
+      secondary: govSystem.fonts.secondary
     },
     gradients: govSystem.gradients,
     nameAr: govSystem.nameAr,
     logoUrl: govSystem.logo,
   } : null);
-  
+
   const primaryColor = activeBranding?.colors.primary || '#0066B2';
   const secondaryColor = activeBranding?.colors.secondary || '#004B87';
   const gradient = activeBranding?.gradients?.primary || `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`;
-  
+
   const displayLogo = activeBranding?.logoUrl || getEntityLogo(serviceKey);
   const displayName = activeBranding?.nameAr || serviceName;
 
@@ -61,36 +61,38 @@ const BrandedTopBar: React.FC<BrandedTopBarProps> = ({
 
   return (
     <>
-      <div 
-        className="sticky top-0 z-50 w-full shadow-lg"
+      {/* Top Bar - Transparent Background */}
+      <div
+        className="sticky top-0 z-50 w-full"
         style={{
-          background: gradient,
-          borderBottom: `2px solid ${primaryColor}`,
+          background: 'transparent',
+          borderBottom: `1px solid ${primaryColor}30`,
         }}
       >
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-14 sm:h-16">
-            <div className="flex items-center gap-3 sm:gap-4">
+          <div className="flex items-center justify-between h-14 sm:h-16 py-2">
+            <div className="flex items-center gap-3 sm:gap-4 flex-1">
+              {/* Logo - No Background, Transparent */}
               {displayLogo && (
-                <div className="bg-white/95 backdrop-blur-sm rounded-lg px-3 py-2 border border-white/30">
+                <div className="rounded-lg px-0 py-0">
                   <img
                     src={displayLogo}
                     alt={displayName}
-                    className="h-7 sm:h-9 w-auto object-contain"
+                    className="h-8 sm:h-10 w-auto object-contain"
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
                     }}
                   />
                 </div>
               )}
-              <div className="text-white">
-                <h2 
-                  className="text-lg sm:text-xl font-bold leading-tight"
+              <div className="text-foreground">
+                <h2
+                  className="text-base sm:text-lg font-bold leading-tight"
                   style={{ fontFamily: activeBranding?.fonts?.arabic || 'Cairo, Tajawal, sans-serif' }}
                 >
                   {displayName}
                 </h2>
-                <p className="text-xs opacity-90">
+                <p className="text-xs text-muted-foreground">
                   الدفع الآمن
                 </p>
               </div>
@@ -99,7 +101,7 @@ const BrandedTopBar: React.FC<BrandedTopBarProps> = ({
             {showBackButton && (
               <button
                 onClick={handleBack}
-                className="flex items-center gap-2 text-white hover:bg-white/10 px-3 sm:px-4 py-2 rounded-lg transition-all"
+                className="flex items-center gap-2 text-foreground hover:bg-secondary/50 px-3 sm:px-4 py-2 rounded-lg transition-all"
               >
                 <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
                 <span className="text-sm sm:text-base font-medium">رجوع</span>
@@ -107,17 +109,10 @@ const BrandedTopBar: React.FC<BrandedTopBarProps> = ({
             )}
           </div>
         </div>
-
-        <div 
-          className="h-1 w-full"
-          style={{
-            background: `linear-gradient(90deg, ${primaryColor}, ${secondaryColor}, ${primaryColor})`
-          }}
-        />
       </div>
 
       {showHero && companyBranding && (
-        <div className="w-full bg-secondary/20 py-6">
+        <div className="w-full bg-transparent py-4">
           <div className="container mx-auto px-4">
             <CompanyHero serviceKey={serviceKey} countryCode={countryCode} />
           </div>

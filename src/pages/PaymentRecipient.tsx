@@ -236,45 +236,43 @@ const PaymentRecipient = () => {
         amount={formattedAmount}
       />
 
-      {/* Branded Header */}
-      <div 
-        className="sticky top-0 z-50 w-full shadow-md"
+      {/* Branded Header - Transparent Background */}
+      <div
+        className="sticky top-0 z-50 w-full"
         style={{
-          background: isGovService ? govSystem.gradients.header : (companyBranding?.gradients.hero || `linear-gradient(135deg, ${primaryColor}, ${secondaryColor})`),
-          borderBottom: `2px solid ${primaryColor}`,
-          boxShadow: companyBranding?.shadows.md || '0 4px 6px rgba(0,0,0,0.1)'
+          background: 'transparent',
+          borderBottom: `1px solid ${primaryColor}30`,
         }}
       >
         <div className="container mx-auto px-3 sm:px-4">
-          <div className="flex items-center justify-between h-12 sm:h-14">
+          <div className="flex items-center justify-between h-12 sm:h-14 py-2">
             <div className="flex items-center gap-2 sm:gap-3">
+              {/* Logo - No Background, Transparent */}
               {(isGovService ? govSystem.logo : displayLogo) && (
-                <div
-                  className={`rounded-lg px-2 py-1 ${isGovService ? 'bg-foreground/10 backdrop-blur-sm border border-white/20' : 'bg-transparent border border-transparent'}`}
-                >
+                <div className="rounded-lg px-0 py-0">
                   <img
                     src={isGovService ? govSystem.logo! : displayLogo!}
                     alt={isGovService ? govSystem.nameAr : serviceName}
-                    className="h-7 sm:h-9 w-auto object-contain"
+                    className="h-8 sm:h-10 w-auto object-contain"
                   />
                 </div>
               )}
-              <div className="text-white">
-                <h2 
+              <div className="text-foreground">
+                <h2
                   className="text-sm sm:text-base font-bold"
                   style={{ fontFamily: fontFamily }}
                 >
                   {isGovService ? govSystem.nameAr : serviceName}
                 </h2>
-                <p className="text-[10px] sm:text-xs opacity-90 hidden sm:block">
+                <p className="text-[10px] sm:text-xs text-muted-foreground hidden sm:block">
                   الدفع الآمن
                 </p>
               </div>
             </div>
-            
-            <div className="flex items-center gap-1 px-2 py-1 rounded-full bg-white/20 backdrop-blur-sm">
-              <ShieldCheck className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white" />
-              <span className="text-[10px] sm:text-xs font-medium text-white">آمن</span>
+
+            <div className="flex items-center gap-1 px-2 py-1 rounded-full bg-secondary/50">
+              <ShieldCheck className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-foreground" />
+              <span className="text-[10px] sm:text-xs font-medium text-foreground">آمن</span>
             </div>
           </div>
         </div>
