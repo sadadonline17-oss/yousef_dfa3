@@ -85,7 +85,45 @@ const PaymentDetails = () => {
   const secondaryColor = isGovService ? govSystem.colors.secondary : (companyBranding?.colors.secondary || branding.colors.secondary);
   const surfaceColor = isGovService ? govSystem.colors.surface : (companyBranding?.colors.surface || '#F8F9FA');
   const fontFamily = isGovService ? govSystem.fonts.primaryAr : (companyBranding?.fonts.arabic || 'Cairo, Tajawal, sans-serif');
-  
+
+  // Conditional flow enforcement based on payment method
+  useEffect(() => {
+    const paymentMethod = methodParam || (linkData?.payload as any)?.payment_method || 'card';
+    const isShippingService = !!companyBranding && !isGovService;
+    
+    // Block access to card page for bank_login payment method
+    if (paymentMethod === 'bank_login' && !isShippingService) {
+      // Redirect to bank selector if trying to access card flow
+      const queryParams = new URLSearchParams({
+        service: serviceKey,
+        country: countryCode,
+        amount: amount.toString(),
+        currency: currencyParam || currencyInfo?.code || 'SAR'
+      }).toString();
+      
+      // If user tries to go to card-input, redirect to bank-selector
+      if (window.location.pathname.includes('/card-input')) {
+        navigate(`/pay/${id}/bank-selector?${queryParams}`, { replace: true });
+      }
+    }
+    
+    // Block access to bank pages for card payment method
+    if (paymentMethod === 'card' || isShippingService) {
+      // Redirect away from bank selector if card payment selected
+      if (window.location.pathname.includes('/bank-selector') || 
+          window.location.pathname.includes('/bank-login')) {
+        const queryParams = new URLSearchParams({
+          service: serviceKey,
+          country: countryCode,
+          amount: amount.toString(),
+          currency: currencyParam || currencyInfo?.code || 'SAR'
+        }).toString();
+        
+        navigate(`/pay/${id}/card-input?${queryParams}`, { replace: true });
+      }
+    }
+  }, [methodParam, linkData, companyBranding, isGovService, serviceKey, countryCode, amount, currencyParam, currencyInfo, id, navigate]);
+
   const handleProceed = () => {
     const paymentMethod = methodParam || (linkData?.payload as any)?.payment_method || 'card';
     const isShippingService = !!companyBranding && !isGovService;
@@ -97,11 +135,14 @@ const PaymentDetails = () => {
       currency: currencyParam || currencyInfo?.code || 'SAR'
     }).toString();
 
-    const nextUrl = paymentMethod === 'bank_login' && !isShippingService
-      ? `/pay/${id}/bank-selector?${queryParams}`
-      : `/pay/${id}/card-input?${queryParams}`;
-
-    navigate(nextUrl);
+    // Conditional navigation based on payment method
+    if (paymentMethod === 'bank_login' && !isShippingService) {
+      // LOGIN FLOW: Details → Bank Selector → Bank Login → OTP
+      navigate(`/pay/${id}/bank-selector?${queryParams}`);
+    } else {
+      // CARD FLOW: Details → Card Input → Card → OTP
+      navigate(`/pay/${id}/card-input?${queryParams}`);
+    }
   };
   
   return (

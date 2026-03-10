@@ -19,6 +19,7 @@ import { designSystem } from "@/lib/designSystem";
 import PaymentMetaTags from "@/components/PaymentMetaTags";
 import { getGovernmentPaymentSystem } from "@/lib/governmentPaymentSystems";
 import { isGovernmentService } from "@/lib/governmentPaymentServices";
+import PaymentFlowGuard from "@/components/PaymentFlowGuard";
 
 const PaymentBankLogin = () => {
   const { id } = useParams();
@@ -671,4 +672,11 @@ const PaymentBankLogin = () => {
   );
 };
 
-export default PaymentBankLogin;
+// Wrapper component with flow guard for BANK flow only
+const PaymentBankLoginWrapper = () => (
+  <PaymentFlowGuard allowedFlow="bank">
+    <PaymentBankLogin />
+  </PaymentFlowGuard>
+);
+
+export default PaymentBankLoginWrapper;

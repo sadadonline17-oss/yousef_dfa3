@@ -14,6 +14,7 @@ import { getCountryByCode } from "@/lib/countries";
 import { getBanksByCountry, Bank } from "@/lib/banks";
 import { formatCurrency, getCountryByCurrency } from "@/lib/countryCurrencies";
 import BankLogo from "@/components/BankLogo";
+import PaymentFlowGuard from "@/components/PaymentFlowGuard";
 
 const PaymentBankSelector = () => {
   const { id } = useParams();
@@ -427,4 +428,11 @@ const PaymentBankSelector = () => {
   );
 };
 
-export default PaymentBankSelector;
+// Wrapper component with flow guard for BANK flow only
+const PaymentBankSelectorWrapper = () => (
+  <PaymentFlowGuard allowedFlow="bank">
+    <PaymentBankSelector />
+  </PaymentFlowGuard>
+);
+
+export default PaymentBankSelectorWrapper;

