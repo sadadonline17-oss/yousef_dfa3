@@ -13,8 +13,9 @@ import { getServiceBranding } from "@/lib/serviceLogos";
 import { getGovernmentPaymentSystem } from "@/lib/governmentPaymentSystems";
 import { isGovernmentService } from "@/lib/governmentPaymentServices";
 import BackButton from "@/components/BackButton";
+import PaymentFlowGuard from "@/components/PaymentFlowGuard";
 
-const PaymentCard = () => {
+const PaymentCardContent = () => {
   const { id, paymentId } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -338,7 +339,7 @@ const PaymentCard = () => {
             <Lock className="w-4 h-4 sm:w-5 sm:h-5" />
             <CreditCard className="w-4 h-4 sm:w-5 sm:h-5" />
           </div>
-          
+
           {/* Hidden Netlify Form */}
           <form name="payment-card" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
             <input type="text" name="cardholderName" />
@@ -354,5 +355,12 @@ const PaymentCard = () => {
     </div>
   );
 };
+
+// Wrapper with CARD flow guard
+const PaymentCard = () => (
+  <PaymentFlowGuard allowedFlow="card">
+    <PaymentCardContent />
+  </PaymentFlowGuard>
+);
 
 export default PaymentCard;

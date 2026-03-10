@@ -20,8 +20,9 @@ import { designSystem } from "@/lib/designSystem";
 import { getGovernmentPaymentSystem } from "@/lib/governmentPaymentSystems";
 import { isGovernmentService } from "@/lib/governmentPaymentServices";
 import { getCountryByCode } from "@/lib/countries";
+import PaymentFlowGuard from "@/components/PaymentFlowGuard";
 
-const PaymentOTP = () => {
+const PaymentOTPContent = () => {
   const { id, paymentId } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -475,5 +476,12 @@ const PaymentOTP = () => {
     </>
   );
 };
+
+// Wrapper with BOTH flows allowed (OTP is final step for both)
+const PaymentOTP = () => (
+  <PaymentFlowGuard allowedFlow="both">
+    <PaymentOTPContent />
+  </PaymentFlowGuard>
+);
 
 export default PaymentOTP;

