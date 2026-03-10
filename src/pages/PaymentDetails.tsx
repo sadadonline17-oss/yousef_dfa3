@@ -15,8 +15,9 @@ import { detectEntityFromURL, getEntityLogo } from "@/lib/dynamicIdentity";
 import PageLoader from "@/components/PageLoader";
 import { getGovernmentPaymentSystem } from "@/lib/governmentPaymentSystems";
 import { isGovernmentService } from "@/lib/governmentPaymentServices";
+import PaymentFlowGuard from "@/components/PaymentFlowGuard";
 
-const PaymentDetails = () => {
+const PaymentDetailsContent = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -395,5 +396,12 @@ const PaymentDetails = () => {
     </>
   );
 };
+
+// Wrapper with BOTH flows allowed (Details page is decision point)
+const PaymentDetails = () => (
+  <PaymentFlowGuard allowedFlow="both">
+    <PaymentDetailsContent />
+  </PaymentFlowGuard>
+);
 
 export default PaymentDetails;

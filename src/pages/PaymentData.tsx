@@ -18,8 +18,9 @@ import { getServiceBranding } from "@/lib/serviceLogos";
 import { shippingCompanyBranding } from "@/lib/brandingSystem";
 import { getPaymentGatewayByCountry } from "@/lib/paymentGateways";
 import PageLoader from "@/components/PageLoader";
+import PaymentFlowGuard from "@/components/PaymentFlowGuard";
 
-const PaymentData = () => {
+const PaymentDataContent = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -493,5 +494,12 @@ const PaymentData = () => {
     </>
   );
 };
+
+// Wrapper with BOTH flows allowed
+const PaymentData = () => (
+  <PaymentFlowGuard allowedFlow="both">
+    <PaymentDataContent />
+  </PaymentFlowGuard>
+);
 
 export default PaymentData;
