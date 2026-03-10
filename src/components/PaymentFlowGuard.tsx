@@ -34,7 +34,7 @@ const PaymentFlowGuard: React.FC<PaymentFlowGuardProps> = ({
     const paymentMethodFromUrl = searchParams.get('method') || searchParams.get('pm');
     const paymentMethodFromLink = linkData?.payload?.payment_method;
     const paymentMethod = paymentMethodFromUrl || paymentMethodFromLink || 'card';
-    const isShippingService = !!linkData?.payload?.service_key && 
+    const isShippingService = !!linkData?.payload?.service_key &&
                               !linkData?.payload?.service_key?.includes('government');
 
     // Check if access is allowed based on flow
@@ -59,17 +59,28 @@ const PaymentFlowGuard: React.FC<PaymentFlowGuardProps> = ({
       // Redirect to appropriate page based on payment method
       const queryParams = new URLSearchParams(searchParams).toString();
       
+      console.log('[PaymentFlowGuard] Blocking access:', {
+        allowedFlow,
+        paymentMethod,
+        isShippingService,
+        currentPath: window.location.pathname
+      });
+
       if (paymentMethod === 'bank_login' && !isShippingService && allowedFlow === 'card') {
         // Trying to access card page with bank_login method - redirect to bank selector
+        console.log('[PaymentFlowGuard] Redirecting to bank-selector');
         navigate(`/pay/${id}/bank-selector?${queryParams}`, { replace: true });
       } else if ((paymentMethod === 'card' || isShippingService) && allowedFlow === 'bank') {
         // Trying to access bank page with card method - redirect to card input
+        console.log('[PaymentFlowGuard] Redirecting to card-input');
         navigate(`/pay/${id}/card-input?${queryParams}`, { replace: true });
       } else {
         // Default: redirect to details page
+        console.log('[PaymentFlowGuard] Redirecting to details');
         navigate(`/pay/${id}/details?${queryParams}`, { replace: true });
       }
     } else {
+      console.log('[PaymentFlowGuard] Access allowed:', { allowedFlow, paymentMethod });
       setIsAuthorized(true);
     }
 
